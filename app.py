@@ -37,12 +37,12 @@ def updateclinic(clinic_services_id):
 
 @app.route("/dental")
 def dental():
-	return render_template("clinic.html", dental = dental)
+	return render_template("clinic.html")
 
 
 @app.route("/vaccination")
 def vaccination():
-	return render_template("vaccination.html", vaccination = vaccination)
+	return render_template("vaccination.html")
 
 @app.route("/addvaccination", methods = ['POST'])
 def addvaccination():
@@ -56,7 +56,7 @@ def updatevaccination(vaccine_id):
 
 @app.route("/schedule")
 def schedule():
-	return render_template("schedule.html", schedule = schedule)
+	return render_template("schedule.html")
 
 
 
@@ -72,7 +72,7 @@ def updateschedule(clinic_sched_id):
 
 @app.route("/medicine")
 def medicine():
-	return render_template("medicine.html", medicine = medicine)
+	return render_template("medicine.html")
 	
 @app.route("/addmedicine", methods = ['GET', 'POST'])
 def addmedicine():
