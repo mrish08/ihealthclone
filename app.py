@@ -22,7 +22,7 @@ def index():
 
 @app.route("/clinic")
 def clinic():
-	return render_template("clinic.html", clinic = clinic)
+	return render_template("clinic.html")
 
 
 @app.route("/addclinic", methods = ['POST'])
