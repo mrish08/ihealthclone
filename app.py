@@ -8,7 +8,7 @@ def connection():
     s = 'database-1.c8punsklsimv.ap-southeast-1.rds.amazonaws.com'
     d = 'bms' 
     u = 'postgres' 
-    p = '1234'
+    p = 'wew123WEW'
     conn = psycopg2.connect(host=s, user=u, password=p, database=d)
     with conn:
         with conn.cursor() as curs:
