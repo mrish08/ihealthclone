@@ -5,10 +5,10 @@ import psycopg2
 
 app=Flask(__name__,template_folder='template',static_folder='static')
 def connection():
-    s = 'localhost'
-    d = 'iHealth_database' 
+    s = 'database-1.c8punsklsimv.ap-southeast-1.rds.amazonaws.com'
+    d = 'bms-deployed' 
     u = 'postgres' 
-    p = '123'
+    p = 'wew123WEW'
     conn = psycopg2.connect(host=s, user=u, password=p, database=d)
     with conn:
         with conn.cursor() as curs:
@@ -22,17 +22,46 @@ def index():
 
 @app.route("/clinic")
 def clinic():
-	return render_template("clinic.html")
+	clinic = []
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT * FROM clinic_services")
+	for row in cursor.fetchall():
+		clinic.append({"clinic_services_id": row[0], "clinic_services_name": row[1]})
+	conn.close()	
+	return render_template("clinic.html", clinic = clinic)
 
 
 @app.route("/addclinic", methods = ['POST'])
 def addclinic():
+	if request.method == 'POST':
+		clinic_services_name = request.form['clinic_services_name']
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute('INSERT INTO clinic_services (clinic_services_name)'' VALUES (%s)', [clinic_services_name])
+	conn.commit()
+	conn.close()
 	return redirect('/clinic')
 
 
 @app.route('/updateclinic/<int:clinic_services_id>', methods = ['GET', 'POST'])
 def updateclinic(clinic_services_id):
+	uc = []
+	conn = connection()
+	cursor = conn.cursor()
+	if request.method == 'GET':
+		cursor.execute("SELECT * FROM clinic_services WHERE clinic_services_id = %s", (str(clinic_services_id)))
+		for row in cursor.fetchall():
+			uc.append({"clinic_services_id": row[0], "clinic_services_name": row[1]})
+		conn.close()
+		return render_template("updateclinic.html", clinic = uc[0])
+	if request.method == 'POST':
+		clinic_services_name = str(request.form["clinic_services_name"])
+		cursor.execute("UPDATE clinic_services SET clinic_services_name = %s WHERE clinic_services_id = %s", (clinic_services_name, clinic_services_id))
+		conn.commit()
+		conn.close()
 		return redirect('/clinic')
+
 
 
 @app.route("/dental")
