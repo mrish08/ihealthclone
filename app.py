@@ -5,7 +5,7 @@ import psycopg2
 
 app=Flask(__name__,template_folder='template',static_folder='static')
 def connection():
-    s = 'bms-deployed'
+    s = 'database-1.c8punsklsimv.ap-southeast-1.rds.amazonaws.com'
     d = 'bms' 
     u = 'postgres' 
     p = '1234'
