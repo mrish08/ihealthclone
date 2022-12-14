@@ -5,8 +5,8 @@ import psycopg2
 
 app=Flask(__name__,template_folder='template',static_folder='static')
 def connection():
-    s = 'localhost'
-    d = 'bms-deployed' 
+    s = 'bms-deployed'
+    d = 'bms' 
     u = 'postgres' 
     p = '1234'
     conn = psycopg2.connect(host=s, user=u, password=p, database=d)
