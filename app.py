@@ -5,10 +5,10 @@ import psycopg2
 
 app=Flask(__name__,template_folder='template',static_folder='static')
 def connection():
-    s = 'database-1.c8punsklsimv.ap-southeast-1.rds.amazonaws.com'
+    s = 'localhost'
     d = 'bms-deployed' 
     u = 'postgres' 
-    p = 'wew123WEW'
+    p = '1234'
     conn = psycopg2.connect(host=s, user=u, password=p, database=d)
     with conn:
         with conn.cursor() as curs:
@@ -25,7 +25,7 @@ def clinic():
 	clinic = []
 	conn = connection()
 	cursor = conn.cursor()
-	cursor.execute("SELECT * FROM clinic_services")
+	cursor.execute("SELECT * FROM ih_clinic_services")
 	for row in cursor.fetchall():
 		clinic.append({"clinic_services_id": row[0], "clinic_services_name": row[1]})
 	conn.close()	
@@ -38,7 +38,7 @@ def addclinic():
 		clinic_services_name = request.form['clinic_services_name']
 	conn = connection()
 	cursor = conn.cursor()
-	cursor.execute('INSERT INTO clinic_services (clinic_services_name)'' VALUES (%s)', [clinic_services_name])
+	cursor.execute('INSERT INTO ih_clinic_services (clinic_services_name)'' VALUES (%s)', [clinic_services_name])
 	conn.commit()
 	conn.close()
 	return redirect('/clinic')
@@ -50,7 +50,7 @@ def updateclinic(clinic_services_id):
 	conn = connection()
 	cursor = conn.cursor()
 	if request.method == 'GET':
-		cursor.execute("SELECT * FROM clinic_services WHERE clinic_services_id = %s", (str(clinic_services_id)))
+		cursor.execute("SELECT * FROM ih_clinic_services WHERE clinic_services_id = %s", (str(clinic_services_id)))
 		for row in cursor.fetchall():
 			uc.append({"clinic_services_id": row[0], "clinic_services_name": row[1]})
 		conn.close()
