@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/1725fc6e-47c7-407b-9c8a-b2617d550789/appservices/subscriptions/1725fc6e-47c7-407b-9c8a-b2617d550789/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/bitbo-ihealth",
+    "appService.deploySubpath": "."
+}
