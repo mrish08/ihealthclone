@@ -7,18 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
     <meta content="Coderthemes" name="author">
-  <!-- App favicon -->
-  <link rel="shortcut icon" href="../../static/images/brgyms-icon-white.png">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="../../static/images/brgyms-icon-white.png">
 
-  <!-- third party css -->
-  <link href="../../static/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css">
-  <!-- third party css end -->
+    <!-- third party css -->
+    <link href="../../static/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css">
+    <!-- third party css end -->
 
-  <!-- App css -->
-  <link href="../../static/css/icons.min.css" rel="stylesheet" type="text/css">
-  <link href="../../static/css/app-i.min.css" rel="stylesheet" type="text/css" id="light-style">
-  <link href="../../static/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style">
-
+    <!-- App css -->
+    <link href="../../static/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="../../static/css/app-i.min.css" rel="stylesheet" type="text/css" id="light-style">
+    <link href="../../static/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style">
 
 </head>
 
@@ -37,47 +36,94 @@
                         <img src="../../static/images/ihealth-logo-with-text.png" alt="" height="40">
                     </span>
                 </a>
-    
-                <ul class="side-nav">
-    
-                    <li class="side-nav-title side-nav-item">Menu</li>
-    
-                    <li class="side-nav-item">
-                        <a href="/index" class="side-nav-link">
-                            <i class="uil-chart-pie"></i>
-                            <span> Dashboard </span>
-                        </a>
+            <!--- Sidemenu -->
+            <ul class="side-nav">
+
+                <li class="side-nav-title side-nav-item">Navigation</li>
+
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarPages" aria-expanded="false" aria-controls="sidebarPages" class="side-nav-link">
+                        <i class="uil-chart-pie"></i>
+                        <span> Dashboard </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarPages">
+                        <ul class="side-nav-second-level">
+                        
+                            <li class="side-nav-item">
+                                <a data-bs-toggle="collapse" href="#sidebarPagesAuth" aria-expanded="false" aria-controls="sidebarPagesAuth">
+                                    <span> Appointment Services </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="sidebarPagesAuth">
+                                    <ul class="side-nav-third-level">
+                                        <li>
+                                            <a href="admin-apt-vax.html">Vaccination Service</a>
+                                        </li>
+                                        <li>
+                                            <a href="admin-apt-clinic.html">Clinic Service</a>
+                                        </li>
+                                        <li>
+                                            <a href="admin-apt-dental.html">Dental Service</a>
+                                        </li>
+                                        <li>
+                                            <a href="admin-apt-medicine.html">Medicine Pickup</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+
+                <li class="side-nav-item">
+                    <a href="/schedule" class="side-nav-link">
+                        <i class="uil-clipboard-alt"></i>
+                        <span> Schedule </span>
+                    </a>
+                </li>
+
+                <li class="side-nav-item">
+                    <a href="/vaccination" class="side-nav-link">
+                        <i class="uil-syringe"></i>
+                        <span> Vaccination Service</span>
+                    </a>
+                </li>
+
+                <li class="side-nav-item">
+                    <a href="/clinic" class="side-nav-link">
+
+                        <i class="uil-clipboard-alt"></i>
+                        <span> Clinic Service </span>
+                    </a>
+                </li>
+
+                <li class="side-nav-item">
+
+                    <a href="/medicine" class="side-nav-link">
+                        <i class="uil-home-alt"></i>
+                        <span>Medicine</span>
+                </li>
+            </ul>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                    data-mdb-toggle="dropdown" aria-expanded="false">
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                        <a class="dropdown-item" href="#">a</a>
                     </li>
-    
-                    <li class="side-nav-item">
-                        <a href="/schedule" class="side-nav-link">
-                            <i class="uil-clipboard-alt"></i>
-                            <span> Schedule </span>
-                        </a>
+                    <li>
+                        <a class="dropdown-item" href="#">b</a>
                     </li>
-    
-                    <li class="side-nav-item">
-                        <a href="/vaccination" class="side-nav-link">
-                            <i class="uil-syringe"></i>
-                            <span> Vaccination Service</span>
-                        </a>
-                    </li>
-    
-                    <li class="side-nav-item">
-                        <a href="/clinic" class="side-nav-link">
-    
-                            <i class="uil-clipboard-alt"></i>
-                            <span> Clinic Service </span>
-                        </a>
-                    </li>
-    
-                    <li class="side-nav-item">
-    
-                        <a href="/medicine" class="side-nav-link">
-                            <i class="uil-home-alt"></i>
-                            <span>Medicine</span>
+                    <li>
+                        <a class="dropdown-item" href="#">c</a>
                     </li>
                 </ul>
+            </li>
+            
             </div>
             <!-- Sidebar -left -->
     
@@ -87,7 +133,6 @@
 </header>
 
  <div class="wrapper">
-
         <div class="content-page">
             <div class="content">
                 <!-- Topbar Start -->
@@ -112,7 +157,7 @@
                                 </span>
                                 <span>
                                     <span class="account-user-name">Juan Dela Cruz</span>
-                                <span class="account-position">Staff</span>
+                                <span class="account-position">Admin</span>
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
@@ -175,7 +220,7 @@
                                         <img class="d-flex me-2 rounded-circle" src="../../static/images/users/profile3.png" alt="Generic placeholder image" height="32">
                                         <div class="w-100">
                                             <h5 class="m-0 font-14">Sisa Usisa</h5>
-                                            <span class="font-12 mb-0">Staff</span>
+                                            <span class="font-12 mb-0">Admin</span>
                                         </div>
                                     </div>
                                 </a>
@@ -192,7 +237,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box">
-                                <h4 class="page-title">Medicine Pick-Up Appointments</h4>
+                                <h4 class="page-title">Clinic Appointments</h4>
                             </div>
                         </div>
 
@@ -226,7 +271,6 @@
                                                                 <tr>
                                                                     <th>Appointment ID</th>
                                                                     <th>Name</th>
-                                                                    <th>Medicine</th>
                                                                     <th>Date</th>
                                                                     <th>Time</th>
                                                                     <th>Status</th>
@@ -235,17 +279,14 @@
                                                             </thead>
                                                             <tbody>
                                                                 <tr>
-                                                                   
-                                                                <td>
-                                                                    <span class="badge badge-info-lighten rounded-pill">Pending</span>
-                                                                </td>
-                                                                <td>
-                                                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
-                                                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
-                                                                </td>
+                                                                    <td>
+                                                                        <span class="badge badge-info-lighten rounded-pill">Pending</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                                                        <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                                                    </td>
                                                                 </tr>
-
-
 
                                                             </tbody>
                                                         </table>
@@ -282,35 +323,36 @@
             </div>
             <!-- END wrapper -->
 
-              <!-- bundle -->
-    <script src="../../static/js/vendor.min.js"></script>
-    <script src="../../static/js/app.min.js"></script>
+            <!-- bundle -->
+            <script src="../../static/js/vendor.min.js"></script>
+            <script src="../../static/js/app.min.js"></script>
 
-    <!-- third party js -->
-    <script src="../../static/js/vendor/jquery.dataTables.min.js"></script>
-    <script src="../../static/js/vendor/dataTables.bootstrap5.js"></script>
-    <script src="../../static/js/vendor/dataTables.responsive.min.js"></script>
-    <script src="../../static/js/vendor/responsive.bootstrap5.min.js"></script>
-    <script src="../../static/js/vendor/dataTables.buttons.min.js"></script>
-    <script src="../../static/js/vendor/buttons.bootstrap5.min.js"></script>
-    <script src="../../static/js/vendor/buttons.php5.min.js"></script>
-    <script src="../../static/js/vendor/buttons.flash.min.js"></script>
-    <script src="../../static/js/vendor/buttons.print.min.js"></script>
-    <script src="../../static/js/vendor/dataTables.keyTable.min.js"></script>
-    <script src="../../static/js/vendor/dataTables.select.min.js"></script>
-    <script src="../../static/js/vendor/apexcharts.min.js"></script>
-    <script src="../../static/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="../../static/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="../../static/js/vendor/dropzone.min.js"></script>
-    <script src="../../static/js/vendor/list.min.js"></script>
-    <!-- third party js ends -->
+            <!-- third party js -->
+            <script src="../../static/js/vendor/jquery.dataTables.min.js"></script>
+            <script src="../../static/js/vendor/dataTables.bootstrap5.js"></script>
+            <script src="../../static/js/vendor/dataTables.responsive.min.js"></script>
+            <script src="../../static/js/vendor/responsive.bootstrap5.min.js"></script>
+            <script src="../../static/js/vendor/dataTables.buttons.min.js"></script>
+            <script src="../../static/js/vendor/buttons.bootstrap5.min.js"></script>
+            <script src="../../static/js/vendor/buttons.html5.min.js"></script>
+            <script src="../../static/js/vendor/buttons.flash.min.js"></script>
+            <script src="../../static/js/vendor/buttons.print.min.js"></script>
+            <script src="../../static/js/vendor/dataTables.keyTable.min.js"></script>
+            <script src="../../static/js/vendor/dataTables.select.min.js"></script>
+            <script src="../../static/js/vendor/apexcharts.min.js"></script>
+            <script src="../../static/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
+            <script src="../../static/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
+            <script src="../../static/js/vendor/dropzone.min.js"></script>
+            <script src="../../static/js/vendor/list.min.js"></script>
+            <!-- third party js ends -->
 
-    <!-- demo app -->
-    <script src="../../static/js/pages/demo.datatable-init.js"></script>
-    <script src="../../static/js/pages/demo.toastr.js"></script>
-    <script src="../../static/js/pages/demo.datatable-init.js"></script>
-    <script src="../../static/js/pages/demo.toastr.js"></script>
-    <script src="../../static/js/pages/list.js"></script>
+            <!-- demo app -->
+            <script src="../../static/js/pages/demo.datatable-init.js"></script>
+            <script src="../../static/js/pages/demo.toastr.js"></script>
+            <script src="../../static/js/pages/demo.datatable-init.js"></script>
+            <script src="../../static/js/pages/demo.toastr.js"></script>
+            <script src="../../static/js/pages/list.js"></script>
+            <!-- end demo js-->
 </body>
 
 </html>
