@@ -154,10 +154,6 @@ def loginstaff():
 def loginresident():
 	return render_template("loginresident.html")
 
-@app.route("/register")
-def register():
-	return render_template("register.html")
-
 @app.route("/indexstaff")
 def indexstaff():
 	return render_template("indexstaff.html")
@@ -168,7 +164,14 @@ def schedulestaff():
 
 @app.route("/clinicstaff")
 def clinicstaff():
-	return render_template("clinicstaff.html")
+	clinic1 = []
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT * FROM ih_appointment")
+	for row in cursor.fetchall():
+		clinic1.append({"clinic_services_id": row[0], "clinic_services_name": row[1]})
+	conn.close()	
+	return render_template("clinicstaff.html", clinic1 = clinic1)
 
 @app.route("/medicinestaff")
 def medicinestaff():
@@ -176,7 +179,15 @@ def medicinestaff():
 
 @app.route("/vaccinationstaff")
 def vaccinationstaff():
-	return render_template("vaccinationstaff.html")
+	vaccination = []
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT * FROM ih_vaccine")
+	for row in cursor.fetchall():
+		vaccination.append({"vaccine_id": row[0], "vaccine_name": row[1], "lot_name": row[2], "brand_manufacturer": row[3]})
+	conn.close()	
+	return render_template("vaccinationstaff.html", vaccination = vaccination)
+
 
 @app.route("/dentalstaff")
 def dentalstaff():
