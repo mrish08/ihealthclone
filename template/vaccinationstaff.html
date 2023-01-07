@@ -221,13 +221,14 @@
                                                     <form class="row gy-2 gx-2 align-items-center justify-content-xl-start justify-content-between">
                                                         <div class="col-auto">
                                                             <label for="inputPassword2" class="visually-hidden">Search</label>
-                                                            <input type="search" class="form-control" id="inputPassword2" placeholder="Search..."> <br><br>
+                                                            <input type="text" class="form-control" id="inputPassword2" placeholder="Search..."  onkeyup="searchvaccine()">
+                                                          <br><br>
                                                         </div>
                                                     </form>
                                                 </div>
 
                                                 <div class="table-responsive">
-                                                    <table class="table table-centered mb-0">
+                                                    <table id="mytable" class="table table-centered mb-0">
                                                         <thead class="table-light">
                                                             <tr>
                                                                 <th>Appointment ID</th>
