@@ -224,7 +224,8 @@
                                                         <form class="row gy-2 gx-2 align-items-center justify-content-xl-start justify-content-between">
                                                             <div class="col-auto">
                                                                 <label for="inputPassword2" class="visually-hidden">Search</label>
-                                                                <input type="search" class="form-control" id="inputPassword2" placeholder="Search..."> <br><br>
+                                                                <input type="text" class="form-control" id="inputPassword2" placeholder="Search..."  onkeyup="searchall()">
+                                                                <br><br>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -233,7 +234,7 @@
                                                         <table class="table table-centered mb-0">
                                                             <thead class="table-light">
                                                                 <tr>
-                                                                    <th>Appointment ID</th>
+                                                                    <th><a href="javascript:void(0)" class="sort" data-sort="js-lists-values-user-schedname">Appointment ID</a></th>
                                                                     <th>Name</th>
                                                                     <th>Date</th>
                                                                     <th>Time</th>
@@ -242,17 +243,38 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr>
-                                                                    <td>
-                                                                        <span class="badge badge-info-lighten rounded-pill">Pending</span>
-                                                                    </td>
-                                                                    <td>
-                                                                        <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
-                                                                        <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
-                                                                    </td>
-                                                                </tr>
-
-                                                            </tbody>
+                                                                <tbody class="list" id="staff02">
+                                                                    {% for clinic in clinic %}
+                                                                    <tr>
+                                                                        <td>{{ clinic.clinic_services_id}}</td>
+                                                                        <td>{{ clinic.clinic_services_name }}</td>
+                                                                        <td class="table-action">
+                                                                            <form class="action-icon">
+                                                                                <button type="button" class="btn btn-warning">
+                                                                                    <a href="updateclinic/{{ clinic.clinic_services_id }}">
+                                                                                    <i class="mdi mdi-account-edit-outline"></i>
+                                                                                </button>
+                                                                            </a>
+                                                                            </form>
+                                                                        </td>
+                                                                    </tr>
+                                                                    {% endfor %}   
+                                                                </tbody>
+                                                            </table>
+                                                            <div class="row">
+                                                                <div class="col-sm-12 col-md-4"></div>
+                                                            <div class="col-sm-12 col-md-6">
+                                                                <div class="dataTables_paginate paging_simple_numbers" id="basic-datatable_paginate">
+                                                                    <ul class="pagination pagination-rounded">
+                                                                        <li class="paginate_button page-item previous disabled" id="basic-datatable_previous">
+                                                                            <a href="#" aria-controls="basic-datatable" data-dt-idx="0" tabindex="0" class="page-link">
+                                                                                <i class="mdi mdi-chevron-left"></i></a></li>
+                                                                                <li class="paginate_button page-item active">
+                                                                                    <a href="#" aria-controls="basic-datatable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                                                                    <li class="paginate_button page-item next" id="basic-datatable_next"><a href="#" aria-controls="basic-datatable" data-dt-idx="7" tabindex="0" class="page-link"><i class="mdi mdi-chevron-right"></i></a></li></ul>
+                                                                                </div>
+                                                                            </div>
+                                                                            </div>
                                                         </table>
                                                     </div>
                                                 </div>
