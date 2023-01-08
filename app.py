@@ -142,6 +142,22 @@ def addmedicine():
 def updatemedicine(medicine_id):
 		return redirect('/medicine')
 
+@app.route("/adminaptvax")
+def adminaptvax():
+	return render_template("admin-apt-vax.html")
+
+@app.route("/adminaptdental")
+def adminaptdental():
+	return render_template("admin-apt-dental.html")
+
+@app.route("/adminaptmedicine")
+def adminaptmedicine():
+	return render_template("admin-apt-medicine.html")
+
+@app.route("/adminaptclinic")
+def adminaptclinic():
+	return render_template("admin-apt-clinic.html")
+
 @app.route("/loginadmin") 
 def loginadmin():
 	return render_template("loginadmin.html")
@@ -177,6 +193,10 @@ def clinicstaff():
 def medicinestaff():
 	return render_template("medicinestaff.html")
 
+@app.route('/updatemedicinestaff/<int:medicine_id>', methods = ['GET', 'POST'])
+def updatemedicinestaff(medicine_id):
+		return redirect('/medicinestaff')
+
 @app.route("/vaccinationstaff")
 def vaccinationstaff():
 	vaccinationstaff = []
@@ -188,6 +208,9 @@ def vaccinationstaff():
 	conn.close()	
 	return render_template("vaccinationstaff.html", vaccinationstaff = vaccinationstaff)
 
+@app.route('/updatevaccinationstaff/<int:vaccine_id>', methods = ['GET', 'POST'])
+def updatevaccinationstaff(vaccine_id):
+		return redirect('/vaccinationstaff')
 
 @app.route("/dentalstaff")
 def dentalstaff():
@@ -199,6 +222,10 @@ def dentalstaff():
 		dentalstaff.append({"appt_id": row[0], "appt_type": row[1],"remarks": row[2],"date": row[3],"time": row[4],"status": row[5]})
 	conn.close()	
 	return render_template("dentalstaff.html", dentalstaff = dentalstaff)
+
+@app.route('/updatedentalstaff/<int:dental_id>', methods = ['GET', 'POST'])
+def updatedentalstaff(dental_id):
+		return redirect('/dentalstaff')
 
 @app.route("/indexresident")
 def indexresident():
