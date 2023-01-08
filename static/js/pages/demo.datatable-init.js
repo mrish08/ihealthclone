@@ -1,6 +1,8 @@
+
 $(document).ready(function() {
 	"use strict";
 	$("#basic-datatable").DataTable({
+		"bDestroy": true,
 		keys: !0,
 		language: {
 			paginate: {
@@ -56,7 +58,9 @@ $(document).ready(function() {
 		drawCallback: function() {
 			$(".dataTables_paginate > .pagination").addClass("pagination-rounded")
 		}
+	
 	}), $("#scroll-horizontal-datatable").DataTable({
+		"bDestroy": true,
 		scrollX: !0,
 		language: {
 			paginate: {
@@ -67,6 +71,7 @@ $(document).ready(function() {
 		drawCallback: function() {
 			$(".dataTables_paginate > .pagination").addClass("pagination-rounded")
 		}
+
 	}), $("#complex-header-datatable").DataTable({
 		language: {
 			paginate: {
