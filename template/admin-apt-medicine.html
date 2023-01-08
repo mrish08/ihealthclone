@@ -7,17 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="" name="description">
     <meta content="Coderthemes" name="author">
-   <!-- App favicon -->
-   <link rel="shortcut icon" href="../../static/images/brgyms-icon-white.png">
+  <!-- App favicon -->
+  <link rel="shortcut icon" href="../../static/images/brgyms-icon-white.png">
 
-   <!-- third party css -->
-   <link href="../../static/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css">
-   <!-- third party css end -->
+  <!-- third party css -->
+  <link href="../../static/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css">
+  <!-- third party css end -->
 
-   <!-- App css -->
-   <link href="../../static/css/icons.min.css" rel="stylesheet" type="text/css">
-   <link href="../../static/css/app-i.min.css" rel="stylesheet" type="text/css" id="light-style">
-   <link href="../../static/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style">
+  <!-- App css -->
+  <link href="../../static/css/icons.min.css" rel="stylesheet" type="text/css">
+  <link href="../../static/css/app-i.min.css" rel="stylesheet" type="text/css" id="light-style">
+  <link href="../../static/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style">
 
 
 </head>
@@ -38,16 +38,46 @@
                     </span>
                 </a>
     
-                <ul class="side-nav">
-    
-                    <li class="side-nav-title side-nav-item">Menu</li>
-    
-                    <li class="side-nav-item">
-                        <a href="/index" class="side-nav-link">
-                            <i class="uil-chart-pie"></i>
-                            <span> Dashboard </span>
-                        </a>
-                    </li>
+            <!--- Sidemenu -->
+            <ul class="side-nav">
+
+                <li class="side-nav-title side-nav-item"> Navigation </li>
+
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarPages" aria-expanded="false" aria-controls="sidebarPages" class="side-nav-link">
+                        <i class="uil-chart-pie"></i>
+                        <span> Dashboard </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarPages">
+                        <ul class="side-nav-second-level">
+                        
+                            <li class="side-nav-item">
+                                <a data-bs-toggle="collapse" href="#sidebarPagesAuth" aria-expanded="false" aria-controls="sidebarPagesAuth">
+                                    <span> Appointment Services </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="sidebarPagesAuth">
+                                    <ul class="side-nav-third-level">
+                                        <li>
+                                            <a href="admin-apt-vax.html">Vaccination Service</a>
+                                        </li>
+                                        <li>
+                                            <a href="admin-apt-clinic.html">Clinic Service</a>
+                                        </li>
+                                        <li>
+                                            <a href="admin-apt-dental.html">Dental Service</a>
+                                        </li>
+                                        <li>
+                                            <a href="admin-apt-medicine.html">Medicine Pickup</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
     
                     <li class="side-nav-item">
                         <a href="/schedule" class="side-nav-link">
@@ -86,7 +116,7 @@
         </div>
 </header>
 
-<div class="wrapper">
+ <div class="wrapper">
 
         <div class="content-page">
             <div class="content">
@@ -112,7 +142,7 @@
                                 </span>
                                 <span>
                                     <span class="account-user-name">Juan Dela Cruz</span>
-                                <span class="account-position">Admin</span>
+                                <span class="account-position">Staff</span>
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
@@ -185,50 +215,57 @@
                 </div>
                 <!-- end Topbar -->
 
-                <!-- start page title -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="page-title-box">
-                            <h4 class="page-title">Dental Appointments</h4>
+                <!-- Start Content-->
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <h4 class="page-title">Medicine Pick-Up Appointments</h4>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- end page title -->
+                        <!-- end page title -->
 
-                    <!-- start table content -->
-                    <div class="tab-content">
-                        <!-- First Tab -->
-                        <div class="tab-pane show active" id="pending">
 
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="row mb-2">
-                                                <div class="col-xl-8">
-                                                    <form class="row gy-2 gx-2 align-items-center justify-content-xl-start justify-content-between">
-                                                        <div class="col-auto">
-                                                            <label for="inputPassword2" class="visually-hidden">Search</label>
-                                                            <input type="search" class="form-control" id="inputPassword2" placeholder="Search..."> <br><br>
-                                                        </div>
-                                                    </form>
-                                                </div>
 
-                                                <div class="table-responsive">
-                                                    <table class="table table-centered mb-0">
-                                                        <thead class="table-light">
-                                                            <tr>
-                                                                <th>Appointment ID</th>
-                                                                <th>Name</th>
-                                                                <th>Date</th>
-                                                                <th>Time</th>
-                                                                <th>Status</th>
-                                                                <th style="width: 125px;">Action</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                
+
+                        <!-- start table content -->
+                        <div class="tab-content">
+                            <!-- First Tab -->
+                            <div class="tab-pane show active" id="pending">
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="row mb-2">
+                                                    <div class="col-xl-8">
+                                                        <form class="row gy-2 gx-2 align-items-center justify-content-xl-start justify-content-between">
+                                                            <div class="col-auto">
+                                                                <label for="inputPassword2" class="visually-hidden">Search</label>
+                                                                <input type="search" class="form-control" id="inputPassword2" placeholder="Search..."> <br><br>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <div class="table-responsive">
+                                                        <table class="table table-centered mb-0">
+                                                            <thead class="table-light">
+                                                                <tr>
+                                                                    <th>Appointment ID</th>
+                                                                    <th>Name</th>
+                                                                    <th>Medicine</th>
+                                                                    <th>Date</th>
+                                                                    <th>Time</th>
+                                                                    <th>Status</th>
+                                                                    <th style="width: 125px;">Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                   
                                                                 <td>
                                                                     <span class="badge badge-info-lighten rounded-pill">Pending</span>
                                                                 </td>
@@ -236,41 +273,46 @@
                                                                     <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
                                                                     <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
                                                                 </td>
-                                                            </tr>
+                                                                </tr>
 
-                                                        </tbody>
-                                                    </table>
+
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
                                                 </div>
+                                                <!-- end card-body-->
                                             </div>
-                                            <!-- end card-body-->
+                                            <!-- end card-->
                                         </div>
-                                        <!-- end card-->
+                                        <!-- end col -->
                                     </div>
-                                    <!-- end col -->
+                                    <!-- end row -->
+
                                 </div>
-                                <!-- end row -->
+                                <!-- container -->
 
                             </div>
-                            <!-- container -->
+
+                            <!-- end row of table content-->
 
                         </div>
-
-                        <!-- end row of table content-->
+                        <!-- container -->
                     </div>
                     <!-- content -->
 
-                </div>
-                </div>
-                </div>
                 </div>
 
                 <!-- ============================================================== -->
                 <!-- End Page content -->
                 <!-- ============================================================== -->
 
+            </div>
+            </div>
+            </div>
             <!-- END wrapper -->
 
-            <!-- bundle -->  
+              <!-- bundle -->
     <script src="../../static/js/vendor.min.js"></script>
     <script src="../../static/js/app.min.js"></script>
 
@@ -299,7 +341,6 @@
     <script src="../../static/js/pages/demo.datatable-init.js"></script>
     <script src="../../static/js/pages/demo.toastr.js"></script>
     <script src="../../static/js/pages/list.js"></script>
-            <!-- end demo js-->
 </body>
 
 </html>
