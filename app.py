@@ -164,14 +164,14 @@ def schedulestaff():
 
 @app.route("/clinicstaff")
 def clinicstaff():
-	clinic1 = []
+	clinicstaff = []
 	conn = connection()
 	cursor = conn.cursor()
 	cursor.execute("SELECT * FROM ih_appointment")
 	for row in cursor.fetchall():
-		clinic1.append({"clinic_services_id": row[0], "clinic_services_name": row[1]})
+		clinicstaff.append({"appt_id": row[0], "appt_type": row[1],"remarks": row[2],"date": row[3],"time": row[4],"status": row[5]})
 	conn.close()	
-	return render_template("clinicstaff.html", clinic1 = clinic1)
+	return render_template("clinicstaff.html", clinicstaff = clinicstaff)
 
 @app.route("/medicinestaff")
 def medicinestaff():
@@ -179,14 +179,14 @@ def medicinestaff():
 
 @app.route("/vaccinationstaff")
 def vaccinationstaff():
-	vaccination = []
+	vaccinationstaff = []
 	conn = connection()
 	cursor = conn.cursor()
-	cursor.execute("SELECT * FROM ih_vaccine")
+	cursor.execute("SELECT * FROM ih_appointment")
 	for row in cursor.fetchall():
-		vaccination.append({"vaccine_id": row[0], "vaccine_name": row[1], "lot_name": row[2], "brand_manufacturer": row[3]})
+		vaccinationstaff.append({"appt_id": row[0], "appt_type": row[1],"remarks": row[2],"date": row[3],"time": row[4],"status": row[5]})
 	conn.close()	
-	return render_template("vaccinationstaff.html", vaccination = vaccination)
+	return render_template("vaccinationstaff.html", vaccinationstaff = vaccinationstaff)
 
 
 @app.route("/dentalstaff")
