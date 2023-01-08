@@ -59,11 +59,6 @@ $(document).ready(function() {
 			$(".dataTables_paginate > .pagination").addClass("pagination-rounded")
 		}
 
-	}),	$("#scroll-horizontal-datatable").dataTable( {
-			paging: false,
-			searching: false
-		} );
-
 	}), $("#scroll-horizontal-datatable").DataTable({
 		scrollX: !0,
 		language: {
