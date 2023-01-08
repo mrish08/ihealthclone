@@ -205,6 +205,10 @@
                                     <div class="tab-content">
                                         <div class="tab-pane show active" id="buttons-table-patients"  data-toggle="lists" >
                                             <div class="dataTables_length" id="basic-datatable_length">
+                                                <div class="col-auto">
+                                                    <label for="inputPassword2" class="visually-hidden">Search</label>
+                                                    <input type="search" class="form-control" id="inputPassword2" placeholder="Search..."> <br><br>
+                                                </div>
                                                 <div class="col-sm-12 col-md-6">
                                                 <label class="form-label">Show  entries
                                                     <select name="basic-datatable_length" aria-controls="basic-datatable" class="form-select form-select-sm">
@@ -215,7 +219,7 @@
                                                     </select></label></div>
                                                     </div>
 
-                                                <table id="" class="table dt-responsive nowrap w-100">
+                                                <table id="mytable" class="table dt-responsive nowrap w-100">
                                                     <thead>
                                                         <tr>
                                                             <th style="width: 510px;">
