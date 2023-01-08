@@ -2,7 +2,6 @@ $(document).ready(function() {
 	"use strict";
 	$("#basic-datatable").DataTable({
 		keys: !0,
-		destroy: true,
 		language: {
 			paginate: {
 				previous: "<i class='mdi mdi-chevron-left'>",
@@ -13,7 +12,6 @@ $(document).ready(function() {
 			$(".dataTables_paginate > .pagination").addClass("pagination-rounded")
 		}
 	});
-
 	var a = $("#datatable-buttons").DataTable({
 		lengthChange: !1,
 		buttons: ["copy", "print"],
@@ -58,12 +56,6 @@ $(document).ready(function() {
 		drawCallback: function() {
 			$(".dataTables_paginate > .pagination").addClass("pagination-rounded")
 		}
-
-	}),	$("#scroll-horizontal-datatable").dataTable( {
-			paging: false,
-			searching: false
-		} );
-
 	}), $("#scroll-horizontal-datatable").DataTable({
 		scrollX: !0,
 		language: {
