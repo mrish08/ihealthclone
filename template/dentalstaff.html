@@ -199,6 +199,9 @@
                 </div>
                 <!-- end Topbar -->
 
+            <!-- Start Content-->
+            <div class="container-fluid">
+
                 <!-- start page title -->
                 <div class="row">
                     <div class="col-12">
@@ -206,213 +209,212 @@
                             <h4 class="page-title">Dental Appointments</h4>
                         </div>
                     </div>
-
-                    <!-- end page title -->
-
-                    <!-- start table content -->
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="tab-content">
-                                    <div class="card-body" style="overflow-x: auto;">
-                                        <div class="tab-pane show active" id="scroll-horizontal-preview">
-                                            <table id="scroll-horizontal-datatable" style="overflow-x: auto;" class="table w-100 nowrap">
-                                                <thead>
-                                                    <tr class="table-light">
-                                                        <th>Appointment ID</th>
-                                                        <th>Service</th>
-                                                        <th>Name</th>
-                                                        <th>Date</th>
-                                                        <th>Time</th>
-                                                        <th>Status</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {% for dentalstaff in dentalstaff %}
-                                                    <tr>
-                                                        <td>{{ dentalstaff.appt_id}}</td>
-                                                        <td>{{ dentalstaff.appt_type}}</td>
-                                                        <td>{{ dentalstaff.remarks}}</td>
-                                                        <td>{{ dentalstaff.date}}</td>
-                                                        <td>{{ dentalstaff.time}}</td>
-                                                        <td>{{ dentalstaff.status}}</td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
-                                                                <i class="mdi mdi-circle-edit-outline"></i></button>
-                                                            <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
-                                                                <i class="dripicons-checkmark"></i></button>
-                                                            <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
-                                                                <i class="mdi mdi-window-close"></i></button>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>{{ dentalstaff.appt_id}}</td>
-                                                        <td>{{ dentalstaff.appt_type}}</td>
-                                                        <td>{{ dentalstaff.remarks}}</td>
-                                                        <td>{{ dentalstaff.date}}</td>
-                                                        <td>{{ dentalstaff.time}}</td>
-                                                        <td>{{ dentalstaff.status}}</td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
-                                                                <i class="mdi mdi-circle-edit-outline"></i></button>
-                                                            <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
-                                                                <i class="dripicons-checkmark"></i></button>
-                                                            <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
-                                                                <i class="mdi mdi-window-close"></i></button>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>{{ dentalstaff.appt_id}}</td>
-                                                        <td>{{ dentalstaff.appt_type}}</td>
-                                                        <td>{{ dentalstaff.remarks}}</td>
-                                                        <td>{{ dentalstaff.date}}</td>
-                                                        <td>{{ dentalstaff.time}}</td>
-                                                        <td>{{ dentalstaff.status}}</td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
-                                                                <i class="mdi mdi-circle-edit-outline"></i></button>
-                                                            <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
-                                                                <i class="dripicons-checkmark"></i></button>
-                                                            <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
-                                                                <i class="mdi mdi-window-close"></i></button>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>{{ dentalstaff.appt_id}}</td>
-                                                        <td>{{ dentalstaff.appt_type}}</td>
-                                                        <td>{{ dentalstaff.remarks}}</td>
-                                                        <td>{{ dentalstaff.date}}</td>
-                                                        <td>{{ dentalstaff.time}}</td>
-                                                        <td>{{ dentalstaff.status}}</td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
-                                                                <i class="mdi mdi-circle-edit-outline"></i></button>
-                                                            <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
-                                                                <i class="dripicons-checkmark"></i></button>
-                                                            <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
-                                                                <i class="mdi mdi-window-close"></i></button>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>{{ dentalstaff.appt_id}}</td>
-                                                        <td>{{ dentalstaff.appt_type}}</td>
-                                                        <td>{{ dentalstaff.remarks}}</td>
-                                                        <td>{{ dentalstaff.date}}</td>
-                                                        <td>{{ dentalstaff.time}}</td>
-                                                        <td>{{ dentalstaff.status}}</td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
-                                                                <i class="mdi mdi-circle-edit-outline"></i></button>
-                                                            <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
-                                                                <i class="dripicons-checkmark"></i></button>
-                                                            <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
-                                                                <i class="mdi mdi-window-close"></i></button>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>{{ dentalstaff.appt_id}}</td>
-                                                        <td>{{ dentalstaff.appt_type}}</td>
-                                                        <td>{{ dentalstaff.remarks}}</td>
-                                                        <td>{{ dentalstaff.date}}</td>
-                                                        <td>{{ dentalstaff.time}}</td>
-                                                        <td>{{ dentalstaff.status}}</td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
-                                                                <i class="mdi mdi-circle-edit-outline"></i></button>
-                                                            <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
-                                                                <i class="dripicons-checkmark"></i></button>
-                                                            <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
-                                                                <i class="mdi mdi-window-close"></i></button>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>{{ dentalstaff.appt_id}}</td>
-                                                        <td>{{ dentalstaff.appt_type}}</td>
-                                                        <td>{{ dentalstaff.remarks}}</td>
-                                                        <td>{{ dentalstaff.date}}</td>
-                                                        <td>{{ dentalstaff.time}}</td>
-                                                        <td>{{ dentalstaff.status}}</td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
-                                                                <i class="mdi mdi-circle-edit-outline"></i></button>
-                                                            <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
-                                                                <i class="dripicons-checkmark"></i></button>
-                                                            <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
-                                                                <i class="mdi mdi-window-close"></i></button>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>{{ dentalstaff.appt_id}}</td>
-                                                        <td>{{ dentalstaff.appt_type}}</td>
-                                                        <td>{{ dentalstaff.remarks}}</td>
-                                                        <td>{{ dentalstaff.date}}</td>
-                                                        <td>{{ dentalstaff.time}}</td>
-                                                        <td>{{ dentalstaff.status}}</td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
-                                                                <i class="mdi mdi-circle-edit-outline"></i></button>
-                                                            <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
-                                                                <i class="dripicons-checkmark"></i></button>
-                                                            <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
-                                                                <i class="mdi mdi-window-close"></i></button>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>{{ dentalstaff.appt_id}}</td>
-                                                        <td>{{ dentalstaff.appt_type}}</td>
-                                                        <td>{{ dentalstaff.remarks}}</td>
-                                                        <td>{{ dentalstaff.date}}</td>
-                                                        <td>{{ dentalstaff.time}}</td>
-                                                        <td>{{ dentalstaff.status}}</td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
-                                                                <i class="mdi mdi-circle-edit-outline"></i></button>
-                                                            <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
-                                                                <i class="dripicons-checkmark"></i></button>
-                                                            <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
-                                                                <i class="mdi mdi-window-close"></i></button>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>{{ dentalstaff.appt_id}}</td>
-                                                        <td>{{ dentalstaff.appt_type}}</td>
-                                                        <td>{{ dentalstaff.remarks}}</td>
-                                                        <td>{{ dentalstaff.date}}</td>
-                                                        <td>{{ dentalstaff.time}}</td>
-                                                        <td>{{ dentalstaff.status}}</td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
-                                                                <i class="mdi mdi-circle-edit-outline"></i></button>
-                                                            <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
-                                                                <i class="dripicons-checkmark"></i></button>
-                                                            <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
-                                                                <i class="mdi mdi-window-close"></i></button>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>{{ dentalstaff.appt_id}}</td>
-                                                        <td>{{ dentalstaff.appt_type}}</td>
-                                                        <td>{{ dentalstaff.remarks}}</td>
-                                                        <td>{{ dentalstaff.date}}</td>
-                                                        <td>{{ dentalstaff.time}}</td>
-                                                        <td>{{ dentalstaff.status}}</td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
-                                                                <i class="mdi mdi-circle-edit-outline"></i></button>
-                                                            <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
-                                                                <i class="dripicons-checkmark"></i></button>
-                                                            <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
-                                                                <i class="mdi mdi-window-close"></i></button>
-                                                    </tr>
-                                                    
-                                                    {% endfor %}
-                                                </tbody>
-                                            </table>   
-                                        </div>                        
-                                    </div> <!-- end preview-->
-                                </div> <!-- end tab-content-->
-    
-                            </div> <!-- end card body-->
-                        </div> <!-- end card -->
-                    </div><!-- end col-->
                 </div>
-                <!-- end row-->
-                <!-- end of the first table-->
-    
-        <!-- ============================================================== -->
-        <!-- End Page content -->
-        <!-- ============================================================== -->
+                <!-- end page title -->
+
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="tab-content">
+                                    <div class="tab-pane show active" id="scroll-horizontal-preview">
+                                        <table id="scroll-horizontal-datatable" style="overflow-x: auto;" class="table w-100 nowrap">
+                                            <thead>
+                                                <tr class="table-light">
+                                                    <th>Appointment ID</th>
+                                                    <th>Service</th>
+                                                    <th>Name</th>
+                                                    <th>Date</th>
+                                                    <th>Time</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for dentalstaff in dentalstaff %}
+                                                <tr>
+                                                    <td>{{ dentalstaff.appt_id}}</td>
+                                                    <td>{{ dentalstaff.appt_type}}</td>
+                                                    <td>{{ dentalstaff.remarks}}</td>
+                                                    <td>{{ dentalstaff.date}}</td>
+                                                    <td>{{ dentalstaff.time}}</td>
+                                                    <td>{{ dentalstaff.status}}</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
+                                                            <i class="mdi mdi-circle-edit-outline"></i></button>
+                                                        <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
+                                                            <i class="dripicons-checkmark"></i></button>
+                                                        <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
+                                                            <i class="mdi mdi-window-close"></i></button>
+                                                </tr>
+                                                <tr>
+                                                    <td>{{ dentalstaff.appt_id}}</td>
+                                                    <td>{{ dentalstaff.appt_type}}</td>
+                                                    <td>{{ dentalstaff.remarks}}</td>
+                                                    <td>{{ dentalstaff.date}}</td>
+                                                    <td>{{ dentalstaff.time}}</td>
+                                                    <td>{{ dentalstaff.status}}</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
+                                                            <i class="mdi mdi-circle-edit-outline"></i></button>
+                                                        <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
+                                                            <i class="dripicons-checkmark"></i></button>
+                                                        <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
+                                                            <i class="mdi mdi-window-close"></i></button>
+                                                </tr>
+                                                <tr>
+                                                    <td>{{ dentalstaff.appt_id}}</td>
+                                                    <td>{{ dentalstaff.appt_type}}</td>
+                                                    <td>{{ dentalstaff.remarks}}</td>
+                                                    <td>{{ dentalstaff.date}}</td>
+                                                    <td>{{ dentalstaff.time}}</td>
+                                                    <td>{{ dentalstaff.status}}</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
+                                                            <i class="mdi mdi-circle-edit-outline"></i></button>
+                                                        <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
+                                                            <i class="dripicons-checkmark"></i></button>
+                                                        <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
+                                                            <i class="mdi mdi-window-close"></i></button>
+                                                </tr>
+                                                <tr>
+                                                    <td>{{ dentalstaff.appt_id}}</td>
+                                                    <td>{{ dentalstaff.appt_type}}</td>
+                                                    <td>{{ dentalstaff.remarks}}</td>
+                                                    <td>{{ dentalstaff.date}}</td>
+                                                    <td>{{ dentalstaff.time}}</td>
+                                                    <td>{{ dentalstaff.status}}</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
+                                                            <i class="mdi mdi-circle-edit-outline"></i></button>
+                                                        <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
+                                                            <i class="dripicons-checkmark"></i></button>
+                                                        <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
+                                                            <i class="mdi mdi-window-close"></i></button>
+                                                </tr>
+                                                <tr>
+                                                    <td>{{ dentalstaff.appt_id}}</td>
+                                                    <td>{{ dentalstaff.appt_type}}</td>
+                                                    <td>{{ dentalstaff.remarks}}</td>
+                                                    <td>{{ dentalstaff.date}}</td>
+                                                    <td>{{ dentalstaff.time}}</td>
+                                                    <td>{{ dentalstaff.status}}</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
+                                                            <i class="mdi mdi-circle-edit-outline"></i></button>
+                                                        <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
+                                                            <i class="dripicons-checkmark"></i></button>
+                                                        <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
+                                                            <i class="mdi mdi-window-close"></i></button>
+                                                </tr>
+                                                <tr>
+                                                    <td>{{ dentalstaff.appt_id}}</td>
+                                                    <td>{{ dentalstaff.appt_type}}</td>
+                                                    <td>{{ dentalstaff.remarks}}</td>
+                                                    <td>{{ dentalstaff.date}}</td>
+                                                    <td>{{ dentalstaff.time}}</td>
+                                                    <td>{{ dentalstaff.status}}</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
+                                                            <i class="mdi mdi-circle-edit-outline"></i></button>
+                                                        <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
+                                                            <i class="dripicons-checkmark"></i></button>
+                                                        <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
+                                                            <i class="mdi mdi-window-close"></i></button>
+                                                </tr>
+                                                <tr>
+                                                    <td>{{ dentalstaff.appt_id}}</td>
+                                                    <td>{{ dentalstaff.appt_type}}</td>
+                                                    <td>{{ dentalstaff.remarks}}</td>
+                                                    <td>{{ dentalstaff.date}}</td>
+                                                    <td>{{ dentalstaff.time}}</td>
+                                                    <td>{{ dentalstaff.status}}</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
+                                                            <i class="mdi mdi-circle-edit-outline"></i></button>
+                                                        <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
+                                                            <i class="dripicons-checkmark"></i></button>
+                                                        <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
+                                                            <i class="mdi mdi-window-close"></i></button>
+                                                </tr>
+                                                <tr>
+                                                    <td>{{ dentalstaff.appt_id}}</td>
+                                                    <td>{{ dentalstaff.appt_type}}</td>
+                                                    <td>{{ dentalstaff.remarks}}</td>
+                                                    <td>{{ dentalstaff.date}}</td>
+                                                    <td>{{ dentalstaff.time}}</td>
+                                                    <td>{{ dentalstaff.status}}</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
+                                                            <i class="mdi mdi-circle-edit-outline"></i></button>
+                                                        <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
+                                                            <i class="dripicons-checkmark"></i></button>
+                                                        <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
+                                                            <i class="mdi mdi-window-close"></i></button>
+                                                </tr>
+                                                <tr>
+                                                    <td>{{ dentalstaff.appt_id}}</td>
+                                                    <td>{{ dentalstaff.appt_type}}</td>
+                                                    <td>{{ dentalstaff.remarks}}</td>
+                                                    <td>{{ dentalstaff.date}}</td>
+                                                    <td>{{ dentalstaff.time}}</td>
+                                                    <td>{{ dentalstaff.status}}</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
+                                                            <i class="mdi mdi-circle-edit-outline"></i></button>
+                                                        <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
+                                                            <i class="dripicons-checkmark"></i></button>
+                                                        <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
+                                                            <i class="mdi mdi-window-close"></i></button>
+                                                </tr>
+                                                <tr>
+                                                    <td>{{ dentalstaff.appt_id}}</td>
+                                                    <td>{{ dentalstaff.appt_type}}</td>
+                                                    <td>{{ dentalstaff.remarks}}</td>
+                                                    <td>{{ dentalstaff.date}}</td>
+                                                    <td>{{ dentalstaff.time}}</td>
+                                                    <td>{{ dentalstaff.status}}</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
+                                                            <i class="mdi mdi-circle-edit-outline"></i></button>
+                                                        <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
+                                                            <i class="dripicons-checkmark"></i></button>
+                                                        <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
+                                                            <i class="mdi mdi-window-close"></i></button>
+                                                </tr>
+                                                <tr>
+                                                    <td>{{ dentalstaff.appt_id}}</td>
+                                                    <td>{{ dentalstaff.appt_type}}</td>
+                                                    <td>{{ dentalstaff.remarks}}</td>
+                                                    <td>{{ dentalstaff.date}}</td>
+                                                    <td>{{ dentalstaff.time}}</td>
+                                                    <td>{{ dentalstaff.status}}</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
+                                                            <i class="mdi mdi-circle-edit-outline"></i></button>
+                                                        <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
+                                                            <i class="dripicons-checkmark"></i></button>
+                                                        <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
+                                                            <i class="mdi mdi-window-close"></i></button>
+                                                </tr>
+                                                
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>   
+                                    </div>                        
+                                </div> <!-- end preview-->
+                            </div> <!-- end tab-content-->
+
+                        </div> <!-- end card body-->
+                    </div> <!-- end card -->
+                </div><!-- end col-->
+            </div>
+            <!-- end row-->
+            <!-- end of the first table-->
+
+    <!-- ============================================================== -->
+    <!-- End Page content -->
+    <!-- ============================================================== -->
+
 
         <!-- bundle -->
         <script src="../../static/js/vendor.min.js"></script>
