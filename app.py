@@ -220,7 +220,6 @@ def adminaptmedicine():
 def adminaptclinic():
 	return render_template("admin-apt-clinic.html")
 
-
 @app.route("/loginadmin") 
 def loginadmin():
 	return render_template("loginadmin.html")
