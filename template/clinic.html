@@ -230,88 +230,84 @@
 
                     <!-- end page title -->
 
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="tab-content">
+                                <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                                    <thead>
+                                        <tr class="table-light">
+                                            <th>Clinic Service ID</th>
+                                            <th>Clinic Service Name</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                
+                                
+                                    <tbody>
 
-            <!-- start table content -->
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="tab-content">
-            
-                            <table id="basic-datatable" class="table dt-responsive nowrap w-100">
-                                <thead>
-                                    <tr class="table-light">
-                                        <th>Clinic Service ID</th>
-                                        <th>Clinic Service Name</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                            
-                            
-                                <tbody>
+                                        {% for clinic in clinic %}
 
-                                    {% for clinic in clinic %}
+                                        <tr>
+                                            <td>{{ clinic.clinic_services_id}}</td>
+                                            <td>{{ clinic.clinic_services_name }}</td>
+                                            <td class="table-action">
+                                                <form class="action-icon">
+                                                    <button type="button" class="btn btn-warning">
+                                                        <a href="updateclinic/{{ clinic.clinic_services_id }}">
+                                                        <i class="mdi mdi-account-edit-outline"></i>
+                                                        </a>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ clinic.clinic_services_id}}</td>
+                                            <td>{{ clinic.clinic_services_name }}</td>
+                                            <td class="table-action">
+                                                <form class="action-icon">
+                                                    <button type="button" class="btn btn-warning">
+                                                        <a href="updateclinic/{{ clinic.clinic_services_id }}">
+                                                        <i class="mdi mdi-account-edit-outline"></i>
+                                                        </a>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
 
-                                    <tr>
-                                        <td>{{ clinic.clinic_services_id}}</td>
-                                        <td>{{ clinic.clinic_services_name }}</td>
-                                        <td class="table-action">
-                                            <form class="action-icon">
-                                                <button type="button" class="btn btn-warning">
-                                                    <a href="updateclinic/{{ clinic.clinic_services_id }}">
-                                                    <i class="mdi mdi-account-edit-outline"></i>
-                                                    </a>
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ clinic.clinic_services_id}}</td>
-                                        <td>{{ clinic.clinic_services_name }}</td>
-                                        <td class="table-action">
-                                            <form class="action-icon">
-                                                <button type="button" class="btn btn-warning">
-                                                    <a href="updateclinic/{{ clinic.clinic_services_id }}">
-                                                    <i class="mdi mdi-account-edit-outline"></i>
-                                                    </a>
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td>{{ clinic.clinic_services_id}}</td>
+                                            <td>{{ clinic.clinic_services_name }}</td>
+                                            <td class="table-action">
+                                                <form class="action-icon">
+                                                    <button type="button" class="btn btn-warning">
+                                                        <a href="updateclinic/{{ clinic.clinic_services_id }}">
+                                                        <i class="mdi mdi-account-edit-outline"></i>
+                                                        </a>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
 
-                                    <tr>
-                                        <td>{{ clinic.clinic_services_id}}</td>
-                                        <td>{{ clinic.clinic_services_name }}</td>
-                                        <td class="table-action">
-                                            <form class="action-icon">
-                                                <button type="button" class="btn btn-warning">
-                                                    <a href="updateclinic/{{ clinic.clinic_services_id }}">
-                                                    <i class="mdi mdi-account-edit-outline"></i>
-                                                    </a>
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>{{ clinic.clinic_services_id}}</td>
-                                        <td>{{ clinic.clinic_services_name }}</td>
-                                        <td class="table-action">
-                                            <form class="action-icon">
-                                                <button type="button" class="btn btn-warning">
-                                                    <a href="updateclinic/{{ clinic.clinic_services_id }}">
-                                                    <i class="mdi mdi-account-edit-outline"></i>
-                                                    </a>
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-
-                                    {% endfor %}  
-                                </tbody>
-                            </table>
+                                        <tr>
+                                            <td>{{ clinic.clinic_services_id}}</td>
+                                            <td>{{ clinic.clinic_services_name }}</td>
+                                            <td class="table-action">
+                                                <form class="action-icon">
+                                                    <button type="button" class="btn btn-warning">
+                                                        <a href="updateclinic/{{ clinic.clinic_services_id }}">
+                                                        <i class="mdi mdi-account-edit-outline"></i>
+                                                        </a>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}  
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
                 <!-- end of the first table-->
 
                 <!-- start row of table content-->
