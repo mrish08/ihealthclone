@@ -221,20 +221,21 @@ def adminaptclinic():
 	return render_template("admin-apt-clinic.html")
 
 @app.route("/adminhaptvax")
-def adminaptvax():
-	return render_template("admin-apt-vax.html")
+def adminhaptvax():
+	return render_template("adminhistory-apt-vax.html")
 
 @app.route("/adminhaptclinic")
-def adminaptdental():
-	return render_template("admin-apt-dental.html")
+def adminhaptclinic():
+	return render_template("adminhistory-apt-clinic.html")
 
 @app.route("/adminhaptdental")
-def adminaptmedicine():
-	return render_template("admin-apt-medicine.html")
+def adminhaptdental():
+	return render_template("adminhistory-apt-dental.html")
 
 @app.route("/adminhaptmedicine")
-def adminaptclinic():
-	return render_template("admin-apt-clinic.html")
+def adminhaptmedicine():
+	return render_template("adminhistory-apt-medicine.html")
+	
 @app.route("/loginadmin") 
 def loginadmin():
 	return render_template("loginadmin.html")
