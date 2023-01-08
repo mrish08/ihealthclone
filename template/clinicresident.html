@@ -233,9 +233,10 @@
                                             <tr>
                                                 <div>
                                                     <td class="col-sm-6">
-                                                        <label for="example-select" class="form-label">Appointment Type
+                                                        <form action="/addapp" method="POST">
+                                                        <label for="appt_type" class="form-label">Appointment Type
                                                             <span style="color:#ff0000">*</span></label>
-                                                        <select class="form-select" id="example-select">
+                                                        <select class="form-select" id="appt_type">
                                                             <option>Clinic Service</option>
                                                             <option>Dental Service</option>
                                                             <option>Vaccination Service</option>
@@ -243,21 +244,22 @@
                                                         </select>
                                                     </td><br>
                                                     <td class="col-sm-6">
-                                                        <label for="example-date" class="form-label">Date<span
+                                                        <label for="date" class="form-label">Date<span
                                                                 style="color:#ff0000">*</span></label>
-                                                        <input class="form-control" id="example-date" type="date"
+                                                        <input class="form-control" id="date" type="date"
                                                             name="date">
                                                     </td><br>
                                                     <td class="col-sm-6">
-                                                        <label for="example-select" class="form-label">Time <span
+                                                        <label for="time" class="form-label">Time <span
                                                                 style="color:#ff0000">*</span></label>
-                                                        <select class="form-select" id="example-select">
+                                                        <select class="form-select" id="time">
                                                             <option>A.M</option>
                                                             <option>P.M</option>
                                                         </select>
                                                     </td><br>
                                                     <td>
                                                         <button class="btn btn-primary" type="submit">Submit</button>
+                                                        </form>
                                                     </td>
                                                 </div>
                                             </tr>
