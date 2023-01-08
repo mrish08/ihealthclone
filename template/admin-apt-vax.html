@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>BITBo | iHealth</title>
+    <title>BITBo | iHealth Appointment Services</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="" name="description">
     <meta content="Coderthemes" name="author">
@@ -21,6 +21,8 @@
 
    <!-- Datatables css -->
     <link href="../../static/css/vendor/select.bootstrap5.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/css/vendor/dataTables.bootstrap5.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/css/vendor/responsive.bootstrap5.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -229,234 +231,430 @@
                     <!-- end page title -->
 
 
-                    <!-- start table content -->
-                    <div class="tab-content">
-                        <!-- First Tab -->
-                        <div class="tab-pane show active" id="pending">
+                    <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                        <thead>
+                            <tr class="table-light">
+                                <th>Appointment ID</th>
+                                <th>Name</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    
+                    
+                        <tbody>
 
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="row mb-2">
-                                                <div class="col-xl-8">
-                                                    <form class="row gy-2 gx-2 align-items-center justify-content-xl-start justify-content-between">
-                                                        <div class="col-auto">
-                                                            <label for="inputPassword2" class="visually-hidden">Search</label>
-                                                            <input type="text" class="form-control" id="inputPassword2" placeholder="Search..."  onkeyup="searchvaccine()">
-                                                          <br><br>
-                                                        </div>
-                                                    </form>
-                                                </div>
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0001</a></td>
+                                <td>Tiger Nixon</td>
+                                <td>2011/04/25</td>
+                                <td>9:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
 
-                                                <div class="table-responsive">
-                                                    <table id="mytable" class="table table-centered mb-0">
-                                                        <thead class="table-light">
-                                                            <tr>
-                                                                <th>Appointment ID</th>
-                                                                <th>Name</th>
-                                                                <th>Date</th>
-                                                                <th>Time</th>
-                                                                <th>Status</th>
-                                                                <th style="width: 125px;">Action</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">VA-0001</a> </td>
-                                                                <td> Maria Leonora Teresa </td>
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0002</a></td>
+                                <td>Maria Clara</td>
+                                <td>2022/07/15</td>
+                                <td>7:00 AM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
 
-                                                                <td>September 17 2022</td>
-                                                                </td>
-                                                                <td>
-                                                                    time
-                                                                </td>
-                                                                <td>
-                                                                    <span class="badge badge-info-lighten rounded-pill">Pending</span>
-                                                                </td>
-                                                                <td>
-                                                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
-                                                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
-                                                                </td>
-                                                            </tr>
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0003</a></td>
+                                <td>Amara Louise</td>
+                                <td>2021/12/05</td>
+                                <td>11:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
 
-                                                            <tr>
-                                                                <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">VA-0002</a> </td>
-                                                                <td> Maria Leonora Teresa </td>
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0004</a></td>
+                                <td>David LuVAs</td>
+                                <td>2012/03/25</td>
+                                <td>3:00 PM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
 
-                                                                <td>September 17 2022</td>
-                                                                </td>
-                                                                <td>
-                                                                    time
-                                                                </td>
-                                                                <td>
-                                                                    <span class="badge badge-info-lighten rounded-pill">Pending</span>
-                                                                </td>
-                                                                <td>
-                                                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
-                                                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">VA-0003</a> </td>
-                                                                <td> Maria Leonora Teresa </td>
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0005</a></td>
+                                <td>Mikana Otoke</td>
+                                <td>2011/04/25</td>
+                                <td>9:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
 
-                                                                <td>September 17 2022</td>
-                                                                </td>
-                                                                <td>
-                                                                    time
-                                                                </td>
-                                                                <td>
-                                                                    <span class="badge badge-info-lighten rounded-pill">Pending</span>
-                                                                </td>
-                                                                <td>
-                                                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
-                                                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">VA-0004</a> </td>
-                                                                <td> Maria Leonora Teresa </td>
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0006</a></td>
+                                <td>Summer April</td>
+                                <td>2022/07/15</td>
+                                <td>7:00 AM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
 
-                                                                <td>September 17 2022</td>
-                                                                </td>
-                                                                <td>
-                                                                    time
-                                                                </td>
-                                                                <td>
-                                                                    <span class="badge badge-info-lighten rounded-pill">Pending</span>
-                                                                </td>
-                                                                <td>
-                                                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
-                                                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">VA-0005</a> </td>
-                                                                <td> Maria Leonora Teresa </td>
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0007</a></td>
+                                <td>Elodia Allana</td>
+                                <td>2021/12/05</td>
+                                <td>11:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
 
-                                                                <td>September 17 2022</td>
-                                                                </td>
-                                                                <td>
-                                                                    time
-                                                                </td>
-                                                                <td>
-                                                                    <span class="badge badge-info-lighten rounded-pill">Pending</span>
-                                                                </td>
-                                                                <td>
-                                                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
-                                                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">VA-0006</a> </td>
-                                                                <td> Maria Leonora Teresa </td>
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0008</a></td>
+                                <td>JessiVA Thompson</td>
+                                <td>2022/07/15</td>
+                                <td>7:00 AM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
 
-                                                                <td>September 17 2022</td>
-                                                                </td>
-                                                                <td>
-                                                                    time
-                                                                </td>
-                                                                <td>
-                                                                    <span class="badge badge-info-lighten rounded-pill">Pending</span>
-                                                                </td>
-                                                                <td>
-                                                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
-                                                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
-                                                                </td>
-                                                            </tr>
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0009</a></td>
+                                <td>Emely Gray</td>
+                                <td>2021/12/05</td>
+                                <td>11:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
 
-                                                            <tr>
-                                                                <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">VA-0007</a> </td>
-                                                                <td> Maria Leonora Teresa </td>
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0010</a></td>
+                                <td>Simon Fraud</td>
+                                <td>2012/03/25</td>
+                                <td>3:00 PM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
 
-                                                                <td>September 17 2022</td>
-                                                                </td>
-                                                                <td>
-                                                                    time
-                                                                </td>
-                                                                <td>
-                                                                    <span class="badge badge-info-lighten rounded-pill">Pending</span>
-                                                                </td>
-                                                                <td>
-                                                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
-                                                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
-                                                                </td>
-                                                            </tr>
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0011</a></td>
+                                <td>Tiger Nixon</td>
+                                <td>2011/04/25</td>
+                                <td>9:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
 
-                                                            <tr>
-                                                                <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">VA-0008</a> </td>
-                                                                <td> Maria Leonora Teresa </td>
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0012</a></td>
+                                <td>Maria Clara</td>
+                                <td>2022/07/15</td>
+                                <td>7:00 AM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
 
-                                                                <td>September 17 2022</td>
-                                                                </td>
-                                                                <td>
-                                                                    time
-                                                                </td>
-                                                                <td>
-                                                                    <span class="badge badge-info-lighten rounded-pill">Pending</span>
-                                                                </td>
-                                                                <td>
-                                                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
-                                                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">VA-0009</a> </td>
-                                                                <td> Maria Leonora Teresa </td>
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0013</a></td>
+                                <td>Amara Louise</td>
+                                <td>2021/12/05</td>
+                                <td>11:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
 
-                                                                <td>September 17 2022</td>
-                                                                </td>
-                                                                <td>
-                                                                    time
-                                                                </td>
-                                                                <td>
-                                                                    <span class="badge badge-info-lighten rounded-pill">Pending</span>
-                                                                </td>
-                                                                <td>
-                                                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
-                                                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">VA-0010</a> </td>
-                                                                <td> Maria Leonora Teresa </td>
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0014</a></td>
+                                <td>David LuVAs</td>
+                                <td>2012/03/25</td>
+                                <td>3:00 PM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
 
-                                                                <td>September 17 2022</td>
-                                                                </td>
-                                                                <td>
-                                                                    time
-                                                                </td>
-                                                                <td>
-                                                                    <span class="badge badge-info-lighten rounded-pill">Pending</span>
-                                                                </td>
-                                                                <td>
-                                                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
-                                                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
-                                                                </td>
-                                                            </tr>
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0015</a></td>
+                                <td>Mikana Otoke</td>
+                                <td>2011/04/25</td>
+                                <td>9:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
 
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <!-- end card-body-->
-                                        </div>
-                                        <!-- end card-->
-                                    </div>
-                                    <!-- end col -->
-                                </div>
-                                <!-- end row -->
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0016</a></td>
+                                <td>Summer April</td>
+                                <td>2022/07/15</td>
+                                <td>7:00 AM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
 
-                            </div>
-                            <!-- container -->
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0017</a></td>
+                                <td>Elodia Allana</td>
+                                <td>2021/12/05</td>
+                                <td>11:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
 
-                        </div>
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0018</a></td>
+                                <td>JessiVA Thompson</td>
+                                <td>2022/07/15</td>
+                                <td>7:00 AM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
 
-                        <!-- end row of table content-->
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0019</a></td>
+                                <td>Emely Gray</td>
+                                <td>2021/12/05</td>
+                                <td>11:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
 
-                    </div>
-                    <!-- container -->
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0020</a></td>
+                                <td>Simon Fraud</td>
+                                <td>2012/03/25</td>
+                                <td>3:00 PM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0021</a></td>
+                                <td>Tiger Nixon</td>
+                                <td>2011/04/25</td>
+                                <td>9:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0022</a></td>
+                                <td>Maria Clara</td>
+                                <td>2022/07/15</td>
+                                <td>7:00 AM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0023</a></td>
+                                <td>Amara Louise</td>
+                                <td>2021/12/05</td>
+                                <td>11:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0024</a></td>
+                                <td>David LuVAs</td>
+                                <td>2012/03/25</td>
+                                <td>3:00 PM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0025</a></td>
+                                <td>Mikana Otoke</td>
+                                <td>2011/04/25</td>
+                                <td>9:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0026</a></td>
+                                <td>Summer April</td>
+                                <td>2022/07/15</td>
+                                <td>7:00 AM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0027</a></td>
+                                <td>Elodia Allana</td>
+                                <td>2021/12/05</td>
+                                <td>11:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0028</a></td>
+                                <td>JessiVA Thompson</td>
+                                <td>2022/07/15</td>
+                                <td>7:00 AM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0029</a></td>
+                                <td>Emely Gray</td>
+                                <td>2021/12/05</td>
+                                <td>11:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">VA-0030</a></td>
+                                <td>Simon Fraud</td>
+                                <td>2012/03/25</td>
+                                <td>3:00 PM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+
 
                 </div>
 
@@ -508,6 +706,10 @@
        <script src="../../static/js/pages/demo.toastr.js"></script>
        <script src="../../static/js/pages/list.js"></script>
 
+
+
+        <!-- Datatable Init js -->
+        <script src="assets/js/pages/demo.datatable-init.js"></script>
 
 </body>
 

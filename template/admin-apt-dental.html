@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>BITBo | iHealth</title>
+    <title>BITBo | iHealth Appointment Services</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="" name="description">
     <meta content="Coderthemes" name="author">
@@ -19,6 +19,10 @@
    <link href="../../static/css/app-i.min.css" rel="stylesheet" type="text/css" id="light-style">
    <link href="../../static/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style">
 
+   <!-- Datatables css -->
+    <link href="../../static/css/vendor/select.bootstrap5.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/css/vendor/dataTables.bootstrap5.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/css/vendor/responsive.bootstrap5.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -41,7 +45,7 @@
             <!--- Sidemenu -->
             <ul class="side-nav">
 
-            <li class="side-nav-title side-nav-item">Menu</li>
+                <li class="side-nav-title side-nav-item">Menu</li>
 
                 <li class="side-nav-item">
                     <a href="/index" class="side-nav-link">
@@ -96,7 +100,7 @@
                                 <a href="admin-apt-clinic.html">Clinic Service</a>
                             </li>
                             <li>
-                                <a class="badge-primary-lighten" href="admin-apt-dental.html">Dental Service</a>
+                                <a  class="badge-primary-lighten" href="admin-apt-dental.html">Dental Service</a>
                             </li>
                             <li>
                                 <a href="admin-apt-medicine.html">Medicine Pickup</a>
@@ -114,7 +118,7 @@
     <!-- Left Sidebar End -->
     </header>
 
-<div class="wrapper">
+ <div class="wrapper">
 
         <div class="content-page">
             <div class="content">
@@ -140,7 +144,7 @@
                                 </span>
                                 <span>
                                     <span class="account-user-name">Juan Dela Cruz</span>
-                                <span class="account-position">Admin</span>
+                                <span class="account-position">Staff</span>
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
@@ -213,121 +217,500 @@
                 </div>
                 <!-- end Topbar -->
 
-                <!-- start page title -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="page-title-box">
-                            <h4 class="page-title">Dental Appointments</h4>
+                <!-- Start Content-->
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <h4 class="page-title">Dental Appointments</h4>
+                            </div>
                         </div>
                     </div>
-
                     <!-- end page title -->
 
-                    <!-- start table content -->
-                    <div class="tab-content">
-                        <!-- First Tab -->
-                        <div class="tab-pane show active" id="pending">
 
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="row mb-2">
-                                                <div class="col-xl-8">
-                                                    <form class="row gy-2 gx-2 align-items-center justify-content-xl-start justify-content-between">
-                                                        <div class="col-auto">
-                                                            <label for="inputPassword2" class="visually-hidden">Search</label>
-                                                            <input type="search" class="form-control" id="inputPassword2" placeholder="Search..."> <br><br>
-                                                        </div>
-                                                    </form>
-                                                </div>
+                    <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                        <thead>
+                            <tr class="table-light">
+                                <th>Appointment ID</th>
+                                <th>Name</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    
+                    
+                        <tbody>
 
-                                                <div class="table-responsive">
-                                                    <table class="table table-centered mb-0">
-                                                        <thead class="table-light">
-                                                            <tr>
-                                                                <th>Appointment ID</th>
-                                                                <th>Name</th>
-                                                                <th>Date</th>
-                                                                <th>Time</th>
-                                                                <th>Status</th>
-                                                                <th style="width: 125px;">Action</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                
-                                                                <td>
-                                                                    <span class="badge badge-info-lighten rounded-pill">Pending</span>
-                                                                </td>
-                                                                <td>
-                                                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
-                                                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
-                                                                </td>
-                                                            </tr>
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0001</a></td>
+                                <td>Tiger Nixon</td>
+                                <td>2011/04/25</td>
+                                <td>9:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
 
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <!-- end card-body-->
-                                        </div>
-                                        <!-- end card-->
-                                    </div>
-                                    <!-- end col -->
-                                </div>
-                                <!-- end row -->
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0002</a></td>
+                                <td>Maria Clara</td>
+                                <td>2022/07/15</td>
+                                <td>7:00 AM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
 
-                            </div>
-                            <!-- container -->
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0003</a></td>
+                                <td>Amara Louise</td>
+                                <td>2021/12/05</td>
+                                <td>11:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
 
-                        </div>
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0004</a></td>
+                                <td>David LuDAs</td>
+                                <td>2012/03/25</td>
+                                <td>3:00 PM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
 
-                        <!-- end row of table content-->
-                    </div>
-                    <!-- content -->
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0005</a></td>
+                                <td>Mikana Otoke</td>
+                                <td>2011/04/25</td>
+                                <td>9:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0006</a></td>
+                                <td>Summer April</td>
+                                <td>2022/07/15</td>
+                                <td>7:00 AM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0007</a></td>
+                                <td>Elodia Allana</td>
+                                <td>2021/12/05</td>
+                                <td>11:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0008</a></td>
+                                <td>JessiDA Thompson</td>
+                                <td>2022/07/15</td>
+                                <td>7:00 AM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0009</a></td>
+                                <td>Emely Gray</td>
+                                <td>2021/12/05</td>
+                                <td>11:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0010</a></td>
+                                <td>Simon Fraud</td>
+                                <td>2012/03/25</td>
+                                <td>3:00 PM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0011</a></td>
+                                <td>Tiger Nixon</td>
+                                <td>2011/04/25</td>
+                                <td>9:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0012</a></td>
+                                <td>Maria Clara</td>
+                                <td>2022/07/15</td>
+                                <td>7:00 AM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0013</a></td>
+                                <td>Amara Louise</td>
+                                <td>2021/12/05</td>
+                                <td>11:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0014</a></td>
+                                <td>David LuDAs</td>
+                                <td>2012/03/25</td>
+                                <td>3:00 PM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0015</a></td>
+                                <td>Mikana Otoke</td>
+                                <td>2011/04/25</td>
+                                <td>9:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0016</a></td>
+                                <td>Summer April</td>
+                                <td>2022/07/15</td>
+                                <td>7:00 AM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0017</a></td>
+                                <td>Elodia Allana</td>
+                                <td>2021/12/05</td>
+                                <td>11:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0018</a></td>
+                                <td>JessiDA Thompson</td>
+                                <td>2022/07/15</td>
+                                <td>7:00 AM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0019</a></td>
+                                <td>Emely Gray</td>
+                                <td>2021/12/05</td>
+                                <td>11:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0020</a></td>
+                                <td>Simon Fraud</td>
+                                <td>2012/03/25</td>
+                                <td>3:00 PM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0021</a></td>
+                                <td>Tiger Nixon</td>
+                                <td>2011/04/25</td>
+                                <td>9:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0022</a></td>
+                                <td>Maria Clara</td>
+                                <td>2022/07/15</td>
+                                <td>7:00 AM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0023</a></td>
+                                <td>Amara Louise</td>
+                                <td>2021/12/05</td>
+                                <td>11:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0024</a></td>
+                                <td>David LuDAs</td>
+                                <td>2012/03/25</td>
+                                <td>3:00 PM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0025</a></td>
+                                <td>Mikana Otoke</td>
+                                <td>2011/04/25</td>
+                                <td>9:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0026</a></td>
+                                <td>Summer April</td>
+                                <td>2022/07/15</td>
+                                <td>7:00 AM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0027</a></td>
+                                <td>Elodia Allana</td>
+                                <td>2021/12/05</td>
+                                <td>11:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0028</a></td>
+                                <td>JessiDA Thompson</td>
+                                <td>2022/07/15</td>
+                                <td>7:00 AM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0029</a></td>
+                                <td>Emely Gray</td>
+                                <td>2021/12/05</td>
+                                <td>11:00 AM</td>
+                                <td>
+                                    <span class="badge bg-success">Ongoing</span>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><a class="btn btn-light btn-rounded">DA-0030</a></td>
+                                <td>Simon Fraud</td>
+                                <td>2012/03/25</td>
+                                <td>3:00 PM</td>
+                                <td>
+                                    <span class="badge bg-info">Pending</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+
 
                 </div>
-                </div>
-                </div>
-                </div>
 
-                <!-- ============================================================== -->
-                <!-- End Page content -->
-                <!-- ============================================================== -->
+                <!-- end row of table content-->
 
-            <!-- END wrapper -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- content -->
 
-            <!-- bundle -->  
-    <script src="../../static/js/vendor.min.js"></script>
-    <script src="../../static/js/app.min.js"></script>
+    </div>
 
-    <!-- third party js -->
-    <script src="../../static/js/vendor/jquery.dataTables.min.js"></script>
-    <script src="../../static/js/vendor/dataTables.bootstrap5.js"></script>
-    <script src="../../static/js/vendor/dataTables.responsive.min.js"></script>
-    <script src="../../static/js/vendor/responsive.bootstrap5.min.js"></script>
-    <script src="../../static/js/vendor/dataTables.buttons.min.js"></script>
-    <script src="../../static/js/vendor/buttons.bootstrap5.min.js"></script>
-    <script src="../../static/js/vendor/buttons.php5.min.js"></script>
-    <script src="../../static/js/vendor/buttons.flash.min.js"></script>
-    <script src="../../static/js/vendor/buttons.print.min.js"></script>
-    <script src="../../static/js/vendor/dataTables.keyTable.min.js"></script>
-    <script src="../../static/js/vendor/dataTables.select.min.js"></script>
-    <script src="../../static/js/vendor/apexcharts.min.js"></script>
-    <script src="../../static/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="../../static/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="../../static/js/vendor/dropzone.min.js"></script>
-    <script src="../../static/js/vendor/list.min.js"></script>
-    <!-- third party js ends -->
+    <!-- ============================================================== -->
+    <!-- End Page content -->
+    <!-- ============================================================== -->
 
-    <!-- demo app -->
-    <script src="../../static/js/pages/demo.datatable-init.js"></script>
-    <script src="../../static/js/pages/demo.toastr.js"></script>
-    <script src="../../static/js/pages/demo.datatable-init.js"></script>
-    <script src="../../static/js/pages/demo.toastr.js"></script>
-    <script src="../../static/js/pages/list.js"></script>
-            <!-- end demo js-->
+    </div>
+    <!-- END wrapper -->
+
+    <!-- bundle -->
+       <!-- bundle -->
+       <script src="../../static/js/vendor.min.js"></script>
+       <script src="../../static/js/app.min.js"></script>
+   
+       <!-- third party js -->
+       <script src="../../static/js/vendor/jquery.dataTables.min.js"></script>
+       <script src="../../static/js/vendor/dataTables.bootstrap5.js"></script>
+       <script src="../../static/js/vendor/dataTables.responsive.min.js"></script>
+       <script src="../../static/js/vendor/responsive.bootstrap5.min.js"></script>
+       <script src="../../static/js/vendor/dataTables.buttons.min.js"></script>
+       <script src="../../static/js/vendor/buttons.bootstrap5.min.js"></script>
+       <script src="../../static/js/vendor/buttons.php5.min.js"></script>
+       <script src="../../static/js/vendor/buttons.flash.min.js"></script>
+       <script src="../../static/js/vendor/buttons.html5.min.js"></script>
+       <script src="../../static/js/vendor/buttons.print.min.js"></script>
+       <script src="../../static/js/vendor/dataTables.keyTable.min.js"></script>
+       <script src="../../static/js/vendor/dataTables.select.min.js"></script>
+       <script src="../../static/js/vendor/apexcharts.min.js"></script>
+       <script src="../../static/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
+       <script src="../../static/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
+       <script src="../../static/js/vendor/dropzone.min.js"></script>
+       <script src="../../static/js/vendor/list.min.js"></script>
+       <!-- third party js ends -->
+   
+       <!-- demo app -->
+       <script src="../../static/js/pages/demo.datatable-init.js"></script>
+       <script src="../../static/js/pages/demo.toastr.js"></script>
+       <script src="../../static/js/pages/demo.datatable-init.js"></script>
+       <script src="../../static/js/pages/demo.toastr.js"></script>
+       <script src="../../static/js/pages/list.js"></script>
+
+
+
+        <!-- Datatable Init js -->
+        <script src="assets/js/pages/demo.datatable-init.js"></script>
+
 </body>
 
 </html>
