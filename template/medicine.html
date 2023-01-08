@@ -1,17 +1,47 @@
-{% extends 'layout.html' %}
-{% block body %}
+<!--{% extends 'layout.html' %}
+{% block body %}-->
 
-<link href="layout.html" rel="import" />
-<div class="wrapper">
-    <!-- ========== Left Sidebar Start ========== -->
-    <div class="leftside-menu">
+<!DOCTYPE html>
+<html lang="en">
 
-        <!-- LOGO -->
-        <a href="/index" class="logo text-center logo-light">
-            <span class="logo-lg">
-                <img src="../../static/images/ihealth-logo-with-text.png" alt="" height="40">
-            </span>
-        </a>
+<head>
+    <meta charset="utf-8">
+    <title>Medicine Pick Up| iHealth</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
+    <meta content="Coderthemes" name="author">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="../../static/images/brgyms-icon-white.png">
+
+    <!-- third party css -->
+    <link href="../../static/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css">
+    <!-- third party css end -->
+
+    <!-- App css -->
+    <link href="../../static/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="../../static/css/app-i.min.css" rel="stylesheet" type="text/css" id="light-style">
+    <link href="../../static/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style">
+       
+    <!-- Datatables css -->
+    <link href="../../static/css/vendor/select.bootstrap5.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/css/vendor/dataTables.bootstrap5.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/css/vendor/responsive.bootstrap5.css" rel="stylesheet" type="text/css" />
+   
+
+</head>
+
+<body class="loading" data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
+    <!-- Begin page -->
+    <div class="wrapper">
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="leftside-menu">
+
+            <!-- LOGO -->
+            <a href="/index" class="logo text-center logo-light">
+                <span class="logo-lg">
+                    <img src="../../static/images/ihealth-logo-with-text.png" alt="" height="40">
+                </span>
+            </a>
 
             <!--- Sidemenu -->
             <ul class="side-nav">
@@ -51,7 +81,7 @@
     
                         <a href="/medicine" class="side-nav-link">
                             <i class="uil-home-alt"></i>
-                            <span>Medicine</span>
+                            <span>Medicine Pick Up</span>
                         </a>
                     </li>
     
@@ -209,132 +239,184 @@
                 <!-- end page title -->
 
 
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="tab-content">
+                                <table id="scroll-horizontal-datatable" style="overflow-x: auto;" class="table w-100 nowrap">
+                                    <thead>
+                                        <tr class="table-light">
+                                            <th>Medicine ID</th>
+                                            <th>Medicine Name</th>
+                                            <th>Generic Name</th>
+                                            <th>Brand Name</th>
+                                            <th>Manufacturer</th>
+                                            <th>Dosage</th>
+                                            <th>Medicine Type</th>
+                                            <th>Description</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for medicine in medicine %}
+                                        <tr>
+                                            <td>{{ medicine.medicine_id}}</td>
+                                            <td>{{ medicine.medicine_name}}</td>
+                                            <td>{{ medicine.generic_name}}</td>
+                                            <td>{{ medicine.brand_name}}</td>
+                                            <td>{{ medicine.manufacturer}}</td>
+                                            <td>{{ medicine.dosage}}</td>
+                                            <td>{{ medicine.medicine_type}}</td>
+                                            <td>{{ medicine.description }}</td>
+                                            <td class="table-action">
+                                                <button type="button" class="btn btn-warning">
+                                                    <a href="updatemedicine/{{ medicine.medicine_id }}">
+                                                        <i class="mdi mdi-account-edit-outline"></i>
+                                                </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>{{ medicine.medicine_id}}</td>
+                                            <td>{{ medicine.medicine_name}}</td>
+                                            <td>{{ medicine.generic_name}}</td>
+                                            <td>{{ medicine.brand_name}}</td>
+                                            <td>{{ medicine.manufacturer}}</td>
+                                            <td>{{ medicine.dosage}}</td>
+                                            <td>{{ medicine.medicine_type}}</td>
+                                            <td>{{ medicine.description }}</td>
+                                            <td class="table-action">
+                                                <button type="button" class="btn btn-warning">
+                                                    <a href="updatemedicine/{{ medicine.medicine_id }}">
+                                                        <i class="mdi mdi-account-edit-outline"></i>
+                                                </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>{{ medicine.medicine_id}}</td>
+                                            <td>{{ medicine.medicine_name}}</td>
+                                            <td>{{ medicine.generic_name}}</td>
+                                            <td>{{ medicine.brand_name}}</td>
+                                            <td>{{ medicine.manufacturer}}</td>
+                                            <td>{{ medicine.dosage}}</td>
+                                            <td>{{ medicine.medicine_type}}</td>
+                                            <td>{{ medicine.description }}</td>
+                                            <td class="table-action">
+                                                <button type="button" class="btn btn-warning">
+                                                    <a href="updatemedicine/{{ medicine.medicine_id }}">
+                                                        <i class="mdi mdi-account-edit-outline"></i>
+                                                </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>{{ medicine.medicine_id}}</td>
+                                            <td>{{ medicine.medicine_name}}</td>
+                                            <td>{{ medicine.generic_name}}</td>
+                                            <td>{{ medicine.brand_name}}</td>
+                                            <td>{{ medicine.manufacturer}}</td>
+                                            <td>{{ medicine.dosage}}</td>
+                                            <td>{{ medicine.medicine_type}}</td>
+                                            <td>{{ medicine.description }}</td>
+                                            <td class="table-action">
+                                                <button type="button" class="btn btn-warning">
+                                                    <a href="updatemedicine/{{ medicine.medicine_id }}">
+                                                        <i class="mdi mdi-account-edit-outline"></i>
+                                                </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>{{ medicine.medicine_id}}</td>
+                                            <td>{{ medicine.medicine_name}}</td>
+                                            <td>{{ medicine.generic_name}}</td>
+                                            <td>{{ medicine.brand_name}}</td>
+                                            <td>{{ medicine.manufacturer}}</td>
+                                            <td>{{ medicine.dosage}}</td>
+                                            <td>{{ medicine.medicine_type}}</td>
+                                            <td>{{ medicine.description }}</td>
+                                            <td class="table-action">
+                                                <button type="button" class="btn btn-warning">
+                                                    <a href="updatemedicine/{{ medicine.medicine_id }}">
+                                                        <i class="mdi mdi-account-edit-outline"></i>
+                                                </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>{{ medicine.medicine_id}}</td>
+                                            <td>{{ medicine.medicine_name}}</td>
+                                            <td>{{ medicine.generic_name}}</td>
+                                            <td>{{ medicine.brand_name}}</td>
+                                            <td>{{ medicine.manufacturer}}</td>
+                                            <td>{{ medicine.dosage}}</td>
+                                            <td>{{ medicine.medicine_type}}</td>
+                                            <td>{{ medicine.description }}</td>
+                                            <td class="table-action">
+                                                <button type="button" class="btn btn-warning">
+                                                    <a href="updatemedicine/{{ medicine.medicine_id }}">
+                                                        <i class="mdi mdi-account-edit-outline"></i>
+                                                </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>{{ medicine.medicine_id}}</td>
+                                            <td>{{ medicine.medicine_name}}</td>
+                                            <td>{{ medicine.generic_name}}</td>
+                                            <td>{{ medicine.brand_name}}</td>
+                                            <td>{{ medicine.manufacturer}}</td>
+                                            <td>{{ medicine.dosage}}</td>
+                                            <td>{{ medicine.medicine_type}}</td>
+                                            <td>{{ medicine.description }}</td>
+                                            <td class="table-action">
+                                                <button type="button" class="btn btn-warning">
+                                                    <a href="updatemedicine/{{ medicine.medicine_id }}">
+                                                        <i class="mdi mdi-account-edit-outline"></i>
+                                                </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>{{ medicine.medicine_id}}</td>
+                                            <td>{{ medicine.medicine_name}}</td>
+                                            <td>{{ medicine.generic_name}}</td>
+                                            <td>{{ medicine.brand_name}}</td>
+                                            <td>{{ medicine.manufacturer}}</td>
+                                            <td>{{ medicine.dosage}}</td>
+                                            <td>{{ medicine.medicine_type}}</td>
+                                            <td>{{ medicine.description }}</td>
+                                            <td class="table-action">
+                                                <button type="button" class="btn btn-warning">
+                                                    <a href="updatemedicine/{{ medicine.medicine_id }}">
+                                                        <i class="mdi mdi-account-edit-outline"></i>
+                                                </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        {% endfor %}
+                                    </tbody>
+                                </table>   
+                            </div>                        
+                        </div> <!-- end preview-->
+                    </div> <!-- end tab-content-->
+                </div> <!-- end card body-->
+            </div> <!-- end card -->
+        </div><!-- end col-->
+    </div>
+    <!-- end row-->
+    <!-- end of the first table-->
 
 
-                <!-- start table content -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="tab-content">
-                                    <div class="tab-pane show active" id="buttons-table-patients" data-toggle="lists">
-                                        <div class="dataTables_length" id="basic-datatable_length">
-                                            <div class="col-sm-12 col-md-6">
-                                                <label class="form-label">Show entries
-                                                    <select name="basic-datatable_length"
-                                                        aria-controls="basic-datatable"
-                                                        class="form-select form-select-sm">
-                                                        <option value="10">10</option>
-                                                        <option value="25">25</option>
-                                                        <option value="50">50</option>
-                                                        <option value="100">100</option>
-                                                    </select></label></div>
-                                        </div>
-
-                                        <table id="" class="table dt-responsive nowrap w-100">
-                                            <thead>
-                                                <tr>
-                                                    <th style="width: 510px;">
-                                                        <a href="javascript:void(0)" class="sort"
-                                                            data-sort="js-lists-values-user-time">Medicine ID</a>
-                                                    </th>
-                                                    <th style="width: 510px;">
-                                                        <a href="javascript:void(0)" class="sort"
-                                                            data-sort="js-lists-values-user-time">Medicine Name</a>
-                                                    </th>
-                                                    <th style="width: 510px;">
-                                                        <a href="javascript:void(0)" class="sort"
-                                                            data-sort="js-lists-values-user-time">Generic Name</a>
-                                                    </th>
-                                                    <th style="width: 510px;">
-                                                        <a href="javascript:void(0)" class="sort"
-                                                            data-sort="js-lists-values-user-time">Brand Name</a>
-                                                    </th>
-                                                    <th style="width: 510px;">
-                                                        <a href="javascript:void(0)" class="sort"
-                                                            data-sort="js-lists-values-user-time">Manufacturer</a>
-                                                    </th>
-                                                    <th style="width: 510px;">
-                                                        <a href="javascript:void(0)" class="sort"
-                                                            data-sort="js-lists-values-user-time">Dosage</a>
-                                                    </th>
-                                                    <th style="width: 510px;">
-                                                        <a href="javascript:void(0)" class="sort"
-                                                            data-sort="js-lists-values-user-time">Medicine Type</a>
-                                                    </th>
-                                                    <th style="width: 510px;">
-                                                        <a href="javascript:void(0)" class="sort"
-                                                            data-sort="js-lists-values-user-time">Description</a>
-                                                    </th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody class="list" id="">
-                                                {% for medicine in medicine %}
-                                                <tr>
-                                                    <td>{{ medicine.medicine_id}}</td>
-                                                    <td>{{ medicine.medicine_name}}</td>
-                                                    <td>{{ medicine.generic_name}}</td>
-                                                    <td>{{ medicine.brand_name}}</td>
-                                                    <td>{{ medicine.manufacturer}}</td>
-                                                    <td>{{ medicine.dosage}}</td>
-                                                    <td>{{ medicine.medicine_type}}</td>
-                                                    <td>{{ medicine.description }}</td>
-                                                    <td class="table-action">
-                                                        <button type="button" class="btn btn-warning">
-                                                            <a href="updatemedicine/{{ medicine.medicine_id }}">
-                                                                <i class="mdi mdi-account-edit-outline"></i>
-                                                        </button>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                {% endfor %}
-                                            </tbody>
-                                        </table>
-                                        <div class="row">
-                                            <div class="col-sm-12 col-md-4"></div>
-                                            <div class="col-sm-12 col-md-6">
-                                                <div class="dataTables_paginate paging_simple_numbers"
-                                                    id="basic-datatable_paginate">
-                                                    <ul class="pagination pagination-rounded">
-                                                        <li class="paginate_button page-item previous disabled"
-                                                            id="basic-datatable_previous">
-                                                            <a href="#" aria-controls="basic-datatable" data-dt-idx="0"
-                                                                tabindex="0" class="page-link">
-                                                                <i class="mdi mdi-chevron-left"></i></a></li>
-                                                        <li class="paginate_button page-item active">
-                                                            <a href="#" aria-controls="basic-datatable" data-dt-idx="1"
-                                                                tabindex="0" class="page-link">1</a></li>
-                                                        <li class="paginate_button page-item next"
-                                                            id="basic-datatable_next"><a href="#"
-                                                                aria-controls="basic-datatable" data-dt-idx="7"
-                                                                tabindex="0" class="page-link"><i
-                                                                    class="mdi mdi-chevron-right"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end patients-->
-
-
-                            <div class="card">
-
-
-                            </div>
-                            <!-- end card body-->
-                        </div>
-                        <!-- end card -->
-                    </div>
-                    <!-- end col-->
-
-
-
-                </div>
-                <!-- end row-->
 
                 <div class="row">
                     <div class="col-12">
@@ -428,4 +510,45 @@
 
     </div>
 
-    {% endblock %}
+    <!-- bundle -->
+    <script src="../../static/js/vendor.min.js"></script>
+    <script src="../../static/js/app.min.js"></script>
+
+    <!-- third party js -->
+    <script src="../../static/js/vendor/jquery.dataTables.min.js"></script>
+    <script src="../../static/js/vendor/dataTables.bootstrap5.js"></script>
+    <script src="../../static/js/vendor/dataTables.responsive.min.js"></script>
+    <script src="../../static/js/vendor/responsive.bootstrap5.min.js"></script>
+    <script src="../../static/js/vendor/dataTables.buttons.min.js"></script>
+    <script src="../../static/js/vendor/buttons.bootstrap5.min.js"></script>
+    <script src="../../static/js/vendor/buttons.flash.min.js"></script>
+    <script src="../../static/js/vendor/buttons.php5.min.js"></script>
+    <script src="../../static/js/vendor/buttons.html5.min.js"></script>
+    <script src="../../static/js/vendor/buttons.flash.min.js"></script>
+    <script src="../../static/js/vendor/buttons.print.min.js"></script>
+    <script src="../../static/js/vendor/dataTables.keyTable.min.js"></script>
+    <script src="../../static/js/vendor/dataTables.select.min.js"></script>
+    <script src="../../static/js/vendor/apexcharts.min.js"></script>
+    <script src="../../static/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="../../static/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="../../static/js/vendor/dropzone.min.js"></script>
+    <script src="../../static/js/vendor/list.min.js"></script>
+    <!-- third party js ends -->
+
+    <!-- demo app -->
+    <script src="../../static/js/pages/demo.datatable-init.js"></script>
+    <script src="../../static/js/pages/demo.toastr.js"></script>
+    <script src="../../static/js/pages/demo.datatable-init.js"></script>
+    <script src="../../static/js/pages/demo.toastr.js"></script>
+    <script src="../../static/js/pages/list.js"></script>
+    <!-- end demo js-->
+
+    <!-- Datatable Init js -->
+    <script src="assets/js/pages/demo.datatable-init.js"></script>
+
+
+</body>
+
+</html>
+
+ <!--   {% endblock %} -->

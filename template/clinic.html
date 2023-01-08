@@ -19,6 +19,11 @@
     <link href="../../static/css/app-i.min.css" rel="stylesheet" type="text/css" id="light-style">
     <link href="../../static/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style">
 
+    <!-- Datatables css -->
+    <link href="../../static/css/vendor/select.bootstrap5.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/css/vendor/dataTables.bootstrap5.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/css/vendor/responsive.bootstrap5.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body class="loading" data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
@@ -226,192 +231,177 @@
                     <!-- end page title -->
 
 
-                    <!-- start table content -->
+            <!-- start table content -->
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="tab-content">
+            
+                            <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                                <thead>
+                                    <tr class="table-light">
+                                        <th>Clinic Service ID</th>
+                                        <th>Clinic Service Name</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                            
+                            
+                                <tbody>
+
+                                    {% for clinic in clinic %}
+
+                                    <tr>
+                                        <td>{{ clinic.clinic_services_id}}</td>
+                                        <td>{{ clinic.clinic_services_name }}</td>
+                                        <td class="table-action">
+                                            <form class="action-icon">
+                                                <button type="button" class="btn btn-warning">
+                                                    <a href="updateclinic/{{ clinic.clinic_services_id }}">
+                                                    <i class="mdi mdi-account-edit-outline"></i>
+                                                    </a>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ clinic.clinic_services_id}}</td>
+                                        <td>{{ clinic.clinic_services_name }}</td>
+                                        <td class="table-action">
+                                            <form class="action-icon">
+                                                <button type="button" class="btn btn-warning">
+                                                    <a href="updateclinic/{{ clinic.clinic_services_id }}">
+                                                    <i class="mdi mdi-account-edit-outline"></i>
+                                                    </a>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>{{ clinic.clinic_services_id}}</td>
+                                        <td>{{ clinic.clinic_services_name }}</td>
+                                        <td class="table-action">
+                                            <form class="action-icon">
+                                                <button type="button" class="btn btn-warning">
+                                                    <a href="updateclinic/{{ clinic.clinic_services_id }}">
+                                                    <i class="mdi mdi-account-edit-outline"></i>
+                                                    </a>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>{{ clinic.clinic_services_id}}</td>
+                                        <td>{{ clinic.clinic_services_name }}</td>
+                                        <td class="table-action">
+                                            <form class="action-icon">
+                                                <button type="button" class="btn btn-warning">
+                                                    <a href="updateclinic/{{ clinic.clinic_services_id }}">
+                                                    <i class="mdi mdi-account-edit-outline"></i>
+                                                    </a>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+
+                                    {% endfor %}  
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- end of the first table-->
+
+                <!-- start row of table content-->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <h4 class="page-title">Add Service</h4>
+                        </div>
+                    </div>
+
+
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="tab-content">
-                                        <div class="tab-pane show active" id="buttons-table-patients"  data-toggle="lists" >
-                                            <div class="dataTables_length" id="basic-datatable_length">
-                                                <div class="col-sm-12 col-md-3">
-                                                    <label for="inputPassword2" class="visually-hidden">Search</label>
-                                                    <input type="search" class="form-control" id="inputPassword2" placeholder="Search..."> <br><br>
-                                                </div>
-                                                <div class="col-sm-12 col-md-6">
-                                                    <label class="form-label">Show  entries
-                                                    <select name="basic-datatable_length" aria-controls="basic-datatable" class="form-select form-select-sm">
-                                                        <option value="10">10</option>
-                                                        <option value="25">25</option>
-                                                        <option value="50">50</option>
-                                                        <option value="100">100</option>
-                                                    </select></label></div>
-                                                    </div>
+                                    <thead>
+                                        <p>Please fill in the details below to successfully add a new Service.</p>
 
-                                                <table id="mytable" class="table dt-responsive nowrap w-100">
-                                                    <thead>
-                                                        <tr>
-                                                            <th style="width: 510px;">
-                                                                <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-user-schedname">Clinic Service ID
-                                                                   </a>
-                                                            </th>
-                                                            <th style="width: 510px;">
-                                                                <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-user-schedname">Clinic Service
-                                                                    Name</a>
-                                                            </th>
-                                                            <th>Action</th>
-                                                        </tr>
-                                                    </thead>
-
-                                                    <tbody>
-                                                        {% for clinic in clinic %}
-                                                        <tr>
-                                                            <td>{{ clinic.clinic_services_id}}</td>
-                                                            <td>{{ clinic.clinic_services_name }}</td>
-                                                            <td class="table-action">
-                                                                <form class="action-icon">
-                                                                    <button type="button" class="btn btn-warning">
-                                                                        <a href="updateclinic/{{ clinic.clinic_services_id }}">
-                                                                        <i class="mdi mdi-account-edit-outline"></i>
-                                                                    </button>
-                                                                </a>
-                                                                </form>
-                                                            </td>
-                                                        </tr>
-                                                        {% endfor %}   
-                                                    </tbody>
-                                                </table>
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-md-4"></div>
-                                                <div class="col-sm-12 col-md-6">
-                                                    <div class="dataTables_paginate paging_simple_numbers" id="basic-datatable_paginate">
-                                                        <ul class="pagination pagination-rounded">
-                                                            <li class="paginate_button page-item previous disabled" id="basic-datatable_previous">
-                                                                <a href="#" aria-controls="basic-datatable" data-dt-idx="0" tabindex="0" class="page-link">
-                                                                    <i class="mdi mdi-chevron-left"></i></a></li>
-                                                                    <li class="paginate_button page-item active">
-                                                                        <a href="#" aria-controls="basic-datatable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                                                                       
-                                                                        <li class="paginate_button page-item next" id="basic-datatable_next"><a href="#" aria-controls="basic-datatable" data-dt-idx="7" tabindex="0" class="page-link"><i class="mdi mdi-chevron-right"></i></a></li></ul>
-                                                                    </div>
-                                                                </div>
-                                                                </div>
-                                            </table>
-                                        </div>
-                                        <!-- end patients-->
-
-
-                                        <div class="card">
-
-
-                                        </div>
-                                        <!-- end card body-->
-                                    </div>
-                                    <!-- end card -->
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <form action="/addclinic" method = "POST">
+                                                    <label for="clinic_services_name" class="form-label">Service
+                                                    Name:&nbsp;<span style="color:#ff0000">*</span></label>
+                                                    <input type="text"  name="clinic_services_name" class="form-control">
+                                                    </span>
+                                                    </td>
+                                                    <br>
+                                                    <td>
+                                                    <button class="btn btn-primary" type="submit">Submit
+                                                    </button>
+                                                </td>
+                                                </form>
+                                            </tr>
+                                        </tbody>
+                                    </thead>
+                                
                                 </div>
                                 <!-- end col-->
-
-
-
                             </div>
                             <!-- end row-->
 
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="page-title-box">
-                                        <h4 class="page-title">Add Service</h4>
-                                    </div>
-                                </div>
-
-
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <thead>
-                                                    <h5></h5><br>
-                                                    <p>Please fill in the details below to successfully add a new Service.
-                                                    </p>
-
-                                                    <tbody>
-                                                        <tr>
-                                                                <td>
-                                                                    <form action="/addclinic" method = "POST">
-                                                                    <label for="clinic_services_name" class="form-label">Service
-                                                                    Name:&nbsp;<span style="color:#ff0000">*</span></label>
-                                                                    <input type="text"  name="clinic_services_name" class="form-control">
-                                                                    </span>
-                                                                    </td>
-                                                                    <br>
-                                                                    <td>
-                                                                    <button class="btn btn-primary" type="submit">Submit
-                                                                    </button>
-                                                                </td>
-                                                            </form>
-                                                        </tr>
-                                                    </tbody>
-                                                </thead>
-                                                </table>
-                                            </div>
-                                            <!-- end col-->
-                                        </div>
-                                        <!-- end row-->
-
-                                    </div>
-                                    <!-- container -->
-
-                                </div>
-                                <!-- content -->
-                            </div>
-                            <!-- end row of table content-->
                         </div>
                         <!-- container -->
+
                     </div>
                     <!-- content -->
-
                 </div>
-
-                <!-- ============================================================== -->
-                <!-- End Page content -->
-                <!-- ============================================================== -->
+                <!-- end row of table content-->
 
             </div>
-            <!-- END wrapper -->
+        <!-- end of table content-->
 
-            <!-- bundle -->
-            <script src="../../static/js/vendor.min.js"></script>
-            <script src="../../static/js/app.min.js"></script>
 
-            <!-- third party js -->
-            <script src="../../static/js/vendor/jquery.dataTables.min.js"></script>
-            <script src="../../static/js/vendor/dataTables.bootstrap5.js"></script>
-            <script src="../../static/js/vendor/dataTables.responsive.min.js"></script>
-            <script src="../../static/js/vendor/responsive.bootstrap5.min.js"></script>
-            <script src="../../static/js/vendor/dataTables.buttons.min.js"></script>
-            <script src="../../static/js/vendor/buttons.bootstrap5.min.js"></script>
-            <script src="../../static/js/vendor/buttons.html5.min.js"></script>
-            <script src="../../static/js/vendor/buttons.flash.min.js"></script>
-            <script src="../../static/js/vendor/buttons.print.min.js"></script>
-            <script src="../../static/js/vendor/dataTables.keyTable.min.js"></script>
-            <script src="../../static/js/vendor/dataTables.select.min.js"></script>
-            <script src="../../static/js/vendor/apexcharts.min.js"></script>
-            <script src="../../static/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
-            <script src="../../static/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
-            <script src="../../static/js/vendor/dropzone.min.js"></script>
-            <script src="../../static/js/vendor/list.min.js"></script>
-            <script src="../../static/js/vendor/search.js"></script>
+    <!-- bundle -->
+    <script src="../../static/js/vendor.min.js"></script>
+    <script src="../../static/js/app.min.js"></script>
 
-            <!-- third party js ends -->
+    <!-- third party js -->
+    <script src="../../static/js/vendor/jquery.dataTables.min.js"></script>
+    <script src="../../static/js/vendor/dataTables.bootstrap5.js"></script>
+    <script src="../../static/js/vendor/dataTables.responsive.min.js"></script>
+    <script src="../../static/js/vendor/responsive.bootstrap5.min.js"></script>
+    <script src="../../static/js/vendor/dataTables.buttons.min.js"></script>
+    <script src="../../static/js/vendor/buttons.bootstrap5.min.js"></script>
+    <script src="../../static/js/vendor/buttons.flash.min.js"></script>
+    <script src="../../static/js/vendor/buttons.php5.min.js"></script>
+    <script src="../../static/js/vendor/buttons.html5.min.js"></script>
+    <script src="../../static/js/vendor/buttons.flash.min.js"></script>
+    <script src="../../static/js/vendor/buttons.print.min.js"></script>
+    <script src="../../static/js/vendor/dataTables.keyTable.min.js"></script>
+    <script src="../../static/js/vendor/dataTables.select.min.js"></script>
+    <script src="../../static/js/vendor/apexcharts.min.js"></script>
+    <script src="../../static/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="../../static/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="../../static/js/vendor/dropzone.min.js"></script>
+    <script src="../../static/js/vendor/list.min.js"></script>
+    <!-- third party js ends -->
 
-            <!-- demo app -->
-            <script src="../../static/js/pages/demo.datatable-init.js"></script>
-            <script src="../../static/js/pages/demo.toastr.js"></script>
-            <script src="../../static/js/pages/demo.datatable-init.js"></script>
-            <script src="../../static/js/pages/demo.toastr.js"></script>
-            <script src="../../static/js/pages/list.js"></script>
-            <script src="../../static/js/pages/search.js"></script>
+    <!-- demo app -->
+    <script src="../../static/js/pages/demo.datatable-init.js"></script>
+    <script src="../../static/js/pages/demo.toastr.js"></script>
+    <script src="../../static/js/pages/demo.datatable-init.js"></script>
+    <script src="../../static/js/pages/demo.toastr.js"></script>
+    <script src="../../static/js/pages/list.js"></script>
+    <!-- end demo js-->
 
-            <!-- end demo js-->
+    <!-- Datatable Init js -->
+    <script src="assets/js/pages/demo.datatable-init.js"></script>
+
 </body>
 
 </html>
