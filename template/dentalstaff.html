@@ -227,7 +227,10 @@
                                                     <table class="table table-centered mb-0">
                                                         <thead class="table-light">
                                                             <tr>
-                                                                <th>Appointment ID</th>
+                                                                <th><a href="javascript:void(0)" class="sort"
+                                                                        data-sort="js-lists-values-user-schedname">Appointment
+                                                                        ID</a></th>
+                                                                <th>Service</th>
                                                                 <th>Name</th>
                                                                 <th>Date</th>
                                                                 <th>Time</th>
@@ -236,18 +239,46 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                
-                                                                <td>
-                                                                    <span class="badge badge-info-lighten rounded-pill">Pending</span>
-                                                                </td>
-                                                                <td>
-                                                                    <button type="button" class="btn btn-outline-success btn-rounded"><i class="dripicons-checkmark"></i></button>
-                                                                    <button type="button" class="btn btn-outline-danger btn-rounded"><i class="mdi mdi-delete"></i></button>
-                                                                </td>
-                                                            </tr>
-
-                                                        </tbody>
+                                                        <tbody class="list" id="staff02">
+                                                            {% for <div class="table-responsive">
+                                                        <table class="table table-centered mb-0">
+                                                            <thead class="table-light">
+                                                                <tr>
+                                                                    <th><a href="javascript:void(0)" class="sort"
+                                                                            data-sort="js-lists-values-user-schedname">Appointment
+                                                                            ID</a></th>
+                                                                    <th>Service</th>
+                                                                    <th>Name</th>
+                                                                    <th>Date</th>
+                                                                    <th>Time</th>
+                                                                    <th>Status</th>
+                                                                    <th style="width: 125px;">Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tbody class="list" id="staff02">
+                                                                {% for dentalstaff in dentalstaff %}
+                                                                <tr>
+                                                                    <td>{{ dentalstaff.appt_id}}</td>
+                                                                    <td>{{ dentalstaff.appt_type}}</td>
+                                                                    <td>{{ dentalstaff.remarks}}</td>
+                                                                    <td>{{ dentalstaff.date}}</td>
+                                                                    <td>{{ dentalstaff.time}}</td>
+                                                                    <td>{{ dentalstaff.status}}</td>
+                                                                    <td class="table-action">
+                                                                        <form class="action-icon">
+                                                                            <button type="button"
+                                                                                class="btn btn-outline-success btn-rounded"><i
+                                                                                    class="dripicons-checkmark"></i></button>
+                                                                            <button type="button"
+                                                                                class="btn btn-outline-danger btn-rounded"><i
+                                                                                    class="mdi mdi-delete"></i></button>
+                                                                        </form>
+                                                                    </td>
+                                                                </tr>
+                                                                {% endfor %}
+                                                            </tbody>
+                                                        
                                                     </table>
                                                 </div>
                                             </div>

@@ -191,7 +191,14 @@ def vaccinationstaff():
 
 @app.route("/dentalstaff")
 def dentalstaff():
-	return render_template("dentalstaff.html")
+	dentalstaff = []
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT * FROM ih_appointment")
+	for row in cursor.fetchall():
+		dentalstaff.append({"appt_id": row[0], "appt_type": row[1],"remarks": row[2],"date": row[3],"time": row[4],"status": row[5]})
+	conn.close()	
+	return render_template("dentalstaff.html", dentalstaff = dentalstaff)
 
 @app.route("/indexresident")
 def indexresident():
