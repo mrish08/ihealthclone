@@ -149,14 +149,59 @@ def updateschedule(clinic_sched_id):
 
 @app.route("/medicine")
 def medicine():
-	return render_template("medicine.html")
+	medicine = []
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT * FROM ih_medicine")
+	for row in cursor.fetchall():
+		medicine.append({"medicine_id": row[0], "medicine_name": row[1], "generic_name": row[2], "brand_name": row[3], "manufacturer": row[4], "dosage": row[5], "medicine_type": row[6], "description": row[7]})
+	conn.close()	
+	return render_template("medicine.html", medicine = medicine)
 	
 @app.route("/addmedicine", methods = ['GET', 'POST'])
 def addmedicine():
+	if request.method == 'POST':
+		medicine_id = request.form['medicine_id']
+		medicine_name = request.form['medicine_name']
+		generic_name = request.form['generic_name']
+		brand_name = request.form['brand_name']
+		manufacturer = request.form['manufacturer']
+		dosage  = request.form['dosage ']
+		medicine_type = request.form['medicine_type']
+		description = request.form['description']
+
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute('INSERT INTO ih_medicine (medicine_id, medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description)'' VALUES (%s,%s,%s, %s, %s, %s, %s, %s)', 
+	[medicine_id, medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description])
+	conn.commit()
+	conn.close()
 	return redirect('/medicine')
 
 @app.route('/updatemedicine/<int:medicine_id>', methods = ['GET', 'POST'])
 def updatemedicine(medicine_id):
+	um = []
+	conn = connection()
+	cursor = conn.cursor()
+	if request.method == 'GET':
+		cursor.execute("SELECT * FROM ih_medicine WHERE medicine_id = %s", (str(medicine_id)))
+		for row in cursor.fetchall():
+			um.append({"medicine_id": row[0], "medicine_name": row[1], "generic_name": row[2], "brand_name": row[3], "manufacturer": row[4], "dosage": row[5], "medicine_type": row[6], "description": row[7]})
+		conn.close()
+		return render_template("updatemedicine.html", medicine = um[0])
+	if request.method == 'POST':
+		medicine_id = str(request.form["medicine_id"])
+		medicine_name = str(request.form["medicine_name"])
+		generic_name = str(request.form["generic_name"])
+		brand_name = str(request.form["brand_name"])
+		manufacturer = str(request.form["manufacturer"])
+		dosage = str(request.form["dosage"])
+		medicine_type = str(request.form["medicine_type"])
+		description = str(request.form["description"])
+		cursor.execute("UPDATE medicine SET (medicine_id, medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description) = (%s,%s,%s, %s, %s, %s, %s, %s)  WHERE medicine_id =(%s)",
+		(medicine_id, medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description))
+		conn.commit()
+		conn.close()
 		return redirect('/medicine')
 
 @app.route("/adminaptvax")
