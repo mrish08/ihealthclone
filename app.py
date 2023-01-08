@@ -204,6 +204,7 @@ def dentalstaff():
 def indexresident():
 	return render_template("indexresident.html")
 
+
 @app.route("/scheduleresident")
 def scheduleresident():
 	return render_template("scheduleresident.html")
