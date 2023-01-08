@@ -2,6 +2,7 @@ $(document).ready(function() {
 	"use strict";
 	$("#basic-datatable").DataTable({
 		keys: !0,
+		destroy: true,
 		language: {
 			paginate: {
 				previous: "<i class='mdi mdi-chevron-left'>",
