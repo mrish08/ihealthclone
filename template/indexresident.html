@@ -51,7 +51,7 @@
 
                                 <li class="side-nav-title side-nav-item">Menu</li>
 
-                                <li class="side-nav-item">
+                                <li class="badge-primary-lighten side-nav-item">
                                     <a href="/indexresident" class="side-nav-link">
                                         <i class="uil-chart-pie"></i>
                                         <span> Dashboard </span>
@@ -66,23 +66,37 @@
                                 </li>
 
                                 <li class="side-nav-item">
-                                    <a href="/dentalresident" class="side-nav-link">
-                                        <i class="mdi mdi-hospital"></i>
+                                    <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
+                                        <i class="mdi mdi-history"></i>
                                         <span> Appointment History </span>
+                                        <span class="menu-arrow"></span>
                                     </a>
+                                    <div class="collapse" id="sidebarEmail">
+                                        <ul class="side-nav-second-level">
+                                            <li>
+                                                <a href="/residenthaptvax">Vaccination Service</a>
+                                            </li>
+                                            <li>
+                                                <a href="/residenthaptclinic">Clinic Service</a>
+                                            </li>
+                                            <li>
+                                                <a href="/residenthaptdental">Dental Service</a>
+                                            </li>
+                                            <li>
+                                                <a href="/residenthaptmedicine">Medicine Pickup</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </li>
                             </ul>
-                            <div class="clearfix"></div>
-
-                        </div>
-                        <!-- Sidebar -left -->
-
+                        <div class="clearfix"></div>
                     </div>
-                    <!-- Left Sidebar End -->
-
+                    <!-- Sidebar -left -->
                 </div>
-                <!-- END wrapper -->
-    </header>
+                <!-- Left Sidebar End -->
+            </div>
+            <!-- END wrapper -->
+</header>
 
     <div class="wrapper">
 
@@ -241,7 +255,7 @@
 
                                 <button type="button" class="block" style="border-color:#eeecec">
                                     <br><br>
-                                    <a href="/dentalresident">
+                                    <a href="residenthistory-apt-vax.html">
                                         <i class="mdi mdi-hospital widget-icon-icon"></i>
                                         <br><br>
                                         <h5>Appointment History</h5>
