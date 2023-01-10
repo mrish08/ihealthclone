@@ -332,7 +332,7 @@ def vaccinationresident():
 
 @app.route("/residentas")
 def residentas():
-	return render_template("clinicresident.html"
+	return render_template("clinicresident.html",
         data=[{'name':'Clinic Service'}, {'name':'Dental Service'}, {'name':'Vaccination Service'},  {'name':'Medicine Pick-up Service'}])
 
 
