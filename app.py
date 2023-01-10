@@ -206,7 +206,14 @@ def updatemedicine(medicine_id):
 
 @app.route("/adminaptvax")
 def adminaptvax():
-	return render_template("admin-apt-vax.html")
+	adminaptvax = []
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT * FROM ih_medicine")
+	for row in cursor.fetchall():
+		adminaptvax.append({"medicine_id": row[0], "medicine_name": row[1], "generic_name": row[2], "brand_name": row[3], "manufacturer": row[4], "dosage": row[5], "medicine_type": row[6], "description": row[7]})
+	conn.close()	
+	return render_template("admin-apt-vax.html", adminaptvax = adminaptvax)
 
 @app.route("/adminaptdental")
 def adminaptdental():
@@ -236,9 +243,10 @@ def adminhaptmedicine():
 def adminhaptclinic():
 	return render_template("adminhistory-apt-clinic.html")
 
-@app.route("/loginadmin") 
+@app.route("/loginadmin",methods=['POST']) 
 def loginadmin():
 	return render_template("loginadmin.html")
+
 
 @app.route("/loginstaff")
 def loginstaff():
