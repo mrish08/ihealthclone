@@ -163,11 +163,11 @@
                         <li class="dropdown notification-list">
                             <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                 <span class="account-user-avatar">
-                                        <img src="../../static/images/users/profile1.png" alt="user-image"
-                                            class="rounded-circle">
-                                    </span>
+                                    <img src="../../static/images/users/profile1.png" alt="user-image"
+                                        class="rounded-circle">
+                                </span>
                                 <span>
-                                        <span class="account-user-name">Juan Dela Cruz</span>
+                                    <span class="account-user-name">Juan Dela Cruz</span>
                                 <span class="account-position">Admin</span>
                                 </span>
                             </a>
@@ -187,8 +187,8 @@
     
                     </ul>
                     <button class="button-menu-mobile open-left">
-                            <i class="mdi mdi-menu"></i>
-                        </button>
+                        <i class="mdi mdi-menu"></i>
+                    </button>
                     <div class="app-search dropdown d-none d-lg-block">
     
                         <div class="dropdown-menu dropdown-menu-animated dropdown-lg" id="search-dropdown">
@@ -239,92 +239,91 @@
                         </div>
                     </div>
                 </div>
-            </div>
-                
-            <!-- end Topbar -->
-
-            <!-- Start Content-->
-            <div class="container-fluid">
-
-            <!-- start page title -->
-            <div class="row">
-                <div class="col-12">
-                    <div class="page-title-box">
-                        <h4 class="page-title">Appointment Schedule</h4>
-                    </div>
-                </div>
-            <!-- end page title -->
-
-            <!-- start table content -->
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="tab-content">
-                                <div class="table-hover" id="scroll-horizontal-preview">
-                                    <table id="scroll-horizontal-datatable" style="overflow-x: auto;" class="table table-hover w-100 nowrap">
-                                        <thead>
-                                        <tr class="table-light">
-                                            <th>Schedule Name</th>
-                                            <th>Time</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                
-                                
-                                    <tbody>
-
-                                        {% for schedule in schedule %}
-
-                                        <tr>
-                                            <td>{{ schedule.schedule }}</td>
-                                            <td>{{ schedule.schedule_name }}</td>
-                                            <td class="table-action">
-                                                <form class="action-icon">
-                                                    <button type="button" class="btn btn-warning">
-                                                        <a href="updateschedule/{{ schedule.clinic_sched_id }}">
-                                                        <i class="mdi mdi-account-edit-outline"></i>   </a>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>{{ schedule.schedule }}</td>
-                                            <td>{{ schedule.schedule_name }}</td>
-                                            <td class="table-action">
-                                                <form class="action-icon">
-                                                    <button type="button" class="btn btn-warning">
-                                                        <a href="updateschedule/{{ schedule.clinic_sched_id }}">
-                                                        <i class="mdi mdi-account-edit-outline"></i>   </a>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        {% endfor %}  
-                                    </tbody>
-                                </table>
+                <!-- end Topbar -->
+    
+                <!-- Start Content-->
+                <div class="container-fluid">
+    
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <h4 class="page-title">Appointment Schedule</h4>
                             </div>
                         </div>
-                    </div>
+    
+                        <!-- end page title -->
+    
+                        <!-- start table content -->
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="tab-content">
+                                    <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                                        <thead>
+                                            <tr class="table-light">
+                                                <th>Schedule Name</th>
+                                                <th>Time</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                    
+                                    
+                                        <tbody>
+    
+                                            {% for schedule in schedule %}
+    
+                                            <tr>
+                                                <td>{{ schedule.schedule }}</td>
+                                                <td>{{ schedule.schedule_name }}</td>
+                                                <td class="table-action">
+                                                    <form class="action-icon">
+                                                        <button type="button" class="btn btn-warning">
+                                                            <a href="updateschedule/{{ schedule.clinic_sched_id }}">
+                                                            <i class="mdi mdi-account-edit-outline"></i>   </a>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+    
+                                            <tr>
+                                                <td>{{ schedule.schedule }}</td>
+                                                <td>{{ schedule.schedule_name }}</td>
+                                                <td class="table-action">
+                                                    <form class="action-icon">
+                                                        <button type="button" class="btn btn-warning">
+                                                            <a href="updateschedule/{{ schedule.clinic_sched_id }}">
+                                                            <i class="mdi mdi-account-edit-outline"></i>   </a>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}  
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     <!-- end of the first table-->
 
-                    <!-- start row of table content-->
+                    
+    
+                    <!-- start of second table content-->
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box">
                                 <h4 class="page-title">Add Schedule</h4>
                             </div>
                         </div>
-
-
+    
+    
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-5">
                                 <div class="card">
                                     <div class="card-body">
                                         <thead>
-                                            <h5></h5><br>
                                             <p>Please fill in the details below to successfully add a Schedule.</p>
-
+    
                                             <tbody>
                                                 <tr>
                                                     <form action="/addschedule" method = "POST">
@@ -353,23 +352,17 @@
                                     <!-- end col-->
                                 </div>
                                 <!-- end row-->
-
+    
                             </div>
                             <!-- container -->
-
+    
                         </div>
                         <!-- content -->
                     </div>
                     <!-- end row of table content-->
-
+    
                 </div>
             <!-- end of table content-->
-    
-            </div>
-            <!-- container -->
-        </div>
-        <!-- content -->
-    </div>
     
     <!-- ============================================================== -->
     <!-- End Page content -->
