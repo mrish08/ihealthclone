@@ -1,13 +1,14 @@
 from distutils.log import debug
 from flask import Flask, render_template,request, redirect,request, url_for, session, logging
-from flask_session import Session
 import os
 import psycopg2
+import flask_login
 
-app=Flask(__name__,template_folder='template',static_folder='static')
-app.config["SESSION_PERMANENT"] = False
-app.config["SESSION_TYPE"] = "filesystem"
-Session(app)
+app=flask.Flask(__name__,template_folder='template',static_folder='static')
+
+login_manager = flask_login.LoginManager()
+
+login_manager.init_app(app)
 def connection():
     s = 'database-1.c8punsklsimv.ap-southeast-1.rds.amazonaws.com'
     d = 'bms' 
@@ -18,6 +19,30 @@ def connection():
         with conn.cursor() as curs:
             curs.execute
     return conn
+
+class User(flask_login.UserMixin):
+    pass
+
+
+@login_manager.user_loader
+def user_loader(email):
+    if email not in  users_user:
+        return
+
+    user =  users_user()
+    users_user.id = email
+    return  user
+
+
+@login_manager.request_loader
+def request_loader(request):
+    email = request.form.get('email')
+    if email not in  users_user:
+        return
+
+    user =  users_user()
+    users_user.id = email
+    return  user
 
 
 @app.route("/")
@@ -251,10 +276,29 @@ def adminhaptclinic():
 
 @app.route("/loginadmin", methods=["POST", "GET"])
 def loginadmin():
-    if request.method == "POST":
-        session["email"] = request.form.get("email")
-        return redirect("/")
-    return render_template("login.html")
+	if flask.request.method == 'GET':
+		email = request.form['email']
+		password = request.form['password']
+	return '''
+               <form action='/loginadmin' method='POST'>
+                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com"/>
+                <input type="password" class="form-control" id="pasword" name="pasword"placeholder="Password"/>
+                <input type='submit' name='submit'/>
+               </form>
+               '''
+email = flask.request.form['email']
+	if email in users_user and flask.request.form['password'] == users_user[email]['password']:
+    		user =  users_user()
+  			users_user.id = email
+    flask_login.login_user( user)
+        return flask.redirect(flask.url_for('protected'))
+	
+    	
+
+@app.route('/protected')
+@flask_login.login_required
+def protected():
+    return 'Logged in as: ' + flask_login.current_user.id
 
 @app.route("/loginstaff")
 def loginstaff():
