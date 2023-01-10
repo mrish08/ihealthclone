@@ -342,17 +342,18 @@ def medicineresident():
 def residenthaptvax():
 	return render_template("residenthistory-apt-vax.html")
 
-app.route("/residenthaptdental")
+@app.route("/residenthaptdental")
 def residenthaptdental():
 	return render_template("residenthistory-apt-dental.html")
 
-app.route("/residenthaptmedicine")
+@app.route("/residenthaptmedicine")
 def residenthaptmedicine():
 	return render_template("residenthistory-apt-medicine.html")
 
-app.route("/residenthaptclinic")
+@app.route("/residenthaptclinic")
 def residenthaptclinic():
 	return render_template("residenthistory-apt-clinic.html")
+
 if __name__== '__main__':
  app.debug=True
  app.run(debug=True)
