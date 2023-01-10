@@ -347,7 +347,7 @@ def residenthaptdental():
 	return render_template("residenthistory-apt-dental.html")
 
 app.route("/residenthaptmedicine")
-def residentas():
+def residenthaptmedicine():
 	return render_template("residenthistory-apt-medicine.html")
 
 app.route("/residenthaptclinic")
