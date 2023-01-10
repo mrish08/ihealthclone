@@ -333,7 +333,7 @@ def vaccinationresident():
 @app.route("/residentas")
 def residentas():
 	return render_template("clinicresident.html",
-    data=[{'name':'Clinic Service'}, {'name':'Dental Service'}, {'name':'Vaccination Service'},  {'name':'Medicine Pick-up Service'}])
+        data=[{'name':'Clinic Service'}, {'name':'Dental Service'}, {'name':'Vaccination Service'},  {'name':'Medicine Pick-up Service'}])
 
 
 @app.route("/addapt", methods = ['GET','POST'])
@@ -341,15 +341,14 @@ def addapt():
 	
 	if request.method == 'GET':
 		select = request.form.get('appt_type') 
-		return(str(select)) # just to see what select is
+	
 	if request.method == 'POST':
 		appt_type = request.form['appt_type']
 		date = request.form['date']
 		time = request.form['time']
 	conn = connection()
 	cursor = conn.cursor()
-	cursor.execute('INSERT INTO ih_appointment(appt_type, date, time)'' VALUES (%s,%s,%s)', 
-	[appt_type, date, time])
+	cursor.execute('INSERT INTO ih_appointment(appt_type, date, time)'' VALUES (%s,%s,%s)', [appt_type, date, time])
 	conn.commit()
 	conn.close()
 	return redirect('/residentas')
@@ -375,5 +374,5 @@ def residenthaptclinic():
 	return render_template("residenthistory-apt-clinic.html")
 
 if __name__== '__main__':
- app.debug=True
- app.run(debug=True)
+	app.debug=True
+	app.run(debug=True)
