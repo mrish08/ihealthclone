@@ -243,7 +243,7 @@ def adminhaptmedicine():
 def adminhaptclinic():
 	return render_template("adminhistory-apt-clinic.html")
 
-@app.route("/loginadmin",methods=['POST']) 
+@app.route("/loginadmin") 
 def loginadmin():
 	return render_template("loginadmin.html")
 
