@@ -206,7 +206,14 @@ def updatemedicine(medicine_id):
 
 @app.route("/adminaptvax")
 def adminaptvax():
-	return render_template("admin-apt-vax.html")
+	adminaptvax = []
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT * FROM ih_medicine")
+	for row in cursor.fetchall():
+		adminaptvax.append({"medicine_id": row[0], "medicine_name": row[1], "generic_name": row[2], "brand_name": row[3], "manufacturer": row[4], "dosage": row[5], "medicine_type": row[6], "description": row[7]})
+	conn.close()	
+	return render_template("admin-apt-vax.html", adminaptvax = adminaptvax)
 
 @app.route("/adminaptdental")
 def adminaptdental():
@@ -239,6 +246,7 @@ def adminhaptclinic():
 @app.route("/loginadmin") 
 def loginadmin():
 	return render_template("loginadmin.html")
+
 
 @app.route("/loginstaff")
 def loginstaff():
@@ -322,13 +330,29 @@ def dentalresident():
 def vaccinationresident():
 	return render_template("vaccinationresident.html")
 
-@app.route("/clinicresident")
-def clinicresident():
+@app.route("/residentas")
+def residentas():
 	return render_template("clinicresident.html")
 
 @app.route("/medicineresident")
 def medicineresident():
 	return render_template("medicineresident.html")
+
+@app.route("/residenthaptvax")
+def residenthaptvax():
+	return render_template("residenthistory-apt-vax.html")
+
+@app.route("/residenthaptdental")
+def residenthaptdental():
+	return render_template("residenthistory-apt-dental.html")
+
+@app.route("/residenthaptmedicine")
+def residenthaptmedicine():
+	return render_template("residenthistory-apt-medicine.html")
+
+@app.route("/residenthaptclinic")
+def residenthaptclinic():
+	return render_template("residenthistory-apt-clinic.html")
 
 if __name__== '__main__':
  app.debug=True
