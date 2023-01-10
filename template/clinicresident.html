@@ -186,58 +186,87 @@
                             </div>
                             <!-- end row -->
                         </div>
-                        <!-- end container -->
-                    </div>
-                    <!-- end page -->
+
+                        <!-- end page title -->
 
 
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <thead>
-                                    <br><br>
-                                    <p>Please fill in the details below to successfully add a Schedule.</p>
 
-                                <tbody>
-                                    <tr>
-                                        <div>
-                                            <td class="col-sm-6">
-                                                <form action="/addapp" method="POST">
-                                                <label for="appt_type" class="form-label">Appointment Type
-                                                    <span style="color:#ff0000">*</span></label>
-                                                <select class="form-select" id="appt_type">
-                                                    <option>Clinic Service</option>
-                                                    <option>Dental Service</option>
-                                                    <option>Vaccination Service</option>
-                                                    <option>Medicine Pick-Up Service</option>
-                                                </select>
-                                            </td><br>
-                                            <td class="col-sm-6">
-                                                <label for="date" class="form-label">Date<span
-                                                        style="color:#ff0000">*</span></label>
-                                                <input class="form-control" id="date" type="date"
-                                                    name="date">
-                                            </td><br>
-                                            <td class="col-sm-6">
-                                                <label for="time" class="form-label">Time <span
-                                                        style="color:#ff0000">*</span></label>
-                                                <select class="form-select" id="time">
-                                                    <option>A.M</option>
-                                                    <option>P.M</option>
-                                                </select>
-                                            </td><br><br>
-                                            <td>
-                                                <button class="btn btn-primary" type="submit">Submit</button>
-                                                </form>
-                                            </td>
-                                        </div><br><br>
-                                    </tr>
-                                </tbody>
-                                </thead>
-                                </table>
-                            </div><!-- end col-->
-                        </div>
-                        <!-- end row-->
+
+                        <!-- start table content -->
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="tab-content">
+                                            <thead>
+                                                <h4>Schedule</h4><br>
+                                            <tbody>
+                                                <p>A.M - 8:00 - 12:00</p>
+                                                <p>P.M - 1:00 - 5:00</p>
+
+                                                <br>
+                                                <p> For senior citizens and PWD, please bring a valid ID to be
+                                                    prioritized.</p>
+                                            </tbody>
+                                            </thead>
+
+                                        </div> <!-- end card body-->
+                                    </div> <!-- end card -->
+                                </div><!-- end col-->
+                            </div><!-- end row-->
+
+
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <thead>
+                                            <h5></h5><br>
+                                            <p>Please fill in the details below to successfully add a Schedule.</p>
+
+                                        <tbody>
+                                            <tr>
+                                                <div>
+                                                    <td class="col-sm-6">
+                                                        <form action="/addapt" method="POST">
+                                                        <label for="appt_type" class="form-label">Appointment Type
+                                                            <span style="color:#ff0000">*</span></label>
+                                                        <select class="form-select" id="appt_type">
+                                                            <option>Clinic Service</option>
+                                                            <option>Dental Service</option>
+                                                            <option>Vaccination Service</option>
+                                                            <option>Medicine Pick-Up Service</option>
+                                                        </select>
+                                                    </td><br>
+                                                    <td class="col-sm-6">
+                                                        <label for="date" class="form-label">Date<span
+                                                                style="color:#ff0000">*</span></label>
+                                                        <input class="form-control" id="date" type="date"
+                                                            name="date">
+                                                    </td><br>
+                                                    <td class="col-sm-6">
+                                                        <label for="time" class="form-label">Time <span
+                                                                style="color:#ff0000">*</span></label>
+                                                        <select class="form-select" id="time">
+                                                            <option>A.M</option>
+                                                            <option>P.M</option>
+                                                        </select>
+                                                    </td><br>
+                                                    <td>
+                                                        <button class="btn btn-primary" type="submit">Submit</button>
+                                                        </form>
+                                                    </td>
+                                                </div>
+                                            </tr>
+                                        </tbody>
+                                        </thead>
+                                        </table>
+                                    </div><!-- end col-->
+                                </div>
+                                <!-- end row-->
+
+                            </div> <!-- container -->
+
+                        </div> <!-- content -->
                     </div><!-- end row of table content-->
                 </div> <!-- container -->
             </div><!-- content -->

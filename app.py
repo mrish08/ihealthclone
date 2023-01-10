@@ -1,9 +1,13 @@
 from distutils.log import debug
-from flask import Flask, render_template,request, redirect,flash, url_for, session, logging
+from flask import Flask, render_template,request, redirect,request, url_for, session, logging
+from flask_session import Session
 import os
 import psycopg2
 
 app=Flask(__name__,template_folder='template',static_folder='static')
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
 def connection():
     s = 'database-1.c8punsklsimv.ap-southeast-1.rds.amazonaws.com'
     d = 'bms' 
@@ -16,9 +20,11 @@ def connection():
     return conn
 
 
-@app.route("/index")
+@app.route("/")
 def index():
-	return render_template("index.html")
+    if not session.get("name"):
+        return redirect("/login")
+    return render_template('index.html')
 
 @app.route("/clinic")
 def clinic():
@@ -243,9 +249,12 @@ def adminhaptmedicine():
 def adminhaptclinic():
 	return render_template("adminhistory-apt-clinic.html")
 
-@app.route("/loginadmin") 
+@app.route("/loginadmin", methods=['POST', 'GET'])
 def loginadmin():
-	return render_template("loginadmin.html")
+	if request.method == "POST":
+        session["username"] = request.form.get("username")
+        return redirect("/")
+    return render_template("loginadmin.html")
 
 
 @app.route("/loginstaff")
@@ -334,6 +343,7 @@ def vaccinationresident():
 def residentas():
 	return render_template("clinicresident.html")
 
+
 @app.route("/medicineresident")
 def medicineresident():
 	return render_template("medicineresident.html")
@@ -355,5 +365,5 @@ def residenthaptclinic():
 	return render_template("residenthistory-apt-clinic.html")
 
 if __name__== '__main__':
- app.debug=True
- app.run(debug=True)
+	app.debug=True
+app.run(debug=True)
