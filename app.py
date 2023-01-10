@@ -249,13 +249,12 @@ def adminhaptmedicine():
 def adminhaptclinic():
 	return render_template("adminhistory-apt-clinic.html")
 
-@app.route("/loginadmin", methods=['POST', 'GET'])
+@app.route("/loginadmin", methods=["POST", "GET"])
 def loginadmin():
-	if request.method == "POST":
-        session["username"] = request.form.get("username")
+    if request.method == "POST":
+        session["email"] = request.form.get("email")
         return redirect("/")
-    return render_template("loginadmin.html")
-
+    return render_template("login.html")
 
 @app.route("/loginstaff")
 def loginstaff():
