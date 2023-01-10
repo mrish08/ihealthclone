@@ -255,10 +255,10 @@
                                                             <span style="color:#ff0000">*</span></label>
                                                         <select class="form-select" id="appt_type">
                                                             {% for addapt in addapt %}
-                                                            <option value="{{ 1 }}">{{ Clinic Service }}</option>
-                                                            <option value="{{ 2 }}">{{ Dental Service }}</option>
-                                                            <option value="{{ 3 }}">{{Vaccination Service}}</option>
-                                                            <option value="{{ 4 }}">{{Medicine Pick-Up Service}}</option>
+                                                            <option value="{{ clinic_sched_id_id }}">{{ Clinic Service }}</option>
+                                                            <option value="{{ dental_sched_id_id }}">{{ Dental Service }}</option>
+                                                            <option value="{{ vaccine_id_id }}">{{Vaccination Service}}</option>
+                                                            <option value="{{ medicine_id_id }}">{{Medicine Pick-Up Service}}</option>
                                                             {% endfor %}
                                                             
                                                         </select>
