@@ -336,12 +336,8 @@ def residentas():
         data=[{'name':'Clinic Service'}, {'name':'Dental Service'}, {'name':'Vaccination Service'},  {'name':'Medicine Pick-up Service'}])
 
 
-@app.route("/addapt", methods = ['GET','POST'])
+@app.route("/addapt", methods = ['POST'])
 def addapt():
-	
-	if request.method == 'GET':
-		select = request.form.get('appt_type') 
-	
 	if request.method == 'POST':
 		appt_type = request.form['appt_type']
 		date = request.form['date']
