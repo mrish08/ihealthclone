@@ -332,8 +332,7 @@ def vaccinationresident():
 
 @app.route("/residentas")
 def residentas():
-	return render_template("clinicresident.html",
-    appt_type=[{'name':'Clinic Service'}, {'name':'Dental Service'}, {'name':'Vaccination Service'},  {'name':'Medicine Pick-up Service'}])
+	return render_template("clinicresident.html")
 
 
 @app.route("/addapt", methods = ['POST'])
