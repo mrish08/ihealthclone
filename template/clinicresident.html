@@ -254,11 +254,12 @@
                                                         <label for="appt_type" class="form-label">Appointment Type
                                                             <span style="color:#ff0000">*</span></label>
                                                         <select class="form-select" id="appt_type">
-                                                            {% for addapt in addapt %}
-                                                            <option name="Clinic Service " id="Clinic Service " value="{{ request.form['appt_type'] }}">{{ Clinic Service}}</option>
-                                                            {% endfor %}
                                                             
-                                                        </select>
+                                                                {% for o in data %}
+                                                                <option value="{{ o.name }}">{{ o.name }}</option>
+                                                                {% endfor %}
+                                                              </select>
+                                                           
                                                     </td><br>
                                                     <td class="col-sm-6">
                                                         <label for="date" class="form-label">Date<span
