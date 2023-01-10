@@ -151,109 +151,104 @@
                     </div>
                     <!-- end page title -->
 
-                        <div class="row justify-content-center">
-                            <div class="col-lg-5">
-                                <div class="card">
-                                    <div class="card-body">
-                                        
-                                            <!-- Logo --><br>
-                                            <div class="card-header text-center bg-primary">
-                                                <a href="indexresident.html">
-                                                    <span><img src="../../static/images/anncmnt.png" alt="" height="21"></span>
-                                                </a>
-                                            </div>
-                
-                                            <div class="card-body p-4">
-                                                
-                                                <div class="text-center w-75 m-auto">
-                                                    <img src="../../static/images/announcement.png" height="65">
-                                                    <h4 class="text-dark-50 mt-3 fw-bold">Schedule</h4>
-                                                </div><br>
-                
-                                                <div class="text-center tab-content">
-                                                    <tbody>
-                                                        <p>A.M - (8:00 to 12:00)</p>
-                                                        <p>P.M - (1:00 to 5:00)</p>
-        
-                                                        <br><br>
-                                                        <p> For senior citizens and PWD, please bring a valid ID to be
-                                                            prioritized.</p>
-                                                    </tbody>
-        
-                                                </div> <!-- end card body-->
-                                
-                                    </div> <!-- end col -->
-                                </div>
-                                <!-- end row -->
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    
+                                        <!-- Logo --><br>
+                                        <div class="card-header text-center bg-primary">
+                                            <a href="indexresident.html">
+                                                <span><img src="../../static/images/anncmnt.png" alt="" height="21"></span>
+                                            </a>
+                                        </div>
+            
+                                        <div class="card-body p-4">
+                                            
+                                            <div class="text-center w-75 m-auto">
+                                                <img src="../../static/images/announcement.png" height="65">
+                                                <h4 class="text-dark-50 mt-3 fw-bold">Schedule</h4>
+                                            </div><br>
+            
+                                            <div class="text-center tab-content">
+                                                <tbody>
+                                                    <p>A.M - (8:00 to 12:00)</p>
+                                                    <p>P.M - (1:00 to 5:00)</p>
+    
+                                                    <br><br>
+                                                    <p> For senior citizens and PWD, please bring a valid ID to be
+                                                        prioritized.</p>
+                                                </tbody>
+    
+                                            </div> <!-- end card body-->
+                            
+                                </div> <!-- end col -->
                             </div>
-                            <!-- end container -->
+                            <!-- end row -->
                         </div>
-                        <!-- end page -->
+                        <!-- end container -->
+                    </div>
+                    <!-- end page -->
 
 
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <thead>
-                                            <br><br>
-                                            <p>Please fill in the details below to successfully add a Schedule.</p>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <thead>
+                                    <br><br>
+                                    <p>Please fill in the details below to successfully add a Schedule.</p>
 
-                                        <tbody>
-                                            <tr>
-                                                <div>
-                                                    <td class="col-sm-6">
-                                                        <form action="/addapp" method="POST">
-                                                        <label for="appt_type" class="form-label">Appointment Type
-                                                            <span style="color:#ff0000">*</span></label>
-                                                        <select class="form-select" id="appt_type">
-                                                            <option>Clinic Service</option>
-                                                            <option>Dental Service</option>
-                                                            <option>Vaccination Service</option>
-                                                            <option>Medicine Pick-Up Service</option>
-                                                        </select>
-                                                    </td><br>
-                                                    <td class="col-sm-6">
-                                                        <label for="date" class="form-label">Date<span
-                                                                style="color:#ff0000">*</span></label>
-                                                        <input class="form-control" id="date" type="date"
-                                                            name="date">
-                                                    </td><br>
-                                                    <td class="col-sm-6">
-                                                        <label for="time" class="form-label">Time <span
-                                                                style="color:#ff0000">*</span></label>
-                                                        <select class="form-select" id="time">
-                                                            <option>A.M</option>
-                                                            <option>P.M</option>
-                                                        </select>
-                                                    </td><br><br>
-                                                    <td>
-                                                        <button class="btn btn-primary" type="submit">Submit</button>
-                                                        </form>
-                                                    </td>
-                                                </div><br><br>
-                                            </tr>
-                                        </tbody>
-                                        </thead>
-                                        </table>
-                                    </div><!-- end col-->
-                                </div>
-                                <!-- end row-->
-
-                            </div> <!-- container -->
-
-                        </div> <!-- content -->
+                                <tbody>
+                                    <tr>
+                                        <div>
+                                            <td class="col-sm-6">
+                                                <form action="/addapp" method="POST">
+                                                <label for="appt_type" class="form-label">Appointment Type
+                                                    <span style="color:#ff0000">*</span></label>
+                                                <select class="form-select" id="appt_type">
+                                                    <option>Clinic Service</option>
+                                                    <option>Dental Service</option>
+                                                    <option>Vaccination Service</option>
+                                                    <option>Medicine Pick-Up Service</option>
+                                                </select>
+                                            </td><br>
+                                            <td class="col-sm-6">
+                                                <label for="date" class="form-label">Date<span
+                                                        style="color:#ff0000">*</span></label>
+                                                <input class="form-control" id="date" type="date"
+                                                    name="date">
+                                            </td><br>
+                                            <td class="col-sm-6">
+                                                <label for="time" class="form-label">Time <span
+                                                        style="color:#ff0000">*</span></label>
+                                                <select class="form-select" id="time">
+                                                    <option>A.M</option>
+                                                    <option>P.M</option>
+                                                </select>
+                                            </td><br><br>
+                                            <td>
+                                                <button class="btn btn-primary" type="submit">Submit</button>
+                                                </form>
+                                            </td>
+                                        </div><br><br>
+                                    </tr>
+                                </tbody>
+                                </thead>
+                                </table>
+                            </div><!-- end col-->
+                        </div>
+                        <!-- end row-->
                     </div><!-- end row of table content-->
                 </div> <!-- container -->
             </div><!-- content -->
-
         </div>
-
-        <!-- ============================================================== -->
-        <!-- End Page content -->
-        <!-- ============================================================== -->
-
     </div>
     <!-- END wrapper -->
+    
+    <!-- ============================================================== -->
+    <!-- End Page content -->
+    <!-- ============================================================== -->
+
 
     <!-- bundle -->
     <script src="../../static/js/vendor.min.js"></script>
