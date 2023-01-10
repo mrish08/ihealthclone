@@ -334,6 +334,22 @@ def vaccinationresident():
 def residentas():
 	return render_template("clinicresident.html")
 
+@app.route("/addapt", methods = ['POST'])
+def addapt():
+	if request.method == 'POST':
+		appt_type = request.form['appt_type']
+		date = request.form['date']
+		time = request.form['time']
+		
+
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute('INSERT INTO ih_appointment(appt_type, date, time)'' VALUES (%s,%s,%s)', 
+	[appt_type, date, time])
+	conn.commit()
+	conn.close()
+	return redirect('/residentas')
+
 @app.route("/medicineresident")
 def medicineresident():
 	return render_template("medicineresident.html")
