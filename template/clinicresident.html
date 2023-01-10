@@ -256,8 +256,6 @@
                                                         <select class="form-select" id="appt_type">
                                                             {% for addapt in addapt %}
                                                             <option name="Clinic Service " id="Clinic Service " value="{{ request.form['appt_type'] }}">{{  addapt ['addapt'] }}</option>
-                                                            
-                                                            <option value="{{ medicine_id_id }}">{{Medicine Pick-Up Service}}</option>
                                                             {% endfor %}
                                                             
                                                         </select>
