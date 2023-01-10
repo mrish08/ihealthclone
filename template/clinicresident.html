@@ -254,7 +254,7 @@
                                                         <label for="appt_type" class="form-label">Appointment Type
                                                             <span style="color:#ff0000">*</span></label>
                                                             <select class="form-select" id="appt_type">
-                                                                {% for o in data %}
+                                                                {% for o in appt_type %}
                                                                 <option value="{{ o.name }}">{{ o.name }}</option>
                                                                 {% endfor %}
                                                             </select>
