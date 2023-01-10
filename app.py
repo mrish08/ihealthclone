@@ -330,8 +330,8 @@ def dentalresident():
 def vaccinationresident():
 	return render_template("vaccinationresident.html")
 
-@app.route("/clinicresident")
-def clinicresident():
+@app.route("/residentas")
+def residentas():
 	return render_template("clinicresident.html")
 
 @app.route("/medicineresident")
