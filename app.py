@@ -332,16 +332,20 @@ def vaccinationresident():
 
 @app.route("/residentas")
 def residentas():
-	return render_template("clinicresident.html")
+	return render_template("clinicresident.html"
+        data=[{'name':'Clinic Service'}, {'name':'Dental Service'}, {'name':'Vaccination Service'},  {'name':'Medicine Pick-up Service'}])
 
-@app.route("/addapt", methods = ['POST'])
+
+@app.route("/addapt", methods = ['GET','POST'])
 def addapt():
+	
+	if request.method == 'GET':
+		select = request.form.get('appt_type') 
+		return(str(select)) # just to see what select is
 	if request.method == 'POST':
 		appt_type = request.form['appt_type']
 		date = request.form['date']
 		time = request.form['time']
-		
-
 	conn = connection()
 	cursor = conn.cursor()
 	cursor.execute('INSERT INTO ih_appointment(appt_type, date, time)'' VALUES (%s,%s,%s)', 
