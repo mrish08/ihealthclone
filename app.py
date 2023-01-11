@@ -1,6 +1,5 @@
 from distutils.log import debug
 from flask import Flask, render_template,request, redirect,request, jsonify, url_for, session, logging
-from flask.ext.login import (current_user, LoginManager,login_user, logout_user, login_required)
 import os
 import psycopg2
 from flask import session
