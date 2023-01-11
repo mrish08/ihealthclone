@@ -18,10 +18,8 @@ def connection():
             curs.execute
     return conn
 
-@app.route("/")
+@app.route("/index")
 def index():
-    if not session.get("name"):
-        return redirect("/login")
     return render_template('index.html')
 
 @app.route("/clinic")
