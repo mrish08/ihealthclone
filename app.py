@@ -81,7 +81,7 @@ def updateschedule(clinic_sched_id):
 @app.route("/medicine")
 def medicine():
 	
-	return render_template("medicine.html", medicine = medicine)
+	return render_template("medicine.html")
 	
 @app.route("/addmedicine", methods = ['GET', 'POST'])
 def addmedicine():
