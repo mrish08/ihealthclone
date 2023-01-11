@@ -1,7 +1,9 @@
 from distutils.log import debug
-from flask import Flask, render_template,request, redirect,request, url_for, session, logging
+from flask import Flask, render_template,request, redirect,request, jsonify, url_for, session, logging
+from flask.ext.login import (current_user, LoginManager,login_user, logout_user, login_required)
 import os
 import psycopg2
+from flask import session
 
 app=Flask(__name__,template_folder='template',static_folder='static')
 
@@ -18,9 +20,43 @@ def connection():
             curs.execute
     return conn
 
+@app.route("/loginadmin")
+def loginadmin():
+    if request.method == 'POST':
+        session.pop('user',None)
+        if request.form['password'] == 'password':
+            session['user'] = request.form['email']
+            return redirect(url_for('protected'))
+    return render_template('loginadmin.html')
+
+@app.route('/protected')
+def protected():
+    if g.user:
+        return render_template('protected.html',user=session['user'])
+    return redirect(url_for('loginadmin'))
+
+@app.route('/dropsession')
+def dropsession():
+    session.pop('user',None)
+    return render_template('loginadmin.html')
+
+@app.before_request
+def before_request():
+    g.user = None
+
+    if 'user' in session:
+        g.user = session['user']
+	
+@app.route('/logout')
+def logout():
+    # remove the username from the session if it's there
+    session.pop('email', None)
+    return redirect(url_for('loginadmin'))
+
+
 @app.route("/index")
 def index():
-    return render_template('index.html')
+	return render_template("index.html")
 
 @app.route("/clinic")
 def clinic():
@@ -277,6 +313,32 @@ def clinicstaff():
 	conn.close()	
 	return render_template("clinicstaff.html", clinicstaff = clinicstaff)
 
+@app.route("/updateclinicstaff")
+def updateclinicstaff():
+	ucs = []
+	conn = connection()
+	cursor = conn.cursor()
+	if request.method == 'GET':
+		cursor.execute("SELECT * FROM ih_appointment WHERE medicine_id = %s", (str(medicine_id)))
+		for row in cursor.fetchall():
+			ucs.append({"medicine_id": row[0], "medicine_name": row[1], "generic_name": row[2], "brand_name": row[3], "manufacturer": row[4], "dosage": row[5], "medicine_type": row[6], "description": row[7]})
+		conn.close()
+		return render_template("updatemedicine.html", medicine = ucs[0])
+	if request.method == 'POST':
+		medicine_id = str(request.form["medicine_id"])p
+		medicine_name = str(request.form["medicine_name"])
+		generic_name = str(request.form["generic_name"])
+		brand_name = str(request.form["brand_name"])
+		manufacturer = str(request.form["manufacturer"])
+		dosage = str(request.form["dosage"])
+		medicine_type = str(request.form["medicine_type"])
+		description = str(request.form["description"])
+		cursor.execute("UPDATE medicine SET (medicine_id, medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description) = (%s,%s,%s, %s, %s, %s, %s, %s)  WHERE medicine_id =(%s)",
+		(medicine_id, medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description))
+		conn.commit()
+		conn.close()
+		return redirect('/medicine')
+
 @app.route("/medicinestaff")
 def medicinestaff():
 	return render_template("medicinestaff.html")
@@ -334,8 +396,23 @@ def vaccinationresident():
 
 @app.route("/residentas")
 def residentas():
-	return render_template("clinicresident.html")
+	if request.method == 'POST':
+		medicine_id = request.form['medicine_id']
+		medicine_name = request.form['medicine_name']
+		generic_name = request.form['generic_name']
+		brand_name = request.form['brand_name']
+		manufacturer = request.form['manufacturer']
+		dosage  = request.form['dosage ']
+		medicine_type = request.form['medicine_type']
+		description = request.form['description']
 
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute('INSERT INTO ih_medicine (medicine_id, medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description)'' VALUES (%s,%s,%s, %s, %s, %s, %s, %s)', 
+	[medicine_id, medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description])
+	conn.commit()
+	conn.close()
+	return render_template("clinicresident.html")
 
 @app.route("/medicineresident")
 def medicineresident():
