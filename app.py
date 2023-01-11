@@ -2,7 +2,7 @@ from distutils.log import debug
 from flask import Flask, render_template,request, redirect,request, jsonify, url_for, session, logging
 from flask.ext.login import (current_user, LoginManager,login_user, logout_user, login_required)
 import os
-import psycopg2
+import psycopg2-binary
 from flask import session
 
 app=Flask(__name__,template_folder='template',static_folder='static')
@@ -14,7 +14,7 @@ def connection():
     d = 'bms' 
     u = 'postgres' 
     p = 'wew123WEW'
-    conn = psycopg2.connect(host=s, user=u, password=p, database=d)
+    conn = psycopg2-binary.connect(host=s, user=u, password=p, database=d)
     with conn:
         with conn.cursor() as curs:
             curs.execute
@@ -325,7 +325,7 @@ def updateclinicstaff():
 		conn.close()
 		return render_template("updatemedicine.html", medicine = ucs[0])
 	if request.method == 'POST':
-		medicine_id = str(request.form["medicine_id"])p
+		medicine_id = str(request.form["medicine_id"])
 		medicine_name = str(request.form["medicine_name"])
 		generic_name = str(request.form["generic_name"])
 		brand_name = str(request.form["brand_name"])
