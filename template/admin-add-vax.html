@@ -60,14 +60,14 @@
                         </a>
                     </li>
     
-                    <li class="side-nav-item">
+                    <li class="badge-primary-lighten side-nav-item">
                         <a href="/vaccination" class="side-nav-link">
                             <i class="uil-syringe"></i>
                             <span> Vaccination Service</span>
                         </a>
                     </li>
     
-                    <li class="badge-primary-lighten side-nav-item">
+                    <li class="side-nav-item">
                         <a href="/clinic" class="side-nav-link">
     
                             <i class="uil-clipboard-alt"></i>
@@ -190,7 +190,7 @@
                     <div class="row">
                         <div class="text-center col-sm-12">
                             <div class="page-title-box">
-                                <h4 class="page-title">Add Clinic Schedule</h4>
+                                <h4 class="page-title">Add Vaccine</h4>
                             </div>
                         </div>
 
@@ -201,28 +201,101 @@
                                 <div class="card border-secondary border">
                                     <div class="card-body">
                                         <thead>
-                                            <p>Please fill in the details below to successfully add a new Service.</p>
+                                            <p>Please fill in the details below to successfully add a Schedule.</p>
 
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <form action="/addclinic" method = "POST">
-                                                            <label for="clinic_services_name" class="form-label">Service
-                                                            Name:&nbsp;<span style="color:#ff0000">*</span></label>
-                                                            <input type="text"  name="clinic_services_name" class="form-control">
+                                                        <form action="/addvaccination" method="POST">
+                                                            <label for="vaccine_id" class="form-label">Vaccine
+                                                                ID:&nbsp;<span
+                                                                    style="color:#ff0000">*</span></label>
+                                                            <input type="text" name="vaccine_id"
+                                                                class="form-control">
                                                             </span>
                                                         </form>
                                                     </td>
-                                                        <br>
-                                                        <td>
-                                                            <a href="clinic.html">
-                                                                <button class="btn btn-secondary" type="submit">Cancel</button>
-                                                            </a>
-            
-                                                            <a href="clinic.html">
-                                                                <button class="btn btn-primary" type="submit">Submit</button>
-                                                            </a>
-                                                        </td>
+                                                    <td>
+                                                            <label for="vaccine_name" class="form-label">Vaccine
+                                                                Name:&nbsp;<span
+                                                                    style="color:#ff0000">*</span></label>
+                                                            <input type="text" name="vaccine_name"
+                                                                class="form-control">
+                                                            </span>
+                                                    </td>
+                                                    <td>
+                                                        <label for="brand_manufacturer" class="form-label">Brand
+                                                            Manufacturer:&nbsp;<span
+                                                                style="color:#ff0000">*</span></label>
+                                                        <input type="text" name="brand_manufacturer"
+                                                            class="form-control">
+                                                        </span>
+                                                    </td><br>
+                                                    <td>
+                                                        <label for="batch_no" class="form-label">Batch
+                                                            No:&nbsp;<span
+                                                                style="color:#ff0000">*</span></label>
+                                                        <input type="text" name="lot_name" class="form-control">
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <label for="lot_no" class="form-label">Lot
+                                                            No:&nbsp;<span
+                                                                style="color:#ff0000">*</span></label>
+                                                        <input type="text" name="lot_name" class="form-control">
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <label for="vax_dosage"
+                                                            class="form-label">Dosage:&nbsp;<span
+                                                                style="color:#ff0000">*</span></label>
+                                                        <input type="text" name="vax_dosage" class="form-control">
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <label for="tech_platform" class="form-label">Tech
+                                                            Platform:&nbsp;<span
+                                                                style="color:#ff0000">*</span></label>
+                                                        <input type="text" name="tech_platform" class="form-control">
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <label for="vaxfda_approval" class="form-label">Vaccine PH FDA
+                                                            Approval:&nbsp;<span
+                                                                style="color:#ff0000">*</span></label>
+                                                        <input type="text" name="vaxfda_approval" class="form-control">
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <label for="storage_requirement" class="form-label">Storage
+                                                            Requirement:&nbsp;<span
+                                                                style="color:#ff0000">*</span></label>
+                                                        <input type="text" name="storage_requirement" class="form-control">
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <label for="vax_efficiency" class="form-label">Vaccine
+                                                            Efficiency:&nbsp;<span
+                                                                style="color:#ff0000">*</span></label>
+                                                        <input type="text" name="vax_efficiency" class="form-control">
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <label for="vaxside_effect" class="form-label">Vaccine Side
+                                                            Effect:&nbsp;<span
+                                                                style="color:#ff0000">*</span></label>
+                                                        <input type="text" name="vaxside_effect" class="form-control">
+                                                        </span>
+                                                    </td>
+                                                    <br>
+                                                    <td>
+                                                        <a href="vaccination.html">
+                                                            <button class="btn btn-secondary" type="submit">Cancel</button>
+                                                        </a>
+        
+                                                        <a href="vaccination.html">
+                                                            <button class="btn btn-primary" type="submit">Submit</button>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             </tbody>
