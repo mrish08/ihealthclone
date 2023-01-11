@@ -2,7 +2,6 @@ from distutils.log import debug
 from flask import Flask, render_template,request, redirect,request, url_for, session, logging
 import os
 import psycopg2
-import flask_login
 
 app=Flask(__name__,template_folder='template',static_folder='static')
 
@@ -250,7 +249,7 @@ def adminhaptclinic():
 
 @app.route("/loginadmin", methods=["POST", "GET"])
 def loginadmin():
-	return render_template("loginadmin.html")
+ return render_template("loginadmin.html")
 
 
 @app.route("/loginstaff")
