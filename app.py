@@ -18,7 +18,7 @@ def connection():
             curs.execute
     return conn
 
-@app.route("/indexx")
+@app.route("/indesx")
 def index():
     return render_template('index.html')
 
