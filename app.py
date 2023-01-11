@@ -18,7 +18,8 @@ def connection():
         with conn.cursor() as curs:
             curs.execute
     return conn
-
+#
+""""
 @app.route("/loginadmin")
 def loginadmin():
     if request.method == 'POST':
@@ -51,7 +52,8 @@ def logout():
     # remove the username from the session if it's there
     session.pop('email', None)
     return redirect(url_for('loginadmin'))
-
+"""
+#
 
 @app.route("/index")
 def index():
