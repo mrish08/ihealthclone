@@ -204,7 +204,22 @@ def medicineresident():
 
 @app.route("/residenthaptvax")
 def residenthaptvax():
-	return render_template("residenthistory-apt-vax.html")
+	return render_template("staffhistory-apt-vax.html")
+
+@app.route("/staffhaptdental")
+def staffhaptdental():
+	return render_template("staffhistory-apt-dental.html")
+
+@app.route("/staffhaptmedicine")
+def staffhaptmedicine():
+	return render_template("staffhistory-apt-medicine.html")
+
+@app.route("/staffhaptclinic")
+def staffhaptclinic():
+	return render_template("staffhistory-apt-clinic.html")
+@app.route("/staffhaptvax")
+def staffhaptvax():
+	return render_template("staffhistory-apt-vax.html")
 
 @app.route("/residenthaptdental")
 def residenthaptdental():
