@@ -86,14 +86,14 @@
               <!-- <h5 class="card-title text-center mb-5 fw-light fs-5">Sign In</h5> -->
               <h2 class="card-title text-center mb-4 fw-bold fs-7">LOGIN as ADMIN</h2>
               <!-- <h1 class="card-title text-left mt-1 mb-3 fw-light fs-6">Enter your email to continue:</h1> -->
-              <form>
+              <form action="/loginadmin", method="POST">
                 <div class="form-floating mb-3">
-                  <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="name@example.com">
-                  <label for="inputEmail">Email address</label>
+                  <input type="text" class="form-control" id="email" name="email" placeholder="name@example.com" required/>
+                  <label for="email">Email address</label>
                 </div>
                 <div class="form-floating mb-3">
-                  <input type="password" class="form-control" id="inputPasword" name="inputPasword"placeholder="Password">
-                  <label for="inputPasword">Password</label>
+                  <input type="text" class="form-control" id="pasword" name="pasword"placeholder="Password" required/>
+                  <label for="pasword">Password</label>
                 </div>
 
                 <div class="d-grid">
