@@ -201,7 +201,7 @@
                             <div class="card card-body">
                                     <div class="tab-content">
                                         
-                                    <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                                    <table id="basic-datatable" class="table table-hover dt-responsive nowrap w-100">
                                         <thead>
                                             <tr class="table-light">
                                                 <th>Schedule Name</th>
@@ -227,33 +227,6 @@
                                                     </form>
                                                 </td>
                                             </tr>
-    
-                                            <tr>
-                                                <td>{{ schedule.schedule }}</td>
-                                                <td>{{ schedule.schedule_name }}</td>
-                                                <td class="table-action">
-                                                    <form class="action-icon">
-                                                        <button type="button" class="btn btn-warning">
-                                                            <a href="updateschedule/{{ schedule.clinic_sched_id }}">
-                                                            <i class="mdi mdi-account-edit-outline"></i>   </a>
-                                                        </button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>{{ schedule.schedule }}</td>
-                                                <td>{{ schedule.schedule_name }}</td>
-                                                <td class="table-action">
-                                                    <form class="action-icon">
-                                                        <button type="button" class="btn btn-warning">
-                                                            <a href="updateschedule/{{ schedule.clinic_sched_id }}">
-                                                            <i class="mdi mdi-account-edit-outline"></i>   </a>
-                                                        </button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-
-      
                                             {% endfor %}  
                                         </tbody>
                                     </table>
@@ -265,29 +238,23 @@
                     
     
                     <!-- start of second table content-->
+                        <div class="col-sm-2">
+                            <div class="card cta-box bg-purple text-white"><br> <br>
+                                    <div class="text-center">
+                                        <h2 class="mt-0"><i class="mdi mdi-bullhorn-outline"></i></h2>
+                                        <h3 class="m-0 fw-normal">Need to <b>Add</b> a schedule?</h3>
 
-                    <div class="col-sm-2">
-                        <div class="card cta-box bg-purple text-white"><br> <br>
-                                <div class="text-center">
-                                    <h2 class="mt-0"><i class="mdi mdi-bullhorn-outline"></i></h2>
-                                    <h3 class="m-0 fw-normal">Need to <b>Add</b> a schedule?</h3>
+                                        <img class="my-3" src="../../static/images/add.png" width="170" alt="Generic placeholder image">
 
-                                    <img class="my-3" src="../../static/images/add.png" width="170" alt="Generic placeholder image">
+                                        <br>
 
-                                    <br>
-
-                                    <a href="admin-add-schedule.html" class="btn btn-sm btn-light btn-rounded">Click Here <i class="mdi mdi-arrow-right"></i></a><br> <br>
-                                </div><br>
+                                        <a href="admin-add-schedule.html" class="btn btn-sm btn-light btn-rounded">Click Here <i class="mdi mdi-arrow-right"></i></a><br> <br>
+                                    </div><br>
                             </div>
-                            <!-- end card-body -->
-                        </div>
-                        <!-- end card-->
-
-                    </div> <!-- end col-->
-
-
-                </div>
-            <!-- end of table content-->
+                            <!-- end card-->
+                        </div> <!-- end col-->
+                    </div>
+                <!-- end of table content-->
     
     <!-- ============================================================== -->
     <!-- End Page content -->
