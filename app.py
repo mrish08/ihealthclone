@@ -25,7 +25,7 @@ def index():
 @app.route("/clinic")
 def clinic():
 
-	return render_template("clinic.html", clinic = clinic)
+	return render_template("clinic.html")
 
 
 @app.route("/addclinic", methods = ['POST'])
@@ -49,7 +49,7 @@ def dental():
 @app.route("/vaccination")
 def vaccination():
 	
-	return render_template("vaccination.html", vaccination = vaccination)
+	return render_template("vaccination.html")
 
 @app.route("/addvaccination", methods = ['POST'])
 def addvaccination():
@@ -95,7 +95,7 @@ def updatemedicine(medicine_id):
 
 @app.route("/adminaptvax")
 def adminaptvax():
-	return render_template("admin-apt-vax.html", adminaptvax = adminaptvax)
+	return render_template("admin-apt-vax.html")
 
 @app.route("/adminaptdental")
 def adminaptdental():
@@ -149,7 +149,7 @@ def schedulestaff():
 @app.route("/clinicstaff")
 def clinicstaff():
 
-	return render_template("clinicstaff.html", clinicstaff = clinicstaff)
+	return render_template("clinicstaff.html")
 
 @app.route("/medicinestaff")
 def medicinestaff():
@@ -162,7 +162,7 @@ def updatemedicinestaff(medicine_id):
 @app.route("/vaccinationstaff")
 def vaccinationstaff():
 	
-	return render_template("vaccinationstaff.html", vaccinationstaff = vaccinationstaff)
+	return render_template("vaccinationstaff.html")
 
 @app.route('/updatevaccinationstaff/<int:vaccine_id>', methods = ['GET', 'POST'])
 def updatevaccinationstaff(vaccine_id):
