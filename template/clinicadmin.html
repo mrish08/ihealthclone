@@ -2,9 +2,10 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">Schedule | iHealth</title>
+    <meta charset="utf-8">
+    <title>Clinic Service | iHealth</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
+    <meta content="" name="description">
     <meta content="Coderthemes" name="author">
     <!-- App favicon -->
     <link rel="shortcut icon" href="../../static/images/brgyms-icon-white.png">
@@ -72,7 +73,7 @@
                                 <a href="/vaccination">Vaccine</a>
                             </li>
                             <li>
-                                <a class="badge-primary-lighten" href="/medicine">Medicine</a>
+                                <a href="/medicine">Medicine</a>
                             </li>
                             <li>
                                 <a href="/clinic">Clinic</a>
@@ -81,7 +82,7 @@
                     </div>
                 </li>
 
-                <li class="side-nav-item">
+                <li class="badge-primary-lighten  side-nav-item">
                     <a href="clinicadmin.html" class="side-nav-link" >
                         <i class="uil-clipboard-alt"></i>
                         <span> Clinic Service </span>
@@ -140,7 +141,6 @@
         </div>
     </div>
 
-
     <!-- ============================================================== -->
     <!-- Start Page Content here -->
     <!-- ============================================================== -->
@@ -184,100 +184,61 @@
                     </button>
                 </div>
                 <!-- end Topbar -->
-
+    
                 <!-- Start Content-->
                 <div class="container-fluid">
-
+    
                     <!-- start page title -->
                     <div class="row">
-                        <div class="text-center col-sm-12">
+                        <div class="col-12">
                             <div class="page-title-box">
-                                <h4 class="page-title">Add Medicine</h4>
+                                <h4 class="page-title">Clinic Service</h4>
                             </div>
                         </div>
-
+    
                         <!-- end page title -->
-
-                        <div class="row justify-content-center">
-                            <div class="col-5">
-                                <div class="card border-secondary border">
-                                    <div class="card-body">
+    
+                        <!-- start table content -->
+                        <div class="col-12">
+                            <div class="card card-body">
+                                    <div class="tab-content">
+                                        
+                                    <table id="basic-datatable" class="table table-hover dt-responsive nowrap w-100">
                                         <thead>
-                                            <p>Please fill in the details below to successfully add a Medicine.</p>
-
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <form action="/addmedicine" method="POST">
-                                                            <label for="medicine_name" class="form-label">Medicine
-                                                                Name:&nbsp;<span style="color:#ff0000">*</span></label>
-                                                            <input type="text" name="medicine_name" class="form-control">
-                                                            </span>
-                                                        </form>
-                                                    </td>
-                                                    <td>
-                                                        <label for="generic_name" class="form-label">Generic Name:&nbsp;<span
-                                                                style="color:#ff0000">*</span></label>
-                                                        <input type="text" name="generic_name" class="form-control">
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <label for="brand_name" class="form-label">Brand Name:&nbsp;<span
-                                                                style="color:#ff0000">*</span></label>
-                                                        <input type="text" name="brand_name" class="form-control">
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <label for="manufacturer" class="form-label">Manufacturer:&nbsp;<span
-                                                                style="color:#ff0000">*</span></label>
-                                                        <input type="text" name="manufacturer" class="form-control">
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <label for="dosage" class="form-label">Dosage:&nbsp;<span
-                                                                style="color:#ff0000">*</span></label>
-                                                        <input type="text" name="dosage" class="form-control">
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <label for="medicine_type" class="form-label">Medicine Type:&nbsp;<span
-                                                                style="color:#ff0000">*</span></label>
-                                                        <input type="text" name="medicine_type" class="form-control">
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <label for="description" class="form-label">Description:&nbsp;<span
-                                                                style="color:#ff0000">*</span></label>
-                                                        <input type="text" name="description" class="form-control">
-                                                        </span>
-                                                    </td>
-                                                    <br>
-                                                    <td>
-                                                        <a href="medicine.html">
-                                                            <button class="btn btn-secondary" type="submit">Cancel</button>
-                                                        </a>
-        
-                                                        <a href="medicine.html">
-                                                            <button class="btn btn-primary" type="submit">Submit</button>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
+                                            <tr class="table-light">
+                                                <th>Schedule Name</th>
+                                                <th>Time</th>
+                                                <th>Action</th>
+                                            </tr>
                                         </thead>
                                     
-                                    </div>
-                                    <!-- end col-->
-                                </div>
-                                <!-- end row-->
-
-                            </div>
-                            <!-- container -->
-
-                        </div>
-                        <!-- content -->
-                    </div>
-                    <!-- end row of table content-->
+                                    
+                                        <tbody>
     
+                                            {% for schedule in schedule %}
+    
+                                            <tr>
+                                                <td>{{ schedule.schedule }}</td>
+                                                <td>{{ schedule.schedule_name }}</td>
+                                                <td class="table-action">
+                                                    <form class="action-icon">
+                                                        <button type="button" class="btn btn-warning">
+                                                            <a href="updateschedule/{{ schedule.clinic_sched_id }}">
+                                                            <i class="mdi mdi-account-edit-outline"></i>   </a>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}  
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- end of the first table-->
+
+                    
+                
     <!-- ============================================================== -->
     <!-- End Page content -->
     <!-- ============================================================== -->
@@ -312,16 +273,10 @@
     <!-- demo app -->
     <script src="../../static/js/pages/demo.datatable-init.js"></script>
     <script src="../../static/js/pages/demo.toastr.js"></script>
-    <script src="../../static/js/pages/demo.datatable-init.js"></script>
-    <script src="../../static/js/pages/demo.toastr.js"></script>
     <script src="../../static/js/pages/list.js"></script>
     <!-- end demo js-->
-
-    <!-- Datatable Init js -->
-    <script src="assets/js/pages/demo.datatable-init.js"></script>
 
 
 </body>
 
 </html>
-            

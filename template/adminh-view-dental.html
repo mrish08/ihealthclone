@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">Schedule | iHealth</title>
+    <meta charset="utf-8">Appointment History | iHealth</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
     <meta content="Coderthemes" name="author">
@@ -72,7 +72,7 @@
                                 <a href="/vaccination">Vaccine</a>
                             </li>
                             <li>
-                                <a class="badge-primary-lighten" href="/medicine">Medicine</a>
+                                <a href="/medicine">Medicine</a>
                             </li>
                             <li>
                                 <a href="/clinic">Clinic</a>
@@ -127,7 +127,7 @@
                                 <a href="/adminhaptclinic">Clinic Service</a>
                             </li>
                             <li>
-                                <a href="/adminhaptdental">Dental Service</a>
+                                <a class="badge-primary-lighten" href="/adminhaptdental">Dental Service</a>
                             </li>
                             <li>
                                 <a href="/adminhaptmedicine">Medicine Pickup</a>
@@ -139,7 +139,6 @@
             
         </div>
     </div>
-
 
     <!-- ============================================================== -->
     <!-- Start Page Content here -->
@@ -192,7 +191,7 @@
                     <div class="row">
                         <div class="text-center col-sm-12">
                             <div class="page-title-box">
-                                <h4 class="page-title">Add Medicine</h4>
+                                <h4 class="page-title">Dental Appointment History</h4>
                             </div>
                         </div>
 
@@ -203,63 +202,28 @@
                                 <div class="card border-secondary border">
                                     <div class="card-body">
                                         <thead>
-                                            <p>Please fill in the details below to successfully add a Medicine.</p>
+                                            <p>Please fill in the details below to successfully add a new Service.</p>
 
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <form action="/addmedicine" method="POST">
-                                                            <label for="medicine_name" class="form-label">Medicine
-                                                                Name:&nbsp;<span style="color:#ff0000">*</span></label>
-                                                            <input type="text" name="medicine_name" class="form-control">
+                                                        <form action="/addclinic" method = "POST">
+                                                            <label for="clinic_services_name" class="form-label">Service
+                                                            Name:&nbsp;<span style="color:#ff0000">*</span></label>
+                                                            <input type="text"  name="clinic_services_name" class="form-control">
                                                             </span>
                                                         </form>
                                                     </td>
-                                                    <td>
-                                                        <label for="generic_name" class="form-label">Generic Name:&nbsp;<span
-                                                                style="color:#ff0000">*</span></label>
-                                                        <input type="text" name="generic_name" class="form-control">
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <label for="brand_name" class="form-label">Brand Name:&nbsp;<span
-                                                                style="color:#ff0000">*</span></label>
-                                                        <input type="text" name="brand_name" class="form-control">
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <label for="manufacturer" class="form-label">Manufacturer:&nbsp;<span
-                                                                style="color:#ff0000">*</span></label>
-                                                        <input type="text" name="manufacturer" class="form-control">
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <label for="dosage" class="form-label">Dosage:&nbsp;<span
-                                                                style="color:#ff0000">*</span></label>
-                                                        <input type="text" name="dosage" class="form-control">
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <label for="medicine_type" class="form-label">Medicine Type:&nbsp;<span
-                                                                style="color:#ff0000">*</span></label>
-                                                        <input type="text" name="medicine_type" class="form-control">
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <label for="description" class="form-label">Description:&nbsp;<span
-                                                                style="color:#ff0000">*</span></label>
-                                                        <input type="text" name="description" class="form-control">
-                                                        </span>
-                                                    </td>
-                                                    <br>
-                                                    <td>
-                                                        <a href="medicine.html">
-                                                            <button class="btn btn-secondary" type="submit">Cancel</button>
-                                                        </a>
-        
-                                                        <a href="medicine.html">
-                                                            <button class="btn btn-primary" type="submit">Submit</button>
-                                                        </a>
+                                                        <br>
+                                                        <td>
+                                                            <a href="">
+                                                                <button class="btn btn-secondary" type="submit">Cancel</button>
+                                                            </a>
+            
+                                                            <a href="">
+                                                                <button class="btn btn-primary" type="submit">Submit</button>
+                                                            </a>
+                                                        </td>
                                                     </td>
                                                 </tr>
                                             </tbody>
