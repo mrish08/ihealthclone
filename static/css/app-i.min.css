@@ -9248,6 +9248,10 @@ fieldset:disabled .btn {
     background-color: #fa5c7c !important
 }
 
+.bg-purple {
+    background-color: #6b5eae !important
+}
+
 .bg-light {
     background-color: #eef2f7 !important
 }
@@ -17284,6 +17288,7 @@ h6 {
 .cta-box {
     background-image: url(../images/bg-pattern.png);
     background-size: cover
+
 }
 
 .cta-box .cta-box-title {
