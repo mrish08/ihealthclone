@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Admin| iHealth</title>
+    <title>Admin | iHealth</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="" name="description">
     <meta content="Coderthemes" name="author">
@@ -44,14 +44,14 @@
             <!--- Sidemenu -->
             <ul class="side-nav">
 
-            <li class="side-nav-title side-nav-item">Menu</li>
+                <li class="side-nav-title side-nav-item">Menu</li>
 
-                <li class="badge-primary-lighten side-nav-item">
-                    <a href="/index" class="side-nav-link" >
-                        <i class="uil-chart-pie"></i>
-                        <span> Dashboard </span>
-                    </a>
-                </li>
+                    <li class="badge-primary-lighten side-nav-item">
+                        <a href="/index" class="side-nav-link">
+                            <i class="uil-chart-pie"></i>
+                            <span> Dashboard </span>
+                        </a>
+                    </li>
 
                 <li class="side-nav-item">
                     <a href="/schedule" class="side-nav-link">
@@ -61,25 +61,30 @@
                 </li>
 
                 <li class="side-nav-item">
-                    <a href="/vaccination" class="side-nav-link">
-                        <i class="uil-syringe"></i>
-                        <span> Vaccination Service</span>
+                    <a data-bs-toggle="collapse" href="#sidebarEcommerce" aria-expanded="false" aria-controls="sidebarEcommerce" class="side-nav-link">
+                        <i class="uil-folder-plus"></i>
+                        <span> Inventory </span>
+                        <span class="menu-arrow"></span>
                     </a>
+                    <div class="collapse" id="sidebarEcommerce">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a href="/vaccination">Vaccine</a>
+                            </li>
+                            <li>
+                                <a href="/medicine">Medicine</a>
+                            </li>
+                            <li>
+                                <a href="/clinic">Clinic</a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
 
                 <li class="side-nav-item">
-                    <a href="/clinic" class="side-nav-link">
-
+                    <a href="clinicadmin.html" class="side-nav-link" >
                         <i class="uil-clipboard-alt"></i>
                         <span> Clinic Service </span>
-                    </a>
-                </li>
-
-                <li class="side-nav-item">
-
-                    <a href="/medicine" class="side-nav-link">
-                        <i class="uil-home-alt"></i>
-                        <span>Medicine Pick Up</span>
                     </a>
                 </li>
 
@@ -130,15 +135,11 @@
                         </ul>
                     </div>
                 </li>
+            </ul><!-- Sidebar -left -->
 
-            </ul>
         </div>
-    </li>
-</ul>
-        <!-- Sidebar -left -->
-
     </div>
-    <!-- Left Sidebar End -->
+
 
     <!-- ============================================================== -->
     <!-- Start Page Content here -->

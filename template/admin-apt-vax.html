@@ -42,17 +42,17 @@
                     </span>
                 </a>
     
-            <!--- Sidemenu -->
+                            <!--- Sidemenu -->
             <ul class="side-nav">
 
                 <li class="side-nav-title side-nav-item">Menu</li>
 
-                <li class="side-nav-item">
-                    <a href="/index" class="side-nav-link">
-                        <i class="uil-chart-pie"></i>
-                        <span> Dashboard </span>
-                    </a>
-                </li>
+                    <li class="side-nav-item">
+                        <a href="/index" class="side-nav-link" >
+                            <i class="uil-chart-pie"></i>
+                            <span> Dashboard </span>
+                        </a>
+                    </li>
 
                 <li class="side-nav-item">
                     <a href="/schedule" class="side-nav-link">
@@ -62,25 +62,30 @@
                 </li>
 
                 <li class="side-nav-item">
-                    <a href="/vaccination" class="side-nav-link">
-                        <i class="uil-syringe"></i>
-                        <span> Vaccination Service</span>
+                    <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarEcommerce" class="side-nav-link">
+                        <i class="uil-folder-plus"></i>
+                        <span> Inventory </span>
+                        <span class="menu-arrow"></span>
                     </a>
+                    <div class="collapse" id="sidebarTasks">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a class="badge-primary-lighten" href="/vaccination">Vaccine</a>
+                            </li>
+                            <li>
+                                <a href="/medicine">Medicine</a>
+                            </li>
+                            <li>
+                                <a href="/clinic">Clinic</a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
 
                 <li class="side-nav-item">
-                    <a href="/clinic" class="side-nav-link">
-
+                    <a href="clinicadmin.html" class="side-nav-link" >
                         <i class="uil-clipboard-alt"></i>
                         <span> Clinic Service </span>
-                    </a>
-                </li>
-
-                <li class="side-nav-item">
-
-                    <a href="/medicine" class="side-nav-link">
-                        <i class="uil-home-alt"></i>
-                        <span>Medicine Pick Up</span>
                     </a>
                 </li>
 
@@ -131,17 +136,16 @@
                         </ul>
                     </div>
                 </li>
-            </ul>
+            </ul><!-- Sidebar -left -->
+            
         </div>
-    </li>
-</ul>
-        <!-- Sidebar -left -->
-
     </div>
-    <!-- Left Sidebar End -->
-    </header>
 
- <div class="wrapper">
+<!-- ============================================================== -->
+<!-- Start Page Content here -->
+<!-- ============================================================== -->
+
+    <div class="wrapper">
 
         <div class="content-page">
             <div class="content">
