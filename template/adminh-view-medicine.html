@@ -189,62 +189,103 @@
 
                     <!-- start page title -->
                     <div class="row">
-                        <div class="text-center col-sm-12">
+                        <div class="col-sm-12">
                             <div class="page-title-box">
-                                <h4 class="page-title">Medicine Pick Up History</h4>
+                                <h4 class="page-title">Medicine Request History Report</h4>
                             </div>
                         </div>
 
-                        <!-- end page title -->
+                        <div class="col-sm-12" id="add-button-admin">
+                            <a href="" class="btn btn-primary">Print Report</a>
+                        </div>
+                    </div> <br>
 
-                        <div class="row justify-content-center">
-                            <div class="col-5">
-                                <div class="card border-secondary border">
-                                    <div class="card-body">
-                                        <thead>
-                                            <p>Please fill in the details below to successfully add a new Service.</p>
+                    <!-- end page title -->
 
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <form action="/addclinic" method = "POST">
-                                                            <label for="clinic_services_name" class="form-label">Service
-                                                            Name:&nbsp;<span style="color:#ff0000">*</span></label>
-                                                            <input type="text"  name="clinic_services_name" class="form-control">
-                                                            </span>
-                                                        </form>
-                                                    </td>
-                                                        <br>
-                                                        <td>
-                                                            <a href="">
-                                                                <button class="btn btn-secondary" type="submit">Cancel</button>
-                                                            </a>
-            
-                                                            <a href="">
-                                                                <button class="btn btn-primary" type="submit">Submit</button>
-                                                            </a>
-                                                        </td>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </thead>
-                                    
+                    <!-- Start records-->
+                    <div class="col-sm-12">
+                        <div class="card card-body">
+                            <div class="tab-content">
+                                <div class="d-flex justify-content-center mt-0 mb-0 navbar-light"><span>
+                                        <h3>REPORT DETAILS</h3>
+                                    </span></div> <br>
+
+                                <div class="page-separator">
+                                    <div class="page-separator__text">
+                                        <h4>CONSULTATION DETAILS</h4>
                                     </div>
-                                    <!-- end col-->
                                 </div>
-                                <!-- end row-->
+
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <p><strong>Appointment ID:</strong></p>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <p><strong>Date:</strong></p>
+                                    </div>
+                                </div>
+
+                                <div class="page-separator">
+                                    <div class="page-separator__text">
+                                        <h4>DIAGNOSIS DETAILS</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <p><strong>Diagnosis:</strong></p>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <p><strong>Description: </strong></p>
+                                    </div>
+                                </div> <br>
+
+                                <div class="page-separator">
+                                    <div class="page-separator__text">
+                                        <h4>PRESCRIPTION DETAILS</h4>
+                                    </div>
+                                </div>
+                                <p><strong>Prescription Code: </strong>123456578</p>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <p><strong>Patient:</strong></p>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <p><strong>Age:</strong></p>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <p><strong>Sex:</strong></p>
+                                    </div>
+                                </div>
+                                <p><strong>Address: </strong>123 abc st. quezon city</p>
+                                <p><strong>Date: </strong>Jan, 13 2023</p>
+                                <br>
+                                <br><br>
+                                <p><strong>ibuprofen (Motrin® or Advil®)</strong></p>
+                                <p>Take 400–600 mg every 6–8 hours. Ibuprofen will help with
+                                    pain relief and as an anti-inflammatory.
+                                </p>
+
+
+                                <br> <br>
+                                <p><strong>Dr.</strong></p>
+                                <p><strong>Lic No.: </strong>1234</p>
+                                <p><strong>PTR No.: </strong>1234567</p>
+                                <div class="modal-footer"><a href="">
+                                        <button type="button" class="btn btn-light" data-dismiss="">Back
+                                        </button>
+                                </div>
 
                             </div>
-                            <!-- container -->
-
                         </div>
-                        <!-- content -->
                     </div>
-                    <!-- end row of table content-->
-    
-    <!-- ============================================================== -->
-    <!-- End Page content -->
-    <!-- ============================================================== -->
+                </div>
+                <!--End records-->
+            </div>
+
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
 
 
 
