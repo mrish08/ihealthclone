@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Clinic Services| iHealth</title>
+    <title>Clinic Services | iHealth</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="" name="description">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
     <meta content="Coderthemes" name="author">
     <!-- App favicon -->
     <link rel="shortcut icon" href="../../static/images/brgyms-icon-white.png">
@@ -37,6 +37,9 @@
             <a href="/index" class="logo text-center logo-light">
                 <span class="logo-lg">
                     <img src="../../static/images/ihealth-logo-with-text.png" alt="" height="40">
+                </span>
+                <span class="logo-sm">
+                    <img src="../../static/images/bitbo.png" alt="" height="32">
                 </span>
             </a>
 
@@ -204,7 +207,7 @@
                         <div class="col-sm-12" id="add-button-admin">
                             <a href="/addc" class="btn btn-primary dripicons-plus">Add to Supply</a>
                         </div>
-                    </div>
+                    </div><br>
                     <!-- end page title -->
                     <!-- start table content -->
                     <div class="row">
@@ -230,11 +233,11 @@
                                                 <td>{{ clinic.clinic_item_stock}}</td>
                                                 <td class="table-action">
                                                     <form class="action-icon">
-                                                        <button type="button" class="btn btn-warning">
-                                                            <a href="updateclinic/{{ clinic.clinic_services_id }}">
-                                                                <i class="mdi mdi-account-edit-outline"></i>
-                                                            </a>
-                                                        </button>
+                                                        <a href="updateclinic/{{ clinic.clinic_services_id }}">
+                                                            <button type="button" class="btn btn-outline-info btn-rounded" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
+                                                                <i class="mdi mdi-circle-edit-outline"></i>
+                                                            </button>
+                                                        </a>
                                                     </form>
                                                 </td>
                                             </tr>

@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>Schedule| iHealth</title>
+    <title>Update Schedule | iHealth</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
     <meta content="Coderthemes" name="author">
@@ -20,6 +19,11 @@
     <link href="../../static/css/app-i.min.css" rel="stylesheet" type="text/css" id="light-style">
     <link href="../../static/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style">
 
+    <!-- Datatables css -->
+    <link href="../../static/css/vendor/select.bootstrap5.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/css/vendor/dataTables.bootstrap5.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/css/vendor/responsive.bootstrap5.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body class="loading" data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
@@ -29,58 +33,68 @@
         <div class="leftside-menu">
 
             <!-- LOGO -->
-            <a href="{{ url_for('index') }}" class="logo text-center logo-light">
+            <a href="/index" class="logo text-center logo-light">
                 <span class="logo-lg">
                     <img src="../../static/images/ihealth-logo-with-text.png" alt="" height="40">
                 </span>
+                <span class="logo-sm">
+                    <img src="../../static/images/bitbo.png" alt="" height="32">
+                </span>
             </a>
-
+            <!--- Sidemenu -->
             <ul class="side-nav">
 
                 <li class="side-nav-title side-nav-item">Menu</li>
 
-                <li class="side-nav-item">
-                    <a href="{{ url_for('index') }}" class="side-nav-link">
-                        <i class="uil-chart-pie"></i>
-                        <span> Dashboard </span>
-                    </a>
-                </li>
+                    <li class="side-nav-item">
+                        <a href="/index" class="side-nav-link" >
+                            <i class="uil-chart-pie"></i>
+                            <span> Dashboard </span>
+                        </a>
+                    </li>
 
-                <li class="side-nav-item">
-                    <a href="{{ url_for('schedule') }}" class="side-nav-link">
+                <li class="badge-primary-lighten side-nav-item">
+                    <a href="/schedule" class="side-nav-link">
                         <i class="uil-clipboard-alt"></i>
                         <span> Schedule </span>
                     </a>
                 </li>
 
                 <li class="side-nav-item">
-                    <a href="{{ url_for('vaccination') }}" class="side-nav-link">
-                        <i class="uil-syringe"></i>
-                        <span> Vaccination Service</span>
+                    <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarEcommerce" class="side-nav-link">
+                        <i class="uil-folder-plus"></i>
+                        <span> Inventory </span>
+                        <span class="menu-arrow"></span>
                     </a>
+                    <div class="collapse" id="sidebarTasks">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a href="/vaccination">Vaccine</a>
+                            </li>
+                            <li>
+                                <a href="/medicine">Medicine</a>
+                            </li>
+                            <li>
+                                <a href="/clinic">Clinic</a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
 
                 <li class="side-nav-item">
-                    <a href="{{ url_for('clinic') }}" class="side-nav-link">
-
+                    <a href="clinicadmin.html" class="side-nav-link" >
                         <i class="uil-clipboard-alt"></i>
                         <span> Clinic Service </span>
                     </a>
                 </li>
 
                 <li class="side-nav-item">
-
-                    <a href="/medicine" class="side-nav-link">
-                        <i class="uil-home-alt"></i>
-                        <span>Medicine</span>
-                </li>
-                <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#sidebarPages" aria-expanded="false" aria-controls="sidebarPages" class="side-nav-link">
+                    <a data-bs-toggle="collapse" href="#sidebarEcommerce" aria-expanded="false" aria-controls="sidebarEcommerce" class="side-nav-link">
                         <i class="mdi mdi-hospital mdi-hospital-box"></i>
                         <span> Appointment Services </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarPages">
+                    <div class="collapse" id="sidebarEcommerce">
                         <ul class="side-nav-second-level">
                             <li>
                                 <a href="/adminaptvax">Vaccination Service</a>
@@ -97,17 +111,38 @@
                         </ul>
                     </div>
                 </li>
-            </ul>
+
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
+                        <i class="mdi mdi-history"></i>
+                        <span> Appointment History </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarEmail">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a href="/adminhaptvax">Vaccination Service</a>
+                            </li>
+                            <li>
+                                <a href="/adminhaptclinic">Clinic Service</a>
+                            </li>
+                            <li>
+                                <a href="/adminhaptdental">Dental Service</a>
+                            </li>
+                            <li>
+                                <a href="/adminhaptmedicine">Medicine Pickup</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul><!-- Sidebar -left -->
+            
         </div>
-        <!-- Sidebar -left -->
-
     </div>
-    <!-- Left Sidebar End -->
 
-    <!-- ============================================================== -->
-    <!-- Start Page Content here -->
-    <!-- ============================================================== -->
-
+<!-- ============================================================== -->
+<!-- Start Page Content here -->
+<!-- ============================================================== -->
 
 <div class="wrapper">
 
@@ -116,88 +151,6 @@
             <!-- Topbar Start -->
             <div class="navbar-custom">
                 <ul class="list-unstyled topbar-menu float-end mb-0">
-                    <li class="dropdown notification-list d-lg-none">
-                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <i class="dripicons-search noti-icon"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
-                            <form class="p-3">
-                                <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
-                            </form>
-                        </div>
-                    </li>
-
-                    <li class="dropdown notification-list">
-                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <i class="dripicons-bell noti-icon"></i>
-                            <span class="noti-icon-badge"></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg">
-
-                            <!-- item-->
-                            <div class="dropdown-item noti-title">
-                                <h5 class="m-0">
-                                    <span class="float-end">
-                                        <a href="javascript: void(0);" class="text-dark">
-                                            <small>Clear All</small>
-                                        </a>
-                                    </span>Notification
-                                </h5>
-                            </div>
-
-                            <div style="max-height: 230px;" data-simplebar="">
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="notify-icon bg-info">
-                                        <i class="mdi mdi-account-plus"></i>
-                                    </div>
-                                    <p class="notify-details">New user registered.
-                                        <small class="text-muted">5 hours ago</small>
-                                    </p>
-                                </a>
-
-                                <!-- item-->
-                                <a href="blotter.html" class="dropdown-item notify-item">
-                                    <div class="notify-icon">
-                                        <img src="../../static/images/users/profile1.png" class="img-fluid rounded-circle" alt="">
-                                    </div>
-                                    <p class="notify-details">Juan Dela Cruz</p>
-                                    <p class="text-muted mb-0 user-msg">
-                                        <small>Requested a vaccination.</small>
-                                    </p>
-                                </a>
-
-                                <!-- item-->
-                                <a href="blotter.html" class="dropdown-item notify-item">
-                                    <div class="notify-icon">
-                                        <img src="../../static/images/users/profile2.png" class="img-fluid rounded-circle" alt="">
-                                    </div>
-                                    <p class="notify-details">Maria Clara</p>
-                                    <p class="text-muted mb-0 user-msg">
-                                        <small>Requested a booster.</small>
-                                    </p>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="notify-icon">
-                                        <img src="../../static/images/users/profile3.png" class="img-fluid rounded-circle" alt="">
-                                    </div>
-                                    <p class="notify-details">Sisa Usisa</p>
-                                    <p class="text-muted mb-0 user-msg">
-                                        <small>Requested a vaccine.</small>
-                                    </p>
-                                </a>
-                            </div>
-
-                            <!-- All-->
-                            <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
-                                View All
-                            </a>
-
-                        </div>
-                    </li>
 
                     <li class="dropdown notification-list">
                         <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
@@ -228,55 +181,6 @@
                 <button class="button-menu-mobile open-left">
                     <i class="mdi mdi-menu"></i>
                 </button>
-                <div class="app-search dropdown d-none d-lg-block">
-
-                    <div class="dropdown-menu dropdown-menu-animated dropdown-lg" id="search-dropdown">
-                        <!-- item-->
-                        <div class="dropdown-header noti-title">
-                            <h5 class="text-overflow mb-1">Found <span class="text-danger">17</span> results</h5>
-                        </div>
-
-                        <!-- item-->
-                        <div class="dropdown-header noti-title">
-                            <h6 class="text-overflow mb-2 text-uppercase">Users</h6>
-                        </div>
-
-                        <div class="notification-list">
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="d-flex">
-                                    <img class="d-flex me-2 rounded-circle" src="../../static/images/users/profile1.png" alt="Generic placeholder image" height="32">
-                                    <div class="w-100">
-                                        <h5 class="m-0 font-14">Juan Dela Cruz</h5>
-                                        <span class="font-12 mb-0">Brgy. Official</span>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="d-flex">
-                                    <img class="d-flex me-2 rounded-circle" src="../../static/images/users/profile2.png" alt="Generic placeholder image" height="32">
-                                    <div class="w-100">
-                                        <h5 class="m-0 font-14">Maria Clara</h5>
-                                        <span class="font-12 mb-0">Helpdesk</span>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="d-flex">
-                                    <img class="d-flex me-2 rounded-circle" src="../../static/images/users/profile3.png" alt="Generic placeholder image" height="32">
-                                    <div class="w-100">
-                                        <h5 class="m-0 font-14">Sisa Usisa</h5>
-                                        <span class="font-12 mb-0">Staff</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
             </div>
             <!-- end Topbar -->
 
@@ -284,10 +188,8 @@
             <div class="container-fluid">
 
                 <!-- start page title -->
-
-                <!-- start page title -->
                 <div class="row">
-                    <div class="col-12">
+                    <div class="text-center col-12">
                         <div class="page-title-box">
                             <h4 class="page-title">Edit Schedule Details</h4>
                         </div>
@@ -295,511 +197,61 @@
 
                     <!-- end page title -->
 
-
-
-
-                    <!-- start table content -->
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="tab-content">
-
-
+                        <div class="row justify-content-center">
+                            <div class="col-5">
+                                <div class="card border-secondary border">
                                     <div class="card-body">
-                                        
-                                        <tbody>
+                                        <thead>
+                                            <p>Please fill in the details below to successfully update a Schedule.</p><br>
 
-                                            <tr>
-                                                <td>
-                                                    <form method="POST" action="/updateschedule/{{schedule.clinic_sched_id}}">
-                                                    <label for="schedule_name" class="form-label">Time:
-                                                        &nbsp;<span style="color:#ff0000">*</span></label>
-                                                    <input type="text" id="schedule_name" name="schedule_name" class="form-control" value="{{schedule.schedule_name}}">
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <label for="schedule" class="form-label">Schedule Name:
-                                                    &nbsp;<span style="color:#ff0000">*</span></label>
-                                                    <input type="text"  id="schedule" name="schedule" class="form-control" value="{{schedule.schedule}}">
-                                                    </span>
-                                                </td>
-                                                <br>
-                                                <td>
-                                                   <button class="btn btn-primary" type="submit">Save
-                                                            Changes</button>
-                                                </td>
-                                            </form>
-                                                <td>
-                                                    <a href="/schedule">
-                                                        <button class="btn btn-secondary" type="submit">Cancel</button>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
+                                            <tbody>
+                                                <tr>
+                                                    <form action="/updateschedule/{{schedule.clinic_sched_id}}" method = "POST">
+                                                        <td>
+                                                            <label for="schedule_name" class="form-label">Time:
+                                                            &nbsp;<span style="color:#ff0000">*</span></label>
+                                                            <input type="text" id="schedule_name" name="schedule_name" class="form-control" value="{{schedule.schedule_name}}">
+                                                            </span> 
+                                                        </td><br>
+                                                        <td class="col-sm-6">
+                                                            <label for="schedule" class="form-label">Schedule Name:&nbsp;<span
+                                                                    style="color:#ff0000">*</span></label>
+                                                            <input  type="text"  id="schedule" name="schedule" class="form-control" value="{{schedule.schedule}}">
+                                                        </span> 
+                                                        </td>
+                                                    </form>
+                                                        <br>
+                                                        <td>
+                                                            <a href="/schedule">
+                                                                <button class="btn btn-secondary" type="submit">Cancel</button>
+                                                            </a>
+            
+                                                            <a href="/schedule">
+                                                                <button class="btn btn-primary" type="submit">Save Changes</button>
+                                                            </a>
+                                                        </td>
+                                                    </form>
+                                                </tr>
+                                            </tbody>
+                                        </thead>
+                                    
                                     </div>
+                                    <!-- end col-->
                                 </div>
+                                <!-- end row-->
+
                             </div>
+                            <!-- container -->
+
                         </div>
-                        <!-- /Edit Details Modal -->
+                        <!-- content -->
                     </div>
-                    <!-- container -->
-                </div>
-                <!-- content -->
-
-            </div>
-            <!-- end row-->
-
-            <!--MODALS-->
-
-            <!-- Edit Patient Modal -->
-            <div id="edit-patient-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="warning-header-modalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header modal-colored-header bg-primary">
-                            <h4 class="modal-title" id="warning-header-modalLabel">Edit Patient Details</h4>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="mb-3">
-                                            <label for="firstname" class="form-label">First Name</label>
-                                            <input type="text" class="form-control" id="resident_fname" placeholder="Enter first name">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">Middle Name</label>
-                                            <input type="text" class="form-control" id="resident_mname" placeholder="Enter middle name">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">Last Name</label>
-                                            <input type="text" class="form-control" id="resident_lname" placeholder="Enter last name">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">Suffix</label>
-                                            <input type="text" class="form-control" id="resident_suffix" placeholder="Suffix">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">Birthday</label>
-                                            <input type="date" class="form-control" id="resident_bday" placeholder="Enter birthday">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">Phone No.</label>
-                                            <input type="number" class="form-control" id="resident_phone" placeholder="Enter phone no.">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">Username</label>
-                                            <input type="text" class="form-control" id="resident_username" placeholder="Enter username">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="useremail" class="form-label">Email Address</label>
-                                            <input type="email" class="form-control" id="resident_emailadd" placeholder="Enter email">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="userpassword" class="form-label">Password</label>
-                                            <input type="password" class="form-control" id="resident_pass" placeholder="Enter password">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">Address</label>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <input type="text" class="form-control" id="resident_street" placeholder="House No./Street">
-                                                </div>
-                                                <div class="col">
-                                                    <select class="form-select" id="example-select">
-                                                        <option>Purok Katakutan</option>
-                                                        <option>Purok Kakirutan</option>
-                                                        <option>Purok Kalanturan</option>
-                                                        <option>Purok Kakurian</option>
-                                                        <option>Purok Karasyahan</option>
-                                                        <option>Purok Kakuriputan</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col">
-                                                    <input type="text" class="form-control" id="resident_barangay" placeholder="Barangay" value="Brgy. BITBo" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">Educational
-                                                Attainment</label>
-                                            <select class="form-select" id="resident_educ">
-                                                <option>No schooling completed</option>
-                                                <option>Elementary</option>
-                                                <option>High School Undergrad</option>
-                                                <option>High School Graduate</option>
-                                                <option>College Undergad</option>
-                                                <option>Vocational</option>
-                                                <option>Bachelor's Degree</option>
-                                                <option>Master's Degree</option>
-                                                <option>Doctorate Degree</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">Gender</label>
-                                            <select class="form-select" id="resident_gender">
-                                                <option>Male</option>
-                                                <option>Female</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">Blood Type</label>
-                                            <select class="form-select" id="resident_bloodtype">
-                                                <option>Unknown</option>
-                                                <option>O+</option>
-                                                <option>O-</option>
-                                                <option>A+</option>
-                                                <option>A-</option>
-                                                <option>B+</option>
-                                                <option>B-</option>
-                                                <option>AB+</option>
-                                                <option>AB-</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">Civil Status</label>
-                                            <select class="form-select" id="resident_civilstat">
-                                                <option>Single</option>
-                                                <option>Married</option>
-                                                <option>Separated</option>
-                                                <option>Divorced</option>
-                                                <option>Widowed</option>
-                                                <option>Single Parent</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">Condition
-                                                Status</label>
-                                            <select class="form-select" id="resident_condition">
-                                                <option>None</option>
-                                                <option>Senior Citizen</option>
-                                                <option>PWD</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="mb-3">
-                                            <label for="userpassword" class="form-label">Occupation</label>
-                                            <input type="text" class="form-control" id="resident_occupation" placeholder="Occupation">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="mb-3">
-                                            <div class="mb-3">
-                                                <label for="userpassword" class="form-label">Religion</label>
-                                                <input type="text" class="form-control" id="resident_religion" placeholder="Religion">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">House Ownership
-                                                Status</label>
-                                            <select class="form-select" id="resident_howner">
-                                                <option>Owned</option>
-                                                <option>Rent</option>
-                                                <option>Living with Parents</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="mb-3">
-                                            <label for="useremail" class="form-label">Profile
-                                                Picture</label>
-                                            <input type="file" class="form-control" id="resident_profile_pic" placeholder="Upload Photo">
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="toastr-updatepatient">Save
-                                changes</button>
-                        </div>
-                    </div>
-                    <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-            </div>
-            <!-- /.modal -->
-
-            <!-- Edit Senior Modal -->
-            <div id="edit-senior-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="warning-header-modalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header modal-colored-header bg-primary">
-                            <h4 class="modal-title" id="warning-header-modalLabel">Edit Senior Citizen Details
-                            </h4>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="mb-3">
-                                            <label for="firstname" class="form-label">First Name</label>
-                                            <input type="text" class="form-control" id="resident_fname" placeholder="Enter first name">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">Middle Name</label>
-                                            <input type="text" class="form-control" id="resident_mname" placeholder="Enter middle name">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">Last Name</label>
-                                            <input type="text" class="form-control" id="resident_lname" placeholder="Enter last name">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">Suffix</label>
-                                            <input type="text" class="form-control" id="resident_suffix" placeholder="Suffix">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">Birthday</label>
-                                            <input type="date" class="form-control" id="resident_bday" placeholder="Enter birthday">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">Phone No.</label>
-                                            <input type="number" class="form-control" id="resident_phone" placeholder="Enter phone no.">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">Username</label>
-                                            <input type="text" class="form-control" id="resident_username" placeholder="Enter username">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="useremail" class="form-label">Email Address</label>
-                                            <input type="email" class="form-control" id="resident_emailadd" placeholder="Enter email">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="userpassword" class="form-label">Password</label>
-                                            <input type="password" class="form-control" id="resident_pass" placeholder="Enter password">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">Address</label>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <input type="text" class="form-control" id="resident_street" placeholder="House No./Street">
-                                                </div>
-                                                <div class="col">
-                                                    <select class="form-select" id="example-select">
-                                                        <option>Purok Katakutan</option>
-                                                        <option>Purok Kakirutan</option>
-                                                        <option>Purok Kalanturan</option>
-                                                        <option>Purok Kakurian</option>
-                                                        <option>Purok Karasyahan</option>
-                                                        <option>Purok Kakuriputan</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col">
-                                                    <input type="text" class="form-control" id="resident_barangay" placeholder="Barangay" value="Brgy. BITBo" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">Educational
-                                                Attainment</label>
-                                            <select class="form-select" id="resident_educ">
-                                                <option>No schooling completed</option>
-                                                <option>Elementary</option>
-                                                <option>High School Undergrad</option>
-                                                <option>High School Graduate</option>
-                                                <option>College Undergad</option>
-                                                <option>Vocational</option>
-                                                <option>Bachelor's Degree</option>
-                                                <option>Master's Degree</option>
-                                                <option>Doctorate Degree</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">Gender</label>
-                                            <select class="form-select" id="resident_gender">
-                                                <option>Male</option>
-                                                <option>Female</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">Blood Type</label>
-                                            <select class="form-select" id="resident_bloodtype">
-                                                <option>Unknown</option>
-                                                <option>O+</option>
-                                                <option>O-</option>
-                                                <option>A+</option>
-                                                <option>A-</option>
-                                                <option>B+</option>
-                                                <option>B-</option>
-                                                <option>AB+</option>
-                                                <option>AB-</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">Civil Status</label>
-                                            <select class="form-select" id="resident_civilstat">
-                                                <option>Single</option>
-                                                <option>Married</option>
-                                                <option>Separated</option>
-                                                <option>Divorced</option>
-                                                <option>Widowed</option>
-                                                <option>Single Parent</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">Condition
-                                                Status</label>
-                                            <select class="form-select" id="resident_condition">
-                                                <option>None</option>
-                                                <option>Senior Citizen</option>
-                                                <option>PWD</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="mb-3">
-                                            <label for="userpassword" class="form-label">Occupation</label>
-                                            <input type="text" class="form-control" id="resident_occupation" placeholder="Occupation">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="mb-3">
-                                            <div class="mb-3">
-                                                <label for="userpassword" class="form-label">Religion</label>
-                                                <input type="text" class="form-control" id="resident_religion" placeholder="Religion">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="mb-3">
-                                            <label for="lastname" class="form-label">House Ownership
-                                                Status</label>
-                                            <select class="form-select" id="resident_howner">
-                                                <option>Owned</option>
-                                                <option>Rent</option>
-                                                <option>Living with Parents</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="mb-3">
-                                            <label for="useremail" class="form-label">Profile
-                                                Picture</label>
-                                            <input type="file" class="form-control" id="resident_profile_pic" placeholder="Upload Photo">
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="toastr-updatesenior">Save
-                                changes</button>
-                        </div>
-                    </div>
-                    <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-            </div>
-            <!-- /.modal -->
-        </div>
-        <!-- container -->
-    </div>
-    <!-- content -->
-
-    </div>
-
+                    <!-- end row of table content-->
+    
     <!-- ============================================================== -->
     <!-- End Page content -->
     <!-- ============================================================== -->
 
-    </div>
-    <!-- END wrapper -->
 
     <!-- bundle -->
     <script src="../../static/js/vendor.min.js"></script>

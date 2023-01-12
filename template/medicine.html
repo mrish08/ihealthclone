@@ -215,7 +215,7 @@
                     <div class="row">
 
 
-                                    <thead>
+ <!--                               <thead>
                                         <tr class="table-light">
                                             <th>Medicine ID</th>
                                             <th>Medicine Name</th>
@@ -251,7 +251,7 @@
                                         {% endfor %}
                                     </tbody>
                                     </table>
-=======
+-->    
                         <div class="col-sm-12">
                             <div class="card card-body">
                                 <div class="tab-content">
@@ -287,11 +287,13 @@
                                                     <td>{{ medicine.description}}</td>
                                                     <td>{{ medicine.med_stock}}</td>
                                                     <td class="table-action">
-                                                        <button type="button" class="btn btn-warning">
+                                                        <form class="action-icon">
                                                             <a href="updatemedicine/{{ medicine.medicine_id }}">
-                                                                <i class="mdi mdi-account-edit-outline"></i>
-                                                        </button>
-                                                        </a>
+                                                                <button type="button" class="btn btn-outline-info btn-rounded" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
+                                                                    <i class="mdi mdi-circle-edit-outline"></i>
+                                                                </button>
+                                                            </a>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                                 {% endfor %}
