@@ -20767,7 +20767,7 @@ table.dataTable tbody td:focus {
 
 table.dataTable tbody td.focus,
 table.dataTable tbody th.focus {
-    outline: 2px solid #123088 !important;
+/*    outline: 2px solid #123088 !important;*/
     outline-offset: -1px;
     background-color: rgba(114, 124, 245, .15)
 }

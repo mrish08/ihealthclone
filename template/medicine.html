@@ -191,87 +191,72 @@
                     </div>
                     <!-- end Topbar -->
     
-    
         
                     <!-- Start Content-->
                     <div class="container-fluid">
 
-                         <!-- start page title -->
+                    <!-- start page title -->
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="page-title-box">
-                                <h4 class="page-title">Add Service</h4>
+                                <h4 class="page-title">Medicine</h4>
                             </div>
                         </div>
 
-                        <!-- end page title -->
-                        
-                        <!-- start table content -->
-                        <div class="col-sm-12">
-                            <div class="card card-body">
-                                <a href="admin-add-medicine.html" class="btn btn-primary dripicons-plus">Add Medicine Service</a>
-                            </div> <!-- end card-->
-                        </div> <!-- end col-->
+                        <div class="col-sm-12" id="add-button-admin">
+                            <a href="admin-add-schedule.html" class="btn btn-primary  dripicons-plus">Add Medicine Service</a>
+                        </div>
+                    </div> <br>
+                    <!-- end page title -->
+
+                    <!-- start table content -->
+                    <div class="col-sm-12">
+                        <div class="card card-body">
+                            <div class="tab-content">
+                                <div id="scroll-horizontal-preview">
+                                    <table id="scroll-horizontal-datatable" style="overflow-x: auto;" class="table table-hover w-100 nowrap">
+
+                                    <thead>
+                                        <tr class="table-light">
+                                            <th>Medicine ID</th>
+                                            <th>Medicine Name</th>
+                                            <th>Generic Name</th>
+                                            <th>Brand Name</th>
+                                            <th>Manufacturer</th>
+                                            <th>Dosage</th>
+                                            <th>Medicine Type</th>
+                                            <th>Description</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                            
+                                    <tbody>
+                                        {% for medicine in medicine %}
+                                        <tr>
+                                            <td>{{ medicine.medicine_id}}</td>
+                                            <td>{{ medicine.medicine_name}}</td>
+                                            <td>{{ medicine.generic_name}}</td>
+                                            <td>{{ medicine.brand_name}}</td>
+                                            <td>{{ medicine.manufacturer}}</td>
+                                            <td>{{ medicine.dosage}}</td>
+                                            <td>{{ medicine.medicine_type}}</td>
+                                            <td>{{ medicine.description }}</td>
+                                            <td class="table-action">
+                                                <button type="button" class="btn btn-warning">
+                                                    <a href="updatemedicine/{{ medicine.medicine_id }}">
+                                                        <i class="mdi mdi-account-edit-outline"></i>
+                                                </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}  
+                                    </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-        
-                        <!-- start page title -->
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="page-title-box">
-                                    <h4 class="page-title">Medicine Information</h4>
-                                </div>
-                            </div>
-        
-                            <!-- end page title -->
-        
-                            <!-- start table content -->
-                            <div class="col-sm-12">
-                                <div class="card card-body">
-                                    <div class="tab-content">
-                                        <div class="table-hover" id="scroll-horizontal-preview">
-                                            <table id="scroll-horizontal-datatable" style="overflow-x: auto;" class="table w-100 nowrap">
-    
-                                            <thead>
-                                                <tr class="table-light">
-                                                    <th>Medicine ID</th>
-                                                    <th>Medicine Name</th>
-                                                    <th>Generic Name</th>
-                                                    <th>Brand Name</th>
-                                                    <th>Manufacturer</th>
-                                                    <th>Dosage</th>
-                                                    <th>Medicine Type</th>
-                                                    <th>Description</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                    
-                                            <tbody>
-                                                {% for medicine in medicine %}
-                                                <tr>
-                                                    <td>{{ medicine.medicine_id}}</td>
-                                                    <td>{{ medicine.medicine_name}}</td>
-                                                    <td>{{ medicine.generic_name}}</td>
-                                                    <td>{{ medicine.brand_name}}</td>
-                                                    <td>{{ medicine.manufacturer}}</td>
-                                                    <td>{{ medicine.dosage}}</td>
-                                                    <td>{{ medicine.medicine_type}}</td>
-                                                    <td>{{ medicine.description }}</td>
-                                                    <td class="table-action">
-                                                        <button type="button" class="btn btn-warning">
-                                                            <a href="updatemedicine/{{ medicine.medicine_id }}">
-                                                                <i class="mdi mdi-account-edit-outline"></i>
-                                                        </button>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                {% endfor %}  
-                                            </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end of the first table-->
+                    <!-- end of the first table-->
     
                     </div>
                     <!-- end of table content-->
