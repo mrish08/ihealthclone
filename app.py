@@ -61,14 +61,8 @@ def index():
 
 @app.route("/clinic")
 def clinic():
-	clinic = []
-	conn = connection()
-	cursor = conn.cursor()
-	cursor.execute("SELECT * FROM ih_clinic_services")
-	for row in cursor.fetchall():
-		clinic.append({"clinic_services_id": row[0], "clinic_services_name": row[1]})
-	conn.close()	
-	return render_template("clinic.html", clinic = clinic)
+	
+	return render_template("clinic.html")
 
 
 @app.route('/addclinic', methods = ['POST'])
@@ -80,7 +74,7 @@ def addclinic():
 	cursor.execute('INSERT INTO ih_clinic_services (clinic_services_name)'' VALUES (%s)', [clinic_services_name])
 	conn.commit()
 	conn.close()
-	return redirect('/clinicadmin')
+	return render_template("admin-add-clinicservice.html")
 
 
 @app.route('/updateclinic/<int:clinic_services_id>', methods = ['GET', 'POST'])
@@ -266,14 +260,14 @@ def updatemedicine(medicine_id):
 
 @app.route("/clinicadmin")
 def clinicadmin():
-	clinicad = []
+	clinicadmin = []
 	conn = connection()
 	cursor = conn.cursor()
 	cursor.execute("SELECT * FROM ih_clinic_services")
 	for row in cursor.fetchall():
-		clinicad.append({"clinic_services_id": row[0], " clinic_services_name": row[1]})
+		clinicadmin.append({"clinic_services_id": row[0], " clinic_services_name": row[1]})
 	conn.close()	
-	return render_template("clinicadmin.html", clinicad = clinicad)
+	return render_template("clinicadmin.html", clinicadmin = clinicadmin)
 	
 	
 
