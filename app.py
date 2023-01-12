@@ -285,7 +285,7 @@ def addcs():
 		
 	conn = connection()
 	cursor = conn.cursor()
-	cursor.execute('INSERT INTO ih_clinic_sched (clinic_services_id,clinic_services_name)'' VALUES (%s,%s)', 
+	cursor.execute('INSERT INTO ih_clinic_services(clinic_services_id,clinic_services_name)'' VALUES (%s,%s)', 
 	[clinic_services_id,clinic_services_name])
 	conn.commit()
 	conn.close()
