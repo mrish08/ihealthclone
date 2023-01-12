@@ -1,64 +1,100 @@
-{% extends 'layout.html' %}
-    {% block body %}
+<!DOCTYPE html>
+<html lang="en">
 
-<link href="layout.html" rel="import"/>    
-<div class="wrapper">
+<head>
+    <meta charset="utf-8">
+    <title>Update Vaccine | iHealth</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
+    <meta content="Coderthemes" name="author">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="../../static/images/brgyms-icon-white.png">
+
+    <!-- third party css -->
+    <link href="../../static/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css">
+    <!-- third party css end -->
+
+    <!-- App css -->
+    <link href="../../static/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="../../static/css/app-i.min.css" rel="stylesheet" type="text/css" id="light-style">
+    <link href="../../static/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style">
+
+    <!-- Datatables css -->
+    <link href="../../static/css/vendor/select.bootstrap5.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/css/vendor/dataTables.bootstrap5.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/css/vendor/responsive.bootstrap5.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body class="loading" data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
+    <!-- Begin page -->
+    <div class="wrapper">
         <!-- ========== Left Sidebar Start ========== -->
         <div class="leftside-menu">
-    
+
             <!-- LOGO -->
             <a href="/index" class="logo text-center logo-light">
                 <span class="logo-lg">
                     <img src="../../static/images/ihealth-logo-with-text.png" alt="" height="40">
                 </span>
+                <span class="logo-sm">
+                    <img src="../../static/images/bitbo.png" alt="" height="32">
+                </span>
             </a>
-    
+            <!--- Sidemenu -->
             <ul class="side-nav">
-    
+
                 <li class="side-nav-title side-nav-item">Menu</li>
-    
-                <li class="side-nav-item">
-                    <a href="/index" class="side-nav-link">
-                        <i class="uil-chart-pie"></i>
-                        <span> Dashboard </span>
-                    </a>
-                </li>
-    
-                <li class="side-nav-item">
+
+                    <li class="side-nav-item">
+                        <a href="/index" class="side-nav-link" >
+                            <i class="uil-chart-pie"></i>
+                            <span> Dashboard </span>
+                        </a>
+                    </li>
+
+                <li class="badge-primary-lighten side-nav-item">
                     <a href="/schedule" class="side-nav-link">
                         <i class="uil-clipboard-alt"></i>
                         <span> Schedule </span>
                     </a>
                 </li>
-    
+
                 <li class="side-nav-item">
-                    <a href="/vaccination" class="side-nav-link">
-                        <i class="uil-syringe"></i>
-                        <span> Vaccination Service</span>
+                    <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarEcommerce" class="side-nav-link">
+                        <i class="uil-folder-plus"></i>
+                        <span> Inventory </span>
+                        <span class="menu-arrow"></span>
                     </a>
+                    <div class="collapse" id="sidebarTasks">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a href="/vaccination">Vaccine</a>
+                            </li>
+                            <li>
+                                <a href="/medicine">Medicine</a>
+                            </li>
+                            <li>
+                                <a href="/clinic">Clinic</a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
-    
+
                 <li class="side-nav-item">
-                    <a href="/clinic" class="side-nav-link">
-    
+                    <a href="clinicadmin.html" class="side-nav-link" >
                         <i class="uil-clipboard-alt"></i>
                         <span> Clinic Service </span>
                     </a>
                 </li>
-    
+
                 <li class="side-nav-item">
-    
-                    <a href="/medicine" class="side-nav-link">
-                        <i class="uil-home-alt"></i>
-                        <span>Medicine</span>
-                </li>
-                <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#sidebarPages" aria-expanded="false" aria-controls="sidebarPages" class="side-nav-link">
+                    <a data-bs-toggle="collapse" href="#sidebarEcommerce" aria-expanded="false" aria-controls="sidebarEcommerce" class="side-nav-link">
                         <i class="mdi mdi-hospital mdi-hospital-box"></i>
                         <span> Appointment Services </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarPages">
+                    <div class="collapse" id="sidebarEcommerce">
                         <ul class="side-nav-second-level">
                             <li>
                                 <a href="/adminaptvax">Vaccination Service</a>
@@ -75,6 +111,7 @@
                         </ul>
                     </div>
                 </li>
+
                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
                         <i class="mdi mdi-history"></i>
@@ -98,29 +135,23 @@
                         </ul>
                     </div>
                 </li>
-            </ul>
-    
+            </ul><!-- Sidebar -left -->
+            
         </div>
-        <!-- Sidebar -left -->
-    
     </div>
-    <!-- Left Sidebar End -->
-    
+
+<!-- ============================================================== -->
+<!-- Start Page Content here -->
+<!-- ============================================================== -->
+
+
+<div class="wrapper">
+
     <div class="content-page">
         <div class="content">
             <!-- Topbar Start -->
             <div class="navbar-custom">
                 <ul class="list-unstyled topbar-menu float-end mb-0">
-                    <li class="dropdown notification-list d-lg-none">
-                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <i class="dripicons-search noti-icon"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
-                            <form class="p-3">
-                                <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
-                            </form>
-                        </div>
-                    </li>
 
                     <li class="dropdown notification-list">
                         <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
@@ -151,146 +182,113 @@
                 <button class="button-menu-mobile open-left">
                     <i class="mdi mdi-menu"></i>
                 </button>
-                <div class="app-search dropdown d-none d-lg-block">
-
-                    <div class="dropdown-menu dropdown-menu-animated dropdown-lg" id="search-dropdown">
-                        <!-- item-->
-                        <div class="dropdown-header noti-title">
-                            <h5 class="text-overflow mb-1">Found <span class="text-danger">17</span> results</h5>
-                        </div>
-
-                        <!-- item-->
-                        <div class="dropdown-header noti-title">
-                            <h6 class="text-overflow mb-2 text-uppercase">Users</h6>
-                        </div>
-
-                        <div class="notification-list">
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="d-flex">
-                                    <img class="d-flex me-2 rounded-circle" src="../../static/images/users/profile1.png" alt="Generic placeholder image" height="32">
-                                    <div class="w-100">
-                                        <h5 class="m-0 font-14">Juan Dela Cruz</h5>
-                                        <span class="font-12 mb-0">Brgy. Official</span>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="d-flex">
-                                    <img class="d-flex me-2 rounded-circle" src="../../static/images/users/profile2.png" alt="Generic placeholder image" height="32">
-                                    <div class="w-100">
-                                        <h5 class="m-0 font-14">Maria Clara</h5>
-                                        <span class="font-12 mb-0">Helpdesk</span>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="d-flex">
-                                    <img class="d-flex me-2 rounded-circle" src="../../static/images/users/profile3.png" alt="Generic placeholder image" height="32">
-                                    <div class="w-100">
-                                        <h5 class="m-0 font-14">Sisa Usisa</h5>
-                                        <span class="font-12 mb-0">Staff</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
             </div>
+            <!-- end Topbar -->
 
             <!-- Start Content-->
             <div class="container-fluid">
 
                 <!-- start page title -->
-
-                <!-- start page title -->
                 <div class="row">
-                    <div class="col-12">
+                    <div class="text-center col-12">
                         <div class="page-title-box">
-                            <h4 class="page-title">Edit Vaccination Services</h4>
+                            <h4 class="page-title">Edit Vaccine Details</h4>
                         </div>
                     </div>
 
                     <!-- end page title -->
 
-
-
-
-                    <!-- start table content -->
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="tab-content">
-
-
+                        <div class="row justify-content-center">
+                            <div class="col-5">
+                                <div class="card border-secondary border">
                                     <div class="card-body">
-                                        <tbody>
+                                        <thead>
+                                            <p>Please fill in the details below to successfully update a Vaccine.</p><br>
 
-                                            <tr>
-                                                <td>
-                                                    <form method="POST" action="/updatevaccination/{{vaccination.vaccine_id}}">
-                                                    <label for="vaccine_name" class="form-label">Service
-                                                        Name:&nbsp;<span style="color:#ff0000">*</span></label>
-                                                    <input type="text" id="vaccine_name" name="vaccine_name" class="form-control" value="{{vaccination.vaccine_name}}">
-                                                    </span>
-                                                </td>
-                                                <br>
-                                                <td>
-                                                    <label for="lot_name" class="form-label">Lot
-                                                        Name:&nbsp;<span style="color:#ff0000">*</span></label>
-                                                        <input type="text"  name="lot_name" class="form-control" value="{{vaccination.lot_name}}">
-                                                    </span>
-                                                </td><br>
-                                                <td>
-                                                    <label for="brand_manufacturer" class="form-label">Brand
-                                                        Name:&nbsp;<span style="color:#ff0000">*</span></label>
-                                                        <input type="text"  name="brand_manufacturer" class="form-control" value="{{vaccination.brand_manufacturer}}">
-                                                    </span>
-                                                </td>
-                                                <br>
-                                                <br>
-                                                <td>
-                                                   <button class="btn btn-primary" type="submit">Save
-                                                            Changes</button>
-                                                </td>
-                                            </form>
-                                                <td>
-                                                    <a href="/vaccination">
-                                                        <button class="btn btn-secondary" type="submit">Cancel</button>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                         
-                                        </tbody>
+                                            <tbody>
+                                                <tr>
+                                                    <form action="/updatevaccination/{{vaccination.vaccine_id}}" method="POST">
+                                                        <td>
+                                                            <label for="vaccine_name" class="form-label">Service Name:
+                                                            &nbsp;<span style="color:#ff0000">*</span></label>
+                                                            <input type="text" id="vaccine_name" name="vaccine_name" class="form-control" value="{{vaccination.vaccine_name}}">
+                                                            </span> 
+                                                        </td><br>
+                                                        <td>
+                                                            <label for="lot_name" class="form-label">Lot Name:
+                                                            &nbsp;<span style="color:#ff0000">*</span></label>
+                                                            <input type="text" name="lot_name" class="form-control" value="{{vaccination.lot_name}}">
+                                                            </span> 
+                                                        </td><br>
+                                                        <td class="col-sm-6">
+                                                            <label for="brand_manufacturer" class="form-label">Brand Name:&nbsp;<span
+                                                                    style="color:#ff0000">*</span></label>
+                                                            <input  type="text" name="brand_manufacturer" class="form-control" value="{{vaccination.brand_manufacturer}}">
+                                                        </span> 
+                                                        </td>
+                                                        <br>
+                                                        <td>
+                                                            <a href="/vaccination">
+                                                                <button class="btn btn-secondary" type="submit">Cancel</button>
+                                                            </a>
+            
+                                                            <a href="/vaccination">
+                                                                <button class="btn btn-primary" type="submit">Save Changes</button>
+                                                            </a>
+                                                        </td>
+                                                    </form>
+                                                </tr>
+                                            </tbody>
+                                        </thead>
+                                    
                                     </div>
+                                    <!-- end col-->
                                 </div>
+                                <!-- end row-->
+
                             </div>
+                            <!-- container -->
+
                         </div>
-                        <!-- /Edit Details Modal -->
+                        <!-- content -->
                     </div>
-                    <!-- container -->
-                </div>
-                <!-- content -->
-
-            </div>
-            <!-- end row-->
-        </div>
-        <!-- container -->
-    </div>
-    <!-- content -->
-
-    </div>
-
+                    <!-- end row of table content-->
+    
     <!-- ============================================================== -->
     <!-- End Page content -->
     <!-- ============================================================== -->
 
-    </div>
-    <!-- END wrapper -->
-
    
-    {% endblock %}
+    <!-- bundle -->
+    <script src="../../static/js/vendor.min.js"></script>
+    <script src="../../static/js/app.min.js"></script>
+
+    <!-- third party js -->
+    <script src="../../static/js/vendor/jquery.dataTables.min.js"></script>
+    <script src="../../static/js/vendor/dataTables.bootstrap5.js"></script>
+    <script src="../../static/js/vendor/dataTables.responsive.min.js"></script>
+    <script src="../../static/js/vendor/responsive.bootstrap5.min.js"></script>
+    <script src="../../static/js/vendor/dataTables.buttons.min.js"></script>
+    <script src="../../static/js/vendor/buttons.bootstrap5.min.js"></script>
+    <script src="../../static/js/vendor/buttons.html5.min.js"></script>
+    <script src="../../static/js/vendor/buttons.flash.min.js"></script>
+    <script src="../../static/js/vendor/buttons.print.min.js"></script>
+    <script src="../../static/js/vendor/dataTables.keyTable.min.js"></script>
+    <script src="../../static/js/vendor/dataTables.select.min.js"></script>
+    <script src="../../static/js/vendor/apexcharts.min.js"></script>
+    <script src="../../static/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="../../static/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="../../static/js/vendor/dropzone.min.js"></script>
+    <script src="../../static/js/vendor/list.min.js"></script>
+    <!-- third party js ends -->
+
+    <!-- demo app -->
+    <script src="../../static/js/pages/demo.datatable-init.js"></script>
+    <script src="../../static/js/pages/demo.toastr.js"></script>
+    <script src="../../static/js/pages/demo.datatable-init.js"></script>
+    <script src="../../static/js/pages/demo.toastr.js"></script>
+    <script src="../../static/js/pages/list.js"></script>
+    <!-- end demo js-->
+</body>
+
+</html>
