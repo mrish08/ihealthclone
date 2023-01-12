@@ -269,7 +269,7 @@ def clinicadmin():
 	clinicad = []
 	conn = connection()
 	cursor = conn.cursor()
-	cursor.execute("SELECT * FROM ih_clinicservices")
+	cursor.execute("SELECT * FROM ih_clinic_services")
 	for row in cursor.fetchall():
 		clinicad.append({"clinic_services_id": row[0], " clinic_services_name": row[1]})
 	conn.close()	
