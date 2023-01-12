@@ -22323,4 +22323,7 @@ div.table-responsive>div.dataTables_wrapper>div.row>div[class^=col-]:first-child
     display: none
 }
 
+#add-button-admin {
+    margin-left: 85%;
+}
 /*# sourceMappingURL=app.min.css.map */
