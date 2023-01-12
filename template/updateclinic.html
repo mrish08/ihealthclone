@@ -26,7 +26,8 @@
 
 </head>
 
-<body class="loading" data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
+<body class="loading"
+    data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
     <!-- Begin page -->
     <div class="wrapper">
         <!-- ========== Left Sidebar Start ========== -->
@@ -46,12 +47,12 @@
 
                 <li class="side-nav-title side-nav-item">Menu</li>
 
-                    <li class="side-nav-item">
-                        <a href="/index" class="side-nav-link" >
-                            <i class="uil-chart-pie"></i>
-                            <span> Dashboard </span>
-                        </a>
-                    </li>
+                <li class="side-nav-item">
+                    <a href="/index" class="side-nav-link">
+                        <i class="uil-chart-pie"></i>
+                        <span> Dashboard </span>
+                    </a>
+                </li>
 
                 <li class="side-nav-item">
                     <a href="/schedule" class="side-nav-link">
@@ -61,7 +62,8 @@
                 </li>
 
                 <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarEcommerce" class="side-nav-link">
+                    <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false"
+                        aria-controls="sidebarEcommerce" class="side-nav-link">
                         <i class="uil-folder-plus"></i>
                         <span> Inventory </span>
                         <span class="menu-arrow"></span>
@@ -82,14 +84,15 @@
                 </li>
 
                 <li class="side-nav-item">
-                    <a href="clinicadmin.html" class="side-nav-link" >
+                    <a href="clinicadmin.html" class="side-nav-link">
                         <i class="uil-clipboard-alt"></i>
                         <span> Clinic Service </span>
                     </a>
                 </li>
 
                 <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#sidebarEcommerce" aria-expanded="false" aria-controls="sidebarEcommerce" class="side-nav-link">
+                    <a data-bs-toggle="collapse" href="#sidebarEcommerce" aria-expanded="false"
+                        aria-controls="sidebarEcommerce" class="side-nav-link">
                         <i class="mdi mdi-hospital mdi-hospital-box"></i>
                         <span> Appointment Services </span>
                         <span class="menu-arrow"></span>
@@ -113,7 +116,8 @@
                 </li>
 
                 <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
+                    <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail"
+                        class="side-nav-link">
                         <i class="mdi mdi-history"></i>
                         <span> Appointment History </span>
                         <span class="menu-arrow"></span>
@@ -136,97 +140,110 @@
                     </div>
                 </li>
             </ul><!-- Sidebar -left -->
-            
+
         </div>
     </div>
 
-<!-- ============================================================== -->
-<!-- Start Page Content here -->
-<!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Start Page Content here -->
+    <!-- ============================================================== -->
 
-<div class="wrapper">
+    <div class="wrapper">
 
-    <div class="content-page">
-        <div class="content">
-            <!-- Topbar Start -->
-            <div class="navbar-custom">
-                <ul class="list-unstyled topbar-menu float-end mb-0">
+        <div class="content-page">
+            <div class="content">
+                <!-- Topbar Start -->
+                <div class="navbar-custom">
+                    <ul class="list-unstyled topbar-menu float-end mb-0">
 
-                    <li class="dropdown notification-list">
-                        <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <span class="account-user-avatar">
-                                <img src="../../static/images/users/profile1.png" alt="user-image"
-                                    class="rounded-circle">
-                            </span>
-                            <span>
-                                <span class="account-user-name">Juan Dela Cruz</span>
-                            <span class="account-position">Admin</span>
-                            </span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
-                            <!-- item-->
-                            <div class=" dropdown-header noti-title">
-                                <h6 class="text-overflow m-0">Welcome !</h6>
-                            </div>
-
-                            <!-- item-->
-                            <a href="/BITBo/login-admin.html" class="dropdown-item notify-item">
-                                <i class="mdi mdi-logout me-1"></i>
-                                <span>Logout</span>
+                        <li class="dropdown notification-list">
+                            <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown"
+                                href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                <span class="account-user-avatar">
+                                    <img src="../../static/images/users/profile1.png" alt="user-image"
+                                        class="rounded-circle">
+                                </span>
+                                <span>
+                                    <span class="account-user-name">Juan Dela Cruz</span>
+                                    <span class="account-position">Admin</span>
+                                </span>
                             </a>
+                            <div
+                                class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
+                                <!-- item-->
+                                <div class=" dropdown-header noti-title">
+                                    <h6 class="text-overflow m-0">Welcome !</h6>
+                                </div>
+
+                                <!-- item-->
+                                <a href="/BITBo/login-admin.html" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-logout me-1"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+                    <button class="button-menu-mobile open-left">
+                        <i class="mdi mdi-menu"></i>
+                    </button>
+                </div>
+                <!-- end Topbar -->
+
+                <!-- Start Content-->
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <h4 class="page-title">Edit Clinic Inventory</h4>
+                            </div>
                         </div>
-                    </li>
-
-                </ul>
-                <button class="button-menu-mobile open-left">
-                    <i class="mdi mdi-menu"></i>
-                </button>
-            </div>
-            <!-- end Topbar -->
-
-            <!-- Start Content-->
-            <div class="container-fluid">
-
-                <!-- start page title -->
-                <div class="row">
-                    <div class="text-center col-12">
-                        <div class="page-title-box">
-                            <h4 class="page-title">Edit Clinic Service</h4>
-                        </div>
-                    </div>
-
-                    <!-- end page title -->
+                        <!-- end page title -->
 
                         <div class="row justify-content-center">
-                            <div class="col-5">
+                            <div class="col-12">
                                 <div class="card border-secondary border">
                                     <div class="card-body">
                                         <thead>
-                                            <p>Please fill in the details below to successfully update a Service.</p><br>
+                                            <p>Please fill in the details below to successfully update the Clinic
+                                                Inventory.</p>
+                                        <tbody><br>
 
-                                            <tbody>
-                                                <tr>
-                                                    <form action="/updateclinic/{{clinic.clinic_services_id}}" method="POST">
-                                                        <td>
-                                                            <label for="clinic_services_name" class="form-label">Service Name:
-                                                            &nbsp;<span style="color:#ff0000">*</span></label>
-                                                            <input type="text" id="clinic_services_name" name="clinic_services_name" class="form-control" value="{{clinic.clinic_services_name}}">
-                                                            </span> 
-                                                        </td><br>
-                                                        <td>
-                                                            <a href="/clinic">
-                                                                <button class="btn btn-secondary" type="submit">Cancel</button>
-                                                            </a>
-            
-                                                            <a href="/clinic">
-                                                                <button class="btn btn-primary" type="submit">Save Changes</button>
-                                                            </a>
-                                                        </td>
-                                                    </form>
-                                                </tr>
-                                            </tbody>
+                                            <tr>
+                                                <form action="/updateclinic/{{clinic.clinic_services_id}}"
+                                                    method="POST">
+                                                    <td>
+                                                        <label for="clinic.clinic_inventory_item" class="form-label">Item
+                                                            Name: &nbsp;<span style="color:#ff0000">*</span></label>
+                                                        <input type="text" id="clinic.clinic_inventory_item"
+                                                            name="clinic.clinic_inventory_item" class="form-control"
+                                                            value="{{clinic.clinic_inventory_item}}">
+                                                        </span>
+                                                        <label for="clinic.clinic_item_qty" class="form-label">Item
+                                                            Quantity: &nbsp;<span style="color:#ff0000">*</span></label>
+                                                        <input type="text" id="clinic.clinic_item_qty"
+                                                            name="clinic.clinic_item_qty" class="form-control"
+                                                            value="{{clinic.clinic_item_qty}}">
+                                                        </span>
+                                                    </td><br>
+                                                    <td>
+                                                        <a href="/clinic">
+                                                            <button class="btn btn-secondary"
+                                                                type="submit">Cancel</button>
+                                                        </a>
+
+                                                        <a href="/clinic">
+                                                            <button class="btn btn-primary" type="submit">Save
+                                                                Changes</button>
+                                                        </a>
+                                                    </td>
+                                                </form>
+                                            </tr>
+                                        </tbody>
                                         </thead>
-                                    
+
                                     </div>
                                     <!-- end col-->
                                 </div>
@@ -239,42 +256,42 @@
                         <!-- content -->
                     </div>
                     <!-- end row of table content-->
-    
-    <!-- ============================================================== -->
-    <!-- End Page content -->
-    <!-- ============================================================== -->
+
+                    <!-- ============================================================== -->
+                    <!-- End Page content -->
+                    <!-- ============================================================== -->
 
 
-    <!-- bundle -->
-    <script src="../../static/js/vendor.min.js"></script>
-    <script src="../../static/js/app.min.js"></script>
+                    <!-- bundle -->
+                    <script src="../../static/js/vendor.min.js"></script>
+                    <script src="../../static/js/app.min.js"></script>
 
-    <!-- third party js -->
-    <script src="../../static/js/vendor/jquery.dataTables.min.js"></script>
-    <script src="../../static/js/vendor/dataTables.bootstrap5.js"></script>
-    <script src="../../static/js/vendor/dataTables.responsive.min.js"></script>
-    <script src="../../static/js/vendor/responsive.bootstrap5.min.js"></script>
-    <script src="../../static/js/vendor/dataTables.buttons.min.js"></script>
-    <script src="../../static/js/vendor/buttons.bootstrap5.min.js"></script>
-    <script src="../../static/js/vendor/buttons.html5.min.js"></script>
-    <script src="../../static/js/vendor/buttons.flash.min.js"></script>
-    <script src="../../static/js/vendor/buttons.print.min.js"></script>
-    <script src="../../static/js/vendor/dataTables.keyTable.min.js"></script>
-    <script src="../../static/js/vendor/dataTables.select.min.js"></script>
-    <script src="../../static/js/vendor/apexcharts.min.js"></script>
-    <script src="../../static/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="../../static/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="../../static/js/vendor/dropzone.min.js"></script>
-    <script src="../../static/js/vendor/list.min.js"></script>
-    <!-- third party js ends -->
+                    <!-- third party js -->
+                    <script src="../../static/js/vendor/jquery.dataTables.min.js"></script>
+                    <script src="../../static/js/vendor/dataTables.bootstrap5.js"></script>
+                    <script src="../../static/js/vendor/dataTables.responsive.min.js"></script>
+                    <script src="../../static/js/vendor/responsive.bootstrap5.min.js"></script>
+                    <script src="../../static/js/vendor/dataTables.buttons.min.js"></script>
+                    <script src="../../static/js/vendor/buttons.bootstrap5.min.js"></script>
+                    <script src="../../static/js/vendor/buttons.html5.min.js"></script>
+                    <script src="../../static/js/vendor/buttons.flash.min.js"></script>
+                    <script src="../../static/js/vendor/buttons.print.min.js"></script>
+                    <script src="../../static/js/vendor/dataTables.keyTable.min.js"></script>
+                    <script src="../../static/js/vendor/dataTables.select.min.js"></script>
+                    <script src="../../static/js/vendor/apexcharts.min.js"></script>
+                    <script src="../../static/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
+                    <script src="../../static/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
+                    <script src="../../static/js/vendor/dropzone.min.js"></script>
+                    <script src="../../static/js/vendor/list.min.js"></script>
+                    <!-- third party js ends -->
 
-    <!-- demo app -->
-    <script src="../../static/js/pages/demo.datatable-init.js"></script>
-    <script src="../../static/js/pages/demo.toastr.js"></script>
-    <script src="../../static/js/pages/demo.datatable-init.js"></script>
-    <script src="../../static/js/pages/demo.toastr.js"></script>
-    <script src="../../static/js/pages/list.js"></script>
-    <!-- end demo js-->
+                    <!-- demo app -->
+                    <script src="../../static/js/pages/demo.datatable-init.js"></script>
+                    <script src="../../static/js/pages/demo.toastr.js"></script>
+                    <script src="../../static/js/pages/demo.datatable-init.js"></script>
+                    <script src="../../static/js/pages/demo.toastr.js"></script>
+                    <script src="../../static/js/pages/list.js"></script>
+                    <!-- end demo js-->
 </body>
 
 </html>
