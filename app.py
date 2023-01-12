@@ -243,6 +243,10 @@ def updatemedicine(medicine_id):
 		conn.close()
 		return redirect('/medicine')
 
+@app.route("/clinicadmin")
+def clinicadmin():
+	return render_template("clinicadmin.html")
+
 @app.route("/adminaptvax")
 def adminaptvax():
 	adminaptvax = []
