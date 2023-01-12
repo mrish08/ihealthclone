@@ -277,15 +277,13 @@ def clinicadmin():
 	
 	
 
-@app.route("/addcs")
+@app.route("/addcs", methods = ['GET', 'POST'])
 def addcs():
 	if request.method == 'POST':
 		clinic_services_name= request.form['clinic_services_name']
-		
 	conn = connection()
 	cursor = conn.cursor()
-	cursor.execute('INSERT INTO ih_clinic_services(clinic_services_name)'' VALUES (%s)', 
-	[clinic_services_name])
+	cursor.execute('INSERT INTO ih_clinic_services (clinic_services_name)'' VALUES (%s)',[clinic_services_name])
 	conn.commit()
 	conn.close()
 	return render_template("admin-add-clinicservice.html")
