@@ -266,10 +266,29 @@ def updatemedicine(medicine_id):
 
 @app.route("/clinicadmin")
 def clinicadmin():
-	return render_template("clinicadmin.html")
+	clinicad = []
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT * FROM ih_clinicservices")
+	for row in cursor.fetchall():
+		clinicad.append({"clinic_services_id": row[0], " clinic_services_name": row[1]})
+	conn.close()	
+	return render_template("clinicadmin.html", clinicad = clinicad)
+	
+	
 
 @app.route("/addcs")
 def addcs():
+	if request.method == 'POST':
+		clinic_services_id = request.form['clinic_services_id']
+		clinic_services_name= request.form['clinic_services_name']
+		
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute('INSERT INTO ih_clinic_sched (clinic_services_id,clinic_services_name)'' VALUES (%s,%s)', 
+	[clinic_services_id,clinic_services_name])
+	conn.commit()
+	conn.close()
 	return render_template("admin-add-clinicservice.html")
 
 @app.route("/adminvc")
