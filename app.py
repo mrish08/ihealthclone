@@ -268,6 +268,10 @@ def updatemedicine(medicine_id):
 def clinicadmin():
 	return render_template("clinicadmin.html")
 
+@app.route("/addcs")
+def addcs():
+	return render_template("admin-add-schedule.html")
+
 @app.route("/adminvc")
 def adminvc():
 	return render_template("adminh-view-clinic.html")
