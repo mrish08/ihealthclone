@@ -247,6 +247,14 @@ def updatemedicine(medicine_id):
 def clinicadmin():
 	return render_template("clinicadmin.html")
 
+@app.route("/adminvc")
+def adminvc():
+	return render_template("adminh-view-clinic.html")
+
+@app.route("/adminvd")
+def adminvd():
+	return render_template("adminh-view-dental.html")
+
 @app.route("/adminaptvax")
 def adminaptvax():
 	adminaptvax = []
