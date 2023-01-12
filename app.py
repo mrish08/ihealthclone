@@ -263,6 +263,10 @@ def adminvm():
 def adminvv():
 	return render_template("adminh-view-vax.html")
 
+@app.route("/adds")
+def adds():
+	return render_template("admin-add-schedule.html")
+
 @app.route("/addc")
 def addc():
 	return render_template("admin-add-clinic.html")
