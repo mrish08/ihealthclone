@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Clinic Service | iHealth</title>
+    <title>Update Clinic Service | iHealth</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="" name="description">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
     <meta content="Coderthemes" name="author">
     <!-- App favicon -->
     <link rel="shortcut icon" href="../../static/images/brgyms-icon-white.png">
@@ -18,12 +18,11 @@
     <link href="../../static/css/icons.min.css" rel="stylesheet" type="text/css">
     <link href="../../static/css/app-i.min.css" rel="stylesheet" type="text/css" id="light-style">
     <link href="../../static/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style">
-       
+
     <!-- Datatables css -->
     <link href="../../static/css/vendor/select.bootstrap5.css" rel="stylesheet" type="text/css" />
     <link href="../../static/css/vendor/dataTables.bootstrap5.css" rel="stylesheet" type="text/css" />
     <link href="../../static/css/vendor/responsive.bootstrap5.css" rel="stylesheet" type="text/css" />
-   
 
 </head>
 
@@ -42,8 +41,8 @@
                     <img src="../../static/images/bitbo.png" alt="" height="32">
                 </span>
             </a>
-             <!--- Sidemenu -->
-             <ul class="side-nav">
+            <!--- Sidemenu -->
+            <ul class="side-nav">
 
                 <li class="side-nav-title side-nav-item">Menu</li>
 
@@ -82,8 +81,8 @@
                     </div>
                 </li>
 
-                <li class="badge-primary-lighten  side-nav-item">
-                    <a href="/clinicadmin" class="side-nav-link" >
+                <li class="badge-primary-lighten side-nav-item">
+                    <a href="clinicadmin.html" class="side-nav-link" >
                         <i class="uil-clipboard-alt"></i>
                         <span> Clinic Service </span>
                     </a>
@@ -141,111 +140,109 @@
         </div>
     </div>
 
-    <!-- ============================================================== -->
-    <!-- Start Page Content here -->
-    <!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Start Page Content here -->
+<!-- ============================================================== -->
 
-    <div class="wrapper">
+<div class="wrapper">
 
-        <div class="content-page">
-            <div class="content">
-                <!-- Topbar Start -->
-                <div class="navbar-custom">
-                    <ul class="list-unstyled topbar-menu float-end mb-0">
-    
-                        <li class="dropdown notification-list">
-                            <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <span class="account-user-avatar">
-                                    <img src="../../static/images/users/profile1.png" alt="user-image"
-                                        class="rounded-circle">
-                                </span>
-                                <span>
-                                    <span class="account-user-name">Juan Dela Cruz</span>
-                                <span class="account-position">Admin</span>
-                                </span>
+    <div class="content-page">
+        <div class="content">
+            <!-- Topbar Start -->
+            <div class="navbar-custom">
+                <ul class="list-unstyled topbar-menu float-end mb-0">
+
+                    <li class="dropdown notification-list">
+                        <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            <span class="account-user-avatar">
+                                <img src="../../static/images/users/profile1.png" alt="user-image"
+                                    class="rounded-circle">
+                            </span>
+                            <span>
+                                <span class="account-user-name">Juan Dela Cruz</span>
+                            <span class="account-position">Admin</span>
+                            </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
+                            <!-- item-->
+                            <div class=" dropdown-header noti-title">
+                                <h6 class="text-overflow m-0">Welcome !</h6>
+                            </div>
+
+                            <!-- item-->
+                            <a href="/BITBo/login-admin.html" class="dropdown-item notify-item">
+                                <i class="mdi mdi-logout me-1"></i>
+                                <span>Logout</span>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
-                                <!-- item-->
-                                <div class=" dropdown-header noti-title">
-                                    <h6 class="text-overflow m-0">Welcome !</h6>
-                                </div>
-    
-                                <!-- item-->
-                                <a href="/BITBo/login-admin.html" class="dropdown-item notify-item">
-                                    <i class="mdi mdi-logout me-1"></i>
-                                    <span>Logout</span>
-                                </a>
-                            </div>
-                        </li>
-    
-                    </ul>
-                    <button class="button-menu-mobile open-left">
-                        <i class="mdi mdi-menu"></i>
-                    </button>
-                </div>
-                <!-- end Topbar -->
-    
-                <!-- Start Content-->
-                <div class="container-fluid">
-    
-                    <!-- start page title -->
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="page-title-box">
-                                <h4 class="page-title">Clinic Service</h4>
-                            </div>
                         </div>
+                    </li>
 
-                        <div class="col-sm-12" id="add-button-admin">
-                            <a href="admin-add-clinicservice.html" class="btn btn-primary  dripicons-plus">Add Clinic Service</a>
+                </ul>
+                <button class="button-menu-mobile open-left">
+                    <i class="mdi mdi-menu"></i>
+                </button>
+            </div>
+            <!-- end Topbar -->
+
+            <!-- Start Content-->
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="text-center col-12">
+                        <div class="page-title-box">
+                            <h4 class="page-title">Edit Clinic Service</h4>
                         </div>
-                    </div> <br>
+                    </div>
+
                     <!-- end page title -->
-    
-                        <!-- start table content -->
-                        <div class="col-12">
-                            <div class="card card-body">
-                                    <div class="tab-content">
-                                        
-                                    <table id="basic-datatable" class="table table-hover dt-responsive nowrap w-100">
+
+                        <div class="row justify-content-center">
+                            <div class="col-5">
+                                <div class="card border-secondary border">
+                                    <div class="card-body">
                                         <thead>
-                                            <tr class="table-light">
-                                                <th>Schedule Name</th>
-                                                <th>Time</th>
-                                                <th>Action</th>
-                                            </tr>
+                                            <p>Please fill in the details below to successfully update a Service.</p><br>
+
+                                            <tbody>
+                                                <tr>
+                                                    <form action="" method="POST">
+                                                        <td>
+                                                            <label for="clinic_services_name" class="form-label">Service Name:
+                                                            &nbsp;<span style="color:#ff0000">*</span></label>
+                                                            <input type="text" id="clinic_services_name" name="clinic_services_name" class="form-control" value="{{clinic.clinic_services_name}}">
+                                                            </span> 
+                                                        </td><br>
+                                                        <td>
+                                                            <a href="clinicadmin.html">
+                                                                <button class="btn btn-secondary" type="submit">Cancel</button>
+                                                            </a>
+            
+                                                            <a href="clinicadmin.html">
+                                                                <button class="btn btn-primary" type="submit">Save Changes</button>
+                                                            </a>
+                                                        </td>
+                                                    </form>
+                                                </tr>
+                                            </tbody>
                                         </thead>
                                     
-                                    
-                                        <tbody>
-    
-                                            {% for schedule in schedule %}
-    
-                                            <tr>
-                                                <td>{{ schedule.schedule }}</td>
-                                                <td>{{ schedule.schedule_name }}</td>
-                                                <td class="table-action">
-                                                    <form class="action-icon">
-                                                        <a href="updateclinicadmin.html">
-                                                            <button type="button" class="btn btn-outline-info btn-rounded" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
-                                                            <i class="mdi mdi-circle-edit-outline"></i></button></a>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                            {% endfor %}  
-                                        </tbody>
-                                    </table>
+                                    </div>
+                                    <!-- end col-->
                                 </div>
-                            </div>
-                        </div>
-                    <!-- end of the first table-->
+                                <!-- end row-->
 
-                    
-                
+                            </div>
+                            <!-- container -->
+
+                        </div>
+                        <!-- content -->
+                    </div>
+                    <!-- end row of table content-->
+    
     <!-- ============================================================== -->
     <!-- End Page content -->
     <!-- ============================================================== -->
-
 
 
     <!-- bundle -->
@@ -259,8 +256,6 @@
     <script src="../../static/js/vendor/responsive.bootstrap5.min.js"></script>
     <script src="../../static/js/vendor/dataTables.buttons.min.js"></script>
     <script src="../../static/js/vendor/buttons.bootstrap5.min.js"></script>
-    <script src="../../static/js/vendor/buttons.flash.min.js"></script>
-    <script src="../../static/js/vendor/buttons.php5.min.js"></script>
     <script src="../../static/js/vendor/buttons.html5.min.js"></script>
     <script src="../../static/js/vendor/buttons.flash.min.js"></script>
     <script src="../../static/js/vendor/buttons.print.min.js"></script>
@@ -276,10 +271,10 @@
     <!-- demo app -->
     <script src="../../static/js/pages/demo.datatable-init.js"></script>
     <script src="../../static/js/pages/demo.toastr.js"></script>
+    <script src="../../static/js/pages/demo.datatable-init.js"></script>
+    <script src="../../static/js/pages/demo.toastr.js"></script>
     <script src="../../static/js/pages/list.js"></script>
     <!-- end demo js-->
-
-
 </body>
 
 </html>
