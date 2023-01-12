@@ -270,7 +270,7 @@ def clinicadmin():
 
 @app.route("/addcs")
 def addcs():
-	return render_template("admin-add-schedule.html")
+	return render_template("admin-add-clinicservice.html")
 
 @app.route("/adminvc")
 def adminvc():
