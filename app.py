@@ -80,7 +80,7 @@ def addclinic():
 	cursor.execute('INSERT INTO ih_clinic_services (clinic_services_name)'' VALUES (%s)', [clinic_services_name])
 	conn.commit()
 	conn.close()
-	return redirect('/clinic')
+	return redirect('admin-add-clinicservice.html')
 
 
 @app.route('/updateclinic/<int:clinic_services_id>', methods = ['GET', 'POST'])
@@ -172,8 +172,15 @@ def updatevaccination(vaccine_id):
 
 @app.route("/schedule")
 def schedule():
-	return render_template("schedule.html")
-
+	schedule = []
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT * FROM ih_clinic_sched")
+	for row in cursor.fetchall():
+		schedule.append({"clinic_sched_id": row[0], "schedule_name": row[1], "contact_person": row[2], "maximum_attendees": row[3], "from_to_schedule": row[4]})
+	conn.close()	
+	return render_template("schedule.html", schedule= schedule)
+	
 
 
 @app.route("/addschedule", methods = ['GET', 'POST'])
@@ -259,7 +266,18 @@ def updatemedicine(medicine_id):
 
 @app.route("/clinicadmin")
 def clinicadmin():
-	return render_template("clinicadmin.html")
+	clinicad = []
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT * FROM ih_clinic_services")
+	for row in cursor.fetchall():
+		clinicad.append({"clinic_services_id": row[0], " clinic_services_name": row[1]})
+	conn.close()	
+	return render_template("clinicadmin.html", clinicad = clinicad)
+	
+	
+
+
 
 @app.route("/adminvc")
 def adminvc():
