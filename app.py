@@ -277,7 +277,7 @@ def clinicadmin():
 	
 	
 
-@app.route("/addcs", methods = ['GET', 'POST'])
+@app.route("/addcs", methods = ['POST'])
 def addcs():
 	if request.method == 'POST':
 		clinic_services_name= request.form['clinic_services_name']
