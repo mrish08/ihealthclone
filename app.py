@@ -74,7 +74,7 @@ def addclinic():
 	cursor.execute('INSERT INTO ih_clinic_services (clinic_services_name)'' VALUES (%s)', [clinic_services_name])
 	conn.commit()
 	conn.close()
-	return render_template("/clinicadmin")
+	return redirect ("/clinicadmin")
 
 
 
