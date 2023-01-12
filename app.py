@@ -413,6 +413,21 @@ def dentalstaff():
 def updatedentalstaff(dental_id):
 		return redirect('/dentalstaff')
 
+@app.route("/staffhaptvax")
+def adminhaptvax():
+	return render_template("adminhistory-apt-vax.html")
+
+@app.route("/staffhaptdental")
+def adminhaptdental():
+	return render_template("adminhistory-apt-dental.html")
+
+@app.route("/staffhaptmedicine")
+def adminhaptmedicine():
+	return render_template("adminhistory-apt-medicine.html")
+
+@app.route("/staffhaptclinic")
+def adminhaptclinic():
+	return render_template("adminhistory-apt-clinic.html")
 @app.route("/indexresident")
 def indexresident():
 	return render_template("indexresident.html")
