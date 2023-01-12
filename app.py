@@ -433,7 +433,7 @@ def vaccinationresident():
 @app.route("/residentas")
 def residentas():
 	if request.method == 'POST':
-		medicine_id = request.form['medicine_id']
+		
 		medicine_name = request.form['medicine_name']
 		generic_name = request.form['generic_name']
 		brand_name = request.form['brand_name']
@@ -444,8 +444,8 @@ def residentas():
 
 	conn = connection()
 	cursor = conn.cursor()
-	cursor.execute('INSERT INTO ih_medicine (medicine_id, medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description)'' VALUES (%s,%s,%s, %s, %s, %s, %s, %s)', 
-	[medicine_id, medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description])
+	cursor.execute('INSERT INTO ih_medicine ( medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description)'' VALUES (%s,%s,%s, %s, %s, %s, %s, %s)', 
+	[medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description])
 	conn.commit()
 	conn.close()
 	return render_template("clinicresident.html")
