@@ -255,6 +255,25 @@ def adminvc():
 def adminvd():
 	return render_template("adminh-view-dental.html")
 
+@app.route("/adminvm")
+def adminvm():
+	return render_template("adminh-view-medicine.html")
+
+@app.route("/adminvv")
+def adminvv():
+	return render_template("adminh-view-vax.html")
+
+@app.route("/addc")
+def addc():
+	return render_template("admin-add-clinic.html")
+
+@app.route("/addm")
+def addm():
+	return render_template("admin-add-medicine.html")
+
+@app.route("/addv")
+def addv():
+	return render_template("admin-add-vax.html")
 @app.route("/adminaptvax")
 def adminaptvax():
 	adminaptvax = []
