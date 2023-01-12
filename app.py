@@ -413,6 +413,21 @@ def dentalstaff():
 def updatedentalstaff(dental_id):
 		return redirect('/dentalstaff')
 
+@app.route("/staffhaptvax")
+def staffhaptvax():
+	return render_template("staffhistory-apt-vax.html")
+
+@app.route("/staffhaptdental")
+def staffhaptdental():
+	return render_template("staffhistory-apt-dental.html")
+
+@app.route("/staffhaptmedicine")
+def staffhaptmedicine():
+	return render_template("staffhistory-apt-medicine.html")
+
+@app.route("/staffhaptclinic")
+def staffhaptclinic():
+	return render_template("staffhistory-apt-clinic.html")
 @app.route("/indexresident")
 def indexresident():
 	return render_template("indexresident.html")
@@ -432,22 +447,7 @@ def vaccinationresident():
 
 @app.route("/residentas")
 def residentas():
-	if request.method == 'POST':
-		medicine_id = request.form['medicine_id']
-		medicine_name = request.form['medicine_name']
-		generic_name = request.form['generic_name']
-		brand_name = request.form['brand_name']
-		manufacturer = request.form['manufacturer']
-		dosage  = request.form['dosage ']
-		medicine_type = request.form['medicine_type']
-		description = request.form['description']
-
-	conn = connection()
-	cursor = conn.cursor()
-	cursor.execute('INSERT INTO ih_medicine (medicine_id, medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description)'' VALUES (%s,%s,%s, %s, %s, %s, %s, %s)', 
-	[medicine_id, medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description])
-	conn.commit()
-	conn.close()
+	
 	return render_template("clinicresident.html")
 
 @app.route("/medicineresident")
