@@ -68,7 +68,7 @@ def clinic():
 	for row in cursor.fetchall():
 		clinic.append({"clinic_services_id": row[0], "clinic_services_name": row[1]})
 	conn.close()	
-	return render_template("clinic.html", clinic = clinic)
+	return render_template("clinicadmin.html", clinic = clinic)
 
 
 @app.route('/addclinic', methods = ['POST'])
@@ -264,16 +264,6 @@ def updatemedicine(medicine_id):
 		conn.close()
 		return redirect('/medicine')
 
-@app.route("/clinicadmin")
-def clinicadmin():
-	clinicad = []
-	conn = connection()
-	cursor = conn.cursor()
-	cursor.execute("SELECT * FROM ih_clinic_services")
-	for row in cursor.fetchall():
-		clinicad.append({"clinic_services_id": row[0], " clinic_services_name": row[1]})
-	conn.close()	
-	return render_template("clinicadmin.html", clinicad = clinicad)
 	
 	
 
