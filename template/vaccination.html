@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 ?>
 <!DOCTYPE html>
@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Vaccine | iHealth</title>
+    <title>Vaccination| iHealth</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
     <meta content="Coderthemes" name="author">
@@ -88,7 +88,7 @@
                 </li>
 
                 <li class="side-nav-item">
-                    <a href="clinicadmin.html" class="side-nav-link">
+                    <a href="/clinicadmin" class="side-nav-link">
                         <i class="uil-clipboard-alt"></i>
                         <span> Clinic Service </span>
                     </a>
@@ -196,7 +196,9 @@
 
 
 
-                <!-- Start Content-->
+                <!-- Start Content0
+                3
+                -->
                 <div class="container-fluid">
 
                     <!-- start page title -->
@@ -255,15 +257,15 @@
                                                     <td>{{ vaccination.vax_efficiency}}</td>
                                                     <td>{{ vaccination.vaxside_effect}}</td>
                                                     <td>{{ vaccination.vax_stock}}</td>
+                                                    
                                                     <td class="table-action">
                                                         <form class="action-icon">
                                                             <a href="updatevaccination/{{ vaccination.vaccine_id }}">
                                                                 <button type="button" class="btn btn-outline-info btn-rounded" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
-                                                                    <i class="mdi mdi-circle-edit-outline"></i>
-                                                                </button>
-                                                            </a>
+                                                                <i class="mdi mdi-circle-edit-outline"></i></button></a>
                                                         </form>
                                                     </td>
+        
                                                 </tr>
                                                 {% endfor %}
                                             </tbody>
