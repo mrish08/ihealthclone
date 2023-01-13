@@ -514,8 +514,8 @@ def residentas():
 	return render_template("residentbooking.html")
 
 
-@app.route("/residentas")
-def residentas():
+@app.route("/residentmedicine")
+def residentmedicine():
 	return render_template("residentmedicine.html") 
 
 @app.route("/medicineresident")
