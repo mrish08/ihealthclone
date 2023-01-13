@@ -118,7 +118,7 @@ def vaccination():
 	for row in cursor.fetchall():
 		vaccination.append({"vax_id": row[0], "vax_name": row[1], "vax_brand_manufacturer": row[2], "vax_batch_no": row[3], "vax_lot_no": row[4], "vax_dosage": row[5], "vax_tech_platform": row[6], "vax_ph_fda_approval": row[7], "vax_storage_req": row[8], "vax_efficiency": row[9], "vax_side_effect": row[10]})
 	conn.close()	
-	return render_template("vaccination.html", vaccination = vaccination)
+	return render_template("adminvaccineinv.html", vaccination = vaccination)
 
 @app.route("/addvaccination", methods = ['POST'])
 def addvaccination():
@@ -217,7 +217,7 @@ def medicine():
 	for row in cursor.fetchall():
 		medicine.append({"medicine_id": row[0], "medicine_name": row[1], "generic_name": row[2], "brand_name": row[3], "manufacturer": row[4], "dosage": row[5], "medicine_type": row[6], "description": row[7]})
 	conn.close()	
-	return render_template("medicine.html", medicine = medicine)
+	return render_template("adminmedicineinv.html", medicine = medicine)
 	
 @app.route("/addmedicine", methods = ['GET', 'POST'])
 def addmedicine():
@@ -265,25 +265,9 @@ def updatemedicine(medicine_id):
 		conn.close()
 		return redirect('/medicine')
 
-@app.route("/clinicsupply")
-def clinicsupply():
-	return render_template("clinicsupply.html")
-
-@app.route("/clinicsupply")
-def clinicsupply():
-	return render_template("clinicsupply.html")
-	
-@app.route("/clinicsupply")
-def clinicsupply():
-	return render_template("clinicsupply.html")
-	
-@app.route("/clinicsupply")
-def clinicsupply():
-	return render_template("clinicsupply.html")
-	
-	
-	
-
+@app.route("/adminclinicinv")
+def adminclinicinv():
+	return render_template("adminclinicinv.html")
 
 
 @app.route("/adminvc")
