@@ -101,7 +101,7 @@ def updateclinic(clinic_services_id):
 		return render_template("updateclinicadmin.html", clinic = uc[0])
 	if request.method == 'POST':
 		clinic_services_name = str(request.form["clinic_services_name"])
-		cursor.execute("UPDATE clinic_services SET clinic_services_name = %s WHERE clinic_services_id = %s", (clinic_services_name, clinic_services_id))
+		cursor.execute("UPDATE ih_clinic_services SET clinic_services_name = %s WHERE clinic_services_id = %s", (clinic_services_name, clinic_services_id))
 		conn.commit()
 		conn.close()
 		return redirect('/clinic')
