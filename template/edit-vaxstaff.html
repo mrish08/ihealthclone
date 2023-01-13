@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Schedule| iHealth</title>
+    <title>Edit Vaccination Appointment| iHealth Staff</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
     <meta content="Coderthemes" name="author">
@@ -29,10 +29,13 @@
         <div class="leftside-menu">
 
             <!-- LOGO -->
-            <a href="{{ url_for('index') }}" class="logo text-center logo-light">
-                <span class="logo-lg">
-                    <img src="../../static/images/ihealth-logo-with-text.png" alt="" height="40">
-                </span>
+            <a href="/index" class="logo text-center logo-light">
+            <span class="logo-lg">
+                <img src="../../static/images/ihealth-logo-with-text.png" alt="" height="40">
+            </span>
+            <span class="logo-sm">
+                <img src="../../static/images/bitbo.png" alt="" height="32">
+            </span>
             </a>
 
             <ul class="side-nav">
@@ -53,7 +56,7 @@
                     </a>
                 </li>
 
-                <li class="badge-primary-lighten side-nav-item">
+                <li class="badge-primary-lighten side-nav-item menuitem-active">
                     <a href="{{ url_for('vaccinationstaff') }}" class="side-nav-link">
                         <i class="uil-syringe"></i>
                         <span> Vaccination Service</span>
@@ -167,13 +170,13 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
-                            <h4 class="text-center page-title">Edit Vaccination Schedule</h4>
+                            <h4 class="page-title">Edit Vaccination Schedule</h4>
                         </div>
                     </div>
                 <!-- end page title -->
 
-                <div class="row justify-content-center">
-                    <div class="col-7">
+                <div class="row">
+                    <div class="col-12">
                         <div class="card">
                             <div class="card-body">
 
@@ -221,7 +224,7 @@
 
                 
                 <div class="row justify-content-center">
-                    <div class="col-7">
+                    <div class="col-12">
                         <div class="card">
                             <div class="tab-content">
                                 <div class="card-body">
@@ -229,20 +232,20 @@
                                         <p class="font-16">Select the type of Service from the dropdown below:</p>
                                         <tr>
                                             <td>
-                                                    <form action="/addapp" method="POST">
-                                                    <label for="appt_type" class="form-label">Appointment Type</label>
-                                                    <select class="form-select" id="appt_type">
-                                                        <option>Clinic Service</option>
-                                                        <option>Dental Service</option>
-                                                        <option>Vaccination Service</option>
-                                                        <option>Medicine Pick-Up Service</option>
-                                                    </select>
-                                                    </form><br>
+                                                <form action="/addapp" method="POST">
+                                                <label for="appt_type" class="form-label">Appointment Type</label>
+                                                <select class="form-select" id="appt_type">
+                                                    <option>Clinic Service</option>
+                                                    <option>Dental Service</option>
+                                                    <option>Vaccination Service</option>
+                                                    <option>Medicine Pick-Up Service</option>
+                                                </select>
+                                                </form><br>
                                             <td>
                                                 <label for="example-textarea" class="form-label">Remarks</label>
                                                         <textarea class="form-control" id="schedulename" rows="8"></textarea>
                                             </td><br>
-                                            <td>
+                                            <div align ="right">
                                                 <a href="vaccinationstaff.html">
                                                     <button class="btn btn-secondary" type="submit">Cancel</button>
                                                 </a>
@@ -251,7 +254,7 @@
                                                     <button class="btn btn-primary" type="submit">Save
                                                         Changes</button>
                                                 </a>
-                                            </td>
+                                            </div>
                                         </tr>
                                     </tbody>
                                 </div>
