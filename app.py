@@ -360,7 +360,11 @@ def adminaptmedicineedit():
 @app.route("/adminaptclinicedit")
 def adminaptclinicedit():
 	return render_template("admin-apt-clinic-edit.html")
-	
+
+@app.route("/adminaptvaxedit")
+def adminaptvaxedit():
+	return render_template("admin-apt-vax-edit.html")
+
 @app.route("/adminhaptvax")
 def adminhaptvax():
 	return render_template("adminhistory-apt-vax.html")
