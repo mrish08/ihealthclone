@@ -214,6 +214,23 @@ def adusb():
 
 @app.route('/updateschedule/<int:clinic_sched_id>', methods = ['GET', 'POST'])
 def updateschedule(clinic_sched_id):
+	us =[]
+	conn = connection()
+	cursor = conn.cursor()
+	if request.method == 'GET':
+		cursor.execute("SELECT * FROM ih_clinic_sched WHERE clinic_sched_id = %s", (str(clinic_sched_id)))
+		for row in cursor.fetchall():
+			us.append({"clinic_sched_id": row[0], "schedule_name": row[1], "contact_person": row[2], "maximum_attendees": row[3], "from_to_schedule": row[4]})
+		conn.close()
+		return render_template("updateschedule.html",  updateschedule = us[0])
+	if request.method == 'POST':
+		schedule_name = str(request.form['schedule_name'])
+		contact_person= str(request.form['contact_person'])
+		maximum_attendees = int(request.form['maximum_attendees'])
+		from_to_schedule= str(request.form['from_to_schedule'])
+		cursor.execute("UPDATE ih_clinic_sched SET (schedule_name, contact_person, maximum_attendees, from_to_schedule) = (%s,%s,%s, %s) WHERE clinic_services_id = (%s)", (schedule_name, contact_person, maximum_attendees, from_to_schedule))
+		conn.commit()
+		conn.close()
 		return redirect('/schedule')
 
 
