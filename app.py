@@ -108,7 +108,6 @@ def updateclinic(clinic_services_id):
 
 
 
-
 @app.route("/dental")
 def dental():
 	return render_template("clinic.html")
@@ -208,6 +207,10 @@ def addschedule():
 	conn.close()
 	return redirect('/schedule')
 
+
+@app.route("/adusb")
+def adusb():
+	return render_template("updateschedule.html")
 
 @app.route('/updateschedule/<int:clinic_sched_id>', methods = ['GET', 'POST'])
 def updateschedule(clinic_sched_id):
