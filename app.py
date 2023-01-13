@@ -293,6 +293,14 @@ def updatemedicine(medicine_id):
 def adminclinicinv():
 	return render_template("adminclinicinv.html")
 
+@app.route("/adminmedicineinv")
+def adminmedicineinv():
+	return render_template("adminmedicineinv.html")
+
+@app.route("/adminvaccineinv")
+def adminvaccineinv():
+	return render_template("adminvaccineinv.html")
+
 
 @app.route("/adminvc")
 def adminvc():
