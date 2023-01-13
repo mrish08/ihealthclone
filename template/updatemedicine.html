@@ -189,7 +189,7 @@
 
                 <!-- start page title -->
                 <div class="row">
-                    <div class="text-center col-12">
+                    <div class="col-12">
                         <div class="page-title-box">
                             <h4 class="page-title">Edit Medicine Details</h4>
                         </div>
@@ -198,35 +198,33 @@
                     <!-- end page title -->
 
                         <div class="row justify-content-center">
-                            <div class="col-5">
-                                <div class="card border-secondary border">
+                            <div class="col-12">
+                                <div class="card">
                                     <div class="card-body">
-                                        <thead>
+                                        
                                             <p>Please fill in the details below to successfully update a Medicine.</p><br>
 
-                                            <tbody>
-                                                <tr>
-                                                    <form action="/updatemedicine/{{medicine.medicine_id}}" method="POST">
-                                                        <td>
-                                                            <label for="medicine_name" class="form-label">Medicine Name:
-                                                            &nbsp;<span style="color:#ff0000">*</span></label>
-                                                            <input type="text" id="medicine_name" name="medicine_name" class="form-control" value="{{medicine.medicine_name}}">
-                                                            </span> 
-                                                        </td><br>
-                                                        <td>
-                                                            <a href="/medicine">
-                                                                <button class="btn btn-secondary" type="submit">Cancel</button>
-                                                            </a>
-            
-                                                            <a href="/medicine">
-                                                                <button class="btn btn-primary" type="submit">Save Changes</button>
-                                                            </a>
-                                                        </td>
-                                                    </form>
-                                                </tr>
-                                            </tbody>
-                                        </thead>
-                                    
+                                            <form action="/updatemedicine/{{medicine.medicine_id}}" method="POST">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <label for="medicine_name" class="form-label">Medicine
+                                                            Name:&nbsp;<span style="color:#ff0000">*</span></label>
+                                                        <input type="text" id="medicine_name" name="medicine_name" 
+                                                        class="form-control" value="{{medicine.medicine_name}}">
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div align="right">
+                                                    <a href="/medicine">
+                                                        <button class="btn btn-secondary" type="submit">Cancel</button>
+                                                    </a>
+
+                                                    <a href="/medicine">
+                                                        <button class="btn btn-primary" type="submit">Submit</button>
+                                                    </a>
+                                                </div>
+                                            </form>
                                     </div>
                                     <!-- end col-->
                                 </div>

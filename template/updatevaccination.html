@@ -190,7 +190,7 @@
 
                 <!-- start page title -->
                 <div class="row">
-                    <div class="text-center col-12">
+                    <div class="col-12">
                         <div class="page-title-box">
                             <h4 class="page-title">Edit Vaccine Details</h4>
                         </div>
@@ -198,61 +198,62 @@
 
                     <!-- end page title -->
 
-                        <div class="row justify-content-center">
-                            <div class="col-5">
-                                <div class="card border-secondary border">
-                                    <div class="card-body">
-                                        <thead>
-                                            <p>Please fill in the details below to successfully update a Vaccine.</p><br>
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                        <p>Please fill in the details below to successfully update a Vaccine.</p>
 
-                                            <tbody>
-                                                <tr>
-                                                    <form action="/updatevaccination/{{vaccination.vaccine_id}}" method="POST">
-                                                        <td>
-                                                            <label for="vaccine_name" class="form-label">Service Name:
-                                                            &nbsp;<span style="color:#ff0000">*</span></label>
-                                                            <input type="text" id="vaccine_name" name="vaccine_name" class="form-control" value="{{vaccination.vaccine_name}}">
-                                                            </span> 
-                                                        </td><br>
-                                                        <td>
-                                                            <label for="lot_name" class="form-label">Lot Name:
-                                                            &nbsp;<span style="color:#ff0000">*</span></label>
-                                                            <input type="text" name="lot_name" class="form-control" value="{{vaccination.lot_name}}">
-                                                            </span> 
-                                                        </td><br>
-                                                        <td class="col-sm-6">
-                                                            <label for="brand_manufacturer" class="form-label">Brand Name:&nbsp;<span
-                                                                    style="color:#ff0000">*</span></label>
-                                                            <input  type="text" name="brand_manufacturer" class="form-control" value="{{vaccination.brand_manufacturer}}">
-                                                        </span> 
-                                                        </td>
-                                                        <br>
-                                                        <td>
-                                                            <a href="/vaccination">
-                                                                <button class="btn btn-secondary" type="submit">Cancel</button>
-                                                            </a>
-            
-                                                            <a href="/vaccination">
-                                                                <button class="btn btn-primary" type="submit">Save Changes</button>
-                                                            </a>
-                                                        </td>
-                                                    </form>
-                                                </tr>
-                                            </tbody>
-                                        </thead>
-                                    
-                                    </div>
-                                    <!-- end col-->
+                                            <form action="/updatevaccination/{{vaccination.vaccine_id}}" method="POST">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <label for="vaccine_name" class="form-label">Service 
+                                                            Name:&nbsp;<span style="color:#ff0000">*</span></label>
+                                                        <input type="text" id="vaccine_name" name="vaccine_name" 
+                                                        class="form-control" value="{{vaccination.vaccine_name}}">
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <label for="lot_name" class="form-label">Lot
+                                                            Name:&nbsp;<span style="color:#ff0000">*</span></label>
+                                                        <input type="text" name="lot_name" 
+                                                        class="form-control" value="{{vaccination.lot_name}}">
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <label for="brand_manufacturer" class="form-label">Brand
+                                                            Name:&nbsp;<span style="color:#ff0000">*</span></label>
+                                                        <input type="text" name="brand_manufacturer" 
+                                                        class="form-control" value="{{vaccination.brand_manufacturer}}">
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div align="right">
+                                                    <a href="/vaccination">
+                                                        <button class="btn btn-secondary" type="submit">Cancel</button>
+                                                    </a>
+
+                                                    <a href="/vaccination">
+                                                        <button class="btn btn-primary" type="submit">Submit</button>
+                                                    </a>
+                                                </div>
+                                            </form>
+                                    </thead>
+
                                 </div>
-                                <!-- end row-->
-
+                                <!-- end col-->
                             </div>
-                            <!-- container -->
+                            <!-- end row-->
 
                         </div>
-                        <!-- content -->
+                        <!-- container -->
+
                     </div>
-                    <!-- end row of table content-->
+                    <!-- content -->
+                </div>
+                <!-- end row of table content-->
+
     
     <!-- ============================================================== -->
     <!-- End Page content -->
