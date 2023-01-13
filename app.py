@@ -349,6 +349,18 @@ def adminaptmedicine():
 def adminaptclinic():
 	return render_template("admin-apt-clinic.html")
 
+@app.route("/adminaptdentaledit")
+def adminaptdentaledit():
+	return render_template("admin-apt-dental-edit.html")
+
+@app.route("/adminaptmedicineedit")
+def adminaptmedicineedit():
+	return render_template("admin-apt-medicine-edit.html")
+
+@app.route("/adminaptclinicedit")
+def adminaptclinicedit():
+	return render_template("admin-apt-clinic-edit.html")
+	
 @app.route("/adminhaptvax")
 def adminhaptvax():
 	return render_template("adminhistory-apt-vax.html")
