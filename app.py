@@ -71,10 +71,12 @@ def clinic():
 	return render_template("clinic.html", clinic = clinic)
 
 
-@app.route("/addclinic", methods = ['GET','POST'])
+@app.route("/addclinic")
 def addclinic():
-	if request.method == 'GET':
 		return render_template("admin-add-clinicservices.html")
+
+@app.route("/addclinics", method = ['POST'])
+def addclinics():
 	if request.method == 'POST':
 		clinic_services_name = request.form['clinic_services_name']
 	conn = connection()
