@@ -213,51 +213,11 @@
 
                     <!-- start table content -->
                     <div class="row">
-
-
- <!--                               <thead>
-                                        <tr class="table-light">
-                                            <th>Medicine ID</th>
-                                            <th>Medicine Name</th>
-                                            <th>Generic Name</th>
-                                            <th>Brand Name</th>
-                                            <th>Manufacturer</th>
-                                            <th>Dosage</th>
-                                            <th>Medicine Type</th>
-                                            <th>Description</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                            
-                                    <tbody>
-                                        {% for medicine in medicine %}
-                                        <tr>
-                                            <td>{{ medicine.medicine_id}}</td>
-                                            <td>{{ medicine.medicine_name}}</td>
-                                            <td>{{ medicine.generic_name}}</td>
-                                            <td>{{ medicine.brand_name}}</td>
-                                            <td>{{ medicine.manufacturer}}</td>
-                                            <td>{{ medicine.dosage}}</td>
-                                            <td>{{ medicine.medicine_type}}</td>
-                                            <td>{{ medicine.description }}</td>
-                                            <td class="table-action">
-                                                <button type="button" class="btn btn-warning">
-                                                    <a href="updatemedicine/{{ medicine.medicine_id }}">
-                                                        <i class="mdi mdi-account-edit-outline"></i>
-                                                </button>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                    </table>
--->    
                         <div class="col-sm-12">
                             <div class="card card-body">
                                 <div class="tab-content">
-                                    <div class="table-hover" id="scroll-horizontal-preview">
-                                        <table id="scroll-horizontal-datatable" style="overflow-x: auto;"
-                                            class="table w-100 nowrap">
+                                    <div id="scroll-horizontal-preview">
+                                        <table id="scroll-horizontal-datatable" style="overflow-x: auto;" class="table table-hover w-100 nowrap">
 
                                             <thead>
                                                 <tr class="table-light">

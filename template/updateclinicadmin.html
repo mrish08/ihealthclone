@@ -189,7 +189,7 @@
 
                 <!-- start page title -->
                 <div class="row">
-                    <div class="text-center col-12">
+                    <div class="col-12">
                         <div class="page-title-box">
                             <h4 class="page-title">Edit Clinic Service</h4>
                         </div>
@@ -198,8 +198,8 @@
                     <!-- end page title -->
 
                         <div class="row justify-content-center">
-                            <div class="col-5">
-                                <div class="card border-secondary border">
+                            <div class="col-12">
+                                <div class="card">
                                     <div class="card-body">
                                         <thead>
                                             <p>Please fill in the details below to successfully update a Service.</p><br>
@@ -213,15 +213,15 @@
                                                             <input type="text" id="clinic_services_name" name="clinic_services_name" class="form-control" value="{{clinic.clinic_services_name}}">
                                                             </span> 
                                                         </td><br>
-                                                        <td>
-                                                            <a href="">
+                                                        <div align="right">
+                                                            <a href="/clinicadmin">
                                                                 <button class="btn btn-secondary" type="submit">Cancel</button>
                                                             </a>
-            
-                                                            <a href="">
-                                                                <button class="btn btn-primary" type="submit">Save Changes</button>
+        
+                                                            <a href="/clinicadmin">
+                                                                <button class="btn btn-primary" type="submit">Submit</button>
                                                             </a>
-                                                        </td>
+                                                        </div>
                                                     </form>
                                                 </tr>
                                             </tbody>

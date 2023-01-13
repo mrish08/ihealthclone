@@ -189,7 +189,7 @@
 
                 <!-- start page title -->
                 <div class="row">
-                    <div class="text-center col-12">
+                    <div class="col-12">
                         <div class="page-title-box">
                             <h4 class="page-title">Edit Schedule Details</h4>
                         </div>
@@ -197,9 +197,9 @@
 
                     <!-- end page title -->
 
-                        <div class="row justify-content-center">
-                            <div class="col-5">
-                                <div class="card border-secondary border">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
                                     <div class="card-body">
                                         <thead>
                                             <p>Please fill in the details below to successfully update a Schedule.</p><br>
@@ -207,7 +207,7 @@
                                             <tbody>
                                                 <tr>
                                                     <form action="/updateschedule/{{schedule.clinic_sched_id}}" method = "POST">
-                                                        <td>
+                                                        <td class="col-sm-6">
                                                             <label for="schedule_name" class="form-label">Time:
                                                             &nbsp;<span style="color:#ff0000">*</span></label>
                                                             <input type="text" id="schedule_name" name="schedule_name" class="form-control" value="{{schedule.schedule_name}}">
