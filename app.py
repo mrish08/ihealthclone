@@ -161,7 +161,6 @@ def updatevaccination(vaccine_id):
 		conn.close()
 		return render_template("updatevaccination.html", vaccination = uv[0])
 	if request.method == 'POST':
-		vax_id = str(request.form["vax_id"])
 		vax_name = str(request.form["vax_name"])
 		vax_brand_manufacturer = str(request.form["vax_brand_manufacturer"])
 		vax_batch_no = str(request.form["vax_batch_no"])
@@ -174,7 +173,7 @@ def updatevaccination(vaccine_id):
 		vax_side_effect = str(request.form["vax_side_effect"])
 		stock  = int(request.form['stock '])
 
-		cursor.execute("UPDATE vaccine SET (vax_id, vax_name, vax_brand_manufacturer, vax_batch_no, vax_lot_no, vax_dosage, vax_tech_platform, vax_ph_fda_approval, vax_storage_req, vax_efficiency, vax_side_effect,stock) = (%s,%s,%s, %s, %s, %s, %s, %s,%s, %s, %s,)  WHERE vaccine_id =(%s)", (vax_id, vax_name, vax_brand_manufacturer, vax_batch_no, vax_lot_no, vax_dosage, vax_tech_platform, vax_ph_fda_approval, vax_storage_req, vax_efficiency, vax_side_effect, stock))
+		cursor.execute("UPDATE vaccine SET (v vax_name, vax_brand_manufacturer, vax_batch_no, vax_lot_no, vax_dosage, vax_tech_platform, vax_ph_fda_approval, vax_storage_req, vax_efficiency, vax_side_effect,stock) = (%s,%s,%s, %s, %s, %s, %s, %s,%s, %s,)  WHERE vaccine_id =(%s)", ( vax_name, vax_brand_manufacturer, vax_batch_no, vax_lot_no, vax_dosage, vax_tech_platform, vax_ph_fda_approval, vax_storage_req, vax_efficiency, vax_side_effect, stock))
 		conn.commit()
 		conn.close()
 		return redirect('/adminvaccineinv')
