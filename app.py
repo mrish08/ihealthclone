@@ -74,6 +74,8 @@ def clinic():
 @app.route("/addclinic")
 def addclinic():
 		return render_template("admin-add-clinicservices.html")
+
+@app.route("/addclinics", method = ['POST'])
 def addclinics():
 	if request.method == 'POST':
 		clinic_services_name = request.form['clinic_services_name']
