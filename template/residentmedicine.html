@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Schedule| iHealth</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" name="description">
+    <meta content="Coderthemes" name="author">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="../../static/images/brgyms-icon-white.png">
+
+    <!-- third party css -->
+    <link href="../../static/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css">
+    <!-- third party css end -->
+
+    <!-- App css -->
+    <link href="../../static/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="../../static/css/app-i.min.css" rel="stylesheet" type="text/css" id="light-style">
+    <link href="../../static/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style">
+
+</head>
+
+<body class="loading" 
+    data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
+    <!-- Begin page -->
+    <header>
+        <div class="wrapper">
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="leftside-menu">
+
+                <!-- LOGO -->
+                <a href="/indexresident" class="logo text-center logo-light">
+                    <span class="logo-lg">
+                        <img src="../../static/images/ihealth-logo-with-text.png" alt="" height="40">
+                    </span>
+                </a>
+                <div class="h-100" id="leftside-menu-container" data-simplebar="">
+
+                    <ul class="side-nav">
+
+                        <li class="side-nav-title side-nav-item">Menu</li>
+
+                        <li class="side-nav-item">
+                            <a href="/indexresident" class="side-nav-link">
+                                <i class="uil-chart-pie"></i>
+                                <span> Dashboard </span>
+                            </a>
+                        </li>
+                        
+                        <li class="badge-primary-lighten side-nav-item">
+                            <a href="/residentas" class="side-nav-link">
+                                <i class="uil-clipboard-alt"></i>
+                                <span> Appointment Service </span>
+                            </a>
+                        </li>
+        
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
+                                <i class="mdi mdi-history"></i>
+                                <span> Appointment History </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarEmail">
+                                <ul class="side-nav-second-level">
+                                    <li>
+                                        <a href="/residenthaptvax">Vaccination Service</a>
+                                    </li>
+                                    <li>
+                                        <a href="/residenthaptclinic">Clinic Service</a>
+                                    </li>
+                                    <li>
+                                        <a href="/residenthaptdental">Dental Service</a>
+                                    </li>
+                                    <li>
+                                        <a href="/residenthaptmedicine">Medicine Pickup</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+
+                </div>
+                <!-- Sidebar -left -->
+
+            </div>
+            <!-- Left Sidebar End -->
+
+        </div>
+        <!-- END wrapper -->
+    </header>
+
+    <div class="wrapper">
+        <div class="content-page">
+            <div class="content">
+                <!-- Topbar Start -->
+                <div class="navbar-custom">
+                    <ul class="list-unstyled topbar-menu float-end mb-0">
+                        <li class="dropdown notification-list d-lg-none">
+                            <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#"
+                                role="button" aria-haspopup="false" aria-expanded="false">
+                                <i class="dripicons-search noti-icon"></i>
+                            </a>
+                        </li>
+
+                        <li class="dropdown notification-list">
+                            <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown"
+                                href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                <span class="account-user-avatar">
+                                    <img src="../../static/images/users/profile1.png" alt="user-image"
+                                        class="rounded-circle">
+                                </span>
+                                <span>
+                                    <span class="account-user-name">Juan Dela Cruz</span>
+                                    <span class="account-position">Resident</span>
+                                </span>
+                            </a>
+                            <div
+                                class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
+                                <!-- item-->
+                                <div class=" dropdown-header noti-title">
+                                    <h6 class="text-overflow m-0">Welcome !</h6>
+                                </div>
+
+                                <!-- item-->
+                                <a href="/BITBo/login-admin.php" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-logout me-1"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+                    <button class="button-menu-mobile open-left">
+                        <i class="mdi mdi-menu"></i>
+                    </button>
+                    </div>
+                </div>
+                <!-- end Topbar -->
+
+                <!-- Start Content-->
+                <div class="container-fluid">
+
+                    <!-- start page title --><br> <br> <br>
+                    <div class="text-center">
+                        <h3 class="mb-2">Book an Online Appointment</h3>
+                        <p class="text-muted w-50 m-auto">
+                            We have the announcement section for important details together with the online booking section for your needs.
+                        </p><br><br>
+                    </div>
+                    <!-- end page title -->
+
+                    <!-- start table content -->
+                    <div class="row justify-content-center">
+                        <div class="col-5">
+                            <div class="card"><br><br>
+                                <div class="card-header text-center bg-primary">
+                                    <a href="index.html">
+                                        <span><img src="../../static/images/anncmnt.png" alt="" height="21"></span>
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <div class="tab-content">
+                                        <div class="text-center w-75 m-auto primary">
+                                            <img src="../../static/images/announcement.png" height="65">
+                                            <h4 class="text-dark-50 mt-3 fw-bold">Schedule</h4>
+                                        </div><br>
+        
+                                        <div class="text-center tab-content">
+                                            <tbody>
+                                                <p>A.M - (8:00 to 12:00)</p>
+                                                <p>P.M - (1:00 to 5:00)</p>
+
+                                                <br><br>
+                                                <p> For senior citizens and PWD, please bring a valid ID to be
+                                                    prioritized.</p>
+                                            </tbody>
+
+                                        </div> <!-- end card body-->
+                                    </div> <!-- end card body-->
+                                </div> <!-- end card -->
+                            </div><!-- end col-->
+                        </div><!-- end row-->
+
+
+                        <div class="col-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <thead>
+                                        <br><p>Please fill in the details below to successfully add a Schedule.</p><br>
+
+                                    <tbody>
+                                        <tr>
+                                            <div>
+                                                <td class="col-sm-6">
+                                                    <form action="/addapt" method="POST">
+                                                    <label for="appt_type" class="form-label">Appointment Type
+                                                        <span style="color:#ff0000">*</span></label>
+                                                    <select class="form-select" id="appt_type">
+                                                        <option>Clinic Service</option>
+                                                        <option>Dental Service</option>
+                                                        <option>Vaccination Service</option>
+                                                        <option>Medicine Pick-Up Service</option>
+                                                    </select>
+                                                </td><br>
+                                                <td class="col-sm-6">
+                                                    <label for="date" class="form-label">Date<span
+                                                            style="color:#ff0000">*</span></label>
+                                                    <input class="form-control" id="date" type="date"
+                                                        name="date">
+                                                </td><br>
+                                                <td class="col-sm-6">
+                                                    <label for="time" class="form-label">Time <span
+                                                            style="color:#ff0000">*</span></label>
+                                                    <select class="form-select" id="time">
+                                                        <option>A.M</option>
+                                                        <option>P.M</option>
+                                                    </select>
+                                                </td><br>
+                                                <td>
+                                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                                    </form>
+                                                </td>
+                                            </div>
+                                        </tr>
+                                    </tbody>
+                                    </thead>
+                                    </table>
+                                </div><!-- end col-->
+                            </div>
+                            <!-- end row-->
+
+                        </div> <!-- container -->
+
+                    </div> <!-- content -->
+                </div><!-- end row of table content-->
+            </div> <!-- container -->
+        </div><!-- content -->
+    </div>
+</div>
+<!-- END wrapper -->
+    
+    <!-- ============================================================== -->
+    <!-- End Page content -->
+    <!-- ============================================================== -->
+
+
+    <!-- bundle -->
+    <script src="../../static/js/vendor.min.js"></script>
+    <script src="../../static/js/app.min.js"></script>
+
+    <!-- third party js -->
+    <script src="../../static/js/vendor/jquery.dataTables.min.js"></script>
+    <script src="../../static/js/vendor/dataTables.bootstrap5.js"></script>
+    <script src="../../static/js/vendor/dataTables.responsive.min.js"></script>
+    <script src="../../static/js/vendor/responsive.bootstrap5.min.js"></script>
+    <script src="../../static/js/vendor/dataTables.buttons.min.js"></script>
+    <script src="../../static/js/vendor/buttons.bootstrap5.min.js"></script>
+    <script src="../../static/js/vendor/buttons.php5.min.js"></script>
+    <script src="../../static/js/vendor/buttons.flash.min.js"></script>
+    <script src="../../static/js/vendor/buttons.print.min.js"></script>
+    <script src="../../static/js/vendor/dataTables.keyTable.min.js"></script>
+    <script src="../../static/js/vendor/dataTables.select.min.js"></script>
+    <script src="../../static/js/vendor/apexcharts.min.js"></script>
+    <script src="../../static/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="../../static/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="../../static/js/vendor/dropzone.min.js"></script>
+    <script src="../../static/js/vendor/list.min.js"></script>
+    <!-- third party js ends -->
+
+    <!-- demo app -->
+    <script src="../../static/js/pages/demo.datatable-init.js"></script>
+    <script src="../../static/js/pages/demo.toastr.js"></script>
+    <script src="../../static/js/pages/demo.datatable-init.js"></script>
+    <script src="../../static/js/pages/demo.toastr.js"></script>
+    <script src="../../static/js/pages/list.js"></script>
+    <!-- end demo js-->
+</body>
+
+</html>

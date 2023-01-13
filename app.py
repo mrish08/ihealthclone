@@ -113,7 +113,7 @@ def dental():
 	return render_template("clinic.html")
 
 
-@app.route("/vaccination")
+@app.route("/adminvaccineinv")
 def vaccination():
 	vaccination = []
 	conn = connection()
@@ -144,7 +144,7 @@ def addvaccination():
 	[vax_id, vax_name, vax_brand_manufacturer, vax_batch_no, vax_lot_no, vax_dosage, vax_tech_platform, vax_ph_fda_approval, vax_storage_req, vax_efficiency, vax_side_effect])
 	conn.commit()
 	conn.close()
-	return redirect('/vaccination')
+	return redirect('/adminvaccineinv')
 
 
 @app.route('/updatevaccination/<int:vaccine_id>', methods = ['GET', 'POST'])
@@ -173,7 +173,7 @@ def updatevaccination(vaccine_id):
 		cursor.execute("UPDATE vaccine SET (vax_id, vax_name, vax_brand_manufacturer, vax_batch_no, vax_lot_no, vax_dosage, vax_tech_platform, vax_ph_fda_approval, vax_storage_req, vax_efficiency, vax_side_effect) = (%s,%s,%s, %s, %s, %s, %s, %s,%s, %s, %s)  WHERE vaccine_id =(%s)", (vax_id, vax_name, vax_brand_manufacturer, vax_batch_no, vax_lot_no, vax_dosage, vax_tech_platform, vax_ph_fda_approval, vax_storage_req, vax_efficiency, vax_side_effect))
 		conn.commit()
 		conn.close()
-		return redirect('/vaccination')
+		return redirect('/adminvaccineinv')
 
 @app.route("/schedule")
 def schedule():
@@ -261,7 +261,7 @@ def addmedicine():
 	[medicine_id, medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description])
 	conn.commit()
 	conn.close()
-	return redirect('/medicine')
+	return redirect('/adminmedicineinv')
 
 @app.route('/updatemedicine/<int:medicine_id>', methods = ['GET', 'POST'])
 def updatemedicine(medicine_id):
@@ -287,7 +287,7 @@ def updatemedicine(medicine_id):
 		(medicine_id, medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description))
 		conn.commit()
 		conn.close()
-		return redirect('/medicine')
+		return redirect('/adminmedicineinv')
 
 @app.route("/adminclinicinv")
 def adminclinicinv():
@@ -511,8 +511,12 @@ def vaccinationresident():
 
 @app.route("/residentas")
 def residentas():
-	
-	return render_template("clinicresident.html")
+	return render_template("residentbooking.html")
+
+
+@app.route("/residentas")
+def residentas():
+	return render_template("residentmedicine.html") 
 
 @app.route("/medicineresident")
 def medicineresident():
