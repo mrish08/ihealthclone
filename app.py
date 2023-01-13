@@ -73,10 +73,6 @@ def clinic():
 
 @app.route("/addclinic")
 def addclinic():
-		return render_template("admin-add-clinicservices.html")
-
-@app.route("/addclinics", method = ['POST'])
-def addclinics():
 	if request.method == 'POST':
 		clinic_services_name = request.form['clinic_services_name']
 	conn = connection()
@@ -84,7 +80,9 @@ def addclinics():
 	cursor.execute('INSERT INTO ih_clinic_services (clinic_services_name)'' VALUES (%s)', [clinic_services_name])
 	conn.commit()
 	conn.close()
-	return redirect('/clinic')
+	return render_template("admin-add-clinicservices.html")
+
+
 
 
 @app.route('/updateclinic/<int:clinic_services_id>', methods = ['GET', 'POST'])
