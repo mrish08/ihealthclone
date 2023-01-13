@@ -232,8 +232,8 @@ def updateschedule(clinic_sched_id):
 		return redirect('/schedule')
 
 
-@app.route("/medicine")
-def medicine():
+@app.route("/adminmedicineinv")
+def adminmedicineinv():
 	medicine = []
 	conn = connection()
 	cursor = conn.cursor()
@@ -292,14 +292,6 @@ def updatemedicine(medicine_id):
 @app.route("/adminclinicinv")
 def adminclinicinv():
 	return render_template("adminclinicinv.html")
-
-@app.route("/adminmedicineinv")
-def adminmedicineinv():
-	return render_template("adminmedicineinv.html")
-
-@app.route("/adminvaccineinv")
-def adminvaccineinv():
-	return render_template("adminvaccineinv.html")
 
 
 @app.route("/adminvc")
