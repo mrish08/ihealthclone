@@ -188,6 +188,9 @@ def schedule():
 	return render_template("schedule.html", schedule= schedule)
 	
 
+@app.route("/adsb")
+def adsb():
+	return render_template("admin-add-schedule.html")
 
 @app.route("/addschedule", methods = ['GET', 'POST'])
 def addschedule():
@@ -197,8 +200,6 @@ def addschedule():
 		contact_person= request.form['contact_person']
 		maximum_attendees = request.form['maximum_attendees']
 		from_to_schedule= request.form['from_to_schedule']
-		
-
 	conn = connection()
 	cursor = conn.cursor()
 	cursor.execute('INSERT INTO ih_clinic_sched (clinic_sched_id, schedule_name, contact_person, maximum_attendees, from_to_schedule)'' VALUES (%s,%s,%s, %s, %s)', 
