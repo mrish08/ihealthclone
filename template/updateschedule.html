@@ -207,28 +207,43 @@
                                             <tbody>
                                                 <tr>
                                                     <form action="/updateschedule/{{schedule.clinic_sched_id}}" method = "POST">
-                                                        <td class="col-sm-6">
-                                                            <label for="schedule_name" class="form-label">Time:
-                                                            &nbsp;<span style="color:#ff0000">*</span></label>
-                                                            <input type="text" id="schedule_name" name="schedule_name" class="form-control" value="{{schedule.schedule_name}}">
-                                                            </span> 
-                                                        </td><br>
-                                                        <td class="col-sm-6">
-                                                            <label for="schedule" class="form-label">Schedule Name:&nbsp;<span
-                                                                    style="color:#ff0000">*</span></label>
-                                                            <input  type="text"  id="schedule" name="schedule" class="form-control" value="{{schedule.schedule}}">
-                                                        </span> 
-                                                        </td>
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <label for="schedule_name" class="form-label">Schedule
+                                                                    Name:&nbsp;<span style="color:#ff0000">*</span></label>
+                                                                <input type="text" name="schedule_name" 
+                                                                    class="form-control">
+                                                                </span>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <label for="contact_person" class="form-label">contact_person:&nbsp;<span style="color:#ff0000">*</span></label>
+                                                                <input type="text" name="contact_person" 
+                                                                    class="form-control">
+                                                                </span>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <label for="maximum_attendees" class="form-label">maximum_attendees:&nbsp;<span style="color:#ff0000">*</span></label>
+                                                                <input type="text" name="maximum_attendees" 
+                                                                    class="form-control">
+                                                                </span>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <label for="from_to_schedule" class="form-label">from_to_schedule:
+                                                                    &nbsp;<span style="color:#ff0000">*</span></label>
+                                                                <input class="form-control" type="text" name="from_to_schedule">
+                                                                </span>
+                                                            </div>
+                                                        </div>
                                                         <br>
-                                                        <td>
-                                                            <a href="/schedule">
+                                                        <div align="right">
+                                                            <a href="schedule.html">
                                                                 <button class="btn btn-secondary" type="submit">Cancel</button>
                                                             </a>
-            
-                                                            <a href="/schedule">
-                                                                <button class="btn btn-primary" type="submit">Save Changes</button>
+    
+                                                            <a href="schedule.html">
+                                                                <button class="btn btn-primary" type="submit">Submit</button>
                                                             </a>
-                                                        </td>
+                                                        </div>
                                                     </form>
                                                 </tr>
                                             </tbody>
