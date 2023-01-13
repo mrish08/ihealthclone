@@ -247,7 +247,7 @@ def adminmedicineinv():
 	conn.close()	
 	return render_template("adminmedicineinv.html", medicine = medicine)
 	
-@app.route("/addmedicine", methods = ['GET', 'POST'])
+@app.route("/addmedicine", methods = ['POST'])
 def addmedicine():
 	if request.method == 'POST':
 		medicine_id = request.form['medicine_id']
