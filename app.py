@@ -265,16 +265,22 @@ def updatemedicine(medicine_id):
 		conn.close()
 		return redirect('/medicine')
 
-@app.route("/clinicadmin")
-def clinicadmin():
-	clinicadmin = []
-	conn = connection()
-	cursor = conn.cursor()
-	cursor.execute("SELECT * FROM ih_clinic_services")
-	for row in cursor.fetchall():
-		clinicadmin.append({"clinic_services_id": row[0], " clinic_services_name": row[1]})
-	conn.close()	
-	return render_template("clinicadmin.html", clinicadmin = clinicadmin)
+@app.route("/clinicsupply")
+def clinicsupply():
+	return render_template("clinicsupply.html")
+
+@app.route("/clinicsupply")
+def clinicsupply():
+	return render_template("clinicsupply.html")
+	
+@app.route("/clinicsupply")
+def clinicsupply():
+	return render_template("clinicsupply.html")
+	
+@app.route("/clinicsupply")
+def clinicsupply():
+	return render_template("clinicsupply.html")
+	
 	
 	
 
