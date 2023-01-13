@@ -70,6 +70,9 @@ def clinic():
 	conn.close()	
 	return render_template("clinic.html", clinic = clinic)
 
+@app.route("/adcb")
+def adcb():
+	return render_template("admin-add-clinicservices.html")
 
 @app.route("/addclinic")
 def addclinic():
