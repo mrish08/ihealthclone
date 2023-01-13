@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>BITBo | iHealth Appointment History</title>
+    <title>Vaccination Service | iHealth Staff History</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="" name="description">
     <meta content="Coderthemes" name="author">
@@ -35,11 +35,14 @@
             <!-- ========== Left Sidebar Start ========== -->
             <div class="leftside-menu">
     
-                <!-- LOGO -->
-                <a href="/indexstaff" class="logo text-center logo-light">
-                    <span class="logo-lg">
-                        <img src="../../static/images/ihealth-logo-with-text.png" alt="" height="40">
-                    </span>
+            <!-- LOGO -->
+            <a href="/index" class="logo text-center logo-light">
+                <span class="logo-lg">
+                    <img src="../../static/images/ihealth-logo-with-text.png" alt="" height="40">
+                </span>
+                <span class="logo-sm">
+                    <img src="../../static/images/bitbo.png" alt="" height="32">
+                </span>
                 </a>
     
             <!--- Sidemenu -->
@@ -48,28 +51,28 @@
                 <li class="side-nav-title side-nav-item">Menu</li>
 
                 <li class="side-nav-item">
-                    <a href="/indexstaff" class="side-nav-link">
+                    <a href="{{ url_for('indexstaff') }}" class="side-nav-link">
                         <i class="uil-chart-pie"></i>
                         <span> Dashboard </span>
                     </a>
                 </li>
 
                 <li class="side-nav-item">
-                    <a href="/schedulestaff" class="side-nav-link">
+                    <a href="{{ url_for('schedulestaff') }}" class="side-nav-link">
                         <i class="uil-clipboard-alt"></i>
                         <span> Schedule </span>
                     </a>
                 </li>
 
                 <li class="side-nav-item">
-                    <a href="/vaccinationstaff" class="side-nav-link">
+                    <a href="{{ url_for('vaccinationstaff') }}" class="side-nav-link">
                         <i class="uil-syringe"></i>
                         <span> Vaccination Service</span>
                     </a>
                 </li>
 
                 <li class="side-nav-item">
-                    <a href="/clinicstaff" class="side-nav-link">
+                    <a href="{{ url_for('clinicstaff') }}" class="side-nav-link">
 
                         <i class="uil-clipboard-alt"></i>
                         <span> Clinic Service </span>
@@ -77,14 +80,21 @@
                 </li>
 
                 <li class="side-nav-item">
+                    <a href="/dentalstaff" class="side-nav-link">
+                        <i class="mdi mdi-hospital"></i>
+                        <span> Dental Service </span>
+                    </a>
+                </li>
+
+                <li class="side-nav-item">
+
                     <a href="/medicinestaff" class="side-nav-link">
                         <i class="uil-home-alt"></i>
                         <span>Medicine Pick Up</span>
                     </a>
                 </li>
 
-
-                <li class="side-nav-item">
+                <li class="side-nav-item menuitem-active">
                     <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
                         <i class="mdi mdi-history"></i>
                         <span> Appointment History </span>
@@ -92,7 +102,7 @@
                     </a>
                     <div class="collapse" id="sidebarEmail">
                         <ul class="side-nav-second-level">
-                            <li>
+                            <li class="badge-primary-lighten  menuitem-active">
                                 <a href="/staffhaptvax">Vaccination Service</a>
                             </li>
                             <li>
@@ -164,55 +174,6 @@
                     <button class="button-menu-mobile open-left">
                         <i class="mdi mdi-menu"></i>
                     </button>
-                    <div class="app-search dropdown d-none d-lg-block">
-
-                        <div class="dropdown-menu dropdown-menu-animated dropdown-lg" id="search-dropdown">
-                            <!-- item-->
-                            <div class="dropdown-header noti-title">
-                                <h5 class="text-overflow mb-1">Found <span class="text-danger">17</span> results</h5>
-                            </div>
-
-                            <!-- item-->
-                            <div class="dropdown-header noti-title">
-                                <h6 class="text-overflow mb-2 text-uppercase">Users</h6>
-                            </div>
-
-                            <div class="notification-list">
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="d-flex">
-                                        <img class="d-flex me-2 rounded-circle" src="../../static/images/users/profile1.png" alt="Generic placeholder image" height="32">
-                                        <div class="w-100">
-                                            <h5 class="m-0 font-14">Juan Dela Cruz</h5>
-                                            <span class="font-12 mb-0">Brgy. Official</span>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="d-flex">
-                                        <img class="d-flex me-2 rounded-circle" src="../../static/images/users/profile2.png" alt="Generic placeholder image" height="32">
-                                        <div class="w-100">
-                                            <h5 class="m-0 font-14">Maria Clara</h5>
-                                            <span class="font-12 mb-0">Helpdesk</span>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="d-flex">
-                                        <img class="d-flex me-2 rounded-circle" src="../../static/images/users/profile3.png" alt="Generic placeholder image" height="32">
-                                        <div class="w-100">
-                                            <h5 class="m-0 font-14">Sisa Usisa</h5>
-                                            <span class="font-12 mb-0">Staff</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!-- end Topbar -->
 
