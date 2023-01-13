@@ -250,19 +250,19 @@ def adminmedicineinv():
 @app.route("/addmedicine", methods = ['POST'])
 def addmedicine():
 	if request.method == 'POST':
-		medicine_id = request.form['medicine_id']
+		#medicine_id = request.form['medicine_id']
 		medicine_name = request.form['medicine_name']
 		generic_name = request.form['generic_name']
 		brand_name = request.form['brand_name']
 		manufacturer = request.form['manufacturer']
-		dosage  = request.form['dosage ']
+		dosage  = request.form['dosage']
 		medicine_type = request.form['medicine_type']
 		description = request.form['description']
-
+		stock = request.form['stock']
 	conn = connection()
 	cursor = conn.cursor()
-	cursor.execute('INSERT INTO ih_medicine (medicine_id, medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description)'' VALUES (%s,%s,%s, %s, %s, %s, %s, %s)', 
-	[medicine_id, medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description])
+	cursor.execute('INSERT INTO ih_medicine (medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description,stock)'' VALUES (%s,%s, %s, %s, %s, %s, %s,%s)', 
+	[medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description,stock])
 	conn.commit()
 	conn.close()
 	return redirect('/adminmedicineinv')
@@ -275,7 +275,7 @@ def updatemedicine(medicine_id):
 	if request.method == 'GET':
 		cursor.execute("SELECT * FROM ih_medicine WHERE medicine_id = %s", (str(medicine_id)))
 		for row in cursor.fetchall():
-			um.append({"medicine_id": row[0], "medicine_name": row[1], "generic_name": row[2], "brand_name": row[3], "manufacturer": row[4], "dosage": row[5], "medicine_type": row[6], "description": row[7]})
+			um.append({"medicine_id": row[0], "medicine_name": row[1], "generic_name": row[2], "brand_name": row[3], "manufacturer": row[4], "dosage": row[5], "medicine_type": row[6], "description": row[7],"stock":row[8]})
 		conn.close()
 		return render_template("updatemedicine.html", medicine = um[0])
 	if request.method == 'POST':
@@ -287,8 +287,9 @@ def updatemedicine(medicine_id):
 		dosage = str(request.form["dosage"])
 		medicine_type = str(request.form["medicine_type"])
 		description = str(request.form["description"])
-		cursor.execute("UPDATE medicine SET (medicine_id, medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description) = (%s,%s,%s, %s, %s, %s, %s, %s)  WHERE medicine_id =(%s)",
-		(medicine_id, medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description))
+		stock = int(request.form["stock"])
+		cursor.execute("UPDATE medicine SET (medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description,stock) = (%s,%s,%s, %s, %s, %s, %s, %s)  WHERE medicine_id =(%s)",
+		( medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description, stock))
 		conn.commit()
 		conn.close()
 		return redirect('/adminmedicineinv')
@@ -300,6 +301,15 @@ def adminclinicinv():
 
 @app.route("/adminvc")
 def adminvc():
+	viewc = []
+	conn = connection()
+	cursor = conn.cursor()
+	if request.method == 'GET':
+		cursor.execute("SELECT * FROM ih_clinic WHERE medicine_id = %s", (str(medicine_id)))
+		for row in cursor.fetchall():
+			viewc.append({"medicine_id": row[0], "medicine_name": row[1], "generic_name": row[2], "brand_name": row[3], "manufacturer": row[4], "dosage": row[5], "medicine_type": row[6], "description": row[7],"stock":row[8]})
+		conn.close()
+		return render_template("updatemedicine.html", medicine = viewc[0])
 	return render_template("adminh-view-clinic.html")
 
 @app.route("/adminvd")
