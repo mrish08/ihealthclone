@@ -80,7 +80,7 @@ def addclinic():
 	cursor.execute('INSERT INTO ih_clinic_services (clinic_services_name)'' VALUES (%s)', [clinic_services_name])
 	conn.commit()
 	conn.close()
-	return render_template("admin-add-clinicservices.html")
+	return render_template("/clinic")
 
 
 
@@ -290,6 +290,7 @@ def adminvv():
 
 @app.route("/adds")
 def adds():
+
 	return render_template("admin-add-schedule.html")
 
 @app.route("/addc")
