@@ -208,9 +208,7 @@ def addschedule():
 	return redirect('/schedule')
 
 
-@app.route("/adusb")
-def adusb():
-	return render_template("updateschedule.html")
+
 
 @app.route('/updateschedule/<int:clinic_sched_id>', methods = ['GET', 'POST'])
 def updateschedule(clinic_sched_id):
