@@ -72,7 +72,7 @@ def clinic():
 
 @app.route("/adcb")
 def adcb():
-	return render_template("admin-add-clinicservices.html")
+	return render_template("admin-add-clinicservice.html")
 
 @app.route("/addclinic")
 def addclinic():
