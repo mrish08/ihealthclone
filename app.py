@@ -134,10 +134,10 @@ def addvaccination():
 		vax_dosage  = request.form['vax_dosage']
 		vax_tech_platform = request.form['vax_tech_platform']
 		vax_ph_fda_approval = request.form['vax_ph_fda_approval']
-		vax_storage_req  = request.form['vax_storage_req ']
-		vax_efficiency  = request.form['vax_efficiency ']
-		vax_side_effect  = request.form['vax_side_effect ']
-		stock  = request.form['stock ']
+		vax_storage_req  = request.form['vax_storage_req']
+		vax_efficiency  = request.form['vax_efficiency']
+		vax_side_effect  = request.form['vax_side_effect']
+		stock  = request.form['stock']
 	conn = connection()
 	cursor = conn.cursor()
 	cursor.execute('INSERT INTO ih_vaccine (vax_name, vax_brand_manufacturer, vax_batch_no, vax_lot_no, vax_dosage, vax_tech_platform, vax_ph_fda_approval, vax_storage_req, vax_efficiency, vax_side_effect, stock)'' VALUES (%s,%s,%s, %s, %s, %s, %s, %s,%s, %s, %s, %s)', 
