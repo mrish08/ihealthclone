@@ -138,7 +138,6 @@ def addvaccination():
 		vax_efficiency  = request.form['vax_efficiency ']
 		vax_side_effect  = request.form['vax_side_effect ']
 		stock  = request.form['stock ']
-
 	conn = connection()
 	cursor = conn.cursor()
 	cursor.execute('INSERT INTO ih_vaccine (vax_name, vax_brand_manufacturer, vax_batch_no, vax_lot_no, vax_dosage, vax_tech_platform, vax_ph_fda_approval, vax_storage_req, vax_efficiency, vax_side_effect, stock)'' VALUES (%s,%s,%s, %s, %s, %s, %s, %s,%s, %s, %s, %s)', 
@@ -160,6 +159,7 @@ def updatevaccination(vaccine_id):
 		conn.close()
 		return render_template("updatevaccination.html", vaccination = uv[0])
 	if request.method == 'POST':
+		vax_name = str(request.form["vax_name"])
 		vax_brand_manufacturer = str(request.form["vax_brand_manufacturer"])
 		vax_batch_no = str(request.form["vax_batch_no"])
 		vax_lot_no = str(request.form["vax_lot_no"])
