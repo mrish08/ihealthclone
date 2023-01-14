@@ -131,7 +131,7 @@ def addvaccination():
 		vax_brand_manufacturer = request.form['vax_brand_manufacturer']
 		vax_batch_no = request.form['vax_batch_no']
 		vax_lot_no = request.form['vax_lot_no']
-		vax_dosage  = request.form['vax_dosage ']
+		vax_dosage  = request.form['vax_dosage']
 		vax_tech_platform = request.form['vax_tech_platform']
 		vax_ph_fda_approval = request.form['vax_ph_fda_approval']
 		vax_storage_req  = request.form['vax_storage_req ']
