@@ -294,7 +294,6 @@ def adminclinicinv():
 
 @app.route("/adminvc")
 def adminvc():
-	
 	return render_template("adminh-view-clinic.html")
 
 @app.route("/adminvd")
