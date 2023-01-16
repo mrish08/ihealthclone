@@ -214,12 +214,11 @@
 
                                 <table id="basic-datatable" class="table table-hover dt-responsive nowrap w-100">
                                     <thead>
-                                        <tr class="table-light">
-                                            <th>Clinic Sched ID</th>
+                                        <tr class="table-light">>
                                             <th>Schedule Name</th>
-                                            <th>Contact Person</th>
-                                            <th>Maximum attendees</th>
                                             <th>Time</th>
+                                            <th>Maximum Attendees</th>
+                                            <th>Contact Person</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -230,11 +229,10 @@
                                         {% for schedule in schedule %}
 
                                         <tr>
-                                            <td>{{ schedule.clinic_sched_id }}</td>
                                             <td>{{ schedule.schedule_name }}</td>
-                                            <td>{{ schedule.contact_person }}</td>
-                                            <td>{{ schedule.maximum_attendees }}</td>
                                             <td>{{ schedule.from_to_schedule }}</td>
+                                            <td>{{ schedule.maximum_attendees }}</td>
+                                            <td>{{ schedule.contact_person }}</td>
                                             <td class="table-action">
                                                 <form class="action-icon">
                                                     <a href="/updateschedule/{{schedule.clinic_sched_id}}">
