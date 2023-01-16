@@ -484,7 +484,7 @@ def updatedentalstaff(dental_id):
 
 @app.route("/staffhaptvax")
 def staffhaptvax():
-	return render_template("staffhistory-view-vax.html")
+	return render_template("staffhistory-apt-vax.html")
 
 @app.route("/staffhviewvax")
 def staffhviewaptvax():
@@ -498,7 +498,7 @@ def staffhaptdental():
 def staffhviewdental():
 	return render_template("staffhistory-view-dentalh.html")
 
-@app.route("/staffhmedicine")
+@app.route("/staffhaptmedicine")
 def staffhaptmedicine():
 	return render_template("staffhistory-apt-medicine.html")
 
