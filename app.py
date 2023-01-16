@@ -20,9 +20,13 @@ def connection():
     return conn
 
 
-user = {"email":'', "password":''}
+"""""
 
-@app.route('/loginadmin',methods =['POST','GET'])
+
+user = {"email": "", "password": ""}
+
+#Step – 4 (creating route for login)
+@app.route('/loginadmin', methods = ['POST', 'GET'])
 def loginadmin():
     if(request.method == 'POST'):
         email = request.form.get('email')
@@ -36,18 +40,21 @@ def loginadmin():
 
     return render_template("loginadmin.html")
 
+
+
+#Step -6(creating route for logging out)
 @app.route('/logout')
 def logout():
     session.pop('user')         
     return redirect('/loginadmin')
-
+	"""
 
 @app.route("/index")
 def index():
-	if('user' in session and session['user'] == user['username']):
+	#if('user' in session and session['user'] == user['email']):
 		return render_template("index.html")
 
-	return '<h1>You are not logged in.</h1>'  
+	#return '<h1>You are not logged in.</h1>'  
 
 @app.route("/clinic")
 def clinic():
@@ -382,9 +389,7 @@ def adminhaptmedicine():
 def adminhaptclinic():
 	return render_template("adminhistory-apt-clinic.html")
 
-@app.route("/loginadmin", methods=["POST", "GET"])
-def loginadmin():
- return render_template("loginadmin.html")
+
 
 
 @app.route("/loginstaff")
