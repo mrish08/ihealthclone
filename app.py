@@ -30,7 +30,7 @@ def loginadmin():
         if email == user['email'] and password == user['password']:
             
             session['user'] = email
-            return redirect('/dashboard')
+            return redirect('/index')
 
         return "<h1>Wrong email or password</h1>"    
 
