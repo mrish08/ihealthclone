@@ -1,5 +1,5 @@
 from distutils.log import debug
-from flask import Flask, render_template,request, redirect,request, jsonify, url_for, session, logging
+from flask import Flask, render_template,request, redirect,request, redirect, url_for, session, logging
 import os
 import psycopg2
 from flask import session
@@ -18,46 +18,36 @@ def connection():
         with conn.cursor() as curs:
             curs.execute
     return conn
-#
-""""
-@app.route("/loginadmin")
+
+
+user = {"email":'', "password":''}
+
+@app.route('/loginadmin',methods =['POST','GET'])
 def loginadmin():
-    if request.method == 'POST':
-        session.pop('user',None)
-        if request.form['password'] == 'password':
-            session['user'] = request.form['email']
-            return redirect(url_for('protected'))
-    return render_template('loginadmin.html')
+    if(request.method == 'POST'):
+        email = request.form.get('email')
+        password = request.form.get('password')     
+        if email == user['email'] and password == user['password']:
+            
+            session['user'] = email
+            return redirect('/dashboard')
 
-@app.route('/protected')
-def protected():
-    if g.user:
-        return render_template('protected.html',user=session['user'])
-    return redirect(url_for('loginadmin'))
+        return "<h1>Wrong email or password</h1>"    
 
-@app.route('/dropsession')
-def dropsession():
-    session.pop('user',None)
-    return render_template('loginadmin.html')
+    return render_template("loginadmin.html")
 
-@app.before_request
-def before_request():
-    g.user = None
-
-    if 'user' in session:
-        g.user = session['user']
-	
 @app.route('/logout')
 def logout():
-    # remove the username from the session if it's there
-    session.pop('email', None)
-    return redirect(url_for('loginadmin'))
-"""
-#
+    session.pop('user')         
+    return redirect('/loginadmin')
+
 
 @app.route("/index")
 def index():
-	return render_template("index.html")
+	if('user' in session and session['user'] == user['username']):
+		return render_template("index.html")
+
+	return '<h1>You are not logged in.</h1>'  
 
 @app.route("/clinic")
 def clinic():
@@ -490,23 +480,39 @@ def updatedentalstaff(dental_id):
 
 @app.route("/staffhaptvax")
 def staffhaptvax():
-	return render_template("staffhistory-apt-vax.html")
+	return render_template("staffhistory-view-vax.html")
+
+@app.route("/staffhviewvax")
+def staffhviewaptvax():
+	return render_template("staffhistory-view-vaccineh.html")
 
 @app.route("/staffhaptdental")
 def staffhaptdental():
 	return render_template("staffhistory-apt-dental.html")
 
-@app.route("/staffhaptmedicine")
+@app.route("/staffhviewdental")
+def staffhviewdental():
+	return render_template("staffhistory-view-dentalh.html")
+
+@app.route("/staffhmedicine")
 def staffhaptmedicine():
 	return render_template("staffhistory-apt-medicine.html")
+
+@app.route("/staffhviewmedicine")
+def staffhviewmedicine():
+	return render_template("staffhistory-view-medicineh.html")
 
 @app.route("/staffhaptclinic")
 def staffhaptclinic():
 	return render_template("staffhistory-apt-clinic.html")
+
+@app.route("/staffhviewclinic")
+def staffhviewclinic():
+	return render_template("staffhistory-view-clinic.html")
+
 @app.route("/indexresident")
 def indexresident():
 	return render_template("indexresident.html")
-
 
 @app.route("/scheduleresident")
 def scheduleresident():
@@ -537,17 +543,33 @@ def medicineresident():
 def residenthaptvax():
 	return render_template("residenthistory-apt-vax.html")
 
+@app.route("/reshistoryviewvax")
+def reshistoryviewvax():
+	return render_template("reshistory-view-vaccineh.html")
+
 @app.route("/residenthaptdental")
 def residenthaptdental():
 	return render_template("residenthistory-apt-dental.html")
+
+@app.route("/reshistoryviewdent")
+def reshistoryviewdent():
+	return render_template("reshistory-view-dentalh.html")
 
 @app.route("/residenthaptmedicine")
 def residenthaptmedicine():
 	return render_template("residenthistory-apt-medicine.html")
 
+@app.route("/reshistoryviewmed")
+def reshistoryviewmed():
+	return render_template("reshistory-view-medicineh.html")
+
 @app.route("/residenthaptclinic")
 def residenthaptclinic():
 	return render_template("residenthistory-apt-clinic.html")
+
+@app.route("/reshistoryviewclinic")
+def reshistoryviewclinic():
+	return render_template("reshistory-view-clinic.html")
 
 if __name__== '__main__':
 	app.debug=True
