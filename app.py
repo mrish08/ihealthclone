@@ -20,39 +20,62 @@ def connection():
     return conn
 
 
-user = {"email":'', "password":''}
-
+"""""
 @app.route('/loginadmin',methods =['POST','GET'])
 def loginadmin():
-   	msg = ''
-    if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
-	email = request.form['email']
-    password = request.form['password']
-    conn = connection()
+	msg = ['']
+	if request.method == 'POST':
+		email = request.form['email']
+		password = request.form['password']
+	conn = connection()
 	cursor = conn.cursor()
-    cursor.execute("SELECT * FROM users_user WHERE email = % s AND password = % s", (email, password, ))
-    users_user = cursor.fetchone()
-        if  users_user:
-            session['loggedin'] = True
-            session['id'] =  users_user['id']
-            session['email'] =  users_user['email']
-            msg = 'Logged in successfully !'
-            return render_template('index.html', msg = msg)
-        else:
-            msg = 'Incorrect username / password !'
-    return render_template('loginadmin.html', msg = msg)
+	cursor.execute("SELECT * FROM users_user WHERE email = %s AND password = %s", (email, password))
+	users_user = cursor.fetchone()
+	if  users_user:
+				session['loggedin'] = True
+				session['id'] =  users_user['id']
+				session['email'] =  users_user['email']
+				msg = 'Logged in successfully !'
+				return render_template('index.html', msg = msg)
+	else:
+				msg = 'Incorrect username / password !'
+	return render_template('loginadmin.html', msg = msg)
 
 @app.route('/logout')
 def logout():
     session.pop('loggedin', None)
     session.pop('id', None)
     session.pop('username', None)
-    return redirect("loginadmin.html")
+    return redirect("/loginadmin")
+"""
+user = {"email": "", "password": ""}
 
+#Step – 4 (creating route for login)
+@app.route('/loginadmin', methods = ['POST', 'GET'])
+def loginadmin():
+    if(request.method == 'POST'):
+        email = request.form.get('email')
+        password = request.form.get('password')     
+        if email == user['email'] and password == user['password']:
+            
+            session['user'] = email
+            return redirect('/dashboard')
+
+        return "<h1>Wrong email or password</h1>"    
+
+    return render_template("loginadmin.html")
+
+
+
+#Step -6(creating route for logging out)
+@app.route('/logout')
+def logout():
+    session.pop('user')         
+    return redirect('/loginadmin')
 
 @app.route("/index")
 def index():
-	if('user' in session and session['user'] == user['username']):
+	if('user' in session and session['user'] == user['email']):
 		return render_template("index.html")
 
 	return '<h1>You are not logged in.</h1>'  
@@ -390,9 +413,7 @@ def adminhaptmedicine():
 def adminhaptclinic():
 	return render_template("adminhistory-apt-clinic.html")
 
-@app.route("/loginadmin", methods=["POST", "GET"])
-def loginadmin():
- return render_template("loginadmin.html")
+
 
 
 @app.route("/loginstaff")
