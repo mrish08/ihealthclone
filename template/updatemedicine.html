@@ -206,15 +206,74 @@
 
                                             <form action="/updatemedicine/{{medicine.medicine_id}}" method="POST">
                                                 <div class="row">
-                                                    <div class="col-12">
-                                                        <label for="medicine_name" class="form-label">Medicine
-                                                            Name:&nbsp;<span style="color:#ff0000">*</span></label>
+                                                    <div class="col-sm-6">
+                                                        <label for="medicine_name" class="form-label">
+                                                            Medicine Name:&nbsp;<span style="color:#ff0000">*</span></label>
+                                                        <input type="text" id="medicine_name" name="medicine_name" 
+                                                        class="form-control" value="{{medicine.medicine_name}}">
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <label for="generic_name" class="form-label">
+                                                            Generic Name:&nbsp;<span style="color:#ff0000">*</span></label>
+                                                        <input type="text" id="generic_name" name="generic_name" 
+                                                        class="form-control" value="{{medicine.generic_name}}">
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <label for="medicine_name" class="form-label">
+                                                            Brand Name:&nbsp;<span style="color:#ff0000">*</span></label>
+                                                        <input type="text" id="medicine_name" name="medicine_name" 
+                                                        class="form-control" value="{{medicine.medicine_name}}">
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <label for="generic_name" class="form-label">
+                                                            Manufacturer:&nbsp;<span style="color:#ff0000">*</span></label>
+                                                        <input type="text" id="generic_name" name="generic_name" 
+                                                        class="form-control" value="{{medicine.generic_name}}">
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <label for="medicine_name" class="form-label">
+                                                            Dosage:&nbsp;<span style="color:#ff0000">*</span></label>
+                                                        <input type="text" id="medicine_name" name="medicine_name" 
+                                                        class="form-control" value="{{medicine.medicine_name}}">
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <label for="medicine_name" class="form-label">
+                                                            Medicine Type:&nbsp;<span style="color:#ff0000">*</span></label>
                                                         <input type="text" id="medicine_name" name="medicine_name" 
                                                         class="form-control" value="{{medicine.medicine_name}}">
                                                         </span>
                                                     </div>
                                                 </div>
                                                 <br>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <label for="medicine_name" class="form-label">
+                                                            QTY:&nbsp;<span style="color:#ff0000">*</span></label>
+                                                        <input type="text" id="medicine_name" name="medicine_name" 
+                                                        class="form-control" value="{{medicine.medicine_name}}">
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <label for="medicine_name" class="form-label">
+                                                            Description:&nbsp;<span style="color:#ff0000">*</span></label>
+                                                        <input type="text" id="medicine_name" name="medicine_name" 
+                                                        class="form-control" value="{{medicine.medicine_name}}">
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <br>
+
                                                 <div align="right">
                                                     <a href="/medicine">
                                                         <button class="btn btn-secondary" type="submit">Cancel</button>
