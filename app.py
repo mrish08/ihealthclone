@@ -131,35 +131,35 @@ def addvaccination():
 		vax_brand_manufacturer = request.form['vax_brand_manufacturer']
 		vax_batch_no = request.form['vax_batch_no']
 		vax_lot_no = request.form['vax_lot_no']
-		vax_dosage  = request.form['vax_dosage ']
+		vax_dosage  = request.form['vax_dosage']
 		vax_tech_platform = request.form['vax_tech_platform']
 		vax_ph_fda_approval = request.form['vax_ph_fda_approval']
-		vax_storage_req  = request.form['vax_storage_req ']
-		vax_efficiency  = request.form['vax_efficiency ']
-		vax_side_effect  = request.form['vax_side_effect ']
-		stock  = request.form['stock ']
-
+		vax_storage_req  = request.form['vax_storage_req']
+		vax_efficiency  = request.form['vax_efficiency']
+		vax_side_effect  = request.form['vax_side_effect']
+		stock  = request.form['stock']
 	conn = connection()
 	cursor = conn.cursor()
-	cursor.execute('INSERT INTO ih_vaccine (vax_name, vax_brand_manufacturer, vax_batch_no, vax_lot_no, vax_dosage, vax_tech_platform, vax_ph_fda_approval, vax_storage_req, vax_efficiency, vax_side_effect, stock)'' VALUES (%s,%s,%s, %s, %s, %s, %s, %s,%s, %s, %s, %s)', 
+	cursor.execute('INSERT INTO ih_vaccine (vax_name, vax_brand_manufacturer, vax_batch_no, vax_lot_no, vax_dosage, vax_tech_platform, vax_ph_fda_approval, vax_storage_req, vax_efficiency, vax_side_effect, stock)'' VALUES (%s,%s,%s, %s, %s, %s, %s, %s,%s, %s, %s)', 
 	[vax_name, vax_brand_manufacturer, vax_batch_no, vax_lot_no, vax_dosage, vax_tech_platform, vax_ph_fda_approval, vax_storage_req, vax_efficiency, vax_side_effect, stock])
 	conn.commit()
 	conn.close()
 	return redirect('/adminvaccineinv')
 
 
-@app.route('/updatevaccination/<int:vaccine_id>', methods = ['GET', 'POST'])
-def updatevaccination(vaccine_id):
+@app.route('/updatevaccination/<int:vax_id>', methods = ['GET', 'POST'])
+def updatevaccination(vax_id):
 	uv = []
 	conn = connection()
 	cursor = conn.cursor()
 	if request.method == 'GET':
-		cursor.execute("SELECT * FROM ih_vaccine WHERE vaccine_id = %s", (str(vaccine_id)))
+		cursor.execute("SELECT * FROM ih_vaccine WHERE vax_id = %s", (str(vax_id)))
 		for row in cursor.fetchall():
 			uv.append({"vax_id": row[0], "vax_name": row[1], "vax_brand_manufacturer": row[2], "vax_batch_no": row[3], "vax_lot_no": row[4], "vax_dosage": row[5], "vax_tech_platform": row[6], "vax_ph_fda_approval": row[7], "vax_storage_req": row[8], "vax_efficiency": row[9], "vax_side_effect": row[10]})
 		conn.close()
 		return render_template("updatevaccination.html", vaccination = uv[0])
 	if request.method == 'POST':
+		vax_name = str(request.form["vax_name"])
 		vax_brand_manufacturer = str(request.form["vax_brand_manufacturer"])
 		vax_batch_no = str(request.form["vax_batch_no"])
 		vax_lot_no = str(request.form["vax_lot_no"])
