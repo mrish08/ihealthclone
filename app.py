@@ -20,7 +20,7 @@ def connection():
     return conn
 
 
-user = {"email":"%s", "password":"%s"}
+user = {"email":'', "password":''}
 
 @app.route('/loginadmin',methods =['POST','GET'])
 def loginadmin():
