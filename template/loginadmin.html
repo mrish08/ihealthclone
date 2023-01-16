@@ -87,6 +87,7 @@
               <h2 class="card-title text-center mb-4 fw-bold fs-7">LOGIN as ADMIN</h2>
               <!-- <h1 class="card-title text-left mt-1 mb-3 fw-light fs-6">Enter your email to continue:</h1> -->
               <form action="/loginadmin", method="POST">
+                <div class="msg">{{ msg }}</div>
                 <div class="form-floating mb-3">
                   <input type="text" class="form-control" id="email" name="email" placeholder="name@example.com" required/>
                   <label for="email">Email address</label>

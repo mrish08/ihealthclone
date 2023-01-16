@@ -24,14 +24,14 @@ user = {"email":'', "password":''}
 
 @app.route('/loginadmin',methods =['POST','GET'])
 def loginadmin():
-   msg = []
+   	msg = ''
     if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
-        email = request.form['email']
-        password = request.form['password']
-        conn = connection()
-		cursor = conn.cursor()
-    	cursor.execute("SELECT * FROM users_user WHERE email = % s AND password = % s", (email, password, ))
-        users_user = cursor.fetchone()
+	email = request.form['email']
+    password = request.form['password']
+    conn = connection()
+	cursor = conn.cursor()
+    cursor.execute("SELECT * FROM users_user WHERE email = % s AND password = % s", (email, password, ))
+    users_user = cursor.fetchone()
         if  users_user:
             session['loggedin'] = True
             session['id'] =  users_user['id']
