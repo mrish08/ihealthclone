@@ -147,7 +147,7 @@ def addvaccination():
 	return redirect('/adminvaccineinv')
 
 
-@app.route('/updatevaccination/<int:vvax_id>', methods = ['GET', 'POST'])
+@app.route('/updatevaccination/<int:vax_id>', methods = ['GET', 'POST'])
 def updatevaccination(vax_id):
 	uv = []
 	conn = connection()
