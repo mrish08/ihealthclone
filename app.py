@@ -21,33 +21,8 @@ def connection():
 
 
 """""
-@app.route('/loginadmin',methods =['POST','GET'])
-def loginadmin():
-	msg = ['']
-	if request.method == 'POST':
-		email = request.form['email']
-		password = request.form['password']
-	conn = connection()
-	cursor = conn.cursor()
-	cursor.execute("SELECT * FROM users_user WHERE email = %s AND password = %s", (email, password))
-	users_user = cursor.fetchone()
-	if  users_user:
-				session['loggedin'] = True
-				session['id'] =  users_user['id']
-				session['email'] =  users_user['email']
-				msg = 'Logged in successfully !'
-				return render_template('index.html', msg = msg)
-	else:
-				msg = 'Incorrect username / password !'
-	return render_template('loginadmin.html', msg = msg)
 
-@app.route('/logout')
-def logout():
-    session.pop('loggedin', None)
-    session.pop('id', None)
-    session.pop('username', None)
-    return redirect("/loginadmin")
-"""
+
 user = {"email": "", "password": ""}
 
 #Step – 4 (creating route for login)
@@ -72,13 +47,14 @@ def loginadmin():
 def logout():
     session.pop('user')         
     return redirect('/loginadmin')
+	"""
 
 @app.route("/index")
 def index():
-	if('user' in session and session['user'] == user['email']):
+	#if('user' in session and session['user'] == user['email']):
 		return render_template("index.html")
 
-	return '<h1>You are not logged in.</h1>'  
+	#return '<h1>You are not logged in.</h1>'  
 
 @app.route("/clinic")
 def clinic():
