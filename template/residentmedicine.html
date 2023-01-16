@@ -53,17 +53,10 @@
                             </a>
                         </li>
 
-                        <li class="side-nav-item">
+                        <li class="badge-primary-lighten side-nav-item menuitem-active">
                             <a href="/residentas" class="side-nav-link">
                                 <i class="uil-clipboard-alt"></i>
                                 <span> Appointment Service </span>
-                            </a>
-                        </li>
-
-                        <li class="badge-primary-lighten side-nav-item menuitem-active">
-                            <a href="/residentmedicine" class="side-nav-link">
-                                <i class="mdi mdi-hospital"></i>
-                                <span> Medicine Request </span>
                             </a>
                         </li>
 
@@ -198,7 +191,7 @@
                     <div class="col-6">
                         <div class="card">
                             <div class="card-body">
-                                <p>Please fill in the details below to successfully add a Schedule.</p><br>
+                                <p>Please fill in the details below to successfully add a Schedule.</p>
                                 <form action="/addapt" method="POST">
                                     <div class="col-sm-12">
                                         <label for="appt_type" class="form-label">Appointment Type
@@ -225,7 +218,8 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <label for="" class="form-label">
-                                                Check-up Appointment ID: &nbsp;<span style="color:#ff0000">*</span></label>
+                                                Check-up Appointment ID: &nbsp;<span
+                                                    style="color:#ff0000">*</span></label>
                                             <input type="text" name="" class="form-control">
                                             </span>
                                         </div>
@@ -233,7 +227,7 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <label for="" class="form-label">
-                                               Medicine Name: &nbsp;<span style="color:#ff0000">*</span></label>
+                                                Medicine Name: &nbsp;<span style="color:#ff0000">*</span></label>
                                             <input type="text" name="" class="form-control">
                                             </span>
                                         </div>
@@ -244,8 +238,13 @@
                                             </span>
                                         </div>
                                     </div> <br>
-                                    <div align="right">
-                                        <button class="btn btn-primary" type="submit">Submit</button>
+                                    <div class="modal-footer">
+                                        <a href="/residentmedicine">
+                                            <button class="btn btn-primary" type="submit">Submit</button>
+                                        </a>
+                                        <a href="">
+                                            <button type="button" class="btn btn-light">Back </button>
+                                        </a>
                                     </div>
                             </div>
                         </div><!-- end col-->
