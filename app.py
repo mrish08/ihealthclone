@@ -294,15 +294,7 @@ def adminclinicinv():
 
 @app.route("/adminvc")
 def adminvc():
-	viewc = []
-	conn = connection()
-	cursor = conn.cursor()
-	if request.method == 'GET':
-		cursor.execute("SELECT * FROM ih_clinic WHERE medicine_id = %s", (str(medicine_id)))
-		for row in cursor.fetchall():
-			viewc.append({"medicine_id": row[0], "medicine_name": row[1], "generic_name": row[2], "brand_name": row[3], "manufacturer": row[4], "dosage": row[5], "medicine_type": row[6], "description": row[7],"stock":row[8]})
-		conn.close()
-		return render_template("updatemedicine.html", medicine = viewc[0])
+	
 	return render_template("adminh-view-clinic.html")
 
 @app.route("/adminvd")
