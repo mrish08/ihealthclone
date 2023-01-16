@@ -524,7 +524,6 @@ def staffhviewclinic():
 def indexresident():
 	return render_template("indexresident.html")
 
-
 @app.route("/scheduleresident")
 def scheduleresident():
 	return render_template("scheduleresident.html")
@@ -554,17 +553,33 @@ def medicineresident():
 def residenthaptvax():
 	return render_template("residenthistory-apt-vax.html")
 
+@app.route("/reshistoryviewvax")
+def reshistoryviewvax():
+	return render_template("reshistory-view-vaccineh.html")
+
 @app.route("/residenthaptdental")
 def residenthaptdental():
 	return render_template("residenthistory-apt-dental.html")
+
+@app.route("/reshistoryviewdent")
+def reshistoryviewdent():
+	return render_template("reshistory-view-dentalh.html")
 
 @app.route("/residenthaptmedicine")
 def residenthaptmedicine():
 	return render_template("residenthistory-apt-medicine.html")
 
+@app.route("/reshistoryviewmed")
+def reshistoryviewmed():
+	return render_template("reshistory-view-medicineh.html")
+
 @app.route("/residenthaptclinic")
 def residenthaptclinic():
 	return render_template("residenthistory-apt-clinic.html")
+
+@app.route("/reshistoryviewclinic")
+def reshistoryviewclinic():
+	return render_template("reshistory-view-clinic.html")
 
 if __name__== '__main__':
 	app.debug=True
