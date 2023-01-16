@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Edit Medicine Pick Up | iHealth Staff</title>
+    <title>Clinic Service | iHealth Staff History</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
+    <meta content="" name="description">
     <meta content="Coderthemes" name="author">
     <!-- App favicon -->
     <link rel="shortcut icon" href="../../static/images/brgyms-icon-white.png">
@@ -19,6 +19,11 @@
     <link href="../../static/css/app-i.min.css" rel="stylesheet" type="text/css" id="light-style">
     <link href="../../static/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style">
 
+    <!-- Datatables css -->
+    <link href="../../static/css/vendor/select.bootstrap5.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/css/vendor/dataTables.bootstrap5.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/css/vendor/responsive.bootstrap5.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body class="loading"
@@ -26,130 +31,126 @@
     <!-- Begin page -->
     <header>
 
-    <div class="wrapper">
-        <!-- ========== Left Sidebar Start ========== -->
-        <div class="leftside-menu">
+        <div class="wrapper">
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="leftside-menu">
 
-           <!-- LOGO -->
-           <a href="/index" class="logo text-center logo-light">
-            <span class="logo-lg">
-                <img src="../../static/images/ihealth-logo-with-text.png" alt="" height="40">
-            </span>
-            <span class="logo-sm">
-                <img src="../../static/images/bitbo.png" alt="" height="32">
-            </span>
-            </a>
-            <div class="h-100" id="leftside-menu-container" data-simplebar="">
+                <!-- LOGO -->
+                <a href="/index" class="logo text-center logo-light">
+                    <span class="logo-lg">
+                        <img src="../../static/images/ihealth-logo-with-text.png" alt="" height="40">
+                    </span>
+                    <span class="logo-sm">
+                        <img src="../../static/images/bitbo.png" alt="" height="32">
+                    </span>
+                </a>
 
-            <!--- Sidemenu -->
-            <ul class="side-nav">
+                <!--- Sidemenu -->
+                <ul class="side-nav">
 
-                <li class="side-nav-title side-nav-item">Menu</li>
+                    <li class="side-nav-title side-nav-item">Menu</li>
 
-                <li class="side-nav-item">
-                    <a href="/indexstaff" class="side-nav-link">
-                        <i class="uil-chart-pie"></i>
-                        <span> Dashboard </span>
-                    </a>
-                </li>
+                    <li class="side-nav-item">
+                        <a href="{{ url_for('indexstaff') }}" class="side-nav-link">
+                            <i class="uil-chart-pie"></i>
+                            <span> Dashboard </span>
+                        </a>
+                    </li>
 
-                <li class="side-nav-item">
-                    <a href="/schedulestaff" class="side-nav-link">
-                        <i class="uil-clipboard-alt"></i>
-                        <span> Schedule </span>
-                    </a>
-                </li>
+                    <li class="side-nav-item">
+                        <a href="{{ url_for('schedulestaff') }}" class="side-nav-link">
+                            <i class="uil-clipboard-alt"></i>
+                            <span> Schedule </span>
+                        </a>
+                    </li>
 
-                <li class="side-nav-item">
-                    <a href="/vaccinationstaff" class="side-nav-link">
-                        <i class="uil-syringe"></i>
-                        <span> Vaccination Service</span>
-                    </a>
-                </li>
+                    <li class="side-nav-item">
+                        <a href="{{ url_for('vaccinationstaff') }}" class="side-nav-link">
+                            <i class="uil-syringe"></i>
+                            <span> Vaccination Service</span>
+                        </a>
+                    </li>
 
-                <li class="side-nav-item">
-                    <a href="/clinicstaff" class="side-nav-link">
-                        <i class="uil-clipboard-alt"></i>
-                        <span> Clinic Service </span>
-                    </a>
-                </li>
+                    <li class="side-nav-item">
+                        <a href="{{ url_for('clinicstaff') }}" class="side-nav-link">
 
-                <li class="side-nav-item">
-                    <a href="/dentalstaff" class="side-nav-link">
-                        <i class="mdi mdi-hospital"></i>
-                        <span> Dental Service </span>
-                    </a>
-                </li>
+                            <i class="uil-clipboard-alt"></i>
+                            <span> Clinic Service </span>
+                        </a>
+                    </li>
 
-                <li class="badge-primary-lighten side-nav-item menuitem-active">
+                    <li class="side-nav-item">
+                        <a href="/dentalstaff" class="side-nav-link">
+                            <i class="mdi mdi-hospital"></i>
+                            <span> Dental Service </span>
+                        </a>
+                    </li>
 
-                    <a href="/medicinestaff" class="side-nav-link">
-                        <i class="uil-home-alt"></i>
-                        <span>Medicine Pick-up</span></a>
-                </li>
+                    <li class="side-nav-item">
 
-                <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
-                        <i class="mdi mdi-history"></i>
-                        <span> Appointment History </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarEmail">
-                        <ul class="side-nav-second-level">
-                            <li>
-                                <a href="/staffhaptvax">Vaccination Service</a>
-                            </li>
-                            <li>
-                                <a href="/staffhaptclinic">Clinic Service</a>
-                            </li>
-                            <li>
-                                <a href="/staffhaptdental">Dental Service</a>
-                            </li>
-                            <li>
-                                <a href="/staffhaptmedicine">Medicine Pickup</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                        <a href="/medicinestaff" class="side-nav-link">
+                            <i class="uil-home-alt"></i>
+                            <span>Medicine Pick Up</span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item menuitem-active">
+                        <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false"
+                            aria-controls="sidebarEmail" class="side-nav-link">
+                            <i class="mdi mdi-history"></i>
+                            <span> Appointment History </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="sidebarEmail">
+                            <ul class="side-nav-second-level">
+                                <li>
+                                    <a href="/staffhaptvax">Vaccination Service</a>
+                                </li>
+                                <li class="badge-primary-lighten  menuitem-active">
+                                    <a href="/staffhaptclinic">Clinic Service</a>
+                                </li>
+                                <li>
+                                    <a href="/staffhaptdental">Dental Service</a>
+                                </li>
+                                <li>
+                                    <a href="/staffhaptmedicine">Medicine Pickup</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            </li>
             </ul>
-
-        </div>
             <!-- Sidebar -left -->
 
         </div>
-    </div>
-</header>
+        <!-- Left Sidebar End -->
+    </header>
 
-<div class="wrapper">
+    <div class="wrapper">
 
         <div class="content-page">
             <div class="content">
                 <!-- Topbar Start -->
                 <div class="navbar-custom">
                     <ul class="list-unstyled topbar-menu float-end mb-0">
-                        <li class="dropdown notification-list d-lg-none">
-                            <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <i class="dripicons-search noti-icon"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
-                                <form class="p-3">
-                                    <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
-                                </form>
-                            </div>
-                        </li>
+
 
                         <li class="dropdown notification-list">
-                            <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown"
+                                href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                 <span class="account-user-avatar">
                                     <img src="../../static/images/users/profile1.png" alt="user-image"
                                         class="rounded-circle">
                                 </span>
                                 <span>
                                     <span class="account-user-name">Juan Dela Cruz</span>
-                                <span class="account-position">Staff</span>
+                                    <span class="account-position">Staff</span>
                                 </span>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
+                            <div
+                                class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
                                 <!-- item-->
                                 <div class=" dropdown-header noti-title">
                                     <h6 class="text-overflow m-0">Welcome !</h6>
@@ -177,92 +178,138 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box">
-                                <h4 class="page-title">Edit Medicine Pick Up</h4>
+                                <h4 class="page-title">Clinic Appointments History</h4>
                             </div>
                         </div>
-
-                        <!-- end page title -->
-    
-               
+                    </div>
+                    <!-- end page title -->
 
 
-                    <!-- start table content -->
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                    <div class="tab-content">
-                                               
-                                                    
-                                                    <div class="card-body">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>
-                                                                    <label for="simpleinput" class="form-label">Schedule
-                                                                        Name:&nbsp;<span style="color:#ff0000">*</span></label>
-                                                                    <input type="text" id="schedulename" class="form-control">
-                                                                   
-                                                                </td>
-                                                                <td class="col-sm-6">
-                                                                    <label for="example-time" class="form-label">Time:&nbsp;<span
-                                                                            style="color:#ff0000">*</span></label>
-                                                                    <input class="form-control" id="time" type="time" name="time">
-                                                                   
-                                                                </td><br>
-                                                                <td>
-                                                                    <button class="btn btn-primary" type="submit">Submit form</button>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- /Edit Details Modal -->
-                    </div> <!-- container -->
-                </div><!-- content -->
+                    <!-- Start records-->
+                    <div class="col-sm-12">
+                        <div class="card card-body">
+                            <div class="tab-content">
+                                <div class="d-flex justify-content-center mt-0 mb-0 navbar-light"><span>
+                                        <h3>REPORT DETAILS</h3>
+                                    </span></div> <br>
 
+                                <div class="page-separator">
+                                    <div class="page-separator__text">
+                                        <h4>CONSULTATION DETAILS</h4>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <p><strong>Appointment ID:</strong></p>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <p><strong>Date:</strong></p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <p><strong>Service:</strong></p>
+                                </div><br>
+
+                                <div class="page-separator">
+                                    <div class="page-separator__text">
+                                        <h4>DIAGNOSIS DETAILS</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <p><strong>Diagnosis:</strong></p>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <p><strong>Description: </strong></p>
+                                    </div>
+                                </div> <br>
+
+                                <div class="page-separator">
+                                    <div class="page-separator__text">
+                                        <h4>PRESCRIPTION DETAILS</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <p><strong>Patient:</strong></p>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <p><strong>Age:</strong></p>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <p><strong>Sex:</strong></p>
+                                    </div>
+                                </div> <br>
+                                <br><br>
+                                <p><strong>ibuprofen (Motrin® or Advil®)</strong></p>
+                                <p>Take 400–600 mg every 6–8 hours. Ibuprofen will help with
+                                    pain relief and as an anti-inflammatory.
+                                </p>
+
+
+                                <br> <br>
+                                <p><strong>Dr.</strong></p>
+                                <p><strong>Lic No.: </strong>1234</p>
+                                <p><strong>PTR No.: </strong>1234567</p>
+                                <div class="modal-footer"><a href="/staffhaptclinic">
+                                        <button type="button" class="btn btn-light">Back
+                                        </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--End records-->
             </div>
+
 
             <!-- ============================================================== -->
             <!-- End Page content -->
             <!-- ============================================================== -->
 
-        </div>
-        </div>
+
         </div>
         <!-- END wrapper -->
 
+
         <!-- bundle -->
-          <!-- bundle -->
-    <script src="../../static/js/vendor.min.js"></script>
-    <script src="../../static/js/app.min.js"></script>
+        <script src="../../static/js/vendor.min.js"></script>
+        <script src="../../static/js/app.min.js"></script>
 
-    <!-- third party js -->
-    <script src="../../static/js/vendor/jquery.dataTables.min.js"></script>
-    <script src="../../static/js/vendor/dataTables.bootstrap5.js"></script>
-    <script src="../../static/js/vendor/dataTables.responsive.min.js"></script>
-    <script src="../../static/js/vendor/responsive.bootstrap5.min.js"></script>
-    <script src="../../static/js/vendor/dataTables.buttons.min.js"></script>
-    <script src="../../static/js/vendor/buttons.bootstrap5.min.js"></script>
-    <script src="../../static/js/vendor/buttons.php5.min.js"></script>
-    <script src="../../static/js/vendor/buttons.flash.min.js"></script>
-    <script src="../../static/js/vendor/buttons.print.min.js"></script>
-    <script src="../../static/js/vendor/dataTables.keyTable.min.js"></script>
-    <script src="../../static/js/vendor/dataTables.select.min.js"></script>
-    <script src="../../static/js/vendor/apexcharts.min.js"></script>
-    <script src="../../static/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="../../static/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="../../static/js/vendor/dropzone.min.js"></script>
-    <script src="../../static/js/vendor/list.min.js"></script>
-    <!-- third party js ends -->
+        <!-- third party js -->
+        <script src="../../static/js/vendor/jquery.dataTables.min.js"></script>
+        <script src="../../static/js/vendor/dataTables.bootstrap5.js"></script>
+        <script src="../../static/js/vendor/dataTables.responsive.min.js"></script>
+        <script src="../../static/js/vendor/responsive.bootstrap5.min.js"></script>
+        <script src="../../static/js/vendor/dataTables.buttons.min.js"></script>
+        <script src="../../static/js/vendor/buttons.bootstrap5.min.js"></script>
+        <script src="../../static/js/vendor/buttons.php5.min.js"></script>
+        <script src="../../static/js/vendor/buttons.flash.min.js"></script>
+        <script src="../../static/js/vendor/buttons.html5.min.js"></script>
+        <script src="../../static/js/vendor/buttons.print.min.js"></script>
+        <script src="../../static/js/vendor/dataTables.keyTable.min.js"></script>
+        <script src="../../static/js/vendor/dataTables.select.min.js"></script>
+        <script src="../../static/js/vendor/apexcharts.min.js"></script>
+        <script src="../../static/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
+        <script src="../../static/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
+        <script src="../../static/js/vendor/dropzone.min.js"></script>
+        <script src="../../static/js/vendor/list.min.js"></script>
+        <!-- third party js ends -->
 
-    <!-- demo app -->
-    <script src="../../static/js/pages/demo.datatable-init.js"></script>
-    <script src="../../static/js/pages/demo.toastr.js"></script>
-    <script src="../../static/js/pages/demo.datatable-init.js"></script>
-    <script src="../../static/js/pages/demo.toastr.js"></script>
-    <script src="../../static/js/pages/list.js"></script>
-        <!-- end demo js-->
+        <!-- demo app -->
+        <script src="../../static/js/pages/demo.datatable-init.js"></script>
+        <script src="../../static/js/pages/demo.toastr.js"></script>
+        <script src="../../static/js/pages/demo.datatable-init.js"></script>
+        <script src="../../static/js/pages/demo.toastr.js"></script>
+        <script src="../../static/js/pages/list.js"></script>
+
+
+
+        <!-- Datatable Init js -->
+        <script src="assets/js/pages/demo.datatable-init.js"></script>
+
 </body>
 
 </html>
