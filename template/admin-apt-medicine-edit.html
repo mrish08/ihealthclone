@@ -195,76 +195,163 @@
                 </div>
                 <!-- end Topbar -->
 
-                <!-- Start Content-->
-                <div class="container-fluid">
+                    <!-- Start Content-->
+                    <div class="container-fluid">
 
-                    <!-- start page title -->
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="page-title-box">
-                                <h4 class="page-title">Medicine Pick Up Appointment</h4>
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <h4 class="page-title">Medicine Pick Up Appointment</h4>
+                                </div>
                             </div>
+                            <!-- end page title -->
+
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="tab-content">
+                                            <!--Form Start-->
+                                            <div class="row justify-content-center">
+                                                <div class="col-sm-12">
+                                                    <div class="cardr">
+                                                        <div class="card-body">
+
+                                                            <p>Please fill in the details below to successfully edit
+                                                                appointment details.</p>
+
+                                                            <div class="">
+                                                                <form action="/addvaccination" method="POST">
+                                                                    <div class="">
+                                                                        <h4>Consultation Details</h4>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-6">
+                                                                                <label for="" class="form-label">
+                                                                                    Appointment ID:</label>
+                                                                                <input type="text" name=""
+                                                                                    class="form-control" disabled>
+                                                                                </span>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <label for="" class="form-label">
+                                                                                    Date:</label>
+                                                                                <input type="text" name=""
+                                                                                    class="form-control" disabled>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div><br>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <label for="" class="form-label">
+                                                                                Patient Name:</label>
+                                                                            <input type="text" name=""
+                                                                                class="form-control" disabled>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="col-sm-3">
+                                                                            <label for="" class="form-label">
+                                                                                Age:</label>
+                                                                            <input type="text" name="lot_name"
+                                                                                class="form-control" disabled>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="col-sm-3">
+                                                                            <label for="" class="form-label">
+                                                                                Sex:</label>
+                                                                            <input type="text" name=""
+                                                                                class="form-control" disabled>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div><br>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-3">
+                                                                            <label for="" class="form-label">
+                                                                                Date of Birth:</label>
+                                                                            <input type="text" name=""
+                                                                                class="form-control" disabled>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="col-sm-9">
+                                                                            <label for="" class="form-label">
+                                                                                Address:</label>
+                                                                            <input type="text" name=""
+                                                                                class="form-control" disabled>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div><br>
+                                                                    <div>
+                                                                        <h4>Diagnosis Details</h4>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-6">
+                                                                                <label for="" class="form-label">
+                                                                                    Diagnosis:&nbsp;<span
+                                                                                        style="color:#ff0000">*</span></label>
+                                                                                <input type="text" name=""
+                                                                                    class="form-control">
+                                                                                </span>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <label for="" class="form-label">
+                                                                                    Description: &nbsp;<span
+                                                                                        style="color:#ff0000">*</span></label>
+                                                                                <input type="text" name=""
+                                                                                    class="form-control">
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div><br>
+                                                                    <div class="row">
+                                                                        <h4>Prescription</h4>
+                                                                        <div class="col-sm-12">
+                                                                            <label for="" class="form-label">
+                                                                                Prescription Details:</label>
+                                                                            <input type="text" name=""
+                                                                                class="form-control">
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                                <br><br>
+                                                                <div align="right">
+                                                                    <a href="/adminaptmedicine">
+                                                                        <button class="btn btn-secondary"
+                                                                            type="submit">Cancel</button>
+                                                                    </a>
+
+                                                                    <a href="/adminaptmedicine">
+                                                                        <button class="btn btn-primary"
+                                                                            type="submit">Submit</button>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!-- End Form-->
+
+                                        </div>
+                                    </div>
+                                    <!-- container -->
+                                </div>
+                                <!-- content -->
+
+                            </div>
+
                         </div>
-                        <!-- end page title -->
-                        
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="tab-content">
-                                    <div class="table-hover" id="scroll-horizontal-preview">
-                                        <table id="basic-datatable" class="table dt-responsive nowrap w-100">
-                                            <thead>
-                                                <tr class="table-light">
-                                                    <th>Appointment ID</th>
-                                                    <th>Name</th>
-                                                    <th>Date</th>
-                                                    <th>Time</th>
-                                                    <th>Status</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                        
-                                        
-                                            <tbody>
+                        <!-- END wrapper -->
+
+
+                    <!-- ============================================================== -->
+                    <!-- End Page content -->
+                    <!-- ============================================================== -->
+
+
                     
-                                                <tr>
-                                                    <td><a class="btn btn-light btn-rounded">VA-0030</a></td>
-                                                    <td>Simon Fraud</td>
-                                                    <td>2012/03/25</td>
-                                                    <td>3:00 PM</td>
-                                                    <td>
-                                                        <span class="badge bg-info">Pending</span>
-                                                    </td>
-                                                    <td>
-                                                        <a href=""><button type="button" class="btn btn-outline-info btn-rounded"  data-bs-trigger="hover" title="Edit">
-                                                        <i class="mdi mdi-circle-edit-outline"></i></button></a>
-                                                        <a href="#"><button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-trigger="hover" title="Accept" data-bs-toggle="modal" data-bs-target="#success-alert-modal">
-                                                            <i class="dripicons-checkmark"></i></button></a>
-                                                        <a href="#"><button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-trigger="hover" data-bs-toggle="modal" data-bs-target="#danger-alert-modal"title="Decline">
-                                                            <i class="mdi mdi-window-close"></i></button></a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-    
-    
-                            </div>
-    
-                            <!-- end row of table content-->
-    
-                        </div>
-                        <!-- container -->
-                    </div>
-                    <!-- content -->
-    
-                </div>
-    
-
-    <!-- ============================================================== -->
-    <!-- End Page content -->
-    <!-- ============================================================== -->
-
-    <!-- bundle -->
        <!-- bundle -->
        <script src="../../static/js/vendor.min.js"></script>
        <script src="../../static/js/app.min.js"></script>
