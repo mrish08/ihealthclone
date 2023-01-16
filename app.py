@@ -490,19 +490,36 @@ def updatedentalstaff(dental_id):
 
 @app.route("/staffhaptvax")
 def staffhaptvax():
-	return render_template("staffhistory-apt-vax.html")
+	return render_template("staffhistory-view-vax.html")
+
+@app.route("/staffhviewvax")
+def staffhviewaptvax():
+	return render_template("staffhistory-view-vaccineh.html")
 
 @app.route("/staffhaptdental")
 def staffhaptdental():
 	return render_template("staffhistory-apt-dental.html")
 
-@app.route("/staffhaptmedicine")
+@app.route("/staffhviewdental")
+def staffhviewdental():
+	return render_template("staffhistory-view-dentalh.html")
+
+@app.route("/staffhmedicine")
 def staffhaptmedicine():
 	return render_template("staffhistory-apt-medicine.html")
+
+@app.route("/staffhviewmedicine")
+def staffhviewmedicine():
+	return render_template("staffhistory-view-medicineh.html")
 
 @app.route("/staffhaptclinic")
 def staffhaptclinic():
 	return render_template("staffhistory-apt-clinic.html")
+
+@app.route("/staffhviewclinic")
+def staffhviewclinic():
+	return render_template("staffhistory-view-clinic.html")
+
 @app.route("/indexresident")
 def indexresident():
 	return render_template("indexresident.html")
