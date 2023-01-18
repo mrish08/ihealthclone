@@ -1,11 +1,14 @@
 from distutils.log import debug
-from flask import Flask, render_template,request, redirect,request, redirect, url_for, session, logging
-import os
+from flask import Flask, render_template,request, redirect,request, redirect, session, flash, Response
+from passlib.hash import pbkdf2_sha256
+from werkzeug.security import generate_password_hash, check_password_hash
 import psycopg2
+import psycopg2.extras
+import re 
 from flask import session
 
 app=Flask(__name__,template_folder='template',static_folder='static')
-
+app.secret_key = 'abandonware-invokes'
 
 
 def connection():
@@ -19,42 +22,66 @@ def connection():
             curs.execute
     return conn
 
-
-"""""
-
-
-user = {"email": "", "password": ""}
-
-#Step – 4 (creating route for login)
 @app.route('/loginadmin', methods = ['POST', 'GET'])
 def loginadmin():
-    if(request.method == 'POST'):
-        email = request.form.get('email')
-        password = request.form.get('password')     
-        if email == user['email'] and password == user['password']:
-            
-            session['user'] = email
-            return redirect('/dashboard')
-
-        return "<h1>Wrong email or password</h1>"    
-
-    return render_template("loginadmin.html")
-
-
+	conn = connection()
+	cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor) 
+    # Check if "username" and "password" POST requests exist (user submitted form)
+	if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
+			email = request.form['email']
+			password = request.form['password']
+			print(password)
+			# Check if account exists using MySQL
+			cursor.execute('SELECT * FROM users_user WHERE email = %s', (email,))
+			# Fetch one record and return result
+			account = cursor.fetchone()
+			if account:
+				password = account['password']
+				print(password)
+				# If account exists in users table in out database
+				if check_password_hash(password, password):
+					# Create session data, we can access this data in other routes
+					session['loggedin'] = True
+					session['id'] = account['id']
+					session['email'] = account['email']
+					# Redirect to home page
+					return redirect("index.html")
+				else:
+					# Account doesnt exist or username/password incorrect
+					flash('Incorrect username/password')
+			else:
+				# Account doesnt exist or username/password incorrect
+				flash('Incorrect username/password')
+	return render_template('loginadmin.html')
+	
 
 #Step -6(creating route for logging out)
 @app.route('/logout')
 def logout():
     session.pop('user')         
     return redirect('/loginadmin')
-"""
+
+@app.route('/profile')
+def profile(): 
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    # Check if user is loggedin
+    if 'loggedin' in session:
+        cursor.execute('SELECT * FROM users WHERE id = %s', [session['id']])
+        account = cursor.fetchone()
+        # Show the profile page with account info
+        return render_template('profile.html', account=account)
+    # User is not loggedin redirect to login page
+    return redirect("/loginadmin")
 
 @app.route("/index")
 def index():
-	#if('user' in session and session['user'] == user['email']):
-		return render_template("index.html")
-
-	#return '<h1>You are not logged in.</h1>'  
+    # Check if user is loggedin
+    if 'loggedin' in session:
+    
+        # User is loggedin show them the home page
+        return render_template('index.html', email=session['email'])
+    # User is not loggedin redirect to login page
+    return redirect("/loginadmin")
 
 @app.route("/clinic")
 def clinic():
