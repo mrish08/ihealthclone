@@ -192,20 +192,17 @@ def adsb():
 @app.route("/addschedule", methods = ['POST'])
 def addschedule():
 	if request.method == 'POST':
-		schedule_name = request.form.get["schedule_name"]
-		contact_person= request.form.get["contact_person"]
-		maximum_attendees = request.form.get["maximum_attendees"]
-		from_to_schedule= request.form.get["from_to_schedule"]
+		schedule_name = request.form["schedule_name"]
+		contact_person= request.form["contact_person"]
+		maximum_attendees = request.form["maximum_attendees"]
+		from_to_schedule= request.form["from_to_schedule"]
 	conn = connection()
 	cursor = conn.cursor()
-	cursor.execute('INSERT INTO ih_clinic_sched (schedule_name, contact_person, maximum_attendees, from_to_schedule)'' VALUES (%s,%s,%s, %s)', 
+	cursor.execute('INSERT INTO ih_clinic_sched (schedule_name, contact_person, maximum_attendees, from_to_schedule)'' VALUES (%s,%s,%s,%s)', 
 	[schedule_name, contact_person, maximum_attendees, from_to_schedule])
 	conn.commit()
 	conn.close()
 	return redirect('/schedule')
-
-
-
 
 @app.route('/updateschedule/<int:clinic_sched_id>', methods = ['GET', 'POST'])
 def updateschedule(clinic_sched_id):
