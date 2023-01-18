@@ -1,8 +1,9 @@
 from distutils.log import debug
-from flask import Flask, render_template,request, redirect,request, redirect, session, flash, Response, jsonify
+from flask import Flask, render_template,request, redirect,request, redirect, session, flash, Response, jsonify,url_for
 from passlib.hash import pbkdf2_sha256
 from flask_login import UserMixin,login_user,login_manager, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_cors import CORS
 import psycopg2
 import psycopg2.extras
 import re 
@@ -10,8 +11,8 @@ from flask import session
 from datetime import timedelta
 
 app=Flask(__name__,template_folder='template',static_folder='static')
-app.secret_key = 'abandonware-invokes'
-
+#app.secret_key = 'abandonware-invokes'
+#app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=10)
 
 
 def connection():
@@ -25,74 +26,59 @@ def connection():
             curs.execute
     return conn
 
-@staticmethod
-def verify_password(password, _hash):
-    return pbkdf2_sha256.verify(password, _hash)
-	
-headers = {"Content-Type": "application/json"}
-@app.route('/loginadmin', methods = ['POST', 'GET'])
-def loginadmin():
-    _json = request.json
-    _username = _json['username']
-    _password = _json['password']
-    print(_password)
-    # validate the received values
-    if _username and _password:
-        #check user exists          
-        cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
+'''
+@auth_bp.route("/login", methods=["GET", "POST"])
+def login():
+    """
+    Log-in page for registered users.
 
-        sql = "SELECT * FROM users_user WHERE email=%s"
-        sql_where = (email,)
+    GET requests serve Log-in page.
+    POST requests validate and redirect user to dashboard.
+    """
+    # Bypass if user is logged in
+    if current_user.is_authenticated:
+        return redirect(url_for("main_bp.dashboard"))
 
-        cursor.execute(sql, sql_where)
-        row = cursor.fetchone()
-        email = row['email']
-        password = row['password']
-        if row:
-            if check_password_hash(password, _password):
-                session['email'] = email
-                cursor.close()
-                return jsonify({'message' : 'You are logged in successfully'})
-            else:
-                resp = jsonify({'message' : 'Bad Request - invalid password'})
-                resp.status_code = 400
-                return resp
-    else:
-        resp = jsonify({'message' : 'Bad Request - invalid credendtials'})
-        resp.status_code = 400
-        return resp
-	
+    form = LoginForm()
+    # Validate login attempt
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and user.check_password(password=form.password.data):
+            login_user(user)
+            next_page = request.args.get("next")
+            return redirect(next_page or url_for("main_bp.dashboard"))
+        flash("Invalid username/password combination")
+        return redirect(url_for("loginadmin.html"))
+    return render_template(
+        "login.jinja2",
+        form=form,
+        title="Log in.",
+        template="login-page",
+        body="Log in with your User account.",
+    )
 
-#Step -6(creating route for logging out)
-@app.route('/logout')
-def logout():
-    if 'email' in session:
-        session.pop('email', None)
-    return jsonify({'message' : 'You successfully logged out'})
 
-@app.route('/profile')
-def profile(): 
-    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-    # Check if user is loggedin
-    if 'loggedin' in session:
-        cursor.execute('SELECT * FROM users WHERE id = %s', [session['id']])
-        account = cursor.fetchone()
-        # Show the profile page with account info
-        return render_template('profile.html', account=account)
-    # User is not loggedin redirect to login page
-    return redirect("/loginadmin")
+@login_manager.user_loader
+def load_user(user_id):
+    """Check if user is logged-in upon page load."""
+    if user_id is not None:
+        return User.query.get(user_id)
+    return None
 
+
+@login_manager.unauthorized_handler
+def unauthorized():
+    """Redirect unauthorized users to Login page."""
+    flash("You must be logged in to view that page.")
+    return redirect(url_for("auth_bp.login"))
+
+'''
 @app.route("/index")
 def index():
-    passhash = generate_password_hash('')
-    print(passhash)
-    if 'email' in session:
-        email = session['email']
-        return jsonify({'message' : 'You are already logged in', 'email' : email})
-    else:
-        resp = jsonify({'message' : 'Unauthorized'})
-        resp.status_code = 401
-        return resp
+	#if 'loggedin' in session:
+		return render_template('index.html')
+	#else:
+	#	return redirect("/loginadmin")
 
 
 @app.route("/clinic")
