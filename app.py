@@ -1,14 +1,17 @@
 from distutils.log import debug
-from flask import Flask, render_template,request, redirect,request, redirect, session, flash, Response
+from flask import Flask, render_template,request, redirect,request, redirect, session, flash, Response, jsonify
 from passlib.hash import pbkdf2_sha256
+from flask_login import UserMixin,login_user,login_manager, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 import psycopg2
 import psycopg2.extras
 import re 
 from flask import session
+from datetime import timedelta
 
 app=Flask(__name__,template_folder='template',static_folder='static')
 app.secret_key = 'abandonware-invokes'
+
 
 
 def connection():
@@ -22,44 +25,50 @@ def connection():
             curs.execute
     return conn
 
+@staticmethod
+def verify_password(password, _hash):
+    return pbkdf2_sha256.verify(password, _hash)
+	
+headers = {"Content-Type": "application/json"}
 @app.route('/loginadmin', methods = ['POST', 'GET'])
 def loginadmin():
-	conn = connection()
-	cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor) 
-    # Check if "username" and "password" POST requests exist (user submitted form)
-	if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
-			email = request.form['email']
-			password = request.form['password']
-			print(password)
-			# Check if account exists using MySQL
-			cursor.execute('SELECT * FROM users_user WHERE email = %s', (email,))
-			# Fetch one record and return result
-			account = cursor.fetchone()
-			if account:
-				password = account['password']
-				print(password)
-				# If account exists in users table in out database
-				if check_password_hash(password, password):
-					# Create session data, we can access this data in other routes
-					session['loggedin'] = True
-					session['id'] = account['id']
-					session['email'] = account['email']
-					# Redirect to home page
-					return redirect("index.html")
-				else:
-					# Account doesnt exist or username/password incorrect
-					flash('Incorrect username/password')
-			else:
-				# Account doesnt exist or username/password incorrect
-				flash('Incorrect username/password')
-	return render_template('loginadmin.html')
+    _json = request.json
+    _username = _json['username']
+    _password = _json['password']
+    print(_password)
+    # validate the received values
+    if _username and _password:
+        #check user exists          
+        cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+        sql = "SELECT * FROM users_user WHERE email=%s"
+        sql_where = (email,)
+
+        cursor.execute(sql, sql_where)
+        row = cursor.fetchone()
+        email = row['email']
+        password = row['password']
+        if row:
+            if check_password_hash(password, _password):
+                session['email'] = email
+                cursor.close()
+                return jsonify({'message' : 'You are logged in successfully'})
+            else:
+                resp = jsonify({'message' : 'Bad Request - invalid password'})
+                resp.status_code = 400
+                return resp
+    else:
+        resp = jsonify({'message' : 'Bad Request - invalid credendtials'})
+        resp.status_code = 400
+        return resp
 	
 
 #Step -6(creating route for logging out)
 @app.route('/logout')
 def logout():
-    session.pop('user')         
-    return redirect('/loginadmin')
+    if 'email' in session:
+        session.pop('email', None)
+    return jsonify({'message' : 'You successfully logged out'})
 
 @app.route('/profile')
 def profile(): 
@@ -75,13 +84,16 @@ def profile():
 
 @app.route("/index")
 def index():
-    # Check if user is loggedin
-    if 'loggedin' in session:
-    
-        # User is loggedin show them the home page
-        return render_template('index.html', email=session['email'])
-    # User is not loggedin redirect to login page
-    return redirect("/loginadmin")
+    passhash = generate_password_hash('')
+    print(passhash)
+    if 'email' in session:
+        email = session['email']
+        return jsonify({'message' : 'You are already logged in', 'email' : email})
+    else:
+        resp = jsonify({'message' : 'Unauthorized'})
+        resp.status_code = 401
+        return resp
+
 
 @app.route("/clinic")
 def clinic():
