@@ -82,9 +82,6 @@ def addclinic():
 	conn.close()
 	return render_template("/clinic")
 
-
-
-
 @app.route('/updateclinic/<int:clinic_services_id>', methods = ['GET', 'POST'])
 def updateclinic(clinic_services_id):
 	uc = []
@@ -103,12 +100,9 @@ def updateclinic(clinic_services_id):
 		conn.close()
 		return redirect('/clinic')
 
-
-
 @app.route("/dental")
 def dental():
 	return render_template("clinic.html")
-
 
 @app.route("/adminvaccineinv")
 def vaccination():
@@ -142,7 +136,6 @@ def addvaccination():
 	conn.commit()
 	conn.close()
 	return redirect('/adminvaccineinv')
-
 
 @app.route('/updatevaccination/<int:vax_id>', methods = ['GET', 'POST'])
 def updatevaccination(vax_id):
@@ -184,7 +177,6 @@ def schedule():
 	conn.close()	
 	return render_template("schedule.html", schedule= schedule)
 	
-
 @app.route("/adsb")
 def adsb():
 	return render_template("admin-add-schedule.html")
@@ -225,7 +217,6 @@ def updateschedule(clinic_sched_id):
 		conn.commit()
 		conn.close()
 		return redirect('/schedule')
-
 
 @app.route("/adminmedicineinv")
 def adminmedicineinv():
@@ -288,7 +279,6 @@ def updatemedicine(medicine_id):
 def adminclinicinv():
 	return render_template("adminclinicinv.html")
 
-
 @app.route("/adminvc")
 def adminvc():
 	return render_template("adminh-view-clinic.html")
@@ -307,7 +297,6 @@ def adminvv():
 
 @app.route("/adds")
 def adds():
-
 	return render_template("admin-add-schedule.html")
 
 @app.route("/addc")
@@ -375,9 +364,6 @@ def adminhaptmedicine():
 @app.route("/adminhaptclinic")
 def adminhaptclinic():
 	return render_template("adminhistory-apt-clinic.html")
-
-
-
 
 @app.route("/loginstaff")
 def loginstaff():
@@ -521,7 +507,6 @@ def vaccinationresident():
 @app.route("/residentas")
 def residentas():
 	return render_template("residentbooking.html")
-
 
 @app.route("/residentmedicine")
 def residentmedicine():
