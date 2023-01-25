@@ -4,11 +4,12 @@ from passlib.hash import pbkdf2_sha256
 from flask_login import UserMixin,login_user,login_manager, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_cors import CORS
-import psycopg2
+import psycopg2 #pip install psycopg2 
 import psycopg2.extras
 import re 
-from flask import session
-from datetime import timedelta
+from app_utils import verify_password
+
+
 
 app=Flask(__name__,template_folder='template',static_folder='static')
 #app.secret_key = 'abandonware-invokes'
@@ -27,29 +28,43 @@ def connection():
     return conn
 
 @app.route("/loginadmin", methods=['GET', 'POST'])
+def loginadmin():
+	return render_template('loginadmin.html')
+
+@app.route("/login", methods=['GET', 'POST'])
 def login():
-	conn = connection()
-	cursor = conn.cursor
+	conn=connection()
+	cursor = conn.cursor()
+
+    # Check if "username" and "password" POST requests exist (user submitted form)
 	if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
 		email = request.form['email']
 		password = request.form['password']
 		print(password)
-	# Check if account exists using MySQL
-	cursor.execute('SELECT * FROM login_ihealth WHERE email = %s', (email,))
-	account = cursor.fetchone()
-	if account:
-		password_rs = account['password']
-		print(password_rs)
-		if check_password_hash(password_rs, password):
-			session['loggedin'] = True
-			session['id'] = account['id']
-			session['email'] = account['email']
-			return redirect(url_for('index'))
+
+        # Check if account exists using MySQ
+		cursor.execute('SELECT * FROM login_ihealth WHERE email = %s', (email,))
+        # Fetch one record and return result
+		account = cursor.fetchone()
+		if account:
+			password = account['password']
+			print(password)
+            # If account exists in users table in out database
+			if verify_password(password,password):
+                # Create session data, we can access this data in other routes
+				session['loggedin'] = True
+				session['id'] = account['id']
+				session['email'] = account['email']
+                # Redirect to home page
+				return redirect('/index')
+			else:
+                # Account doesnt exist or username/password incorrect
+				flash('Incorrect email/password')
 		else:
-			flash('Incorrect username/password')
-	else:
-		flash('Incorrect username/password')
+            # Account doesnt exist or username/password incorrect
+			flash('Incorrect email/password')
 		return render_template('loginadmin.html')
+	conn.close()
 			
 @app.route("/index")
 def index():
