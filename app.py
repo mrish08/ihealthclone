@@ -26,60 +26,40 @@ def connection():
             curs.execute
     return conn
 
-'''
-@auth_bp.route("/login", methods=["GET", "POST"])
+@app.route("/loginadmin", methods=['GET', 'POST'])
 def login():
-    """
-    Log-in page for registered users.
-
-    GET requests serve Log-in page.
-    POST requests validate and redirect user to dashboard.
-    """
-    # Bypass if user is logged in
-    if current_user.is_authenticated:
-        return redirect(url_for("main_bp.dashboard"))
-
-    form = LoginForm()
-    # Validate login attempt
-    if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
-        if user and user.check_password(password=form.password.data):
-            login_user(user)
-            next_page = request.args.get("next")
-            return redirect(next_page or url_for("main_bp.dashboard"))
-        flash("Invalid username/password combination")
-        return redirect(url_for("loginadmin.html"))
-    return render_template(
-        "login.jinja2",
-        form=form,
-        title="Log in.",
-        template="login-page",
-        body="Log in with your User account.",
-    )
-
-
-@login_manager.user_loader
-def load_user(user_id):
-    """Check if user is logged-in upon page load."""
-    if user_id is not None:
-        return User.query.get(user_id)
-    return None
-
-
-@login_manager.unauthorized_handler
-def unauthorized():
-    """Redirect unauthorized users to Login page."""
-    flash("You must be logged in to view that page.")
-    return redirect(url_for("auth_bp.login"))
-
-'''
+	conn = connection()
+	cursor = conn.cursor
+	if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
+		email = request.form['email']
+		password = request.form['password']
+		print(password)
+	# Check if account exists using MySQL
+	cursor.execute('SELECT * FROM login_ihealth WHERE email = %s', (email,))
+	account = cursor.fetchone()
+	if account:
+		password_rs = account['password']
+		print(password_rs)
+		if check_password_hash(password_rs, password):
+			session['loggedin'] = True
+			session['id'] = account['id']
+			session['email'] = account['email']
+			return redirect(url_for('index'))
+		else:
+			flash('Incorrect username/password')
+	else:
+		flash('Incorrect username/password')
+		return render_template('loginadmin.html')
+			
 @app.route("/index")
 def index():
-	#if 'loggedin' in session:
-		return render_template('index.html')
-	#else:
-	#	return redirect("/loginadmin")
-
+    # Check if user is loggedin
+    if 'loggedin' in session:
+    
+        # User is loggedin show them the home page
+        return render_template('index.html', email=session['email'])
+    # User is not loggedin redirect to login page
+    return redirect('/loginadmin')
 
 @app.route("/clinic")
 def clinic():
