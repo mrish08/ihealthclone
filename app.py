@@ -1,25 +1,66 @@
 from distutils.log import debug
 from flask import Flask, render_template,request, redirect,request, redirect, session, flash, Response, jsonify,url_for
 from passlib.hash import pbkdf2_sha256
-from flask_login import UserMixin,login_user,login_manager, logout_user, current_user
+from flask_login import UserMixin,login_user,login_manager, logout_user, current_user,login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_cors import CORS
 import MySQLdb.cursors
+from flask_sqlalchemy import SQLAlchemy
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, SubmitField
+from wtforms.validators import InputRequired, Length, ValidationError
+from flask_bcrypt import Bcrypt
 from flask_session import Session
 import psycopg2 #pip install psycopg2 
 import psycopg2.extras
 import os
 from sqlalchemy.orm import sessionmaker
-from models import *
-engine = create_engine('sqlite:///tutorial.db', echo=True)
 
 
 app=Flask(__name__,template_folder='template',static_folder='static')
 #app.secret_key = 'abandonware-invokes'
 #app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=10)
+db = SQLAlchemy(app)
+bcrypt = Bcrypt(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'database-1.c8punsklsimv.ap-southeast-1.rds.amazonaws.com'
+app.config['SECRET_KEY'] = 'thisisasecretkey'
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 
+class User(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(20), nullable=False, unique=True)
+    password = db.Column(db.String(80), nullable=False)
 
+
+class RegisterForm(FlaskForm):
+    email = StringField(validators=[
+		InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "email"})
+
+    password = PasswordField(validators=[
+		InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
+
+    submit = SubmitField('Register')
+
+    def validate_email(self, email):
+        existing_user_email = User.query.filter_by(
+            email=email.data).first()
+        if existing_user_email:
+            raise ValidationError(
+                'That username already exists. Please choose a different one.')
+
+
+class LoginForm(FlaskForm):
+    email = StringField(validators=[
+		InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "email"})
+
+    password = PasswordField(validators=[
+		InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
+
+    submit = SubmitField('Login')
 
 def connection():
     s = 'database-1.c8punsklsimv.ap-southeast-1.rds.amazonaws.com'
@@ -33,20 +74,16 @@ def connection():
     return conn
 
 
-@app.route("/loginadmin", methods=['POST'])
+@app.route("/loginadmin",methods=['GET', 'POST'])
 def loginadmin():
-POST_EMAIL = str(request.form['email'])
-POST_PASSWORD = str(request.form['password'])
-
-Session = sessionmaker(bind=engine)
-s = Session()
-query = s.query(User).filter(User.username.in_([POST_USERNAME]), User.password.in_([POST_PASSWORD]) )
-result = query.first()
-if result:
-session['logged_in'] = True
-else:
-flash('wrong password!')
-return home()	
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.username.data).first()
+        if user:
+            if bcrypt.check_password_hash(user.password, form.password.data):
+                login_user(user)
+                return redirect(url_for('dashboard'))
+    return render_template('loginadmin.html', form=form)
 	#if request.method == 'GET':
 			#req = request.form.get() 
 	#msg = ''
@@ -73,7 +110,7 @@ return home()
 	#if request.form['password'] == 'password' and request.form['email'] == 'email':
 	#	session['logged_in'] = True
 	#else:
-		flash('wrong password!')
+	#	flash('wrong password!')
 	#return render_template('loginadmin.html')
 
 @app.route('/logout')
