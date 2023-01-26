@@ -4,16 +4,20 @@ from passlib.hash import pbkdf2_sha256
 from flask_login import UserMixin,login_user,login_manager, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_cors import CORS
+import MySQLdb.cursors
+from flask_session import Session
 import psycopg2 #pip install psycopg2 
 import psycopg2.extras
 import re 
-from app_utils import verify_password
-
 
 
 app=Flask(__name__,template_folder='template',static_folder='static')
-#app.secret_key = 'abandonware-invokes'
+app.secret_key = 'abandonware-invokes'
 #app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=10)
+
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
 
 
 def connection():
@@ -27,54 +31,47 @@ def connection():
             curs.execute
     return conn
 
+
 @app.route("/loginadmin", methods=['GET', 'POST'])
 def loginadmin():
-	return render_template('loginadmin.html')
-
-@app.route("/login", methods=['GET', 'POST'])
-def login():
-	conn=connection()
-	cursor = conn.cursor()
-
-    # Check if "username" and "password" POST requests exist (user submitted form)
+	#if request.method == 'GET':
+			#req = request.form.get() 
+	msg = ''
 	if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
+		session.pop('id', None)
 		email = request.form['email']
 		password = request.form['password']
-		print(password)
-
-        # Check if account exists using MySQ
-		cursor.execute('SELECT * FROM login_ihealth WHERE email = %s', (email,))
-        # Fetch one record and return result
-		account = cursor.fetchone()
-		if account:
-			password = account['password']
-			print(password)
-            # If account exists in users table in out database
-			if verify_password(password,password):
-                # Create session data, we can access this data in other routes
-				session['loggedin'] = True
-				session['id'] = account['id']
-				session['email'] = account['email']
-                # Redirect to home page
-				return redirect('/index')
-			else:
-                # Account doesnt exist or username/password incorrect
-				flash('Incorrect email/password')
+		conn = connection()
+		#cursor = conn.cursor(MySQLdb.cursors.DictCursor)
+		cursor = conn.cursor()
+		cursor.execute('SELECT * FROM login_ihealth WHERE email = %s AND password = %s',  (email, password))
+		log = cursor.fetchone()
+		#if email == log['email'] and password == log['password']:
+		if log:
+			session['loggedin'] = True
+			session['resident_id'] = log['resident_id']
+			session['email'] = log['email']
+			msg = 'Logged in successfully'
+			return redirect('/index', msg = msg)
 		else:
-            # Account doesnt exist or username/password incorrect
-			flash('Incorrect email/password')
-		return render_template('loginadmin.html')
-	conn.close()
+			msg =  'Wrong username or password'   
+
+	return render_template('loginadmin.html', msg = msg)
+
+@app.route('/logout')
+def logout():
+    session.pop('loggedin', None)
+    session.pop('id', None)
+    session.pop('email', None)
+    return redirect(url_for('loginadmin'))
+
 			
 @app.route("/index")
 def index():
-    # Check if user is loggedin
-    if 'loggedin' in session:
-    
-        # User is loggedin show them the home page
-        return render_template('index.html', email=session['email'])
-    # User is not loggedin redirect to login page
-    return redirect('/loginadmin')
+	if('log' in session and session['log'] == log['email']):		
+		return render_template('index.html')
+	return '<h1>You are not logged in.</h1>'  
+
 
 @app.route("/clinic")
 def clinic():
