@@ -1,41 +1,55 @@
-from flask_login import UserMixin
-from werkzeug.security import check_password_hash,generate_password_hash
+from flask import Flask, render_template, url_for, redirect
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, SubmitField
+from wtforms.validators import InputRequired, Length, ValidationError
+from flask_bcrypt import Bcrypt
 
-db = SQLAlchemy()
+db = SQLAlchemy(app)
+bcrypt = Bcrypt(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SECRET_KEY'] = 'thisisasecretkey'
+
+
 login_manager = LoginManager()
-
-class User(UserMixin, db.Model):
-
-    """Database models."""
-from flask_login import UserMixin
-from werkzeug.security import check_password_hash, generate_password_hash
-
-from . import db
+login_manager.init_app(app)
+login_manager.login_view = 'login'
 
 
-class User(UserMixin, db.Model):
-    """User account model."""
+@login_manager.user_loader
+def load_user(user_id):pip install WTForms
+    return User.query.get(int(user_id))
 
-    __tablename__ = "users_user"
+
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    firstname = db.Column(db.String(255), nullable=False, unique=False)
-    middlename = db.Column(db.String(255), nullable=True, unique=False)
-    lastname = db.Column(db.String(255), nullable=False, unique=False)
-    account_type = db.Column(db.String(255), default="Client", blank=True)
-    email = db.Column(db.String(255), unique=True, nullable=False)
-    password = db.Column(
-        db.String(255), primary_key=False, unique=False, nullable=False
-    )
-    date_joined = db.Column(db.DateTime, index=False, unique=False, nullable=True)
-    updated_at = db.Column(db.DateTime, index=False, unique=False, nullable=True)
+    username = db.Column(db.String(20), nullable=False, unique=True)
+    password = db.Column(db.String(80), nullable=False)
 
-    def set_password(self, password):
-        """Create hashed password."""
-        self.password = generate_password_hash(password, method="sha256")
 
-    def check_password(self, password):
-        """Check hashed password."""
-        return check_password_hash(self.password, password)
+class RegisterForm(FlaskForm):
+    username = StringField(validators=[
+                           InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
 
-    def __repr__(self):
-        return "<User {}>".format(self.username)
+    password = PasswordField(validators=[
+                             InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
+
+    submit = SubmitField('Register')
+
+    def validate_username(self, username):
+        existing_user_username = User.query.filter_by(
+            username=username.data).first()
+        if existing_user_username:
+            raise ValidationError(
+                'That username already exists. Please choose a different one.')
+
+
+class LoginForm(FlaskForm):
+    username = StringField(validators=[
+                           InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
+
+    password = PasswordField(validators=[
+                             InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
+
+    submit = SubmitField('Login')

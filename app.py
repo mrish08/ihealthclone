@@ -8,16 +8,17 @@ import MySQLdb.cursors
 from flask_session import Session
 import psycopg2 #pip install psycopg2 
 import psycopg2.extras
-import re 
+import os
+from sqlalchemy.orm import sessionmaker
+from models import *
+engine = create_engine('sqlite:///tutorial.db', echo=True)
 
 
 app=Flask(__name__,template_folder='template',static_folder='static')
-app.secret_key = 'abandonware-invokes'
+#app.secret_key = 'abandonware-invokes'
 #app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=10)
 
-app.config["SESSION_PERMANENT"] = False
-app.config["SESSION_TYPE"] = "filesystem"
-Session(app)
+
 
 
 def connection():
@@ -32,31 +33,48 @@ def connection():
     return conn
 
 
-@app.route("/loginadmin", methods=['GET', 'POST'])
+@app.route("/loginadmin", methods=['POST'])
 def loginadmin():
+POST_EMAIL = str(request.form['email'])
+POST_PASSWORD = str(request.form['password'])
+
+Session = sessionmaker(bind=engine)
+s = Session()
+query = s.query(User).filter(User.username.in_([POST_USERNAME]), User.password.in_([POST_PASSWORD]) )
+result = query.first()
+if result:
+session['logged_in'] = True
+else:
+flash('wrong password!')
+return home()	
 	#if request.method == 'GET':
 			#req = request.form.get() 
-	msg = ''
-	if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
-		session.pop('id', None)
-		email = request.form['email']
-		password = request.form['password']
-		conn = connection()
-		#cursor = conn.cursor(MySQLdb.cursors.DictCursor)
-		cursor = conn.cursor()
-		cursor.execute('SELECT * FROM login_ihealth WHERE email = %s AND password = %s',  (email, password))
-		log = cursor.fetchone()
+	#msg = ''
+	#if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
+	#	session.pop('id', None)
+	#	email = request.form['email']
+	#	password = request.form['password']
+	#	conn = connection()
+	#	#cursor = conn.cursor(MySQLdb.cursors.DictCursor)
+	#	cursor = conn.cursor()
+	#	cursor.execute('SELECT * FROM login_ihealth WHERE email = %s AND password = %s',  (email, password))
+	#	log = cursor.fetchone()
 		#if email == log['email'] and password == log['password']:
-		if log:
-			session['loggedin'] = True
-			session['resident_id'] = log['resident_id']
-			session['email'] = log['email']
-			msg = 'Logged in successfully'
-			return redirect('/index', msg = msg)
-		else:
-			msg =  'Wrong username or password'   
+	#	if log:
+	#		session['loggedin'] = True
+	##		session['resident_id'] = log['resident_id']
+	#		session['email'] = log['email']
+	#		msg = 'Logged in successfully'
+	#		return redirect('/index', msg = msg)
+	#	else:
+	#		msg =  'Wrong username or password'   
+	#	return render_template('loginadmin.html', msg = msg)
 
-	return render_template('loginadmin.html', msg = msg)
+	#if request.form['password'] == 'password' and request.form['email'] == 'email':
+	#	session['logged_in'] = True
+	#else:
+		flash('wrong password!')
+	#return render_template('loginadmin.html')
 
 @app.route('/logout')
 def logout():
@@ -566,5 +584,5 @@ def reshistoryviewclinic():
 	return render_template("reshistory-view-clinic.html")
 
 if __name__== '__main__':
-	app.debug=True
-app.run()
+	app.secret_key = os.urandom(12)	
+app.run(debug=True)
