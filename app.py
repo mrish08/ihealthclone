@@ -3,7 +3,6 @@ from flask import Flask, render_template,request, redirect,request, redirect, se
 from passlib.hash import pbkdf2_sha256
 from flask_login import UserMixin,login_user,login_manager, logout_user, current_user,login_required
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 import models as dbHandler
 from flask_session import Session
@@ -11,7 +10,6 @@ import psycopg2 #pip install psycopg2
 import psycopg2.extras
 import os
 from sqlalchemy.orm import sessionmaker
-
 
 
 app=Flask(__name__,template_folder='template',static_folder='static')
@@ -71,7 +69,7 @@ def connection():
             curs.execute
     return conn
 
-
+""""""
 @app.route("/loginadmin",methods=['GET', 'POST'])
 def loginadmin():
 	msg = ''
@@ -84,10 +82,10 @@ def loginadmin():
 			session['loggedin'] = True
 			session['email'] = users['email']
 			msg = 'Logged in successfully'
-			return render_template('index.html', users=users, msg=msg)
+			return render_template('index.html', users=users)
 	else:
-			msg =  'Wrong username or password' 
-			return render_template('loginadmin.html', msg = msg)
+		msg =  'Wrong username or password' 
+		return render_template('loginadmin.html', msg = msg)
 	#if request.method == 'GET':
 			#req = request.form.get() 
 	#msg = ''
@@ -117,19 +115,12 @@ def loginadmin():
 	#	flash('wrong password!')
 	#return render_template('loginadmin.html')
 
-@app.route('/logout')
-def logout():
-    session.pop('loggedin', None)
-    session.pop('id', None)
-    session.pop('email', None)
-    return redirect(url_for('loginadmin'))
 
-			
 @app.route("/index")
 def index():
-	if('log' in session and session['log'] == log['email']):		
+		
 		return render_template('index.html')
-	return '<h1>You are not logged in.</h1>'  
+	 
 
 
 @app.route("/clinic")
