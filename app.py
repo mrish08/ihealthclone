@@ -4,12 +4,8 @@ from passlib.hash import pbkdf2_sha256
 from flask_login import UserMixin,login_user,login_manager, logout_user, current_user,login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_cors import CORS
-import MySQLdb.cursors
 from flask_sqlalchemy import SQLAlchemy
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import InputRequired, Length, ValidationError
-from flask_bcrypt import Bcrypt
+import models as dbHandler
 from flask_session import Session
 import psycopg2 #pip install psycopg2 
 import psycopg2.extras
@@ -17,13 +13,15 @@ import os
 from sqlalchemy.orm import sessionmaker
 
 
+
 app=Flask(__name__,template_folder='template',static_folder='static')
 #app.secret_key = 'abandonware-invokes'
 #app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=10)
-db = SQLAlchemy(app)
+"""""
 bcrypt = Bcrypt(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'database-1.c8punsklsimv.ap-southeast-1.rds.amazonaws.com'
+app.config['SQLALCHEMY_DATABASE_URL'] = 'database-1.c8punsklsimv.ap-southeast-1.rds.amazonaws.com'
 app.config['SECRET_KEY'] = 'thisisasecretkey'
+db = SQLAlchemy(app)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -61,7 +59,7 @@ class LoginForm(FlaskForm):
 		InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
 
     submit = SubmitField('Login')
-
+"""""
 def connection():
     s = 'database-1.c8punsklsimv.ap-southeast-1.rds.amazonaws.com'
     d = 'bms' 
@@ -76,14 +74,20 @@ def connection():
 
 @app.route("/loginadmin",methods=['GET', 'POST'])
 def loginadmin():
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(email=form.username.data).first()
-        if user:
-            if bcrypt.check_password_hash(user.password, form.password.data):
-                login_user(user)
-                return redirect(url_for('dashboard'))
-    return render_template('loginadmin.html', form=form)
+	msg = ''
+	if request.method=='POST':
+		email = request.form['email']
+		password = request.form['password']
+		dbHandler.insertUser(email, password)
+		users = dbHandler.retrieveUsers()
+		if email == users['email'] and password == users['password']:
+			session['loggedin'] = True
+			session['email'] = users['email']
+			msg = 'Logged in successfully'
+			return render_template('index.html', users=users, msg=msg)
+	else:
+			msg =  'Wrong username or password' 
+			return render_template('loginadmin.html', msg = msg)
 	#if request.method == 'GET':
 			#req = request.form.get() 
 	#msg = ''
