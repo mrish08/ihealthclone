@@ -70,22 +70,26 @@ def connection():
     return conn
 
 """"""
-@app.route("/loginadmin",methods=['GET', 'POST'])
-def loginadmin():
+@app.route("/authLogin",methods=['GET'])
+def authLogin():
 	msg = ''
-	if request.method=='POST':
-		email = request.form['email']
-		password = request.form['password']
-		dbHandler.insertUser(email, password)
-		users = dbHandler.retrieveUsers()
-		if email == users['email'] and password == users['password']:
-			session['loggedin'] = True
-			session['email'] = users['email']
-			msg = 'Logged in successfully'
+	if request.method=='GET':
+		token = request.form['token']
+		conn = connection()
+		cursor= conn()
+		cursor.execute("SELECT * FROM session_table WHERE token = %s AND expiration_date > now()", (str(token)))
+		row = cursor.fetchone()
+		if row == None:
+			print("There are no results for this query")
+			return redirect #redirect to BITBO link
+		else:
+			("SELECT * FROM users_user WHERE user_id = %s", (str(row.user_id)))
 			return render_template('index.html', users=users)
 	else:
 		msg =  'Wrong username or password' 
 		return render_template('loginadmin.html', msg = msg)
+	
+	
 	#if request.method == 'GET':
 			#req = request.form.get() 
 	#msg = ''
