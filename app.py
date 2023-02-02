@@ -15,49 +15,7 @@ from sqlalchemy.orm import sessionmaker
 app=Flask(__name__,template_folder='template',static_folder='static')
 #app.secret_key = 'abandonware-invokes'
 #app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=10)
-"""""
-bcrypt = Bcrypt(app)
-app.config['SQLALCHEMY_DATABASE_URL'] = 'database-1.c8punsklsimv.ap-southeast-1.rds.amazonaws.com'
-app.config['SECRET_KEY'] = 'thisisasecretkey'
-db = SQLAlchemy(app)
 
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
-
-
-class User(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(20), nullable=False, unique=True)
-    password = db.Column(db.String(80), nullable=False)
-
-
-class RegisterForm(FlaskForm):
-    email = StringField(validators=[
-		InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "email"})
-
-    password = PasswordField(validators=[
-		InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
-
-    submit = SubmitField('Register')
-
-    def validate_email(self, email):
-        existing_user_email = User.query.filter_by(
-            email=email.data).first()
-        if existing_user_email:
-            raise ValidationError(
-                'That username already exists. Please choose a different one.')
-
-
-class LoginForm(FlaskForm):
-    email = StringField(validators=[
-		InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "email"})
-
-    password = PasswordField(validators=[
-		InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
-
-    submit = SubmitField('Login')
-"""""
 def connection():
     s = 'database-1.c8punsklsimv.ap-southeast-1.rds.amazonaws.com'
     d = 'bms' 
@@ -69,62 +27,30 @@ def connection():
             curs.execute
     return conn
 
-""""""
+
+@app.route("/home")
+def home():
+	return render_template('loginadmin.html')
+
 @app.route("/authLogin",methods=['GET'])
 def authLogin():
-	msg = ''
 	if request.method=='GET':
-		token = request.form['token']
+		token = request.form.get['token']
 		conn = connection()
-		cursor= conn()
-		cursor.execute("SELECT * FROM session_table WHERE token = %s AND expiration_date > now()", (str(token)))
+		cursor= conn.cursor()
+		cursor.execute("SELECT * FROM ihealth_session_ihealthsession WHERE token = %s AND expiration_date > now()", (str(token)))
 		row = cursor.fetchone()
 		if row == None:
 			print("There are no results for this query")
-			return redirect #redirect to BITBO link
+			return redirect ('/home')
 		else:
-			("SELECT * FROM users_user WHERE user_id = %s", (str(row.user_id)))
-			return render_template('index.html', users=users)
-	else:
-		msg =  'Wrong username or password' 
-		return render_template('loginadmin.html', msg = msg)
+			("SELECT * FROM users_user WHERE id = %s", (str(row=id)))
+			return render_template('index.html')
 	
-	
-	#if request.method == 'GET':
-			#req = request.form.get() 
-	#msg = ''
-	#if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
-	#	session.pop('id', None)
-	#	email = request.form['email']
-	#	password = request.form['password']
-	#	conn = connection()
-	#	#cursor = conn.cursor(MySQLdb.cursors.DictCursor)
-	#	cursor = conn.cursor()
-	#	cursor.execute('SELECT * FROM login_ihealth WHERE email = %s AND password = %s',  (email, password))
-	#	log = cursor.fetchone()
-		#if email == log['email'] and password == log['password']:
-	#	if log:
-	#		session['loggedin'] = True
-	##		session['resident_id'] = log['resident_id']
-	#		session['email'] = log['email']
-	#		msg = 'Logged in successfully'
-	#		return redirect('/index', msg = msg)
-	#	else:
-	#		msg =  'Wrong username or password'   
-	#	return render_template('loginadmin.html', msg = msg)
-
-	#if request.form['password'] == 'password' and request.form['email'] == 'email':
-	#	session['logged_in'] = True
-	#else:
-	#	flash('wrong password!')
-	#return render_template('loginadmin.html')
-
 
 @app.route("/index")
 def index():
-		
 		return render_template('index.html')
-	 
 
 
 @app.route("/clinic")
