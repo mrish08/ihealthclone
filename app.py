@@ -1,16 +1,10 @@
 from distutils.log import debug
-from flask import Flask, render_template,request, redirect,request, redirect, session, flash, Response, jsonify,url_for
-from passlib.hash import pbkdf2_sha256
-from flask_login import UserMixin,login_user,login_manager, logout_user, current_user,login_required
-from werkzeug.security import generate_password_hash, check_password_hash
-from flask_sqlalchemy import SQLAlchemy
-import models as dbHandler
+from flask import Flask, render_template,request, redirect,request, request
 from flask_session import Session
 import psycopg2 #pip install psycopg2 
 import psycopg2.extras
+import requests
 import os
-from sqlalchemy.orm import sessionmaker
-
 
 app=Flask(__name__,template_folder='template',static_folder='static')
 #app.secret_key = 'abandonware-invokes'
@@ -27,15 +21,11 @@ def connection():
             curs.execute
     return conn
 
-
-@app.route("/home")
-def home():
-	return render_template('loginadmin.html')
-
 @app.route("/authLogin",methods=['GET'])
 def authLogin():
 	if request.method=='GET':
-		token = request.form.get['token']
+		headers = {'Authorization':'token %s' % token}
+		token = requests.get("https://backend.brgyit-bot.com/api/v1/", headers=headers)
 		conn = connection()
 		cursor= conn.cursor()
 		cursor.execute("SELECT * FROM ihealth_session_ihealthsession WHERE token = %s AND expiration_date > now()", (str(token)))
