@@ -1,10 +1,10 @@
 from distutils.log import debug
-from flask import Flask, render_template,request, redirect,request, request
+from flask import Flask, render_template,request, redirect
 from flask_session import Session
 import psycopg2 #pip install psycopg2 
 import psycopg2.extras
-import requests
 import os
+import urllib
 
 app=Flask(__name__,template_folder='template',static_folder='static')
 #app.secret_key = 'abandonware-invokes'
@@ -24,17 +24,18 @@ def connection():
 @app.route("/authLogin",methods=['GET'])
 def authLogin():
 	if request.method=='GET':
-		headers = {'Authorization':'token %s' % token}
-		token = requests.get("https://backend.brgyit-bot.com/api/v1/", headers=headers)
-		conn = connection()
+		token = request.args.get('token')
+		print (token)
+		conn = connection() 
 		cursor= conn.cursor()
-		cursor.execute("SELECT * FROM ihealth_session_ihealthsession WHERE token = %s AND expiration_date > now()", (str(token)))
+		cursor.execute("SELECT * FROM ihealth_session_ihealthsession WHERE token = %s AND expiration_date > now()", (urllib.unquote_plus(token),))
 		row = cursor.fetchone()
 		if row == None:
 			print("There are no results for this query")
-			return redirect ('/home')
+			return "No result"
 		else:
 			("SELECT * FROM users_user WHERE id = %s", (str(row=id)))
+		
 			return render_template('index.html')
 	
 
