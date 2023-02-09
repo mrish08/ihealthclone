@@ -4,7 +4,7 @@ from flask_session import Session
 import psycopg2 #pip install psycopg2 
 import psycopg2.extras
 import os
-import urllib
+import urllib.parse
 
 app=Flask(__name__,template_folder='template',static_folder='static')
 #app.secret_key = 'abandonware-invokes'
@@ -28,16 +28,28 @@ def authLogin():
 		print (token)
 		conn = connection() 
 		cursor= conn.cursor()
-		cursor.execute("SELECT * FROM ihealth_session_ihealthsession WHERE token = %s AND expiration_date > now()", (urllib.unquote_plus(token),))
+		cursor.execute("SELECT id, user_id FROM ihealth_session_ihealthsession WHERE token = %s AND expiration_date > now()", (urllib.parse.unquote_plus(token),))		
 		row = cursor.fetchone()
 		if row == None:
 			print("There are no results for this query")
-			return "No result"
+			# redirect nyo sa login page ng bitbo
+			return urllib.parse.unquote_plus(token) #temporary lang itong return na ito, dapat redirect papunta sa login page ng bitbo
 		else:
-			("SELECT * FROM users_user WHERE id = %s", (str(row=id)))
-		
-			return render_template('index.html')
-	
+			conn_user = connection() 
+			cursor_user = conn_user.cursor()
+			cursor_user.execute("SELECT * FROM users_user WHERE id = %s", (str(row[1]),))
+			row_user = cursor_user.fetchone()
+			if row_user == None:
+				# no user found
+				print("There are no results for this query")
+				# redirect nyo sa login page ng bitbo
+				return "No User found" #temporary lang itong return na ito, dapat redirect papunta sa login page ng bitbo
+			else:
+				# create session for user where you will be saving the records
+				# redirect to index
+				return redirect('/index')
+
+			
 
 @app.route("/index")
 def index():
