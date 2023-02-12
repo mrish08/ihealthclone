@@ -1,5 +1,6 @@
 from distutils.log import debug
-from flask import Flask, render_template,request, redirect
+from flask import Flask, render_template,request, redirect, session
+from flask_session import Session
 import psycopg2 #pip install psycopg2 
 import psycopg2.extras
 import os
@@ -7,7 +8,10 @@ import urllib.parse
 
 app=Flask(__name__,template_folder='template',static_folder='static')
 #app.secret_key = 'abandonware-invokes'
-#app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=10)
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
+  
 
 def connection():
     s = 'database-1.c8punsklsimv.ap-southeast-1.rds.amazonaws.com'
@@ -44,16 +48,44 @@ def authLogin():
 				# redirect nyo sa login page ng bitbo
 				return "No User found" #temporary lang itong return na ito, dapat redirect papunta sa login page ng bitbo
 			else:
+				session["user"] = row_user
+				return redirect('/index',session["user"])
+				
 				# create session for user where you will be saving the records
 				# redirect to index
-				return redirect('/index')
 
-			
+@app.route("/authLoginS",methods=['GET'])
+def authLoginS():
+	if request.method=='GET':
+		token = request.args.get('token')
+		print (token)
+		conn = connection() 
+		cursor= conn.cursor()
+		cursor.execute("SELECT id, user_id FROM ihealth_session_ihealthsession WHERE token = %s AND expiration_date > now()", (urllib.parse.unquote_plus(token),))		
+		row = cursor.fetchone()
+		if row == None:
+			print("There are no results for this query")
+			# redirect nyo sa login page ng bitbo
+			return urllib.parse.unquote_plus(token) #temporary lang itong return na ito, dapat redirect papunta sa login page ng bitbo
+		else:
+			conn_user = connection() 
+			cursor_user = conn_user.cursor()
+			cursor_user.execute("SELECT * FROM users_user WHERE id = %s", (str(row[1]),))
+			row_user = cursor_user.fetchone()
+			if row_user == None:
+				# no user found
+				print("There are no results for this query")
+				# redirect nyo sa login page ng bitbo
+				return "No User found" #temporary lang itong return na ito, dapat redirect papunta sa login page ng bitbo
+			else:
+				session["user"] = row_user
+				return redirect('/indexstaff',session["user"])
+
+	
 
 @app.route("/index")
 def index():
-		return render_template('index.html')
-
+        return render_template('index.html')
 
 @app.route("/clinic")
 def clinic():
@@ -374,7 +406,7 @@ def loginresident():
 
 @app.route("/indexstaff")
 def indexstaff():
-	return render_template("indexstaff.html")
+		return render_template("indexstaff.html")
 
 @app.route("/schedulestaff")
 def schedulestaff():
@@ -489,7 +521,8 @@ def staffhviewclinic():
 
 @app.route("/indexresident")
 def indexresident():
-	return render_template("indexresident.html")
+	if 'Resident' in session['account_type']:
+		return render_template("indexresident.html")
 
 @app.route("/scheduleresident")
 def scheduleresident():
