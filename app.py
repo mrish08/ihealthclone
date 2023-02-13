@@ -81,6 +81,32 @@ def authLoginS():
 				session["user"] = row_user
 				return redirect('/indexstaff',session["user"])
 
+@app.route("/authLoginR",methods=['GET'])
+def authLoginS():
+	if request.method=='GET':
+		token = request.args.get('token')
+		print (token)
+		conn = connection() 
+		cursor= conn.cursor()
+		cursor.execute("SELECT id, user_id FROM ihealth_session_ihealthsession WHERE token = %s AND expiration_date > now()", (urllib.parse.unquote_plus(token),))		
+		row = cursor.fetchone()
+		if row == None:
+			print("There are no results for this query")
+			# redirect nyo sa login page ng bitbo
+			return urllib.parse.unquote_plus(token) #temporary lang itong return na ito, dapat redirect papunta sa login page ng bitbo
+		else:
+			conn_user = connection() 
+			cursor_user = conn_user.cursor()
+			cursor_user.execute("SELECT * FROM users_user WHERE id = %s", (str(row[1]),))
+			row_user = cursor_user.fetchone()
+			if row_user == None:
+				# no user found
+				print("There are no results for this query")
+				# redirect nyo sa login page ng bitbo
+				return "No User found" #temporary lang itong return na ito, dapat redirect papunta sa login page ng bitbo
+			else:
+				session["user"] = row_user
+				return redirect('/indexresident',session["user"])
 	
 
 @app.route("/index")
