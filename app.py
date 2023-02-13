@@ -521,7 +521,6 @@ def staffhviewclinic():
 
 @app.route("/indexresident")
 def indexresident():
-	if 'Resident' in session['account_type']:
 		return render_template("indexresident.html")
 
 @app.route("/scheduleresident")
