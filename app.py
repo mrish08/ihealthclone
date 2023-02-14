@@ -1,5 +1,6 @@
 from distutils.log import debug
 from flask import Flask, render_template,request, redirect, session
+from flask_session import Session
 import psycopg2 #pip install psycopg2 
 import psycopg2.extras
 import urllib.parse
