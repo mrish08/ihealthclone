@@ -53,7 +53,7 @@ def authLogin():
 				
 				# create session for user where you will be saving the records
 				# redirect to index
-
+"""""
 @app.route("/authLoginS",methods=['GET'])
 def authLoginS():
 	if request.method=='GET':
@@ -107,7 +107,7 @@ def authLoginS():
 			else:
 				session["user"] = row_user
 				return redirect('/indexresident',session["user"])
-	
+"""""	
 
 @app.route("/index")
 def index():
