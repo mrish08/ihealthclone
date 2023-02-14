@@ -1,9 +1,7 @@
 from distutils.log import debug
 from flask import Flask, render_template,request, redirect, session
-from flask_session import Session
 import psycopg2 #pip install psycopg2 
 import psycopg2.extras
-import os
 import urllib.parse
 
 app=Flask(__name__,template_folder='template',static_folder='static')
@@ -53,7 +51,7 @@ def authLogin():
 				
 				# create session for user where you will be saving the records
 				# redirect to index
-"""""
+
 @app.route("/authLoginS",methods=['GET'])
 def authLoginS():
 	if request.method=='GET':
@@ -82,7 +80,7 @@ def authLoginS():
 				return redirect('/indexstaff',session["user"])
 
 @app.route("/authLoginR",methods=['GET'])
-def authLoginS():
+def authLoginR():
 	if request.method=='GET':
 		token = request.args.get('token')
 		print (token)
@@ -106,8 +104,7 @@ def authLoginS():
 				return "No User found" #temporary lang itong return na ito, dapat redirect papunta sa login page ng bitbo
 			else:
 				session["user"] = row_user
-				return redirect('/indexresident',session["user"])
-"""""	
+				return redirect('/indexresident',session["user"])	
 
 @app.route("/index")
 def index():
