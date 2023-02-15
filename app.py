@@ -518,7 +518,7 @@ def staffhviewclinic():
 
 @app.route("/indexresident")
 def indexresident():
-	email= "mejoradajudell15@gmail.com" 
+	email= "kylemara@gmail.com" 
 	account_type= "Resident"
 	conn = connection()
 	cursor = conn.cursor()
