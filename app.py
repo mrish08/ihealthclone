@@ -552,7 +552,6 @@ def vaccinationresident():
 @app.route("/residentas",methods=['GET', 'POST'])
 def residentas():
 	if('user_id' in session):
-		session_id = session.get('id')
 		if request.method == 'POST':
 			app_type= request.form['app_type']
 			date=request.form['date']
