@@ -198,12 +198,12 @@
                                             <div>
                                                 <td class="col-sm-6">
                                                     <form action="/addapt" method="POST">
-                                                    <label for="appt_type" class="form-label">Appointment Type
+                                                    <label for="service" class="form-label">Appointment Type
                                                         <span style="color:#ff0000">*</span></label>
-                                                    <select class="form-select" id="appt_type">
-                                                        <option>Clinic Service</option>
+                                                    <select class="form-select" id="service" name="service"onchange="updateChoices">
+                                                        <option value="clinic_service_id">Clinic Service</option>
                                                         <option>Dental Service</option>
-                                                        <option>Vaccination Service</option>
+                                                        <option value="vax_id">Vaccination Service</option>
                                                     </select>
                                                 </td><br>
                                                 <td class="col-sm-6">
@@ -215,14 +215,37 @@
                                                 <td class="col-sm-6">
                                                     <label for="Schedule" class="form-label">Schedule <span
                                                             style="color:#ff0000">*</span></label>
-                                                    <select class="form-select" id="clinic_sched_id">
-                                                        <option>A.M</option>
-                                                        <option>P.M</option>
+                                                    <select class="form-select" id="Schedule" name="Schedule">
+                                                        <option value="">--select time---</option>
                                                     </select>
                                                 </td><br>
                                                 <div align="right">
                                                     <button class="btn btn-primary" type="submit">Submit</button>
                                                     </form>
+                                                    <script>
+                                                        function updateChoices() {
+                                                          var serviceSelect = document.getElementById("service");
+                                                          var ScheduleSelect = document.getElementById("Schedule");
+                                                          var service = serviceSelect.options[serviceSelect.selectedIndex].value;
+                                                          if (service == "Clinic Service") {
+                                                            choiceSelect.innerHTML = "";
+                                                            choiceSelect.options[choiceSelect.options.length] = new Option("2 for Clinic Service", "AM");
+                                                            choiceSelect.options[choiceSelect.options.length] = new Option("5 for Clinic Service", "PM");
+                                                          } else if (service == "Vaccination Service") {
+                                                            choiceSelect.innerHTML = "";
+                                                            choiceSelect.options[choiceSelect.options.length] = new Option("3 for Vaccination Service", "AM");
+                                                            choiceSelect.options[choiceSelect.options.length] = new Option("8 for Vaccination Service", "PM");
+                                                          } else {
+                                                            choiceSelect.innerHTML = "<option value=''>-- Select a Choice --</option>";
+                                                          }
+                                                        }
+                                                        </script>
+                                                        In this example, we use the onchange attribute of the select element to call a JavaScript function updateChoices() when the user selects a service from the dropdown list. The updateChoices() function gets the selected service from the service element, and then updates the list of choices in the choice element based on the selected service. We use the innerHTML property of the choice element to set the HTML content of the element, and the options property to add new options to the element. Finally, we set the value and text of each option using the Option constructor. When the user submits the form, the selected service and choice are sent as part of the form data to the /book-appointment route, which can then retrieve the selected service and choice using the request.form.get() method.
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
                                                 </div>
                                             </div>
                                         </tr>

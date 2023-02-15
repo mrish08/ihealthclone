@@ -1,8 +1,9 @@
 from distutils.log import debug
-from flask import Flask, render_template,request, redirect, session,Response
+from flask import Flask, render_template,request, redirect, session,Response, flash
 from flask_session import Session
 import psycopg2 #pip install psycopg2 
 import psycopg2.extras
+import datetime
 from io import StringIO
 import requests
 import urllib.parse
@@ -423,7 +424,7 @@ def clinicstaff():
 	conn.close()	
 	return render_template("clinicstaff.html", clinicstaff = clinicstaff)
 
-@app.route("/updateclinicstaff")
+@app.route("/updateclinicstaff", methods = ['GET', 'POST'])
 def updateclinicstaff():
 	ucs = []
 	conn = connection()
@@ -548,6 +549,8 @@ def vaccinationresident():
 @app.route("/residentas")
 def residentas():
 	return render_template("residentbooking.html")
+	
+
 
 @app.route("/residentmedicine")
 def residentmedicine():
