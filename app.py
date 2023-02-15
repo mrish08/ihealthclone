@@ -424,31 +424,28 @@ def clinicstaff():
 	conn.close()	
 	return render_template("clinicstaff.html", clinicstaff = clinicstaff)
 
-@app.route("/updateclinicstaff", methods = ['GET', 'POST'])
-def updateclinicstaff():
+@app.route("/updateclinicstaff/<int:appt_id>", methods = ['GET', 'POST'])
+def updateclinicstaff(appt_id):
 	ucs = []
 	conn = connection()
 	cursor = conn.cursor()
 	if request.method == 'GET':
-		cursor.execute("SELECT * FROM ih_appointment WHERE medicine_id = %s", (str(medicine_id)))
+		cursor.execute("SELECT * FROM ih_appointment WHERE appt_id = %s", (str(appt_id)))
 		for row in cursor.fetchall():
-			ucs.append({"medicine_id": row[0], "medicine_name": row[1], "generic_name": row[2], "brand_name": row[3], "manufacturer": row[4], "dosage": row[5], "medicine_type": row[6], "description": row[7]})
+			ucs.append({"appt_id": row[0], "appt_type": row[1],"remarks": row[2],"date": row[3],"time": row[4],"status": row[5]})
 		conn.close()
-		return render_template("updatemedicine.html", medicine = ucs[0])
+		return render_template("updateclinicstaff.html", clinicstaff = ucs[0])
 	if request.method == 'POST':
-		medicine_id = str(request.form["medicine_id"])
-		medicine_name = str(request.form["medicine_name"])
-		generic_name = str(request.form["generic_name"])
-		brand_name = str(request.form["brand_name"])
-		manufacturer = str(request.form["manufacturer"])
-		dosage = str(request.form["dosage"])
-		medicine_type = str(request.form["medicine_type"])
-		description = str(request.form["description"])
-		cursor.execute("UPDATE medicine SET (medicine_id, medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description) = (%s,%s,%s, %s, %s, %s, %s, %s)  WHERE medicine_id =(%s)",
-		(medicine_id, medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description))
+		appt_type = str(request.form["appt_type"])
+		remarks = str(request.form["remarks"])
+		date = str(request.form["date"])
+		time = str(request.form["time"])
+		status = str(request.form["status"])
+		cursor.execute("UPDATE ih_appointment SET (appt_type, remarks, date, time, status) = (%s,%s,%s, %s, %s)  WHERE appt_id =(%s)",
+		(appt_type, remarks, date, time, status))
 		conn.commit()
 		conn.close()
-		return redirect('/medicine')
+		return redirect('/clinicstaff')
 
 @app.route("/medicinestaff")
 def medicinestaff():
@@ -540,14 +537,25 @@ def scheduleresident():
 
 @app.route("/dentalresident")
 def dentalresident():
-	return render_template("dentalresident.html")
+		return render_template("dentalresident.html")
 
 @app.route("/vaccinationresident")
 def vaccinationresident():
 	return render_template("vaccinationresident.html")
 
-@app.route("/residentas")
+@app.route("/residentas",methods=['GET', 'POST'])
 def residentas():
+	if request.method == 'POST':
+		app_type= request.form['app_type']
+		date=request.form['date']
+		clinic_services_id= request.form['clinic_services_id']
+		clinic_sched_id=request.form['clinic_sched_id']		
+		conn = connection()
+		cursor = conn.cursor()
+		cursor.execute('INSERT INTO ih_appointment (appt_type,date,clinic_services_id,clinic_sched_id)'' VALUES (%s,%s,%s,%s)', 
+		[app_type,date,clinic_services_id,clinic_sched_id])
+		conn.commit()
+		conn.close()
 	return render_template("residentbooking.html")
 	
 
