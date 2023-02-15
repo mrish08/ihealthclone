@@ -217,7 +217,7 @@
                                                         <label for="remarks" class="form-label">
                                                             remarks:&nbsp;<span style="color:#ff0000">*</span></label>
                                                         <input type="text" id="remarks" name="remarks" 
-                                                        class="form-control" value="{{clinicstaff.generic_name}}">
+                                                        class="form-control" value="{{clinicstaff.date}}">
                                                         </span>
                                                     </div>
                                                 </div> <br>
@@ -226,28 +226,25 @@
                                                         <label for="date" class="form-label">
                                                             date:&nbsp;<span style="color:#ff0000">*</span></label>
                                                         <input type="text" id="date" name="date" 
-                                                        class="form-control" value="{{clinicstaff.date}}">
+                                                        class="form-control" value="{{clinicstaff.remarks}}">
                                                         </span>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <label for="time" class="form-label">
                                                             time:&nbsp;<span style="color:#ff0000">*</span></label>
                                                         <input type="text" id="time" name="time" 
+                                                        class="form-control" value="{{clinicstaff.status}}">
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <label for="status" class="form-label">
+                                                            Status:&nbsp;<span style="color:#ff0000">*</span></label>
+                                                        <input type="text" id="status" name="status" 
                                                         class="form-control" value="{{clinicstaff.time}}">
                                                         </span>
                                                     </div>
                                                 </div> <br>
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <label for="status" class="form-label">
-                                                            status:&nbsp;<span style="color:#ff0000">*</span></label>
-                                                        <input type="text" id="status" name="status" 
-                                                        class="form-control" value="{{clinicstaff.status}}">
-                                                        </span>
-                                                    </div>
-                                                    
-                                                </div> <br>
-
+                                                
                                                 <div align="right">
                                                     <a href="/clinicstaff">
                                                         <button class="btn btn-secondary" type="submit">Cancel</button>

@@ -167,53 +167,31 @@
                                 <thead>
                                     <tr class="table-light">
                                         <th>Appointment ID</th>
-                                        <th>Name</th>
+                                        <th>Service</th>
                                         <th>Date</th>
+                                        <th>Remarks</th>
+                                        <th>Status</th>
                                         <th>Time</th>
+                                        <th>ID</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                            
-                            
                                 <tbody>
+                                    {% for residenthaptclinic in residenthaptclinic %}
+                                    <tr>
+                                        <td>{{ residenthaptclinic.appt_id}}</td>
+                                        <td>{{ residenthaptclinic.appt_type}}</td>
+                                        <td>{{ residenthaptclinic.date}}</td>
+                                        <td>{{ residenthaptclinic.remarks}}</td>
+                                        <td>{{ residenthaptclinic.status}}</td>
+                                        <td>{{ residenthaptclinic.time}}</td>
+                                        <td>{{ residenthaptclinic.id}}</td>
+                                        <td>
+                                            <a href="/reshistoryviewclinic"><button type="button" class="btn btn-rounded btn-warning">View</button>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
 
-                                    <tr>
-                                        <td><a class="btn btn-light btn-rounded">CA-0001</a></td>
-                                        <td>Tiger Nixon</td>
-                                        <td>2011/04/25</td>
-                                        <td>9:00 AM</td>
-                                        <td>
-                                            <a href="/reshistoryviewclinic"><button type="button" class="btn btn-rounded btn-warning">View</button>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td><a class="btn btn-light btn-rounded">CA-0001</a></td>
-                                        <td>Tiger Nixon</td>
-                                        <td>2011/04/25</td>
-                                        <td>9:00 AM</td>
-                                        <td>
-                                            <a href="/reshistoryviewclinic"><button type="button" class="btn btn-rounded btn-warning">View</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a class="btn btn-light btn-rounded">CA-0001</a></td>
-                                        <td>Tiger Nixon</td>
-                                        <td>2011/04/25</td>
-                                        <td>9:00 AM</td>
-                                        <td>
-                                            <a href="/reshistoryviewclinic"><button type="button" class="btn btn-rounded btn-warning">View</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a class="btn btn-light btn-rounded">CA-0001</a></td>
-                                        <td>Tiger Nixon</td>
-                                        <td>2011/04/25</td>
-                                        <td>9:00 AM</td>
-                                        <td>
-                                            <a href="/reshistoryviewclinic"><button type="button" class="btn btn-rounded btn-warning">View</button>
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
 

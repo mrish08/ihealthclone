@@ -420,8 +420,7 @@ def clinicstaff():
 	cursor = conn.cursor()
 	cursor.execute("SELECT * FROM ih_appointment")
 	for row in cursor.fetchall():
-		clinicstaff.append({"appt_id": row[0], "appt_type": row[1],"remarks": row[2],"date": row[3],"time": row[4],"status": row[5]})
-	conn.close()	
+		clinicstaff.append({"appt_id": row[0], "appt_type": row[1],"date": row[2],"remarks": row[3],"status": row[4],"time": row[5],"id": row[7]})
 	return render_template("clinicstaff.html", clinicstaff = clinicstaff)
 
 @app.route("/updateclinicstaff/<int:appt_id>", methods = ['GET', 'POST'])
@@ -432,17 +431,17 @@ def updateclinicstaff(appt_id):
 	if request.method == 'GET':
 		cursor.execute("SELECT * FROM ih_appointment WHERE appt_id = %s", (str(appt_id)))
 		for row in cursor.fetchall():
-			ucs.append({"appt_id": row[0], "appt_type": row[1],"remarks": row[2],"date": row[3],"time": row[4],"status": row[5]})
+			ucs.append({"appt_id": row[0], "appt_type": row[1],"date": row[2],"remarks": row[3],"status": row[4],"time": row[5],"id": row[7]})
 		conn.close()
 		return render_template("updateclinicstaff.html", clinicstaff = ucs[0])
 	if request.method == 'POST':
 		appt_type = str(request.form["appt_type"])
 		remarks = str(request.form["remarks"])
 		date = str(request.form["date"])
-		time = str(request.form["time"])
+		clinic_sched_id = str(request.form["time"])
 		status = str(request.form["status"])
-		cursor.execute("UPDATE ih_appointment SET (appt_type, remarks, date, time, status) = (%s,%s,%s, %s, %s)  WHERE appt_id =(%s)",
-		(appt_type, remarks, date, time, status))
+		cursor.execute("UPDATE ih_appointment SET (appt_type, remarks, date, clinic_sched_id, status) = (%s,%s,%s, %s,%s)  WHERE appt_id =(%s)",
+		(appt_type, remarks, date, clinic_sched_id, status,appt_id))
 		conn.commit()
 		conn.close()
 		return redirect('/clinicstaff')
@@ -545,19 +544,22 @@ def vaccinationresident():
 
 @app.route("/residentas",methods=['GET', 'POST'])
 def residentas():
-	if request.method == 'POST':
-		app_type= request.form['app_type']
-		date=request.form['date']
-		clinic_services_id= request.form['clinic_services_id']
-		clinic_sched_id=request.form['clinic_sched_id']		
-		conn = connection()
-		cursor = conn.cursor()
-		cursor.execute('INSERT INTO ih_appointment (appt_type,date,clinic_services_id,clinic_sched_id)'' VALUES (%s,%s,%s,%s)', 
-		[app_type,date,clinic_services_id,clinic_sched_id])
-		conn.commit()
-		conn.close()
-	return render_template("residentbooking.html")
-	
+	if('user_id' in session):
+		session_id = session.get('id')
+		if request.method == 'POST':
+			app_type= request.form['app_type']
+			date=request.form['date']
+			clinic_services_id= request.form['clinic_services_id']
+			id = session['user_id']
+			clinic_sched_id=request.form['clinic_sched_id']		
+			conn = connection()
+			cursor = conn.cursor()
+			cursor.execute('INSERT INTO ih_appointment (appt_type,date,clinic_services_id,id,clinic_sched_id)'' VALUES (%s,%s,%s,%s,%s)', 
+			[app_type,date,clinic_services_id,id,clinic_sched_id])
+			conn.commit()
+			conn.close()
+		return render_template("residentbooking.html")
+		
 
 
 @app.route("/residentmedicine")
@@ -594,7 +596,15 @@ def reshistoryviewmed():
 
 @app.route("/residenthaptclinic")
 def residenthaptclinic():
-	return render_template("residenthistory-apt-clinic.html")
+		user_id = session['user_id']
+		residenthaptclinic=[]
+		conn = connection()
+		cursor = conn.cursor()
+		cursor.execute("SELECT * FROM ih_appointment WHERE id = %s", (user_id,))
+		for row in cursor.fetchall():
+			residenthaptclinic.append({"appt_id": row[0], "appt_type": row[1],"date": row[2],"remarks": row[3],"status": row[4],"time": row[5],"id": row[7]})
+		conn.close()	
+		return render_template("residenthistory-apt-clinic.html",residenthaptclinic=residenthaptclinic)
 
 @app.route("/reshistoryviewclinic")
 def reshistoryviewclinic():
