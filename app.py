@@ -1,14 +1,17 @@
 from distutils.log import debug
-from flask import Flask, render_template,request, redirect, session
+from flask import Flask, render_template,request, redirect, session,Response
 from flask_session import Session
 import psycopg2 #pip install psycopg2 
 import psycopg2.extras
+from io import StringIO
+import requests
 import urllib.parse
 
 app=Flask(__name__,template_folder='template',static_folder='static')
 #app.secret_key = 'abandonware-invokes'
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
+#'https://back-final.brgyit-bot.com/api/v1/
 Session(app)
   
 
@@ -22,6 +25,17 @@ def connection():
         with conn.cursor() as curs:
             curs.execute
     return conn
+"""""
+@app.route("/")
+def authLogins():
+	token = session.get('token')
+	with requests.Session() as session:
+		session.headers['Authorization'] = f'Bearer {token}'
+		response = session.get('https://back-final.brgyit-bot.com/api/v1/')
+		data = response.json()
+		print (data)
+		return print
+		#return redirect('/success', data=data)
 
 @app.route("/authLogin",methods=['GET'])
 def authLogin():
@@ -47,26 +61,38 @@ def authLogin():
 				# redirect nyo sa login page ng bitbo
 				return "No User found" #temporary lang itong return na ito, dapat redirect papunta sa login page ng bitbo
 			else:
-				session["user"] = row_user
-				return redirect('/index',session["user"])
+				session['row_user']=row_user
+				return session
 				
 				# create session for user where you will be saving the records
 				# redirect to index
+"""
 
 @app.route("/index")
 def index():
-        return render_template('index.html')
+	email= "admin@email.com" 
+	account_type= "Admin"
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT id,firstname FROM users_user WHERE email = %s AND account_type = %s", (email, account_type))
+	user = cursor.fetchone()
+	if user is not None:
+		user_id, user_firstname = user
+		session['user_id'] = user_id
+		session['user_firstname'] = user_firstname
+	return render_template("index.html")
 
 @app.route("/clinic")
 def clinic():
-	clinic = []
-	conn = connection()
-	cursor = conn.cursor()
-	cursor.execute("SELECT * FROM ih_clinic_services")
-	for row in cursor.fetchall():
-		clinic.append({"clinic_services_id": row[0], "clinic_services_name": row[1]})
-	conn.close()	
-	return render_template("clinic.html", clinic = clinic)
+	if('user_id' in session):
+		clinic = []
+		conn = connection()
+		cursor = conn.cursor()
+		cursor.execute("SELECT * FROM ih_clinic_services")
+		for row in cursor.fetchall():
+			clinic.append({"clinic_services_id": row[0], "clinic_services_name": row[1]})
+		conn.close()	
+		return render_template("clinic.html", clinic = clinic)
 
 @app.route("/adcb")
 def adcb():
@@ -74,14 +100,15 @@ def adcb():
 
 @app.route("/addclinic")
 def addclinic():
-	if request.method == 'POST':
-		clinic_services_name = request.form['clinic_services_name']
-	conn = connection()
-	cursor = conn.cursor()
-	cursor.execute('INSERT INTO ih_clinic_services (clinic_services_name)'' VALUES (%s)', [clinic_services_name])
-	conn.commit()
-	conn.close()
-	return render_template("/clinic")
+	if('user_id' in session):
+		if request.method == 'POST':
+			clinic_services_name = request.form['clinic_services_name']
+		conn = connection()
+		cursor = conn.cursor()
+		cursor.execute('INSERT INTO ih_clinic_services (clinic_services_name)'' VALUES (%s)', [clinic_services_name])
+		conn.commit()
+		conn.close()
+		return render_template("/clinic")
 
 @app.route('/updateclinic/<int:clinic_services_id>', methods = ['GET', 'POST'])
 def updateclinic(clinic_services_id):
@@ -366,16 +393,19 @@ def adminhaptmedicine():
 def adminhaptclinic():
 	return render_template("adminhistory-apt-clinic.html")
 
-@app.route("/loginstaff")
-def loginstaff():
-	return render_template("loginstaff.html")
-
-@app.route("/loginresident")
-def loginresident():
-	return render_template("loginresident.html")
 
 @app.route("/indexstaff")
 def indexstaff():
+	email= "staff@email.com" 
+	account_type= "Staff"
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT id,firstname FROM users_user WHERE email = %s AND account_type = %s", (email, account_type))
+	user = cursor.fetchone()
+	if user is not None:
+		user_id, user_firstname = user
+		session['user_id'] = user_id
+		session['user_firstname'] = user_firstname
 		return render_template("indexstaff.html")
 
 @app.route("/schedulestaff")
@@ -491,6 +521,16 @@ def staffhviewclinic():
 
 @app.route("/indexresident")
 def indexresident():
+	email= "mejoradajudell15@gmail.com" 
+	account_type= "Resident"
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT id,firstname FROM users_user WHERE email = %s AND account_type = %s", (email, account_type))
+	user = cursor.fetchone()
+	if user is not None:
+		user_id, user_firstname = user
+		session['user_id'] = user_id
+		session['user_firstname'] = user_firstname
 		return render_template("indexresident.html")
 
 @app.route("/scheduleresident")
@@ -550,4 +590,6 @@ def reshistoryviewclinic():
 	return render_template("reshistory-view-clinic.html")
 
 if __name__== '__main__':
-	app.run(host="0.0.0.0",port=5000)
+	app.run(debug=True)
+	#app.run(host="0.0.0.0",port=5000)
+	
