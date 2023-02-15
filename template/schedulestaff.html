@@ -197,111 +197,34 @@
                                             <div class="table-hover" id="scroll-horizontal-preview">
                                                 <table id="scroll-horizontal-datatable" style="overflow-x: auto;" class="table table-hover w-100 nowrap">
                                                     <thead>
-                                                <tr class="table-light">
-                                                    <th>Time</th>
-                                                    <th>Schedule Name</th>
-                                                </tr>
+                                                        <tr class="table-light">>
+                                                            <th>Schedule Name</th>
+                                                            <th>Time</th>
+                                                            <th>Maximum Attendees</th>
+                                                            <th>Contact Person</th>
+                                                           
+                                                        </tr>
                                             </thead>
                                         
                                         
                                             <tbody>
 
-                                                {% for schedule in schedule %}
+                                               
+                                        {% for schedulestaff in schedulestaff %}
 
-                                                <tr>
-                                                    <td>{{ schedule.schedule }}</td>
-                                                    <td>{{ schedule.schedule_name }}</td>
+                                        <tr>
+                                            <td>{{ schedulestaff.schedule_name }}</td>
+                                            <td>{{ schedulestaff.from_to_schedule }}</td>
+                                            <td>{{ schedulestaff.maximum_attendees }}</td>
+                                            <td>{{ schedulestaff.contact_person }}</td>
+                                            
+                                            </td>
+
+                                        </tr>
+                                        {% endfor %}
+           
                                                 </tr>
-
-                                                <tr>
-                                                    <td>{{ schedule.schedule }}</td>
-                                                    <td>{{ schedule.schedule_name }}</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>{{ schedule.schedule }}</td>
-                                                    <td>{{ schedule.schedule_name }}</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>{{ schedule.schedule }}</td>
-                                                    <td>{{ schedule.schedule_name }}</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>{{ schedule.schedule }}</td>
-                                                    <td>{{ schedule.schedule_name }}</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>{{ schedule.schedule }}</td>
-                                                    <td>{{ schedule.schedule_name }}</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>{{ schedule.schedule }}</td>
-                                                    <td>{{ schedule.schedule_name }}</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>{{ schedule.schedule }}</td>
-                                                    <td>{{ schedule.schedule_name }}</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>{{ schedule.schedule }}</td>
-                                                    <td>{{ schedule.schedule_name }}</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>{{ schedule.schedule }}</td>
-                                                    <td>{{ schedule.schedule_name }}</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>{{ schedule.schedule }}</td>
-                                                    <td>{{ schedule.schedule_name }}</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>{{ schedule.schedule }}</td>
-                                                    <td>{{ schedule.schedule_name }}</td>
-                                                </tr>
-
-
-                                                <tr>
-                                                    <td>{{ schedule.schedule }}</td>
-                                                    <td>{{ schedule.schedule_name }}</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>{{ schedule.schedule }}</td>
-                                                    <td>{{ schedule.schedule_name }}</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>{{ schedule.schedule }}</td>
-                                                    <td>{{ schedule.schedule_name }}</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>{{ schedule.schedule }}</td>
-                                                    <td>{{ schedule.schedule_name }}</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>{{ schedule.schedule }}</td>
-                                                    <td>{{ schedule.schedule_name }}</td>
-            <!--                                    <td class="table-action">
-                                                        <form class="action-icon">
-                                                            <button type="button" class="btn btn-warning">
-                                                                <a href="updateschedule/{{ schedule.clinic_sched_id }}">
-                                                                <i class="mdi mdi-account-edit-outline"></i>   </a>
-                                                            </button>
-                                                        </form>
-                                                    </td> -->     
-                                                </tr>
-                                                {% endfor %}  
+                                              
                                             </tbody>
                                         </table>
                                     </div>

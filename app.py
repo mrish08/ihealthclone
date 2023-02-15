@@ -1,5 +1,5 @@
 from distutils.log import debug
-from flask import Flask, render_template,request, redirect, session,Response, flash
+from flask import Flask, render_template,request, redirect, session,Response, jsonify
 from flask_session import Session
 import psycopg2 #pip install psycopg2 
 import psycopg2.extras
@@ -411,7 +411,14 @@ def indexstaff():
 
 @app.route("/schedulestaff")
 def schedulestaff():
-	return render_template("schedulestaff.html")
+	schedulestaff = []
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT * FROM ih_clinic_sched")
+	for row in cursor.fetchall():
+		schedulestaff.append({"clinic_sched_id": row[0], "schedule_name": row[1], "contact_person": row[2], "maximum_attendees": row[3], "from_to_schedule": row[4]})
+	conn.close()	
+	return render_template("schedulestaff.html",schedulestaff=schedulestaff)
 
 @app.route("/clinicstaff")
 def clinicstaff():
@@ -610,6 +617,19 @@ def residenthaptclinic():
 def reshistoryviewclinic():
 	return render_template("reshistory-view-clinic.html")
 
+@app.route('/approve_status', methods=['POST'])
+def approve_status():
+	status = request.form['status']
+	# Update the status in the database
+	# # ...
+	return jsonify({'message': 'Status approved'})
+
+@app.route('/reject_status', methods=['POST'])
+def reject_status():
+	status = request.form['status']
+	# Update the status in the databas
+	# # ...
+	return jsonify({'message': 'Status rejected'})
 if __name__== '__main__':
 	app.run(debug=True)
 	#app.run(host="0.0.0.0",port=5000)
