@@ -513,7 +513,14 @@ def staffhviewmedicine():
 
 @app.route("/staffhaptclinic")
 def staffhaptclinic():
-	return render_template("staffhistory-apt-clinic.html")
+	staffhaptclinic=[]
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, CSV.CLINIC_SERVICES_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SERVICES CSV ON IH.CLINIC_SERVICES_ID = CSV.CLINIC_SERVICES_ID INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID ")		
+	for row in cursor.fetchall():
+			staffhaptclinic.append({ "appt_type": row[0],"date": row[1],"status": row[2],"firstname": row[3],"clinic_services_name": row[4],"schedule_name": row[5]})
+	conn.close()
+	return render_template("staffhistory-apt-clinic.html", staffhaptclinic=staffhaptclinic)
 
 @app.route("/staffhviewclinic")
 def staffhviewclinic():
@@ -532,9 +539,8 @@ def indexresident():
 		user_id, user_firstname = user
 		"""
 	if('user_id' in session):
-		user_id = session['user_id']
-		user_firstname=session['user_firstname'] 
-
+		session['user_id']
+		session['user_firstname'] 
 		return render_template("indexresident.html")
 
 @app.route("/scheduleresident")

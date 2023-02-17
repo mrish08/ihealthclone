@@ -193,60 +193,35 @@
                         <div class="card-body">
                             <div class="tab-content">
                                 <div class="table-hover" id="scroll-horizontal-preview">
-                                    <table id="scroll-horizontal-datatable" style="overflow-x: auto;" class="table table-hover w-100 nowrap">
-
-                                    <thead>
-                                        <tr class="table-light">
-                                            <th>Appointment ID</th>
-                                            <th>Name</th>
-                                            <th>Date</th>
-                                            <th>Time</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                
-                    
-                                    <tbody>
-
-                                        <tr>
-                                            <td><a class="btn btn-light btn-rounded">CA-0001</a></td>
-                                            <td>Tiger Nixon</td>
-                                            <td>2011/04/25</td>
-                                            <td>9:00 AM</td>
-                                            <td>
-                                                <a href="/staffhviewclinic"><button type="button" class="btn btn-rounded btn-warning">View</button>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td><a class="btn btn-light btn-rounded">CA-0001</a></td>
-                                            <td>Tiger Nixon</td>
-                                            <td>2011/04/25</td>
-                                            <td>9:00 AM</td>
-                                            <td>
-                                                <a href="/staffhviewclinic"><button type="button" class="btn btn-rounded btn-warning">View</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a class="btn btn-light btn-rounded">CA-0001</a></td>
-                                            <td>Tiger Nixon</td>
-                                            <td>2011/04/25</td>
-                                            <td>9:00 AM</td>
-                                            <td>
-                                                <a href="/staffhviewclinic"><button type="button" class="btn btn-rounded btn-warning">View</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a class="btn btn-light btn-rounded">CA-0001</a></td>
-                                            <td>Tiger Nixon</td>
-                                            <td>2011/04/25</td>
-                                            <td>9:00 AM</td>
-                                            <td>
-                                                <a href="/staffhviewclinic"><button type="button" class="btn btn-rounded btn-warning">View</button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                            </table>
+                                    <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                                        <thead>
+                                            <tr class="table-light">
+                                                <th>Service</th>
+                                                <th>Date</th>
+                                                <th>Status</th>
+                                                <th>Resident</th>
+                                                <th>Service Name</th>
+                                                <th>Schedule</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for staffhaptclinic in staffhaptclinic %}
+                                            <tr>
+                                                <td>{{ staffhaptclinic.appt_type}}</td>
+                                                <td>{{ staffhaptclinic.date}}</td>
+                                                <td>{{ staffhaptclinic.status}}</td>
+                                                <td>{{ staffhaptclinic.firstname}}</td>
+                                                <td>{{ staffhaptclinic.clinic_services_name}}</td>
+                                                <td>{{ staffhaptclinic.schedule_name}}</td>
+                                                <td>
+                                                    <a href="/staffhviewclinic"><button type="button" class="btn btn-rounded btn-warning">View</button>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+        
+                                        </tbody>
+                                    </table>
 
                         </div>
 
