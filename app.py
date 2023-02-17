@@ -104,101 +104,108 @@ def addclinic():
 
 @app.route('/updateclinic/<int:clinic_services_id>', methods = ['GET', 'POST'])
 def updateclinic(clinic_services_id):
-	uc = []
-	conn = connection()
-	cursor = conn.cursor()
-	if request.method == 'GET':
-		cursor.execute("SELECT * FROM ih_clinic_services WHERE clinic_services_id = %s", (str(clinic_services_id)))
-		for row in cursor.fetchall():
-			uc.append({"clinic_services_id": row[0], "clinic_services_name": row[1]})
-		conn.close()
-		return render_template("updateclinicadmin.html", clinic = uc[0])
-	if request.method == 'POST':
-		clinic_services_name = str(request.form["clinic_services_name"])
-		cursor.execute("UPDATE ih_clinic_services SET clinic_services_name = %s WHERE clinic_services_id = %s", (clinic_services_name, clinic_services_id))
-		conn.commit()
-		conn.close()
-		return redirect('/clinic')
+	if('user_id' in session):
+		uc = []
+		conn = connection()
+		cursor = conn.cursor()
+		if request.method == 'GET':
+			cursor.execute("SELECT * FROM ih_clinic_services WHERE clinic_services_id = %s", (str(clinic_services_id)))
+			for row in cursor.fetchall():
+				uc.append({"clinic_services_id": row[0], "clinic_services_name": row[1]})
+			conn.close()
+			return render_template("updateclinicadmin.html", clinic = uc[0])
+		if request.method == 'POST':
+			clinic_services_name = str(request.form["clinic_services_name"])
+			cursor.execute("UPDATE ih_clinic_services SET clinic_services_name = %s WHERE clinic_services_id = %s", (clinic_services_name, clinic_services_id))
+			conn.commit()
+			conn.close()
+			return redirect('/clinic')
 
 @app.route("/dental")
 def dental():
-	return render_template("clinic.html")
+	if('user_id' in session):
+		return render_template("clinic.html")
 
 @app.route("/adminvaccineinv")
 def vaccination():
-	vaccination = []
-	conn = connection()
-	cursor = conn.cursor()
-	cursor.execute("SELECT * FROM ih_vaccine")
-	for row in cursor.fetchall():
-		vaccination.append({"vax_id": row[0], "vax_name": row[1], "vax_brand_manufacturer": row[2], "vax_batch_no": row[3], "vax_lot_no": row[4], "vax_dosage": row[5], "vax_tech_platform": row[6], "vax_ph_fda_approval": row[7], "vax_storage_req": row[8], "vax_efficiency": row[9], "vax_side_effect": row[10],"stock": row[11]})
-	conn.close()	
-	return render_template("adminvaccineinv.html", vaccination = vaccination)
+	if('user_id' in session):
+		vaccination = []
+		conn = connection()
+		cursor = conn.cursor()
+		cursor.execute("SELECT * FROM ih_vaccine")
+		for row in cursor.fetchall():
+			vaccination.append({"vax_id": row[0], "vax_name": row[1], "vax_brand_manufacturer": row[2], "vax_batch_no": row[3], "vax_lot_no": row[4], "vax_dosage": row[5], "vax_tech_platform": row[6], "vax_ph_fda_approval": row[7], "vax_storage_req": row[8], "vax_efficiency": row[9], "vax_side_effect": row[10],"stock": row[11]})
+		conn.close()	
+		return render_template("adminvaccineinv.html", vaccination = vaccination)
 
 @app.route("/addvaccination", methods = ['POST'])
 def addvaccination():
-	if request.method == 'POST':
-		vax_name = request.form['vax_name']
-		vax_brand_manufacturer = request.form['vax_brand_manufacturer']
-		vax_batch_no = request.form['vax_batch_no']
-		vax_lot_no = request.form['vax_lot_no']
-		vax_dosage  = request.form['vax_dosage']
-		vax_tech_platform = request.form['vax_tech_platform']
-		vax_ph_fda_approval = request.form['vax_ph_fda_approval']
-		vax_storage_req  = request.form['vax_storage_req']
-		vax_efficiency  = request.form['vax_efficiency']
-		vax_side_effect  = request.form['vax_side_effect']
-		stock  = request.form['stock']
-	conn = connection()
-	cursor = conn.cursor()
-	cursor.execute('INSERT INTO ih_vaccine (vax_name, vax_brand_manufacturer, vax_batch_no, vax_lot_no, vax_dosage, vax_tech_platform, vax_ph_fda_approval, vax_storage_req, vax_efficiency, vax_side_effect, stock)'' VALUES (%s,%s,%s,%s, %s, %s, %s, %s, %s,%s, %s)', 
-	[ vax_name, vax_brand_manufacturer, vax_batch_no, vax_lot_no, vax_dosage, vax_tech_platform, vax_ph_fda_approval, vax_storage_req, vax_efficiency, vax_side_effect, stock])
-	conn.commit()
-	conn.close()
-	return redirect('/adminvaccineinv')
-
-@app.route('/updatevaccination/<int:vax_id>', methods = ['GET', 'POST'])
-def updatevaccination(vax_id):
-	uv = []
-	conn = connection()
-	cursor = conn.cursor()
-	if request.method == 'GET':
-		cursor.execute("SELECT * FROM ih_vaccine WHERE vax_id = %s", (str(vax_id)))
-		for row in cursor.fetchall():
-			uv.append({"vax_id": row[0], "vax_name": row[1], "vax_brand_manufacturer": row[2], "vax_batch_no": row[3], "vax_lot_no": row[4], "vax_dosage": row[5], "vax_tech_platform": row[6], "vax_ph_fda_approval": row[7], "vax_storage_req": row[8], "vax_efficiency": row[9], "vax_side_effect": row[10],"stock": row[11]})
-		conn.close()
-		return render_template("updatevaccination.html", vaccination = uv[0])
-	if request.method == 'POST':
-		vax_name = str(request.form['vax_name'])
-		vax_brand_manufacturer = str(request.form['vax_brand_manufacturer'])
-		vax_batch_no = str(request.form['vax_batch_no'])
-		vax_lot_no = str(request.form['vax_lot_no'])
-		vax_dosage = str(request.form['vax_dosage'])
-		vax_tech_platform = str(request.form['vax_tech_platform'])
-		vax_ph_fda_approval = str(request.form['vax_ph_fda_approval'])
-		vax_storage_req = str(request.form['vax_storage_req'])
-		vax_efficiency = str(request.form['vax_efficiency'])
-		vax_side_effect = str(request.form['vax_side_effect'])
-		stock  = int(request.form['stock'])
-		cursor.execute("UPDATE ih_vaccine SET (vax_name, vax_brand_manufacturer, vax_batch_no, vax_lot_no, vax_dosage, vax_tech_platform, vax_ph_fda_approval, vax_storage_req, vax_efficiency, vax_side_effect, stock) = (%s,%s,%s, %s, %s, %s, %s, %s,%s, %s,%s)  WHERE vax_id =(%s)", 
-		(vax_name,vax_brand_manufacturer,vax_batch_no,vax_lot_no,vax_dosage,vax_tech_platform,vax_ph_fda_approval,vax_storage_req,vax_efficiency,vax_side_effect,stock,vax_id))
+	if('user_id' in session):
+		if request.method == 'POST':
+			vax_name = request.form['vax_name']
+			vax_brand_manufacturer = request.form['vax_brand_manufacturer']
+			vax_batch_no = request.form['vax_batch_no']
+			vax_lot_no = request.form['vax_lot_no']
+			vax_dosage  = request.form['vax_dosage']
+			vax_tech_platform = request.form['vax_tech_platform']
+			vax_ph_fda_approval = request.form['vax_ph_fda_approval']
+			vax_storage_req  = request.form['vax_storage_req']
+			vax_efficiency  = request.form['vax_efficiency']
+			vax_side_effect  = request.form['vax_side_effect']
+			stock  = request.form['stock']
+		conn = connection()
+		cursor = conn.cursor()
+		cursor.execute('INSERT INTO ih_vaccine (vax_name, vax_brand_manufacturer, vax_batch_no, vax_lot_no, vax_dosage, vax_tech_platform, vax_ph_fda_approval, vax_storage_req, vax_efficiency, vax_side_effect, stock)'' VALUES (%s,%s,%s,%s, %s, %s, %s, %s, %s,%s, %s)', 
+		[ vax_name, vax_brand_manufacturer, vax_batch_no, vax_lot_no, vax_dosage, vax_tech_platform, vax_ph_fda_approval, vax_storage_req, vax_efficiency, vax_side_effect, stock])
 		conn.commit()
 		conn.close()
 		return redirect('/adminvaccineinv')
 
+@app.route('/updatevaccination/<int:vax_id>', methods = ['GET', 'POST'])
+def updatevaccination(vax_id):
+	if('user_id' in session):
+		uv = []
+		conn = connection()
+		cursor = conn.cursor()
+		if request.method == 'GET':
+			cursor.execute("SELECT * FROM ih_vaccine WHERE vax_id = %s", (str(vax_id)))
+			for row in cursor.fetchall():
+				uv.append({"vax_id": row[0], "vax_name": row[1], "vax_brand_manufacturer": row[2], "vax_batch_no": row[3], "vax_lot_no": row[4], "vax_dosage": row[5], "vax_tech_platform": row[6], "vax_ph_fda_approval": row[7], "vax_storage_req": row[8], "vax_efficiency": row[9], "vax_side_effect": row[10],"stock": row[11]})
+			conn.close()
+			return render_template("updatevaccination.html", vaccination = uv[0])
+		if request.method == 'POST':
+			vax_name = str(request.form['vax_name'])
+			vax_brand_manufacturer = str(request.form['vax_brand_manufacturer'])
+			vax_batch_no = str(request.form['vax_batch_no'])
+			vax_lot_no = str(request.form['vax_lot_no'])
+			vax_dosage = str(request.form['vax_dosage'])
+			vax_tech_platform = str(request.form['vax_tech_platform'])
+			vax_ph_fda_approval = str(request.form['vax_ph_fda_approval'])
+			vax_storage_req = str(request.form['vax_storage_req'])
+			vax_efficiency = str(request.form['vax_efficiency'])
+			vax_side_effect = str(request.form['vax_side_effect'])
+			stock  = int(request.form['stock'])
+			cursor.execute("UPDATE ih_vaccine SET (vax_name, vax_brand_manufacturer, vax_batch_no, vax_lot_no, vax_dosage, vax_tech_platform, vax_ph_fda_approval, vax_storage_req, vax_efficiency, vax_side_effect, stock) = (%s,%s,%s, %s, %s, %s, %s, %s,%s, %s,%s)  WHERE vax_id =(%s)", 
+			(vax_name,vax_brand_manufacturer,vax_batch_no,vax_lot_no,vax_dosage,vax_tech_platform,vax_ph_fda_approval,vax_storage_req,vax_efficiency,vax_side_effect,stock,vax_id))
+			conn.commit()
+			conn.close()
+			return redirect('/adminvaccineinv')
+
 @app.route("/schedule")
 def schedule():
-	schedule = []
-	conn = connection()
-	cursor = conn.cursor()
-	cursor.execute("SELECT * FROM ih_clinic_sched")
-	for row in cursor.fetchall():
-		schedule.append({"clinic_sched_id": row[0], "schedule_name": row[1], "contact_person": row[2], "maximum_attendees": row[3], "from_to_schedule": row[4]})
-	conn.close()	
-	return render_template("schedule.html", schedule= schedule)
-	
+	if('user_id' in session):
+		schedule = []
+		conn = connection()
+		cursor = conn.cursor()
+		cursor.execute("SELECT * FROM ih_clinic_sched")
+		for row in cursor.fetchall():
+			schedule.append({"clinic_sched_id": row[0], "schedule_name": row[1], "contact_person": row[2], "maximum_attendees": row[3], "from_to_schedule": row[4]})
+		conn.close()	
+		return render_template("schedule.html", schedule= schedule)
+		
 @app.route("/adsb")
 def adsb():
+
 	return render_template("admin-add-schedule.html")
 
 @app.route("/addschedule", methods = ['POST'])
@@ -388,16 +395,7 @@ def adminhaptclinic():
 
 @app.route("/indexstaff")
 def indexstaff():
-	email= "staff@email.com" 
-	account_type= "Staff"
-	conn = connection()
-	cursor = conn.cursor()
-	cursor.execute("SELECT id,firstname FROM users_user WHERE email = %s AND account_type = %s", (email, account_type))
-	user = cursor.fetchone()
-	if user is not None:
-		user_id, user_firstname = user
-		session['user_id'] = user_id
-		session['user_firstname'] = user_firstname
+	if('user_id' in session):
 		return render_template("indexstaff.html")
 
 @app.route("/schedulestaff")
