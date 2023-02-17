@@ -211,36 +211,34 @@
                         <div class="card">
                             <div class="card-body">
                             <table id="basic-datatable" class="table dt-responsive nowrap w-100">
-                                <tr class="table-light">
-                                    <th>Appointment ID</th>
-                                    <th>Service</th>
-                                    <th>Date</th>
-                                    <th>Remarks</th>
-                                    <th>Status</th>
-                                    <th>Time</th>
-                                    <th>ID</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for residenthaptclinic in residenthaptclinic %}
-                                <tr>
-                                    <td>{{ residenthaptclinic.appt_id}}</td>
-                                    <td>{{ residenthaptclinic.appt_type}}</td>
-                                    <td>{{ residenthaptclinic.date}}</td>
-                                    <td>{{ residenthaptclinic.remarks}}</td>
-                                    <td>{{ residenthaptclinic.status}}</td>
-                                    <td>{{ residenthaptclinic.time}}</td>
-                                    <td>{{ residenthaptclinic.id}}</td>
-                                <
-                                    <a href="adminvc"><button type="button" class="btn btn-rounded btn-warning">View</button>
+                                <thead>
+                                    <tr class="table-light">
+                                        <th>Service</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Resident</th>
+                                        <th>Service Name</th>
+                                        <th>Schedule</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for adminhaptclinic in adminhaptclinic %}
+                                    <tr>
+                                        <td>{{ adminhaptclinic.appt_type}}</td>
+                                        <td>{{ adminhaptclinic.date}}</td>
+                                        <td>{{ adminhaptclinic.status}}</td>
+                                        <td>{{ adminhaptclinic.firstname}}</td>
+                                        <td>{{ adminhaptclinic.clinic_services_name}}</td>
+                                        <td>{{ adminhaptclinic.schedule_name}}</td>
+                                        <td>
+                                            <a href="/adminvc"><button type="button" class="btn btn-rounded btn-warning">View</button>
                                         </td>
                                     </tr>
-                                {% endfor %}
+                                    {% endfor %}
+
                                 </tbody>
                             </table>
-
-
 
                 </div>
 
@@ -252,14 +250,7 @@
         <!-- content -->
 
     </div>
-
-
-    <!-- ============================================================== -->
-    <!-- End Page content -->
-    <!-- ============================================================== -->
-
-    </div>
-    <!-- END wrapper -->
+</div>    <!-- END wrapper -->
 
     <!-- bundle -->
        <!-- bundle -->
