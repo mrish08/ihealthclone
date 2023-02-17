@@ -56,11 +56,22 @@
                         </a>
                     </li>
                     
-                    <li class="badge-primary-lighten side-nav-item menuitem-active">
-                        <a href="/residentas" class="side-nav-link">
+                    <li class="side-nav-item menuitem-active">
+                        <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarEcommerce" class="side-nav-link">
                             <i class="uil-clipboard-alt"></i>
                             <span> Appointment Service </span>
+                            <span class="menu-arrow"></span>
                         </a>
+                        <div class="collapse" id="sidebarTasks">
+                            <ul class="side-nav-second-level">
+                                <li>
+                                    <a href="/residentas">Request Clinic Appointment</a>
+                                </li>
+                                <li>
+                                    <a class="badge-primary-lighten menuitem-active" href="/residentvax">Request Vaccination Appointment</a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
     
                     <li class="side-nav-item">
@@ -133,7 +144,7 @@
                                 </div>
 
                                 <!-- item-->
-                                <a href="/BITBo/login-admin.php" class="dropdown-item notify-item">
+                                <a href="https://brgyit-bot.com/login/" class="dropdown-item notify-item">
                                     <i class="mdi mdi-logout me-1"></i>
                                     <span>Logout</span>
                                 </a>
@@ -201,22 +212,19 @@
                                         <tr>
                                             <div>
                                                 <td class="col-sm-6">
-                                                <form action="/residentas" method="POST">
+                                                <form action="/residentvax" method="POST">
                                                     <label for="appt_type" class="form-label">Appointment Type
                                                         <span style="color:#ff0000">*</span></label>
-                                                    <select class="form-select" id="appt_type" name="appt_type" onchange="updateOptions()">
-                                                        <option value="clinic_service_id">Clinic Service</option>
+                                                    <select class="form-select" id="appt_type" name="appt_type" disabled>
                                                         <option value="vax_id">Vaccination Service</option>
                                                     </select>
                                                 </td><br>
-                                                <td class="col-sm-6">
-                                                    <label for="clinic_services_id" class="form-label">Clinic service 
+                                                <td class="col-sm-6">Vaccination Service 
                                                         <span style="color:#ff0000">*</span></label>
-                                                    <select class="form-select" id="clinic_services_id" name="clinic_services_id">
-                                                        <option value="1">check-up</option>
-                                                        <option value="2">x-ray</option>
-                                                        <option value="3">ultrasound</option>
-                                                        <option value="4">Hermatology</option>
+                                                    <select class="form-select" id="vax_id" name="vax_id">
+                                                        <option value="1">COVID-19</option>
+                                                        <option value="2">flu</option>
+                                                        <option value="3">pneumonia</option>
                                                     </select>
                                                 </td><br>
                                                 <td class="col-sm-6">
@@ -226,9 +234,9 @@
                                                         name="date">
                                                 </td><br>
                                                 <td class="col-sm-6">
-                                                    <label for="clinic_sched_id" class="form-label">Schedule <span
+                                                    <label for="vax_id" class="form-label">Schedule <span
                                                             style="color:#ff0000">*</span></label>
-                                                    <select class="form-select" id="clinic_sched_id" name="clinic_sched_id">
+                                                    <select class="form-select" id="vax_id" name="vax_id">
                                                         <option value='2'>AM</option>
                                                         <option value='5'>PM</option>
                                                     </select>
