@@ -641,6 +641,10 @@ def residenthaptclinic():
 def reshistoryviewclinic():
 	return render_template("reshistory-view-clinic.html")
 
+@app.route("/portal")
+def portal():
+    	return render_template("residentportal.html")
+
 @app.route('/approve_status', methods=['POST'])
 def approve_status():
 	status = request.form['status']
