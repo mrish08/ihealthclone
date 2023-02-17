@@ -193,36 +193,64 @@
                                         <div class="tab-pane show active" id="input-types-preview">
                                             <div class="row">
                                                 <div class="col-lg-6">
-                                                    <form>
+                                                    <form action="/updatemedicinestaff/{{medicinestaff.med_appt_id}}" method="POST">
                                                         <div class="mb-3">
-                                                            <label for="example-readonly" class="form-label">Name</label>
-                                                            <input type="text" id="example-readonly" class="form-control" readonly="" value="Ivanna Alawi">
+                                                            <label for="appt_type" class="form-label">Appointment Type
+                                                                <span style="color:#ff0000">*</span></label>
+                                                            <select class="form-select" name="appt_type" id="appt_type">
+                                                                <option value="Medicine Request Service">Medicine Request Service</option>
+                                                            </select>
                                                         </div>
     
                                                         <div class="mb-3">
-                                                            <label for="date" class="form-label">Date</label>
-                                                            <input class="form-control" id="date" type="date" name="date" readonly="" value="">
+                                                            <label for="date" class="form-label">Date<span
+                                                                style="color:#ff0000">*</span></label>
+                                                        <input class="form-control" id="date" type="date" name="date">
                                                         </div>
-                                                    </form>
+                                                        <div class="col-sm-6">
+                                                            <label for="clinic_sched_id" class="form-label">Time <span
+                                                                style="color:#ff0000">*</span></label>
+                                                        <select class="form-select" name="clinic_sched_id"id="clinic_sched_id">
+                                                            <option value="4">A.M</option>
+                                                            <option value="7">P.M</option>
+                                                        </select>
+                                                        </div>
+                                                        <br>
                                                 </div> <!-- end col -->
     
                                                 <div class="col-lg-6">
-                                                    <form>
             
-                                                        <div class="mb-3">
-                                                            <label for="example-readonly" class="form-label">Appointment ID</label>
-                                                            <input type="text" id="example-readonly" class="form-control" readonly="" value="CA-0001">
-                                                        </div>
+                                                       
     
                                                         <div class="mb-3">
-                                                            <label for="example-readonly" class="form-label">Time</label>
-                                                            <input type="text" id="example-readonly" class="form-control" readonly="" value="AM">
-                                                            </select>
+                                                            <label for="medicine_id" class="form-label">
+                                                                Medicine Name: &nbsp;<span style="color:#ff0000">*</span></label>
+                                                                <select class="form-select" id="medicine_id" name="medicine_id">
+                                                                    <option value="3">Ibrupofen</option>
+                                                                    <option value="4">Mefenamic Acid</option>
+                                                                    <option value="5">Ambroxol</option>
+                                                                </select>
                                                         </div>
-        
-                                                    </form>
+                                                        <div class="mb-3">
+                                                            <label for="qty" class="form-label">
+                                                                Quantity: &nbsp;<span style="color:#ff0000">*</span></label>
+                                                            <input type="text" id="qty"name="qty" class="form-control">
+                                                        </div>
+                                                        <tr></tr>
+                                                        
                                                 </div> <!-- end col -->
+                                            
+                                                </div>
                                             </div>
+                                            <div class="modal-footer">
+                                                <a href="medicinestaff.html">
+                                                    <button class="btn btn-secondary" type="submit">Cancel</button>
+                                                </a>
+
+                                                <a href="medicinestaff.html">
+                                                    <button class="btn btn-primary" type="submit">Save
+                                                        Changes</button>
+                                                </a>
                                             <!-- end row-->                      
                                         </div> <!-- end preview-->
                                     </div> <!-- end tab-content-->
@@ -231,41 +259,11 @@
                         </div><!-- end col -->
                     </div><!-- end row -->
     
-                    
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="tab-content">
-                                    <div class="card-body">
-                                        <tbody>
-                                            <p class="font-16">Select the type of Service from the dropdown below:</p>
-                                            <tr>
-                                                <td>
-                                                        <form action="/addapp" method="POST">
-                                                        <label for="appt_type" class="form-label">Appointment Type</label>
-                                                        <select class="form-select" id="appt_type">
-                                                            <option>Clinic Service</option>
-                                                            <option>Dental Service</option>
-                                                            <option>Vaccination Service</option>
-                                                            <option>Medicine Pick-Up Service</option>
-                                                        </select>
-                                                        </form><br>
-                                                <td>
-                                                    <label for="example-textarea" class="form-label">Remarks</label>
-                                                            <textarea class="form-control" id="schedulename" rows="8"></textarea>
-                                                </td><br>
-                                                <div class="modal-footer">
-                                                    <a href="medicinestaff.html">
-                                                        <button class="btn btn-secondary" type="submit">Cancel</button>
-                                                    </a>
-    
-                                                    <a href="medicinestaff.html">
-                                                        <button class="btn btn-primary" type="submit">Save
-                                                            Changes</button>
-                                                    </a>
-                                                </div>
+                
+                                                
                                             </tr>
                                         </tbody>
+                                    </form>
                                     </div>
                                 </div>
                             </div>

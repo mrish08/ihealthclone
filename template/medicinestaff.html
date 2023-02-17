@@ -247,24 +247,28 @@
                                                     <tr class="table-light">
                                                         <th>Appointment ID</th>
                                                         <th>Service</th>
-                                                        <th>Name</th>
                                                         <th>Date</th>
-                                                        <th>Time</th>
                                                         <th>Status</th>
+                                                        <th>Resident</th>
+                                                        <th>Medicine Name</th>
+                                                        <th>Quantity</th>
+                                                        <th>Schedule</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     {% for medicinestaff in medicinestaff %}
                                                     <tr>
-                                                        <td>{{ medicinestaff.appt_id}}</td>
+                                                        <td>{{ medicinestaff.med_appt_id}}</td>
                                                         <td>{{ medicinestaff.appt_type}}</td>
-                                                        <td>{{ medicinestaff.remarks}}</td>
                                                         <td>{{ medicinestaff.date}}</td>
-                                                        <td>{{ medicinestaff.time}}</td>
                                                         <td>{{ medicinestaff.status}}</td>
+                                                        <td>{{ medicinestaff.firstname}}</td>
+                                                        <td>{{ medicinestaff.medicine_name}}</td>
+                                                        <td>{{ medicinestaff.qty}}</td>
+                                                        <td>{{ medicinestaff.schedule_name}}</td>
                                                         <td>
-                                                            <a href="edit-medicinestaff.html"><button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
+                                                            <a href="/updatemedicinestaff/{{medicinestaff.med_appt_id}}"><button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
                                                                 <i class="mdi mdi-circle-edit-outline"></i></button></a>
                                                             <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
                                                                 <i class="dripicons-checkmark"></i></button>

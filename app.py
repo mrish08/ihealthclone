@@ -586,13 +586,38 @@ def medicinestaff():
 	if('user_id' in session):
 		session['user_id']
 		session['user_firstname'] 
-	return render_template("medicinestaff.html")
+		medicinestaff=[]
+		conn = connection()
+		cursor = conn.cursor()
+		cursor.execute("SELECT IHM.MED_APPT_ID,IHM.APPT_TYPE, IHM.DATE, IHM.STATUS, U.FIRSTNAME, M.MEDICINE_NAME, IHM.QTY,CSH.SCHEDULE_NAME, IHM.REMARKS FROM IH_MEDICINE_APPOINTMENT IHM INNER JOIN IH_MEDICINE M ON IHM.MEDICINE_ID = M.MEDICINE_ID INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IHM.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IHM.ID ")
+		for row in cursor.fetchall():
+			medicinestaff.append({"med_appt_id": row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"medicine_name": row[5],"qty": row[6],"schedule_name": row[7]})
+	return render_template("medicinestaff.html",medicinestaff=medicinestaff)
 
-@app.route('/updatemedicinestaff/<int:medicine_id>', methods = ['GET', 'POST'])
-def updatemedicinestaff(medicine_id):
+@app.route('/updatemedicinestaff/<int:med_appt_id>', methods = ['GET', 'POST'])
+def updatemedicinestaff(med_appt_id):
 	if('user_id' in session):
 		session['user_id']
 		session['user_firstname'] 
+	ums = []
+	conn = connection()
+	cursor = conn.cursor()
+	if request.method == 'GET':
+		cursor.execute("SELECT IHM.MED_APPT_ID,IHM.APPT_TYPE, IHM.DATE, IHM.STATUS, U.FIRSTNAME, M.MEDICINE_NAME, IHM.QTY,CSH.SCHEDULE_NAME, IHM.REMARKS FROM IH_MEDICINE_APPOINTMENT IHM INNER JOIN IH_MEDICINE M ON IHM.MEDICINE_ID = M.MEDICINE_ID INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IHM.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IHM.ID WHERE med_appt_id = %s", (str(med_appt_id)))
+		for row in cursor.fetchall():
+			ums.append({"med_appt_id": row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"medicine_name": row[5],"qty": row[6],"schedule_name": row[7]})
+		conn.close()
+		return render_template("edit-medicinestaff.html", medicinestaff = ums[0])
+	if request.method == 'POST':
+		appt_type=request.form['appt_type']
+		date=request.form['date']
+		clinic_sched_id= request.form['clinic_sched_id']
+		medicine_id=request.form['medicine_id']		
+		qty=request.form['qty']		
+		cursor.execute("UPDATE ih_medicine_appointment SET (appt_type,date,clinic_sched_id,medicine_id,qty) = (%s,%s,%s,%s,%s)  WHERE med_appt_id =(%s)",
+		(appt_type,date,clinic_sched_id,medicine_id,qty,med_appt_id))
+		conn.commit()
+		conn.close()
 		return redirect('/medicinestaff')
 
 @app.route("/vaccinationstaff")
@@ -677,7 +702,15 @@ def staffhaptmedicine():
 	if('user_id' in session):
 		session['user_id']
 		session['user_firstname'] 
-	return render_template("staffhistory-apt-medicine.html")
+		staffhaptmedicine=[]
+		conn = connection()
+		cursor = conn.cursor()
+		cursor.execute("SELECT IHM.APPT_TYPE, IHM.DATE, IHM.STATUS, U.FIRSTNAME, M.MEDICINE_NAME, IHM.QTY,CSH.SCHEDULE_NAME, IHM.REMARKS FROM IH_MEDICINE_APPOINTMENT IHM INNER JOIN IH_MEDICINE M ON IHM.MEDICINE_ID = M.MEDICINE_ID INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IHM.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IHM.ID ")
+		for row in cursor.fetchall():
+			staffhaptmedicine.append({ "appt_type": row[0],"date": row[1],"status": row[2],"firstname": row[3],"medicine_name": row[4],"qty": row[5],"schedule_name": row[6],"remarks": row[7]})
+		conn.close()	
+
+	return render_template("staffhistory-apt-medicine.html",staffhaptmedicine=staffhaptmedicine)
 
 @app.route("/staffhviewmedicine")
 def staffhviewmedicine():
@@ -776,23 +809,24 @@ def residentvax():
 
 
 
-@app.route("/residentmedicine")
+@app.route("/residentmedicine", methods=['GET', 'POST'])
 def residentmedicine():
 	if('user_id' in session):
-		if request.method == 'POST':
-			appt_type= request.form['appt_type']
-			date=request.form['date']
-			clinic_sched_id= request.form['clinic_sched_id']
-			id = session['user_id']
-			appt_id=request.form['appt_id']		
-			medicine_id=request.form['medicine_id']		
-			qty=request.form['qty']		
-			conn = connection()
-			cursor = conn.cursor()
-			cursor.execute('INSERT INTO ih_medicine_appointment (appt_type,date,remarks,id,clinic_sched_id,medicine_id,qty)'' VALUES (%s,%s,%s,%s,%s,%s,%s)', 
-			[appt_type,date,appt_id,id,clinic_sched_id,medicine_id,qty])
-			conn.commit()
-			conn.close()
+		session['user_id']
+		session['user_firstname'] 
+	if request.method == 'POST':
+		appt_type=request.form['appt_type']
+		date=request.form['date']
+		clinic_sched_id= request.form['clinic_sched_id']
+		id = session['user_id']
+		medicine_id=request.form['medicine_id']		
+		qty=request.form['qty']		
+		conn = connection()
+		cursor = conn.cursor()
+		cursor.execute('INSERT INTO ih_medicine_appointment(appt_type,date,id,clinic_sched_id,medicine_id,qty)'' VALUES (%s,%s,%s,%s,%s,%s)', 
+		[appt_type,date,id,clinic_sched_id,medicine_id,qty])
+		conn.commit()
+		conn.close()
 	return render_template("residentmedicine.html") 
 
 @app.route("/residenthaptvax")
