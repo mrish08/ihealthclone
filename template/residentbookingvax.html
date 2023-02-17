@@ -215,16 +215,17 @@
                                                 <form action="/residentvax" method="POST">
                                                     <label for="appt_type" class="form-label">Appointment Type
                                                         <span style="color:#ff0000">*</span></label>
-                                                    <select class="form-select" id="appt_type" name="appt_type" disabled>
-                                                        <option value="vax_id">Vaccination Service</option>
+                                                    <select class="form-select" id="appt_type" name="appt_type">
+                                                        <option value="Vaccination Service">Vaccination Service</option>
                                                     </select>
                                                 </td><br>
-                                                <td class="col-sm-6">Vaccination Service 
-                                                        <span style="color:#ff0000">*</span></label>
+                                                <td class="col-sm-6">
+                                                    <label for="vax_id" class="form-label">  Vaccine
+                                                    <span style="color:#ff0000">*</span></label>
                                                     <select class="form-select" id="vax_id" name="vax_id">
-                                                        <option value="1">COVID-19</option>
-                                                        <option value="2">flu</option>
-                                                        <option value="3">pneumonia</option>
+                                                        <option value="1">Pfizer BioNTech</option>
+                                                        <option value="2">Sinovac</option>
+                                                        <option value="3">Moderna</option>
                                                     </select>
                                                 </td><br>
                                                 <td class="col-sm-6">
@@ -234,11 +235,11 @@
                                                         name="date">
                                                 </td><br>
                                                 <td class="col-sm-6">
-                                                    <label for="vax_id" class="form-label">Schedule <span
+                                                    <label for="clinic_sched_id" class="form-label">Schedule <span
                                                             style="color:#ff0000">*</span></label>
-                                                    <select class="form-select" id="vax_id" name="vax_id">
-                                                        <option value='2'>AM</option>
-                                                        <option value='5'>PM</option>
+                                                    <select class="form-select" id="clinic_sched_id" name="clinic_sched_id">
+                                                        <option value='3'>AM</option>
+                                                        <option value='6'>PM</option>
                                                     </select>
                                                 </td><br>
                                                 <div align="right">

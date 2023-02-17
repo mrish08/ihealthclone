@@ -581,6 +581,9 @@ def updatemedicinestaff(medicine_id):
 
 @app.route("/vaccinationstaff")
 def vaccinationstaff():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	vaccinationstaff = []
 	conn = connection()
 	cursor = conn.cursor()
@@ -592,10 +595,16 @@ def vaccinationstaff():
 
 @app.route('/updatevaccinationstaff/<int:vaccine_id>', methods = ['GET', 'POST'])
 def updatevaccinationstaff(vaccine_id):
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 		return redirect('/vaccinationstaff')
 
 @app.route("/dentalstaff")
 def dentalstaff():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	dentalstaff = []
 	conn = connection()
 	cursor = conn.cursor()
@@ -607,10 +616,16 @@ def dentalstaff():
 
 @app.route('/updatedentalstaff/<int:dental_id>', methods = ['GET', 'POST'])
 def updatedentalstaff(dental_id):
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 		return redirect('/dentalstaff')
 
 @app.route("/staffhaptvax")
 def staffhaptvax():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	staffhaptvax=[]
 	conn = connection()
 	cursor = conn.cursor()
@@ -622,26 +637,44 @@ def staffhaptvax():
 
 @app.route("/staffhviewvax")
 def staffhviewaptvax():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("staffhistory-view-vaccineh.html")
 
 @app.route("/staffhaptdental")
 def staffhaptdental():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("staffhistory-apt-dental.html")
 
 @app.route("/staffhviewdental")
 def staffhviewdental():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("staffhistory-view-dentalh.html")
 
 @app.route("/staffhaptmedicine")
 def staffhaptmedicine():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("staffhistory-apt-medicine.html")
 
 @app.route("/staffhviewmedicine")
 def staffhviewmedicine():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("staffhistory-view-medicineh.html")
 
 @app.route("/staffhaptclinic")
 def staffhaptclinic():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	staffhaptclinic=[]
 	conn = connection()
 	cursor = conn.cursor()
@@ -653,11 +686,13 @@ def staffhaptclinic():
 
 @app.route("/staffhviewclinic")
 def staffhviewclinic():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("staffhistory-view-clinic.html")
 
 @app.route("/indexresident")
 def indexresident():
-	""""
 	email= "kylemara@gmail.com" 
 	account_type= "Resident"
 	conn = connection()
@@ -666,24 +701,30 @@ def indexresident():
 	user = cursor.fetchone()
 	if user is not None:
 		user_id, user_firstname = user
-		"""
-	if('user_id' in session):
-		session['user_id']
-		session['user_firstname'] 
+		session['user_id']=user_id
+		session['user_firstname'] =user_firstname
 		return render_template("indexresident.html")
 
 
 @app.route("/dentalresident")
 def dentalresident():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 		return render_template("dentalresident.html")
 
 @app.route("/vaccinationresident")
 def vaccinationresident():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("vaccinationresident.html")
 
 @app.route("/residentas",methods=['GET', 'POST'])
 def residentas():
 	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 		if request.method == 'POST':
 			appt_type= request.form['appt_type']
 			date=request.form['date']
@@ -701,19 +742,21 @@ def residentas():
 @app.route("/residentvax", methods=['GET', 'POST'])
 def residentvax():
 	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 		if request.method == 'POST':
-			app_type= request.form['app_type']
+			appt_type= request.form['appt_type']
 			date=request.form['date']
-			clinic_services_id= request.form['clinic_services_id']
+			vax_id= request.form['vax_id']
 			id = session['user_id']
 			clinic_sched_id=request.form['clinic_sched_id']		
 			conn = connection()
 			cursor = conn.cursor()
-			cursor.execute('INSERT INTO ih_appointment (appt_type,date,clinic_services_id,id,clinic_sched_id)'' VALUES (%s,%s,%s,%s,%s)', 
-			[app_type,date,clinic_services_id,id,clinic_sched_id])
+			cursor.execute('INSERT INTO ih_appointment (appt_type,date,vax_id,id,clinic_sched_id)'' VALUES (%s,%s,%s,%s,%s)', 
+			[appt_type,date,vax_id,id,clinic_sched_id])
 			conn.commit()
 			conn.close()
-			return render_template("residentbookingvax.html")
+		return render_template("residentbookingvax.html")
 
 
 
@@ -798,4 +841,5 @@ def reject_status():
 	# # ...
 	return jsonify({'message': 'Status rejected'})
 if __name__== '__main__':
-	app.run (host='0.0.0.0',port=5000)	
+	#app.run (host='0.0.0.0',port=5000)	
+	app.run (debug=True)	
