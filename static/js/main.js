@@ -287,31 +287,6 @@
   });
 
 
-  /**
-   * for onchange function
-   */
-
-  function updateClinicServices() {
-  const apptType = document.getElementById("appt_type").value;
-  const clinicServicesSelect = document.getElementById("clinic_services_id");
-  
-  if (apptType === "vax_id") {
-    // Set the options for vaccination service
-    clinicServicesSelect.innerHTML = `
-      <option value="5">COVID-19 vaccine</option>
-      <option value="6">Flu vaccine</option>
-      <option value="7">Pneumonia vaccine</option>
-    `;
-  } else {
-    // Set the options for clinic service
-    clinicServicesSelect.innerHTML = `
-      <option value="1">check-up</option>
-      <option value="2">x-ray</option>
-      <option value="3">ultrasound</option>
-      <option value="4">Hermatology</option>
-    `;
-  }
-}
 
 })();
 
