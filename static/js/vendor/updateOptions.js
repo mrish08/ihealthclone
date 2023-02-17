@@ -24,6 +24,7 @@
             option4.value = "4";
             option4.text = "Hermatology";
             clinic_services_id.add(option4);
+            
             } else if (appt_type.value === "dental_service_id") {
             var option1 = document.createElement("option");
             option1.value = "5";
@@ -39,6 +40,7 @@
             option3.value = "7";
             option3.text = "root canal";
             clinic_services_id.add(option3);
+            
             } else if (appt_type.value === "vax_id") {
             var option1 = document.createElement("option");
             option1.value = "8";
