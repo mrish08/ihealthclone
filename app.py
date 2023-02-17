@@ -71,9 +71,17 @@ def authLogin():
 
 @app.route("/index")
 def index():
-	if('user_id' in session):
-		session['user_id']
-		session['user_firstname'] 
+	#if('user_id' in session):
+	email= "admin@email.com" 
+	account_type= "Admin"
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT id,firstname FROM users_user WHERE email = %s AND account_type = %s", (email, account_type))
+	user = cursor.fetchone()
+	if user is not None:
+		user_id, user_firstname = user
+		session['user_id'] = user_id
+		session['user_firstname'] = user_firstname
 		return render_template("index.html")
 
 @app.route("/clinic")
@@ -507,9 +515,17 @@ def adminhaptclinic():
 
 @app.route("/indexstaff")
 def indexstaff():
-	if('user_id' in session):
-		session['user_id']
-		session['user_firstname'] 
+	#if('user_id' in session):
+	email= "staff@email.com" 
+	account_type= "Staff"
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT id,firstname FROM users_user WHERE email = %s AND account_type = %s", (email, account_type))
+	user = cursor.fetchone()
+	if user is not None:
+		user_id, user_firstname = user
+		session['user_id'] = user_id
+		session['user_firstname'] = user_firstname
 		return render_template("indexstaff.html")
 
 @app.route("/schedulestaff")
