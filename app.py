@@ -14,8 +14,8 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 #'https://back-final.brgyit-bot.com/api/v1/
 Session(app)
-  
 
+Bitbologin = "https://brgyit-bot.com/login/"
 def connection():
     s = 'database-1.c8punsklsimv.ap-southeast-1.rds.amazonaws.com'
     d = 'bms' 
@@ -26,17 +26,6 @@ def connection():
         with conn.cursor() as curs:
             curs.execute
     return conn
-"""""
-@app.route("/")
-def authLogins():
-	token = session.get('token')
-	with requests.Session() as session:
-		session.headers['Authorization'] = f'Bearer {token}'
-		response = session.get('https://back-final.brgyit-bot.com/api/v1/')
-		data = response.json()
-		print (data)
-		return print
-		#return redirect('/success', data=data)
 
 @app.route("/authLogin",methods=['GET'])
 def authLogin():
@@ -50,7 +39,7 @@ def authLogin():
 		if row == None:
 			print("There are no results for this query")
 			# redirect nyo sa login page ng bitbo
-			return urllib.parse.unquote_plus(token) #temporary lang itong return na ito, dapat redirect papunta sa login page ng bitbo
+			return redirect (urllib.parse.unquote_plus(Bitbologin)) #temporary lang itong return na ito, dapat redirect papunta sa login page ng bitbo
 		else:
 			conn_user = connection() 
 			cursor_user = conn_user.cursor()
@@ -60,28 +49,30 @@ def authLogin():
 				# no user found
 				print("There are no results for this query")
 				# redirect nyo sa login page ng bitbo
-				return "No User found" #temporary lang itong return na ito, dapat redirect papunta sa login page ng bitbo
+				return redirect (urllib.parse.unquote_plus(Bitbologin)) #temporary lang itong return na ito, dapat redirect papunta sa login page ng bitbo
 			else:
-				session['row_user']=row_user
-				return session
-				
+				session.clear()
+				session['user_id'] = row_user[0]
+				session['user_firstname'] = row_user[2]
+				session['account_type'] = row_user[4]
+				session['token']=urllib.parse.unquote_plus(token)
+				if row_user[4] == "Admin":
+					session['url'] = "https://prod.brgyit-bot.com/admin/dashboard/"
+					return redirect ('/index')
+				elif row_user[4] == "Staff":
+					session['url'] = "https://prod.brgyit-bot.com/staff/dashboard/"
+					return redirect ('/indexstaff')
+				else:
+					session['url'] = "https://prod.brgyit-bot.com/resident/dashboard/"
+					return redirect ('/indexresident')
+			
 				# create session for user where you will be saving the records
 				# redirect to index
-"""
 
 @app.route("/index")
 def index():
-	email= "admin@email.com" 
-	account_type= "Admin"
-	conn = connection()
-	cursor = conn.cursor()
-	cursor.execute("SELECT id,firstname FROM users_user WHERE email = %s AND account_type = %s", (email, account_type))
-	user = cursor.fetchone()
-	if user is not None:
-		user_id, user_firstname = user
-		session['user_id'] = user_id
-		session['user_firstname'] = user_firstname
-	return render_template("index.html")
+	if('user_id' in session):
+		return render_template("index.html")
 
 @app.route("/clinic")
 def clinic():
@@ -587,11 +578,22 @@ def residentvax():
 
 @app.route("/residentmedicine")
 def residentmedicine():
+	if('user_id' in session):
+		if request.method == 'POST':
+			appt_type= request.form['appt_type']
+			date=request.form['date']
+			clinic_sched_id= request.form['clinic_sched_id']
+			id = session['user_id']
+			appt_id=request.form['appt_id']		
+			medicine_id=request.form['medicine_id']		
+			qty=request.form['qty']		
+			conn = connection()
+			cursor = conn.cursor()
+			cursor.execute('INSERT INTO ih_medicine_appointment (appt_type,date,remarks,id,clinic_sched_id,medicine_id,qty)'' VALUES (%s,%s,%s,%s,%s,%s,%s)', 
+			[appt_type,date,appt_id,id,clinic_sched_id,medicine_id,qty])
+			conn.commit()
+			conn.close()
 	return render_template("residentmedicine.html") 
-
-@app.route("/medicineresident")
-def medicineresident():
-	return render_template("medicineresident.html")
 
 @app.route("/residenthaptvax")
 def residenthaptvax():
