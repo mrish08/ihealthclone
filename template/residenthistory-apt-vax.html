@@ -163,6 +163,7 @@
                                 <div class="table-hover" id="scroll-horizontal-preview">
                                     <table id="basic-datatable" class="table table-hover dt-responsive nowrap w-100">
                                         <thead>
+                                        
                                             <tr class="table-light">
                                                 <th>Appointment ID</th>
                                                 <th>Name</th>
@@ -173,6 +174,20 @@
                                         </thead>
                     
                                         <tbody>
+
+                                            {% for residenthaptvax in residenthaptvax %}
+                                            <tr>
+                                                <td>{{ ih_appointment.vax_id }}</td>
+                                                <td>{{ users_user.firstname }}</td>
+                                                <td>{{ ih_appointment.date }}</td>
+                                                <td>{{ ih_appointment.time }}</td>
+                                                <form class="action-icon">
+                                                    <a href="/reshistoryviewvax">
+                                                        <button type="button" class="btn btn-rounded btn-warning">View</button>
+                                                </form>
+                                            </tr>
+                                            {% endfor %}
+
 
                                             <tr>
                                                 <td><a class="btn btn-light btn-rounded">VA-0001</a></td>

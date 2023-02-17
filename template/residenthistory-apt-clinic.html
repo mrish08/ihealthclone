@@ -166,26 +166,24 @@
                             <table id="basic-datatable" class="table dt-responsive nowrap w-100">
                                 <thead>
                                     <tr class="table-light">
-                                        <th>Appointment ID</th>
                                         <th>Service</th>
                                         <th>Date</th>
-                                        <th>Remarks</th>
                                         <th>Status</th>
-                                        <th>Time</th>
-                                        <th>ID</th>
+                                        <th>Resident</th>
+                                        <th>Service Name</th>
+                                        <th>Schedule</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {% for residenthaptclinic in residenthaptclinic %}
                                     <tr>
-                                        <td>{{ residenthaptclinic.appt_id}}</td>
                                         <td>{{ residenthaptclinic.appt_type}}</td>
                                         <td>{{ residenthaptclinic.date}}</td>
-                                        <td>{{ residenthaptclinic.remarks}}</td>
                                         <td>{{ residenthaptclinic.status}}</td>
-                                        <td>{{ residenthaptclinic.time}}</td>
-                                        <td>{{ residenthaptclinic.id}}</td>
+                                        <td>{{ residenthaptclinic.firstname}}</td>
+                                        <td>{{ residenthaptclinic.clinic_services_name}}</td>
+                                        <td>{{ residenthaptclinic.schedule_name}}</td>
                                         <td>
                                             <a href="/reshistoryviewclinic"><button type="button" class="btn btn-rounded btn-warning">View</button>
                                         </td>

@@ -553,6 +553,23 @@ def vaccinationresident():
 def residentas():
 	if('user_id' in session):
 		if request.method == 'POST':
+			appt_type= request.form['appt_type']
+			date=request.form['date']
+			clinic_services_id= request.form['clinic_services_id']
+			id = session['user_id']
+			clinic_sched_id=request.form['clinic_sched_id']		
+			conn = connection()
+			cursor = conn.cursor()
+			cursor.execute('INSERT INTO ih_appointment (appt_type,date,clinic_services_id,id,clinic_sched_id)'' VALUES (%s,%s,%s,%s,%s)', 
+			[appt_type,date,clinic_services_id,id,clinic_sched_id])
+			conn.commit()
+			conn.close()
+		return render_template("residentbooking.html")
+
+@app.route("/residentvax", methods=['GET', 'POST'])
+def residentvax():
+	if('user_id' in session):
+		if request.method == 'POST':
 			app_type= request.form['app_type']
 			date=request.form['date']
 			clinic_services_id= request.form['clinic_services_id']
@@ -564,8 +581,8 @@ def residentas():
 			[app_type,date,clinic_services_id,id,clinic_sched_id])
 			conn.commit()
 			conn.close()
-		return render_template("residentbooking.html")
-		
+			return render_template("residentbookingvax.html")
+
 
 
 @app.route("/residentmedicine")
@@ -578,6 +595,14 @@ def medicineresident():
 
 @app.route("/residenthaptvax")
 def residenthaptvax():
+	user_name = session['user_firstname']
+	residenthaptclinic=[]
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, V.VAX_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_VACCINE V  ON IH.VAX_ID = V.VAX_ID  INNER JOIN IH_CLINIC_SCHED CSH  ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U  ON U.ID = IH.ID  WHERE FIRSTNAME= %s", (user_name,))
+	for row in cursor.fetchall():
+		residenthaptclinic.append({ "appt_type": row[0],"date": row[1],"status": row[2],"firstname": row[3],"Vaccine": row[4],"schedule_name": row[5]})
+		conn.close()	
 	return render_template("residenthistory-apt-vax.html")
 
 @app.route("/reshistoryviewvax")
@@ -602,13 +627,13 @@ def reshistoryviewmed():
 
 @app.route("/residenthaptclinic")
 def residenthaptclinic():
-		user_id = session['user_id']
+		user_name = session['user_firstname']
 		residenthaptclinic=[]
 		conn = connection()
 		cursor = conn.cursor()
-		cursor.execute("SELECT * FROM ih_appointment WHERE id = %s", (user_id,))
+		cursor.execute("SELECT IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, CSV.CLINIC_SERVICES_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SERVICES CSV ON IH.CLINIC_SERVICES_ID = CSV.CLINIC_SERVICES_ID INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID WHERE FIRSTNAME= %s", (user_name,))
 		for row in cursor.fetchall():
-			residenthaptclinic.append({"appt_id": row[0], "appt_type": row[1],"date": row[2],"remarks": row[3],"status": row[4],"time": row[5],"id": row[7]})
+			residenthaptclinic.append({ "appt_type": row[0],"date": row[1],"status": row[2],"firstname": row[3],"clinic_services_name": row[4],"schedule_name": row[5]})
 		conn.close()	
 		return render_template("residenthistory-apt-clinic.html",residenthaptclinic=residenthaptclinic)
 
@@ -630,5 +655,5 @@ def reject_status():
 	# # ...
 	return jsonify({'message': 'Status rejected'})
 if __name__== '__main__':
-	app.run(host="0.0.0.0",port=5000)
+	app.run(debug=True)
 	
