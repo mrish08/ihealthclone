@@ -72,11 +72,15 @@ def authLogin():
 @app.route("/index")
 def index():
 	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 		return render_template("index.html")
 
 @app.route("/clinic")
 def clinic():
 	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 		clinic = []
 		conn = connection()
 		cursor = conn.cursor()
@@ -93,18 +97,22 @@ def adcb():
 @app.route("/addclinic")
 def addclinic():
 	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 		
 		if request.method == 'POST':
 			clinic_services_name = request.form['clinic_services_name']
-		conn = connection()
-		cursor = conn.cursor()
-		cursor.execute('INSERT INTO ih_clinic_services (clinic_services_name)'' VALUES (%s)', [clinic_services_name])
-		conn.commit()
-		conn.close()
-		return render_template("/clinic")
+			conn = connection()
+			cursor = conn.cursor()
+			cursor.execute('INSERT INTO ih_clinic_services (clinic_services_name)'' VALUES (%s)', [clinic_services_name])
+			conn.commit()
+			conn.close()
+			return render_template("/clinic")
 
 @app.route('/updateclinic/<int:clinic_services_id>', methods = ['GET', 'POST'])
 def updateclinic(clinic_services_id):
 	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 		uc = []
 		conn = connection()
 		cursor = conn.cursor()
@@ -124,11 +132,15 @@ def updateclinic(clinic_services_id):
 @app.route("/dental")
 def dental():
 	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 		
 		return render_template("clinic.html")
 
 @app.route("/adminvaccineinv")
 def vaccination():
 	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 		vaccination = []
 		conn = connection()
 		cursor = conn.cursor()
@@ -141,6 +153,8 @@ def vaccination():
 @app.route("/addvaccination", methods = ['POST'])
 def addvaccination():
 	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 		if request.method == 'POST':
 			vax_name = request.form['vax_name']
 			vax_brand_manufacturer = request.form['vax_brand_manufacturer']
@@ -164,6 +178,8 @@ def addvaccination():
 @app.route('/updatevaccination/<int:vax_id>', methods = ['GET', 'POST'])
 def updatevaccination(vax_id):
 	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 		uv = []
 		conn = connection()
 		cursor = conn.cursor()
@@ -194,6 +210,8 @@ def updatevaccination(vax_id):
 @app.route("/schedule")
 def schedule():
 	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 		schedule = []
 		conn = connection()
 		cursor = conn.cursor()
@@ -205,48 +223,59 @@ def schedule():
 		
 @app.route("/adsb")
 def adsb():
-
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("admin-add-schedule.html")
 
 @app.route("/addschedule", methods = ['POST'])
 def addschedule():
-	if request.method == 'POST':
-		schedule_name = request.form["schedule_name"]
-		contact_person= request.form["contact_person"]
-		maximum_attendees = request.form["maximum_attendees"]
-		from_to_schedule= request.form["from_to_schedule"]
-	conn = connection()
-	cursor = conn.cursor()
-	cursor.execute('INSERT INTO ih_clinic_sched (schedule_name, contact_person, maximum_attendees, from_to_schedule)'' VALUES (%s,%s,%s,%s)', 
-	[schedule_name, contact_person, maximum_attendees, from_to_schedule])
-	conn.commit()
-	conn.close()
-	return redirect('/schedule')
-
-@app.route('/updateschedule/<int:clinic_sched_id>', methods = ['GET', 'POST'])
-def updateschedule(clinic_sched_id):
-	us =[]
-	conn = connection()
-	cursor = conn.cursor()
-	if request.method == 'GET':
-		cursor.execute("SELECT * FROM ih_clinic_sched WHERE clinic_sched_id = %s", (str(clinic_sched_id)))
-		for row in cursor.fetchall():
-			us.append({"clinic_sched_id": row[0], "schedule_name": row[1], "contact_person": row[2], "maximum_attendees": row[3], "from_to_schedule": row[4]})
-		conn.close()
-		return render_template("updateschedule.html",  schedule = us[0])
-	if request.method == 'POST':
-		schedule_name = str(request.form['schedule_name'])
-		contact_person= str(request.form['contact_person'])
-		maximum_attendees = int(request.form['maximum_attendees'])
-		from_to_schedule= str(request.form['from_to_schedule'])
-		cursor.execute("UPDATE ih_clinic_sched SET (schedule_name, contact_person, maximum_attendees, from_to_schedule) = (%s,%s,%s,%s) WHERE clinic_sched_id = (%s)", 
-		(schedule_name, contact_person, maximum_attendees, from_to_schedule,clinic_sched_id))
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
+		if request.method == 'POST':
+			schedule_name = request.form["schedule_name"]
+			contact_person= request.form["contact_person"]
+			maximum_attendees = request.form["maximum_attendees"]
+			from_to_schedule= request.form["from_to_schedule"]
+		conn = connection()
+		cursor = conn.cursor()
+		cursor.execute('INSERT INTO ih_clinic_sched (schedule_name, contact_person, maximum_attendees, from_to_schedule)'' VALUES (%s,%s,%s,%s)', 
+		[schedule_name, contact_person, maximum_attendees, from_to_schedule])
 		conn.commit()
 		conn.close()
 		return redirect('/schedule')
 
+@app.route('/updateschedule/<int:clinic_sched_id>', methods = ['GET', 'POST'])
+def updateschedule(clinic_sched_id):
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
+		us =[]
+		conn = connection()
+		cursor = conn.cursor()
+		if request.method == 'GET':
+			cursor.execute("SELECT * FROM ih_clinic_sched WHERE clinic_sched_id = %s", (str(clinic_sched_id)))
+			for row in cursor.fetchall():
+				us.append({"clinic_sched_id": row[0], "schedule_name": row[1], "contact_person": row[2], "maximum_attendees": row[3], "from_to_schedule": row[4]})
+			conn.close()
+			return render_template("updateschedule.html",  schedule = us[0])
+		if request.method == 'POST':
+			schedule_name = str(request.form['schedule_name'])
+			contact_person= str(request.form['contact_person'])
+			maximum_attendees = int(request.form['maximum_attendees'])
+			from_to_schedule= str(request.form['from_to_schedule'])
+			cursor.execute("UPDATE ih_clinic_sched SET (schedule_name, contact_person, maximum_attendees, from_to_schedule) = (%s,%s,%s,%s) WHERE clinic_sched_id = (%s)", 
+			(schedule_name, contact_person, maximum_attendees, from_to_schedule,clinic_sched_id))
+			conn.commit()
+			conn.close()
+			return redirect('/schedule')
+
 @app.route("/adminmedicineinv")
 def adminmedicineinv():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	medicine = []
 	conn = connection()
 	cursor = conn.cursor()
@@ -258,6 +287,9 @@ def adminmedicineinv():
 	
 @app.route("/addmedicine", methods = ['POST'])
 def addmedicine():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	if request.method == 'POST':
 		#medicine_id = request.form['medicine_id']
 		medicine_name = request.form['medicine_name']
@@ -278,6 +310,9 @@ def addmedicine():
 
 @app.route('/updatemedicine/<int:medicine_id>', methods = ['GET', 'POST'])
 def updatemedicine(medicine_id):
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	um = []
 	conn = connection()
 	cursor = conn.cursor()
@@ -304,109 +339,184 @@ def updatemedicine(medicine_id):
 
 @app.route("/adminclinicinv")
 def adminclinicinv():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("adminclinicinv.html")
 
 @app.route("/adminvc")
 def adminvc():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("adminh-view-clinic.html")
 
 @app.route("/adminvd")
 def adminvd():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("adminh-view-dental.html")
 
 @app.route("/adminvm")
 def adminvm():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("adminh-view-medicine.html")
 
 @app.route("/adminvv")
 def adminvv():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("adminh-view-vax.html")
 
 @app.route("/adds")
 def adds():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("admin-add-schedule.html")
 
 @app.route("/addc")
 def addc():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("admin-add-clinic.html")
 
 @app.route("/addm")
 def addm():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("admin-add-medicine.html")
 
 @app.route("/addv")
 def addv():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("admin-add-vax.html")
 @app.route("/adminaptvax")
 def adminaptvax():
-	adminaptvax = []
-	conn = connection()
-	cursor = conn.cursor()
-	cursor.execute("SELECT * FROM ih_medicine")
-	for row in cursor.fetchall():
-		adminaptvax.append({"medicine_id": row[0], "medicine_name": row[1], "generic_name": row[2], "brand_name": row[3], "manufacturer": row[4], "dosage": row[5], "medicine_type": row[6], "description": row[7]})
-	conn.close()	
-	return render_template("admin-apt-vax.html", adminaptvax = adminaptvax)
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
+		adminaptvax = []
+		conn = connection()
+		cursor = conn.cursor()
+		cursor.execute("SELECT * FROM ih_medicine")
+		for row in cursor.fetchall():
+			adminaptvax.append({"medicine_id": row[0], "medicine_name": row[1], "generic_name": row[2], "brand_name": row[3], "manufacturer": row[4], "dosage": row[5], "medicine_type": row[6], "description": row[7]})
+		conn.close()	
+		return render_template("admin-apt-vax.html", adminaptvax = adminaptvax)
 
 @app.route("/adminaptdental")
 def adminaptdental():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("admin-apt-dental.html")
 
 @app.route("/adminaptmedicine")
 def adminaptmedicine():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("admin-apt-medicine.html")
 
 @app.route("/adminaptclinic")
 def adminaptclinic():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("admin-apt-clinic.html")
 
 @app.route("/adminaptdentaledit")
 def adminaptdentaledit():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("admin-apt-dental-edit.html")
 
 @app.route("/adminaptmedicineedit")
 def adminaptmedicineedit():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("admin-apt-medicine-edit.html")
 
 @app.route("/adminaptclinicedit")
 def adminaptclinicedit():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("admin-apt-clinic-edit.html")
 
 @app.route("/adminaptvaxedit")
 def adminaptvaxedit():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("admin-apt-vax-edit.html")
 
 @app.route("/adminhaptvax")
 def adminhaptvax():
-	return render_template("adminhistory-apt-vax.html")
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
+	adminhaptvax=[]
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, V.VAX_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_VACCINE V  ON IH.VAX_ID = V.VAX_ID  INNER JOIN IH_CLINIC_SCHED CSH  ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U  ON U.ID = IH.ID ")
+	for row in cursor.fetchall():
+		adminhaptvax.append({ "appt_type": row[0],"date": row[1],"status": row[2],"firstname": row[3],"Vaccine": row[4],"schedule_name": row[5]})
+		conn.close()	
+	return render_template("adminhistory-apt-vax.html",adminhaptvax=adminhaptvax)
 
 @app.route("/adminhaptdental")
 def adminhaptdental():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("adminhistory-apt-dental.html")
 
 @app.route("/adminhaptmedicine")
 def adminhaptmedicine():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("adminhistory-apt-medicine.html")
 
 @app.route("/adminhaptclinic")
 def adminhaptclinic():
-	adminhaptclinic=[]
-	conn = connection()
-	cursor = conn.cursor()
-	cursor.execute("SELECT IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, CSV.CLINIC_SERVICES_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SERVICES CSV ON IH.CLINIC_SERVICES_ID = CSV.CLINIC_SERVICES_ID INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID ")		
-	for row in cursor.fetchall():
-			adminhaptclinic.append({ "appt_type": row[0],"date": row[1],"status": row[2],"firstname": row[3],"clinic_services_name": row[4],"schedule_name": row[5]})
-	conn.close()
-	return render_template("adminhistory-apt-clinic.html",adminhaptclinic=adminhaptclinic)
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
+		adminhaptclinic=[]
+		conn = connection()
+		cursor = conn.cursor()
+		cursor.execute("SELECT IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, CSV.CLINIC_SERVICES_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SERVICES CSV ON IH.CLINIC_SERVICES_ID = CSV.CLINIC_SERVICES_ID INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID ")		
+		for row in cursor.fetchall():
+				adminhaptclinic.append({ "appt_type": row[0],"date": row[1],"status": row[2],"firstname": row[3],"clinic_services_name": row[4],"schedule_name": row[5]})
+		conn.close()
+		return render_template("adminhistory-apt-clinic.html",adminhaptclinic=adminhaptclinic)
 
 
 @app.route("/indexstaff")
 def indexstaff():
 	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 		return render_template("indexstaff.html")
 
 @app.route("/schedulestaff")
 def schedulestaff():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	schedulestaff = []
 	conn = connection()
 	cursor = conn.cursor()
@@ -418,6 +528,9 @@ def schedulestaff():
 
 @app.route("/clinicstaff")
 def clinicstaff():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	clinicstaff = []
 	conn = connection()
 	cursor = conn.cursor()
@@ -428,6 +541,9 @@ def clinicstaff():
 
 @app.route("/updateclinicstaff/<int:appt_id>", methods = ['GET', 'POST'])
 def updateclinicstaff(appt_id):
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	ucs = []
 	conn = connection()
 	cursor = conn.cursor()
@@ -451,10 +567,16 @@ def updateclinicstaff(appt_id):
 
 @app.route("/medicinestaff")
 def medicinestaff():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	return render_template("medicinestaff.html")
 
 @app.route('/updatemedicinestaff/<int:medicine_id>', methods = ['GET', 'POST'])
 def updatemedicinestaff(medicine_id):
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 		return redirect('/medicinestaff')
 
 @app.route("/vaccinationstaff")
@@ -489,7 +611,14 @@ def updatedentalstaff(dental_id):
 
 @app.route("/staffhaptvax")
 def staffhaptvax():
-	return render_template("staffhistory-apt-vax.html")
+	staffhaptvax=[]
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, V.VAX_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_VACCINE V  ON IH.VAX_ID = V.VAX_ID  INNER JOIN IH_CLINIC_SCHED CSH  ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U  ON U.ID = IH.ID ")
+	for row in cursor.fetchall():
+		staffhaptvax.append({ "appt_type": row[0],"date": row[1],"status": row[2],"firstname": row[3],"Vaccine": row[4],"schedule_name": row[5]})
+		conn.close()	
+	return render_template("staffhistory-apt-vax.html",staffhaptvax=staffhaptvax)
 
 @app.route("/staffhviewvax")
 def staffhviewaptvax():
@@ -543,9 +672,6 @@ def indexresident():
 		session['user_firstname'] 
 		return render_template("indexresident.html")
 
-@app.route("/scheduleresident")
-def scheduleresident():
-	return render_template("scheduleresident.html")
 
 @app.route("/dentalresident")
 def dentalresident():
@@ -613,14 +739,14 @@ def residentmedicine():
 @app.route("/residenthaptvax")
 def residenthaptvax():
 	user_name = session['user_firstname']
-	residenthaptclinic=[]
+	residenthaptvax=[]
 	conn = connection()
 	cursor = conn.cursor()
 	cursor.execute("SELECT IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, V.VAX_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_VACCINE V  ON IH.VAX_ID = V.VAX_ID  INNER JOIN IH_CLINIC_SCHED CSH  ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U  ON U.ID = IH.ID  WHERE FIRSTNAME= %s", (user_name,))
 	for row in cursor.fetchall():
-		residenthaptclinic.append({ "appt_type": row[0],"date": row[1],"status": row[2],"firstname": row[3],"Vaccine": row[4],"schedule_name": row[5]})
+		residenthaptvax.append({ "appt_type": row[0],"date": row[1],"status": row[2],"firstname": row[3],"Vaccine": row[4],"schedule_name": row[5]})
 		conn.close()	
-	return render_template("residenthistory-apt-vax.html")
+	return render_template("residenthistory-apt-vax.html",residenthaptvax=residenthaptvax)
 
 @app.route("/reshistoryviewvax")
 def reshistoryviewvax():
