@@ -216,8 +216,9 @@
                                                     <form action="/residentas" method="POST">
                                                         <label for="appt_type" class="form-label">Appointment Type
                                                             <span style="color:#ff0000">*</span></label>
-                                                        <select class="form-select" id="appt_type" name="appt_type" disabled>
-                                                            <option value="Clinic Service">Clinic Service</option>
+                                                        <select class="form-select" id="appt_type" name="appt_type" onchange="updateClinicServices()">
+                                                            <option value="clinic_id">Clinic Service</option>
+                                                            <option value="vax_id">Vaccination Service</option>
                                                         </select>
                                                     </td><br>
                                                     <td class="col-sm-6">
@@ -240,8 +241,8 @@
                                                         <label for="clinic_sched_id" class="form-label">Schedule <span
                                                                 style="color:#ff0000">*</span></label>
                                                         <select class="form-select" id="clinic_sched_id" name="clinic_sched_id">
-                                                            <option value='2'>AM</option>
-                                                            <option value='5'>PM</option>
+                                                            <option value='1'>AM</option>
+                                                            <option value='2'>PM</option>
                                                         </select>
                                                     </td><br>
                                                     <div align="right">
@@ -270,10 +271,34 @@
     <!-- End Page content -->
     <!-- ============================================================== -->
 
+    <script>
+        function updateClinicServices() {
+          const apptType = document.getElementById("appt_type").value;
+          const clinicServicesSelect = document.getElementById("clinic_services_id");
+          
+          if (apptType === "vax_id") {
+            // Set the options for vaccination service
+            clinicServicesSelect.innerHTML = `
+              <option value="5">COVID-19 vaccine</option>
+              <option value="6">Flu vaccine</option>
+              <option value="7">Pneumonia vaccine</option>
+            `;
+          } else {
+            // Set the options for clinic service
+            clinicServicesSelect.innerHTML = `
+              <option value="1">check-up</option>
+              <option value="2">x-ray</option>
+              <option value="3">ultrasound</option>
+              <option value="4">Hermatology</option>
+            `;
+          }
+        }
+    </script> 
 
     <!-- bundle -->
     <script src="../../static/js/vendor.min.js"></script>
     <script src="../../static/js/app.min.js"></script>
+    <script src="../../static/js/main.js"></script>
 
     <!-- third party js -->
     <script src="../../static/js/vendor/updateOptions.js"></script>
