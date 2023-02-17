@@ -55,6 +55,9 @@ def authLogin():
 				session['user_id'] = row_user[0]
 				session['user_firstname'] = row_user[2]
 				session['account_type'] = row_user[4]
+				session['birthday'] = row_user[13]
+				session['gender'] = row_user[17]
+				session['purok'] = row_user[22]
 				session['token']=urllib.parse.unquote_plus(token)
 				if row_user[4] == "Admin":
 					session['url'] = "https://prod.brgyit-bot.com/admin/dashboard/"
@@ -433,7 +436,13 @@ def adminaptmedicine():
 	if('user_id' in session):
 		session['user_id']
 		session['user_firstname'] 
-	return render_template("admin-apt-medicine.html")
+		adminaptmedicine=[]
+		conn = connection()
+		cursor = conn.cursor()
+		cursor.execute("SELECT IHM.MED_APPT_ID,IHM.APPT_TYPE, IHM.DATE, IHM.STATUS, U.FIRSTNAME, M.MEDICINE_NAME, IHM.QTY,CSH.SCHEDULE_NAME, IHM.REMARKS FROM IH_MEDICINE_APPOINTMENT IHM INNER JOIN IH_MEDICINE M ON IHM.MEDICINE_ID = M.MEDICINE_ID INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IHM.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IHM.ID ")
+		for row in cursor.fetchall():
+			adminaptmedicine.append({"med_appt_id": row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"medicine_name": row[5],"qty": row[6],"schedule_name": row[7]})
+	return render_template("admin-apt-medicine.html",adminaptmedicine=adminaptmedicine)
 
 @app.route("/adminaptclinic")
 def adminaptclinic():
@@ -628,9 +637,9 @@ def vaccinationstaff():
 	vaccinationstaff = []
 	conn = connection()
 	cursor = conn.cursor()
-	cursor.execute("SELECT * FROM ih_appointment")
+	cursor.execute("SELECT IH.APPT_ID,IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, V.VAX_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_VACCINE V  ON IH.VAX_ID = V.VAX_ID  INNER JOIN IH_CLINIC_SCHED CSH  ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U  ON U.ID = IH.ID ")
 	for row in cursor.fetchall():
-		vaccinationstaff.append({"appt_id": row[0], "appt_type": row[1],"remarks": row[2],"date": row[3],"time": row[4],"status": row[5]})
+		vaccinationstaff.append({ "appt_id":row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"Vaccine": row[5],"schedule_name": row[6]})	
 	conn.close()	
 	return render_template("vaccinationstaff.html", vaccinationstaff = vaccinationstaff)
 
@@ -670,9 +679,9 @@ def staffhaptvax():
 	staffhaptvax=[]
 	conn = connection()
 	cursor = conn.cursor()
-	cursor.execute("SELECT IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, V.VAX_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_VACCINE V  ON IH.VAX_ID = V.VAX_ID  INNER JOIN IH_CLINIC_SCHED CSH  ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U  ON U.ID = IH.ID ")
+	cursor.execute("SELECT  IH.APPT_ID,IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, V.VAX_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_VACCINE V  ON IH.VAX_ID = V.VAX_ID  INNER JOIN IH_CLINIC_SCHED CSH  ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U  ON U.ID = IH.ID ")
 	for row in cursor.fetchall():
-		staffhaptvax.append({ "appt_type": row[0],"date": row[1],"status": row[2],"firstname": row[3],"Vaccine": row[4],"schedule_name": row[5]})
+		staffhaptvax.append({ "appt_id":row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"Vaccine": row[5],"schedule_name": row[6]})	
 		conn.close()	
 	return render_template("staffhistory-apt-vax.html",staffhaptvax=staffhaptvax)
 
@@ -855,7 +864,14 @@ def reshistoryviewdent():
 
 @app.route("/residenthaptmedicine")
 def residenthaptmedicine():
-	return render_template("residenthistory-apt-medicine.html")
+	user_name = session['user_firstname']
+	residenthaptmedicine=[]
+	conn = connection()	
+	cursor = conn.cursor()
+	cursor.execute("SELECT IHM.MED_APPT_ID,IHM.APPT_TYPE, IHM.DATE, IHM.STATUS, U.FIRSTNAME, M.MEDICINE_NAME, IHM.QTY,CSH.SCHEDULE_NAME, IHM.REMARKS FROM IH_MEDICINE_APPOINTMENT IHM INNER JOIN IH_MEDICINE M ON IHM.MEDICINE_ID = M.MEDICINE_ID INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IHM.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IHM.ID WHERE FIRSTNAME= %s", (user_name,))
+	for row in cursor.fetchall():
+		residenthaptmedicine.append({ "med_appt_id": row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"medicine_name": row[5],"qty": row[6],"schedule_name": row[7]})
+	return render_template("residenthistory-apt-medicine.html",residenthaptmedicine=residenthaptmedicine)
 
 @app.route("/reshistoryviewmed")
 def reshistoryviewmed():

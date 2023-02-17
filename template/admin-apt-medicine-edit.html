@@ -223,17 +223,17 @@
                                                                         <h4>Consultation Details</h4>
                                                                         <div class="row">
                                                                             <div class="col-sm-6">
-                                                                                <label for="" class="form-label">
-                                                                                    Appointment ID:</label>
-                                                                                <input type="text" name=""
-                                                                                    class="form-control" disabled>
+                                                                                <label for="appt_type" class="form-label">Appointment Type
+                                                                                    <span style="color:#ff0000">*</span></label>
+                                                                                <select class="form-select" name="appt_type" id="appt_type" disabled>
+                                                                                    <option value="Medicine Request Service">Medicine Request Service</option> 
+                                                                                </select>
                                                                                 </span>
                                                                             </div>
                                                                             <div class="col-sm-6">
-                                                                                <label for="" class="form-label">
-                                                                                    Date:</label>
-                                                                                <input type="text" name=""
-                                                                                    class="form-control" disabled>
+                                                                                <label for="date" class="form-label">Date<span
+                                                                                    style="color:#ff0000">*</span></label>
+                                                                            <input class="form-control" id="date" type="date" name="date">
                                                                                 </span>
                                                                             </div>
                                                                         </div>
@@ -242,21 +242,14 @@
                                                                         <div class="col-sm-6">
                                                                             <label for="" class="form-label">
                                                                                 Patient Name:</label>
-                                                                            <input type="text" name=""
-                                                                                class="form-control" disabled>
-                                                                            </span>
-                                                                        </div>
-                                                                        <div class="col-sm-3">
-                                                                            <label for="" class="form-label">
-                                                                                Age:</label>
-                                                                            <input type="text" name="lot_name"
+                                                                            <input type="text" name="" placeholde
                                                                                 class="form-control" disabled>
                                                                             </span>
                                                                         </div>
                                                                         <div class="col-sm-3">
                                                                             <label for="" class="form-label">
                                                                                 Sex:</label>
-                                                                            <input type="text" name=""
+                                                                            <input type="text" name="" placeholder="{{session.gender}}
                                                                                 class="form-control" disabled>
                                                                             </span>
                                                                         </div>
@@ -265,14 +258,14 @@
                                                                         <div class="col-sm-3">
                                                                             <label for="" class="form-label">
                                                                                 Date of Birth:</label>
-                                                                            <input type="text" name=""
+                                                                            <input type="text" name="" placeholder="{{session.birthday}}
                                                                                 class="form-control" disabled>
                                                                             </span>
                                                                         </div>
                                                                         <div class="col-sm-9">
                                                                             <label for="" class="form-label">
                                                                                 Address:</label>
-                                                                            <input type="text" name=""
+                                                                            <input type="text" name="" placeholder="{{session.purok}}
                                                                                 class="form-control" disabled>
                                                                             </span>
                                                                         </div>

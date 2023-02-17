@@ -168,53 +168,33 @@
                             <thead>
                                 <tr class="table-light">
                                     <th>Appointment ID</th>
-                                    <th>Name</th>
+                                    <th>Service</th>
                                     <th>Date</th>
-                                    <th>Time</th>
+                                    <th>Status</th>
+                                    <th>Resident</th>
+                                    <th>Medicine Name</th>
+                                    <th>Quantity</th>
+                                    <th>Schedule</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                        
-                        
                             <tbody>
+                                {% for residenthaptmedicine in residenthaptmedicine %}
+                                <tr>
+                                    <td>{{ residenthaptmedicine.med_appt_id}}</td>
+                                    <td>{{ residenthaptmedicine.appt_type}}</td>
+                                    <td>{{ residenthaptmedicine.date}}</td>
+                                    <td>{{ residenthaptmedicine.status}}</td>
+                                    <td>{{ residenthaptmedicine.firstname}}</td>
+                                    <td>{{ residenthaptmedicine.medicine_name}}</td>
+                                    <td>{{ residenthaptmedicine.qty}}</td>
+                                    <td>{{ residenthaptmedicine.schedule_name}}</td>
+                                    <td>
+                                        <a href="/reshistoryviewmed"><button type="button" class="btn btn-rounded btn-warning">View</button>
+                                    </td>
+                                </tr>
+                                {% endfor %}
 
-                                <tr>
-                                    <td><a class="btn btn-light btn-rounded">VA-0001</a></td>
-                                    <td>Tiger Nixon</td>
-                                    <td>2011/04/25</td>
-                                    <td>9:00 AM</td>
-                                    <td>
-                                        <a href="/reshistoryviewmed"><button type="button" class="btn btn-rounded btn-warning">View</button>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td><a class="btn btn-light btn-rounded">VA-0001</a></td>
-                                    <td>Tiger Nixon</td>
-                                    <td>2011/04/25</td>
-                                    <td>9:00 AM</td>
-                                    <td>
-                                        <a href="/reshistoryviewmed"><button type="button" class="btn btn-rounded btn-warning">View</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a class="btn btn-light btn-rounded">VA-0001</a></td>
-                                    <td>Tiger Nixon</td>
-                                    <td>2011/04/25</td>
-                                    <td>9:00 AM</td>
-                                    <td>
-                                        <a href="/reshistoryviewmed"><button type="button" class="btn btn-rounded btn-warning">View</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a class="btn btn-light btn-rounded">VA-0001</a></td>
-                                    <td>Tiger Nixon</td>
-                                    <td>2011/04/25</td>
-                                    <td>9:00 AM</td>
-                                    <td>
-                                        <a href="/reshistoryviewmed"><button type="button" class="btn btn-rounded btn-warning">View</button>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                 </div>
