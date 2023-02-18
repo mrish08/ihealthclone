@@ -213,17 +213,6 @@
 
                                             <form action="/updateclinicstaff/{{clinicstaff.appt_id}}" method="POST">
                                                 <div class="row">
-                                                    
-                                                    <div class="col-sm-6">
-                                                        <label for="remarks" class="form-label">
-                                                            Remarks:&nbsp;<span style="color:#ff0000">*</span></label>
-                                                        <input type="text" id="remarks" name="remarks" 
-                                                        class="form-control" value="">
-                                                        </span>
-                                                    </div>
-                                                </div> <br>
-                                                <div class="row">
-                                            
                                                     <div class="col-sm-6">
                                                         <label for="time" class="form-label">
                                                             Status:&nbsp;<span style="color:#ff0000">*</span></label>
@@ -233,7 +222,31 @@
                                                     </div>
                                                     
                                                 </div> <br>
-                                                
+                                                <div class="col-sm-6">
+                                                    <label for="resident_diagnosis" class="form-label">
+                                                        Diagnosis:&nbsp;<span style="color:#ff0000">*</span></label>
+                                                    <input type="text" id="resident_diagnosis" name="resident_diagnosis" 
+                                                    class="form-control" value="">
+                                                    </span>
+                                                </div>
+
+                                                <div class="row">
+                                            
+                                                </div> <br>
+                                                <div class="col-sm-6">
+                                                    <label for="prescription_details" class="form-label">
+                                                        Prescription:&nbsp;<span style="color:#ff0000">*</span></label>
+                                                    <input type="text" id="prescription_details" name="prescription_details" 
+                                                    class="form-control" value="">
+                                                    </span>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <label for="remarks" class="form-label">
+                                                        Remarks:&nbsp;<span style="color:#ff0000">*</span></label>
+                                                    <input type="text" id="remarks" name="remarks" 
+                                                    class="form-control" value="">
+                                                    </span>
+                                                </div>
                                                 <div align="right">
                                                     <a href="/clinicstaff">
                                                         <button class="btn btn-secondary" type="submit">Cancel</button>

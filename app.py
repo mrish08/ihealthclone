@@ -626,8 +626,10 @@ def updateclinicstaff(appt_id):
 	if request.method == 'POST':
 		remarks = str(request.form["remarks"])
 		status = str(request.form["status"])
-		cursor.execute("UPDATE ih_appointment SET (remarks,status) = (%s,%s)  WHERE appt_id =(%s)",
-		(remarks,status,appt_id))
+		resident_diagnosis = str(request.form["resident_diagnosis"])
+		prescription_details = str(request.form["prescription_details"])
+		cursor.execute("UPDATE ih_appointment SET (remarks,status,resident_diagnosis,prescription_details) = (%s,%s,%s,%s)  WHERE appt_id =(%s)",
+		(remarks,status,resident_diagnosis,prescription_details,appt_id))
 		conn.commit()
 		conn.close()
 		return redirect('/clinicstaff')
@@ -964,4 +966,5 @@ def reject_status():
 	# # ...
 	return jsonify({'message': 'Status rejected'})
 if __name__== '__main__':
-	app.run (host='0.0.0.0',port=5000)	
+	app.run (host='0.0.0.0',port=5000)
+	
