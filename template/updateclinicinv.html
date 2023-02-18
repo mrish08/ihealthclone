@@ -216,32 +216,32 @@
                                             <p>Please fill in the details below to successfully update the Clinic
                                                 Inventory.</p>
 
-                                                <form action="/updateclinic/{{clinic.clinic_services_id}}" method="POST">
+                                                <form action="/updateclinic/{{adminclinicinv.clinic_supp_id}}" method="POST">
                                                     <div class="row">
                                                         <div class="col-sm-6">
-                                                            <label for="clinic.clinic_inventory_item" class="form-label">Item
+                                                            <label for="item_name" class="form-label">Item
                                                                 Name:&nbsp;<span style="color:#ff0000">*</span></label>
-                                                            <input type="text" id="clinic.clinic_inventory_item"
-                                                            name="clinic.clinic_inventory_item" class="form-control"
-                                                            value="{{clinic.clinic_inventory_item}}">
+                                                            <input type="text" id="item_name"
+                                                            name="item_name" class="form-control"
+                                                            value="{{adminclinicinv.item_name}}">
                                                             </span>
                                                         </div>
                                                         <div class="col-sm-6">
-                                                            <label for="clinic.clinic_item_qty" class="form-label">Item
+                                                            <label for="qty" class="form-label">Item
                                                                 Quantity:&nbsp;<span style="color:#ff0000">*</span></label>
-                                                            <input type="text" id="clinic.clinic_item_qty"
-                                                            name="clinic.clinic_item_qty" class="form-control"
-                                                            value="{{clinic.clinic_item_qty}}">
+                                                            <input type="text" id="qty"
+                                                            name="qty" class="form-control"
+                                                            value="{{adminclinicinv.qty}}">
                                                             </span>
                                                         </div>
                                                     </div>
                                                     <br>
                                                     <div align="right">
-                                                        <a href="/clinic">
+                                                        <a href="/adminclinicinv">
                                                             <button class="btn btn-secondary" type="submit">Cancel</button>
                                                         </a>
     
-                                                        <a href="/clinic">
+                                                        <a href="/adminclinicinv">
                                                             <button class="btn btn-primary" type="submit">Submit</button>
                                                         </a>
                                                     </div>
