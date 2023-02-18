@@ -222,10 +222,12 @@
                                                             <button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
                                                             <i class="mdi mdi-circle-edit-outline"></i></button></a>
 
-                                                        <button type="button"  class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
-                                                            <i class="dripicons-checkmark"></i></button>
-                                                        <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
-                                                            <i class="mdi mdi-window-close"></i></button>
+                                                            <button id="acceptButton" type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
+                                                                <i class="dripicons-checkmark"></i>
+                                                            </button>
+                                                            <button id="declineButton" type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
+                                                                <i class="mdi mdi-window-close"></i>
+                                                            </button>
                                                     </td>
                                                 </tr>
                                                 {% endfor %}
@@ -250,6 +252,26 @@
     <!-- End Page content -->
     <!-- ============================================================== -->
 
+    <script>
+        var acceptButton = document.getElementById("acceptButton");
+        acceptButton.addEventListener("click", acceptAppointment);
+    
+        function acceptAppointment() {
+            // your code to accept the appointment goes here
+            // for example, you could make an AJAX call to update the appointment status
+            console.log("Appointment accepted!");
+        }
+
+
+        var declineButton = document.getElementById("declineButton");
+        declineButton.addEventListener("click", declineAppointment);
+
+        function declineAppointment() {
+            // your code to decline the appointment goes here
+            // for example, you could make an AJAX call to update the appointment status
+            console.log("Appointment declined!");
+        }
+    </script>
 
     <!-- bundle -->
     <script src="../../static/js/vendor.min.js"></script>
