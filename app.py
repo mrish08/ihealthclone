@@ -74,17 +74,9 @@ def authLogin():
 
 @app.route("/index")
 def index():
-	#if('user_id' in session):
-	email= "admin@email.com" 
-	account_type= "Admin"
-	conn = connection()
-	cursor = conn.cursor()
-	cursor.execute("SELECT id,firstname FROM users_user WHERE email = %s AND account_type = %s", (email, account_type))
-	user = cursor.fetchone()
-	if user is not None:
-		user_id, user_firstname = user
-		session['user_id'] = user_id
-		session['user_firstname'] = user_firstname
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 		return render_template("index.html")
 
 @app.route("/clinic")
@@ -353,7 +345,37 @@ def adminclinicinv():
 	if('user_id' in session):
 		session['user_id']
 		session['user_firstname'] 
-	return render_template("adminclinicinv.html")
+	adminclinicinv = []
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT * FROM ih_clinic_supply")
+	for row in cursor.fetchall():
+		adminclinicinv.append({"item_name": row[0], "qty": row[1]})
+	conn.close()	
+	return render_template("adminclinicinv.html",adminclinicinv=adminclinicinv)
+
+@app.route("/updateclinicinv/<int:clinic_supp_id>", methods = ['GET', 'POST'])
+def updateclinicinv(clinic_supp_id):
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
+	updateclinicinv = []
+	conn = connection()
+	cursor = conn.cursor()
+	if request.method == 'GET':
+		cursor.execute("SELECT * FROM ih_clinic_supply WHERE clinic_supp_id = %s", (str(clinic_supp_id)))
+		for row in cursor.fetchall():
+			updateclinicinv.append({"item_name": row[0], "qty": row[1]})
+		conn.close()
+		return render_template("updateclinicinv.html", adminclinicinv = updateclinicinv[0])
+	if request.method == 'POST':
+		item_name= str(request.form["item_name"])
+		qty= int(request.form["qty"])
+		cursor.execute("UPDATE ih_clinic_supply SET (item_name,qty) = (%s,%s)  WHERE clinic_supp_id =(%s)",
+		(item_name,qty,clinic_supp_id))
+		conn.commit()
+		conn.close()
+	return render_template("updateclinicinv.html")
 
 @app.route("/adminvc")
 def adminvc():
@@ -390,11 +412,20 @@ def adds():
 		session['user_firstname'] 
 	return render_template("admin-add-schedule.html")
 
-@app.route("/addc")
+@app.route("/addc", methods = ['GET', 'POST'])
 def addc():
 	if('user_id' in session):
 		session['user_id']
 		session['user_firstname'] 
+	if request.method == 'POST':
+		item_name= request.form['item_name']
+		qty = request.form['qty']
+		conn = connection()
+		cursor = conn.cursor()
+		cursor.execute('INSERT INTO ih_clinic_supply (item_name,qty)'' VALUES (%s,%s)', 
+		[item_name,qty])
+		conn.commit()
+		conn.close()
 	return render_template("admin-add-clinic.html")
 
 @app.route("/addm")
@@ -546,17 +577,9 @@ def adminhaptclinic():
 
 @app.route("/indexstaff")
 def indexstaff():
-	#if('user_id' in session):
-	email= "staff@email.com" 
-	account_type= "Staff"
-	conn = connection()
-	cursor = conn.cursor()
-	cursor.execute("SELECT id,firstname FROM users_user WHERE email = %s AND account_type = %s", (email, account_type))
-	user = cursor.fetchone()
-	if user is not None:
-		user_id, user_firstname = user
-		session['user_id'] = user_id
-		session['user_firstname'] = user_firstname
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 		return render_template("indexstaff.html")
 
 @app.route("/schedulestaff")
@@ -605,6 +628,28 @@ def updateclinicstaff(appt_id):
 		status = str(request.form["status"])
 		cursor.execute("UPDATE ih_appointment SET (remarks,status) = (%s,%s)  WHERE appt_id =(%s)",
 		(remarks,status,appt_id))
+		conn.commit()
+		conn.close()
+		return redirect('/clinicstaff')
+	
+@app.route("/acceptclinicstaff/<int:appt_id>", methods = ['GET', 'POST'])
+def acceptclinicstaff(appt_id):
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
+	acs = []
+	conn = connection()
+	cursor = conn.cursor()
+	if request.method == 'GET':
+		cursor.execute("SELECT * FROM ih_appointment WHERE appt_id = %s", (str(appt_id)))
+		for row in cursor.fetchall():
+			acs.append({"appt_id": row[0], "appt_type": row[1],"date": row[2],"remarks": row[3],"status": row[4],"time": row[5],"id": row[7]})
+		conn.close()
+		return render_template("clinicstaff.html", clinicstaff = acs[0])
+	if request.method == 'POST':
+		status = "Accept"
+		cursor.execute("UPDATE ih_appointment SET (status) = (%s)  WHERE appt_id =(%s)",
+		(status,appt_id))
 		conn.commit()
 		conn.close()
 		return redirect('/clinicstaff')
@@ -770,16 +815,9 @@ def staffhviewclinic():
 
 @app.route("/indexresident")
 def indexresident():
-	email= "kylemara@gmail.com" 
-	account_type= "Resident"
-	conn = connection()
-	cursor = conn.cursor()
-	cursor.execute("SELECT id,firstname FROM users_user WHERE email = %s AND account_type = %s", (email, account_type))
-	user = cursor.fetchone()
-	if user is not None:
-		user_id, user_firstname = user
-		session['user_id']=user_id
-		session['user_firstname'] =user_firstname
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 		return render_template("indexresident.html")
 
 
@@ -926,5 +964,4 @@ def reject_status():
 	# # ...
 	return jsonify({'message': 'Status rejected'})
 if __name__== '__main__':
-	#app.run (host='0.0.0.0',port=5000)	
-	app.run (debug=True)	
+	app.run (host='0.0.0.0',port=5000)	

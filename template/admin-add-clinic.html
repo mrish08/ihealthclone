@@ -219,19 +219,19 @@
                                     <div class="card-body">
                                         <p>Please fill in the details below to successfully add items to the Clinic
                                             Inventory.</p>
-                                            <form action="/addmedicine" method="POST">
+                                            <form action="/addc " method="POST">
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <label for="clinic_inventory_name" class="form-label">Item
+                                                        <label for="item_name" class="form-label">Item
                                                             Name:&nbsp;<span style="color:#ff0000">*</span></label>
-                                                        <input type="text" name="clinic_inventory_name"
+                                                        <input type="text" name="item_name" id="item_name"
                                                             class="form-control">
                                                         </span>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <label for="clinic_inventory_qty" class="form-label">Item
+                                                        <label for="qty" class="form-label">Item
                                                             Quantity:&nbsp;<span style="color:#ff0000">*</span></label>
-                                                        <input type="text" name="clinic_inventory_qty"
+                                                        <input type="text" name="qty" id="qty"
                                                             class="form-control">
                                                         </span>
                                                     </div>
@@ -239,7 +239,7 @@
                                                 <br>
                                                 <div align="right">
                                                     <a href="/adminclinicinv">
-                                                        <button class="btn btn-secondary" type="submit">Cancel</button>
+                                                        <button class="btn btn-secondary" type="cancel">Cancel</button>
                                                     </a>
 
                                                     <a href="/adminclinicinv">

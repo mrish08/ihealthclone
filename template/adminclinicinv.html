@@ -232,14 +232,14 @@
 
 
                                         <tbody>
-                                            {% for clinic in clinic %}
+                                            {% for adminclinicinv in adminclinicinv %}
 
                                             <tr>
-                                                <td>{{ clinic.clinic_item_name}}</td>
-                                                <td>{{ clinic.clinic_item_stock}}</td>
+                                                <td>{{ adminclinicinv.item_name}}</td>
+                                                <td>{{ adminclinicinv.qty}}</td>
                                                 <td class="table-action">
                                                     <form class="action-icon">
-                                                        <a href="updateclinic/{{ clinic.clinic_services_id }}">
+                                                        <a href="/updateclinicinv/{{ adminclinicinv.clinic_supp_id }}">
                                                             <button type="button" class="btn btn-outline-info btn-rounded" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
                                                                 <i class="mdi mdi-circle-edit-outline"></i>
                                                             </button>
