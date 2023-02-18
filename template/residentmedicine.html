@@ -53,12 +53,27 @@
                             </a>
                         </li>
 
-                        <li class="badge-primary-lighten side-nav-item menuitem-active">
-                            <a href="/residentas" class="side-nav-link">
+                        <li class="side-nav-item menuitem-active">
+                            <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarEcommerce" class="side-nav-link">
                                 <i class="uil-clipboard-alt"></i>
                                 <span> Appointment Service </span>
+                                <span class="menu-arrow"></span>
                             </a>
+                            <div class="collapse" id="sidebarTasks">
+                                <ul class="side-nav-second-level">
+                                    <li>
+                                        <a href="/residentas">Request Clinic Appointment</a>
+                                    </li>
+                                    <li>
+                                        <a  href="/residentvax">Request Vaccination Appointment</a>
+                                    </li>
+                                    <li>
+                                        <a  href="/residentdental">Request Dental Appointment</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
+        
 
                         <li class="side-nav-item">
                             <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false"
@@ -211,8 +226,8 @@
                                             <label for="clinic_sched_id" class="form-label">Time <span
                                                     style="color:#ff0000">*</span></label>
                                             <select class="form-select" name="clinic_sched_id"id="clinic_sched_id">
-                                                <option value="4">A.M</option>
-                                                <option value="7">P.M</option>
+                                                <option value="5">A.M</option>
+                                                <option value="6">P.M</option>
                                             </select>
                                         </div>
                                     </div> <br>

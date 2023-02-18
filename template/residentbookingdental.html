@@ -68,10 +68,10 @@
                                     <a href="/residentas">Request Clinic Appointment</a>
                                 </li>
                                 <li>
-                                    <a class="badge-primary-lighten menuitem-active" href="/residentvax">Request Vaccination Appointment</a>
+                                    <a  href="/residentvax">Request Vaccination Appointment</a>
                                 </li>
                                 <li>
-                                    <a href="/residentdental">Request Dental Appointment</a>
+                                    <a class="badge-primary-lighten menuitem-active" href="/residentdental">Request Dental Appointment</a>
                                 </li>
                             </ul>
                         </div>
@@ -215,22 +215,14 @@
                                         <tr>
                                             <div>
                                                 <td class="col-sm-6">
-                                                <form action="/residentvax" method="POST">
+                                                <form action="/residentdental" method="POST">
                                                     <label for="appt_type" class="form-label">Appointment Type
                                                         <span style="color:#ff0000">*</span></label>
                                                     <select class="form-select" id="appt_type" name="appt_type">
-                                                        <option value="Vaccination Service">Vaccination Service</option>
+                                                        <option value="Dental Service">Dental Service</option>
                                                     </select>
                                                 </td><br>
-                                                <td class="col-sm-6">
-                                                    <label for="vax_id" class="form-label">  Vaccine
-                                                    <span style="color:#ff0000">*</span></label>
-                                                    <select class="form-select" id="vax_id" name="vax_id">
-                                                        <option value="1">Pfizer BioNTech</option>
-                                                        <option value="2">Sinovac</option>
-                                                        <option value="3">Moderna</option>
-                                                    </select>
-                                                </td><br>
+                                                
                                                 <td class="col-sm-6">
                                                     <label for="date" class="form-label">Date<span
                                                             style="color:#ff0000">*</span></label>
@@ -241,8 +233,8 @@
                                                     <label for="clinic_sched_id" class="form-label">Schedule <span
                                                             style="color:#ff0000">*</span></label>
                                                     <select class="form-select" id="clinic_sched_id" name="clinic_sched_id">
-                                                        <option value='3'>AM</option>
-                                                        <option value='4'>PM</option>
+                                                        <option value='7'>AM</option>
+                                                        <option value='8'>PM</option>
                                                     </select>
                                                 </td><br>
                                                 <div align="right">

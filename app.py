@@ -12,7 +12,6 @@ app=Flask(__name__,template_folder='template',static_folder='static')
 #app.secret_key = 'abandonware-invokes'
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
-#'https://back-final.brgyit-bot.com/api/v1/
 Session(app)
 
 Bitbologin = "https://brgyit-bot.com/login/"
@@ -58,6 +57,7 @@ def authLogin():
 				session['birthday'] = row_user[13]
 				session['gender'] = row_user[17]
 				session['purok'] = row_user[22]
+				session['image'] = row_user[31]
 				session['token']=urllib.parse.unquote_plus(token)
 				if row_user[4] == "Admin":
 					session['url'] = "https://prod.brgyit-bot.com/admin/dashboard/"
@@ -77,6 +77,7 @@ def index():
 	if('user_id' in session):
 		session['user_id']
 		session['user_firstname'] 
+		session['image']
 		return render_template("index.html")
 
 @app.route("/clinic")
@@ -101,7 +102,8 @@ def adcb():
 def addclinic():
 	if('user_id' in session):
 		session['user_id']
-		session['user_firstname'] 		
+	
+		session['user_firstname'] 	
 		if request.method == 'POST':
 			clinic_services_name = request.form['clinic_services_name']
 			conn = connection()
@@ -449,11 +451,23 @@ def adminaptvax():
 		adminaptvax = []
 		conn = connection()
 		cursor = conn.cursor()
-		cursor.execute("SELECT * FROM ih_medicine")
+		cursor.execute("SELECT IH.APPT_ID,IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, V.VAX_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_VACCINE V  ON IH.VAX_ID = V.VAX_ID  INNER JOIN IH_CLINIC_SCHED CSH  ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U  ON U.ID = IH.ID ")
 		for row in cursor.fetchall():
-			adminaptvax.append({"medicine_id": row[0], "medicine_name": row[1], "generic_name": row[2], "brand_name": row[3], "manufacturer": row[4], "dosage": row[5], "medicine_type": row[6], "description": row[7]})
+			adminaptvax.append({ "appt_id":row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"Vaccine": row[5],"schedule_name": row[6]})	
 		conn.close()	
 		return render_template("admin-apt-vax.html", adminaptvax = adminaptvax)
+	
+@app.route("/adminaptvaxaccept<int:appt_id>", methods=['POST'])
+def adminaptvaxaccept(appt_id):
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
+		adminaptvax = []
+		conn = connection()
+		cursor = conn.cursor()
+		cursor.execute('UPDATE ih_appointment SET status = Accept WHERE id = %s', (appt_id,))
+		conn.close()	
+		return redirect("admin-apt-vax.html")
 
 @app.route("/adminaptdental")
 def adminaptdental():
@@ -489,8 +503,8 @@ def adminaptdentaledit():
 		session['user_firstname'] 
 	return render_template("admin-apt-dental-edit.html")
 
-@app.route("/adminaptmedicineedit")
-def adminaptmedicineedit():
+@app.route("/adminaptmedicineedit/<int:medicine_id>", methods = ['GET', 'POST'])
+def adminaptmedicineedit(medicine_id):
 	if('user_id' in session):
 		session['user_id']
 		session['user_firstname'] 
@@ -724,9 +738,9 @@ def dentalstaff():
 	dentalstaff = []
 	conn = connection()
 	cursor = conn.cursor()
-	cursor.execute("SELECT * FROM ih_appointment")
+	cursor.execute("SELECT IH.APPT_ID,IH.APPT_TYPE, IH.DATE, IH.STATUS, U.FIRSTNAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID WHERE APP_TYPE = DENTAL SERVICE")
 	for row in cursor.fetchall():
-		dentalstaff.append({"appt_id": row[0], "appt_type": row[1],"remarks": row[2],"date": row[3],"time": row[4],"status": row[5]})
+		dentalstaff.append({"appt_id":row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"schedule_name": row[5]})	
 	conn.close()	
 	return render_template("dentalstaff.html", dentalstaff = dentalstaff)
 
@@ -874,7 +888,24 @@ def residentvax():
 			conn.commit()
 			conn.close()
 		return render_template("residentbookingvax.html")
-
+	
+@app.route("/residentdental", methods=['GET', 'POST'])
+def residentdental():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
+		if request.method == 'POST':
+			appt_type= request.form['appt_type']
+			date=request.form['date']
+			id = session['user_id']
+			clinic_sched_id=request.form['clinic_sched_id']		
+			conn = connection()
+			cursor = conn.cursor()
+			cursor.execute('INSERT INTO ih_appointment (appt_type,date,id,clinic_sched_id)'' VALUES (%s,%s,%s,%s)', 
+			[appt_type,date,id,clinic_sched_id])
+			conn.commit()
+			conn.close()
+		return render_template("residentbookingdental.html")
 
 
 @app.route("/residentmedicine", methods=['GET', 'POST'])
@@ -899,6 +930,9 @@ def residentmedicine():
 
 @app.route("/residenthaptvax")
 def residenthaptvax():
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
 	user_name = session['user_firstname']
 	residenthaptvax=[]
 	conn = connection()
@@ -915,7 +949,18 @@ def reshistoryviewvax():
 
 @app.route("/residenthaptdental")
 def residenthaptdental():
-	return render_template("residenthistory-apt-dental.html")
+	if('user_id' in session):
+		session['user_id']
+		session['user_firstname'] 
+	user_name = session['user_firstname']
+	residenthaptdental=[]
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, V.VAX_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_VACCINE V  ON IH.VAX_ID = V.VAX_ID  INNER JOIN IH_CLINIC_SCHED CSH  ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U  ON U.ID = IH.ID  WHERE FIRSTNAME= %s", (user_name,))
+	for row in cursor.fetchall():
+		residenthaptdental.append({ "appt_type": row[0],"date": row[1],"status": row[2],"firstname": row[3],"Vaccine": row[4],"schedule_name": row[5]})
+		conn.close()	
+	return render_template("residenthistory-apt-dental.html",residenthaptdental=residenthaptdental)
 
 @app.route("/reshistoryviewdent")
 def reshistoryviewdent():

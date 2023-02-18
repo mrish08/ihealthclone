@@ -65,10 +65,13 @@
                         <div class="collapse" id="sidebarTasks">
                             <ul class="side-nav-second-level">
                                 <li>
-                                    <a class="badge-primary-lighten menuitem-active" href="/residentas">Request Clinic Appointment</a>
+                                    <a href="/residentas">Request Clinic Appointment</a>
                                 </li>
                                 <li>
                                     <a href="/residentvax">Request Vaccination Appointment</a>
+                                </li>
+                                <li>
+                                    <a  href="/residentdental">Request Dental Appointment</a>
                                 </li>
                             </ul>
                         </div>
@@ -216,7 +219,7 @@
                                                     <form action="/residentas" method="POST">
                                                         <label for="appt_type" class="form-label">Appointment Type
                                                             <span style="color:#ff0000">*</span></label>
-                                                        <select class="form-select" id="appt_type" name="appt_type" onchange="updateClinicServices()">
+                                                        <select class="form-select" id="appt_type" name="appt_type" >
                                                             <option value="Clinic Service">Clinic Service</option>
                                                             <option value="Dental Service">Dental Service</option>
                                                         </select>
@@ -224,9 +227,9 @@
                                                     <td class="col-sm-6">
                                                         <label for="clinic_services_id" class="form-label">Clinic Service 
                                                             <span style="color:#ff0000">*</span></label>
-                                                        <select class="form-select" id="clinic_services_id" name="clinic_services_id">
-                                                            <option value="1">check-up</option>
-                                                            <option value="2">x-ray</option>
+                                                        <select class="form-select" id="clinic_services_id" name="clinic_services_id" onchange="updateClinicServices()"">
+                                                            <option value="1">Check-up</option>
+                                                            <option value="2">X-ray</option>
                                                             <option value="3">ultrasound</option>
                                                             <option value="4">Hermatology</option>
                                                         </select>
@@ -274,15 +277,14 @@
 
     <script>
         function updateClinicServices() {
-          const apptType = document.getElementById("appt_type").value;  
+          const clinic_services_id = document.getElementById("clinic_services_id").value;  
           const clinicServicesSelect = document.getElementById("clinic_services_id");
           
-          if (apptType === "vax_id") {
+          if (clinic_services_id === "check-up") {
             // Set the options for vaccination service
             clinicServicesSelect.innerHTML = `
-              <option value="5">COVID-19 vaccine</option>
-              <option value="6">Flu vaccine</option>
-              <option value="7">Pneumonia vaccine</option>
+              <option value="1">COVID-19 vaccine</option>
+              <option value="2">Flu vaccine</option>
             `;
           } else {
             // Set the options for clinic service
