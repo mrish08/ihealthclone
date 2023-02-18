@@ -463,6 +463,28 @@ def adminaptmedicineedit():
 	if('user_id' in session):
 		session['user_id']
 		session['user_firstname'] 
+	admup = []
+	conn = connection()
+	cursor = conn.cursor()
+	if request.method == 'GET':
+		cursor.execute("SELECT * FROM ih_medicine WHERE medicine_id = %s", (str(medicine_id)))
+		for row in cursor.fetchall():
+			admup.append({"medicine_id": row[0], "medicine_name": row[1], "generic_name": row[2], "brand_name": row[3], "manufacturer": row[4], "dosage": row[5], "medicine_type": row[6], "description": row[7],"stock":row[8]})
+		conn.close()
+		return render_template("updatemedicine.html", medicine = admup[0])
+	if request.method == 'POST':
+		medicine_name = str(request.form["medicine_name"])
+		generic_name = str(request.form["generic_name"])
+		brand_name = str(request.form["brand_name"])
+		manufacturer = str(request.form["manufacturer"])
+		dosage = str(request.form["dosage"])
+		medicine_type = str(request.form["medicine_type"])
+		description = str(request.form["description"])
+		stock = int(request.form["stock"])
+		cursor.execute("UPDATE ih_medicine SET (medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type, description,stock) = (%s,%s,%s, %s, %s, %s, %s, %s)  WHERE medicine_id =(%s)",
+		(medicine_name, generic_name, brand_name, manufacturer, dosage, medicine_type,description,stock,medicine_id))
+		conn.commit()
+		conn.close()
 	return render_template("admin-apt-medicine-edit.html")
 
 @app.route("/adminaptclinicedit")
@@ -579,13 +601,10 @@ def updateclinicstaff(appt_id):
 		conn.close()
 		return render_template("updateclinicstaff.html", clinicstaff = ucs[0])
 	if request.method == 'POST':
-		appt_type = str(request.form["appt_type"])
 		remarks = str(request.form["remarks"])
-		date = str(request.form["date"])
-		clinic_sched_id = str(request.form["time"])
 		status = str(request.form["status"])
-		cursor.execute("UPDATE ih_appointment SET (appt_type, remarks, date, clinic_sched_id, status) = (%s,%s,%s, %s,%s)  WHERE appt_id =(%s)",
-		(appt_type, remarks, date, clinic_sched_id, status,appt_id))
+		cursor.execute("UPDATE ih_appointment SET (remarks,status) = (%s,%s)  WHERE appt_id =(%s)",
+		(remarks,status,appt_id))
 		conn.commit()
 		conn.close()
 		return redirect('/clinicstaff')
