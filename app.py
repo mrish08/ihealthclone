@@ -769,7 +769,7 @@ def updateclinicstaff(appt_id):
 	
 
 
-@app.route("/medicinestaff")
+@app.route("/medicinestaff", methods=['POST'])
 def medicinestaff():
 	if('user_id' in session):
 		session['user_id']
