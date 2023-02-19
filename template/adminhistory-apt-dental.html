@@ -209,7 +209,6 @@
                                 <div class="card-body">
 
                                 <table id="basic-datatable" class="table dt-responsive nowrap w-100">
-                                       
                                     <thead>
                                         <tr class="table-light">
                                             <th>Appointment ID</th>
@@ -218,22 +217,20 @@
                                             <th>Status</th>
                                             <th>Resident</th>
                                             <th>Schedule</th>
-                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for adminhaptdental in adminhaptdental %}
-                                        <tr>
-                                            <td>{{ adminhaptdental.appt_id}}</td>
-                                            <td>{{ adminhaptdental.appt_type}}</td>
-                                            <td>{{ adminhaptdental.date}}</td>
-                                            <td>{{ adminhaptdental.status}}</td>
-                                            <td>{{ adminhaptdental.firstname}}</td>
-                                            <td>{{ adminhaptdental.schedule_name}}</td>
-                                            <td>
-                                                <a href="adminh-view-dental.html"><button type="button" class="btn btn-rounded btn-warning">View</button>
-                                            </td>
-                                        </tr>                                    {% endfor %}
+                                      {% for adminhaptdental in adminhaptdental %}
+                                            <tr>
+                                                <td>{{ adminhaptdental.appt_id}}</td>
+                                                <td>{{ adminhaptdental.appt_type}}</td>
+                                                <td>{{ adminhaptdental.date}}</td>
+                                                <td>{{ adminhaptdental.status}}</td>
+                                                <td>{{ adminhaptdental.firstname}}</td>
+                                                <td>{{ adminhaptdental.schedule_name}}</td>
+                                                
+                                        </tr>
+                                    {% endfor %}
 
                                         
                                     </tbody>

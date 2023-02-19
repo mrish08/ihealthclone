@@ -60,6 +60,13 @@
                         </li>
     
                         <li class="side-nav-item">
+                            <a href="/indexstaff" class="side-nav-link">
+                                <i class="uil-chart-pie"></i>
+                                <span> Dashboard </span>
+                            </a>
+                        </li>
+    
+                        <li class="side-nav-item">
                             <a href="/schedulestaff" class="side-nav-link">
                                 <i class="uil-clipboard-alt"></i>
                                 <span> Schedule </span>
@@ -67,14 +74,15 @@
                         </li>
     
                         <li class="side-nav-item">
-                            <a href="/vaccinationstaff" class="side-nav-link">
+                            <a href="/vaccinationstaff'" class="side-nav-link">
                                 <i class="uil-syringe"></i>
                                 <span> Vaccination Service</span>
                             </a>
                         </li>
     
-                        <li class="badge-primary-lighten side-nav-item menuitem-active">
+                        <li class="side-nav-item">
                             <a href="/clinicstaff" class="side-nav-link">
+    
                                 <i class="uil-clipboard-alt"></i>
                                 <span> Clinic Service </span>
                             </a>
@@ -86,6 +94,13 @@
                                 <span> Dental Service </span>
                             </a>
                         </li>
+                        <li class="side-nav-item">
+                            <a href="/medicinestaff" class="side-nav-link">
+                                <i class="mdi mdi-hospital"></i>
+                                <span> Dental Service </span>
+                            </a>
+                        </li>
+    
     
                         <li class="side-nav-item">
     
@@ -216,9 +231,7 @@
                                                     <td>{{ clinicstaff.schedule_name}}</td>
 
                                                     <td>
-                                                        <a href="/updateclinicstaff/{{clinicstaff.appt_id}}">
-                                                            <button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
-                                                            <i class="mdi mdi-circle-edit-outline"></i></button></a>
+                                                       
                                                             <form action="/clinicstaffapprove" method="POST"><input type="hidden" name="appt_id" value="{{clinicstaff.appt_id}}"><button type="submit" class="btn btn-outline-success btn-rounded" data-bs-trigger="hover" title="Accept" data-bs-toggle="modal" data-bs-target="#success-alert-modal">
                                                                 <i class="dripicons-checkmark"></i></button></a>  </form>
                                                                 <form action="/clinicstaffdecline" method="POST"><input type="hidden" name="appt_id" value="{{ clinicstaff.appt_id}}"><button type="submit"class="btn btn-outline-danger btn-rounded" data-bs-trigger="hover" title="Decline" data-bs-toggle="modal" data-bs-target="#warning-alert-modal">

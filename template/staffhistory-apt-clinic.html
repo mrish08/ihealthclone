@@ -51,28 +51,28 @@
                 <li class="side-nav-title side-nav-item">Menu</li>
 
                 <li class="side-nav-item">
-                    <a href="{{ url_for('indexstaff') }}" class="side-nav-link">
+                    <a href="/indexstaff" class="side-nav-link">
                         <i class="uil-chart-pie"></i>
                         <span> Dashboard </span>
                     </a>
                 </li>
 
                 <li class="side-nav-item">
-                    <a href="{{ url_for('schedulestaff') }}" class="side-nav-link">
+                    <a href="/schedulestaff" class="side-nav-link">
                         <i class="uil-clipboard-alt"></i>
                         <span> Schedule </span>
                     </a>
                 </li>
 
                 <li class="side-nav-item">
-                    <a href="{{ url_for('vaccinationstaff') }}" class="side-nav-link">
+                    <a href="/vaccinationstaff" class="side-nav-link">
                         <i class="uil-syringe"></i>
                         <span> Vaccination Service</span>
                     </a>
                 </li>
 
                 <li class="side-nav-item">
-                    <a href="{{ url_for('clinicstaff') }}" class="side-nav-link">
+                    <a href="/clinicstaff" class="side-nav-link">
 
                         <i class="uil-clipboard-alt"></i>
                         <span> Clinic Service </span>
@@ -80,7 +80,7 @@
                 </li>
 
                 <li class="side-nav-item">
-                    <a href="{{ url_for('dentalstaff') }}" class="side-nav-link">
+                    <a href="/dentalstaff" class="side-nav-link">
                         <i class="mdi mdi-hospital"></i>
                         <span> Dental Service </span>
                     </a>
@@ -88,7 +88,7 @@
 
                 <li class="side-nav-item">
 
-                    <a href="{{ url_for('/medicinestaff') }}" class="side-nav-link">
+                    <a href="/medicinestaff'" class="side-nav-link">
                         <i class="uil-home-alt"></i>
                         <span>Medicine Pick Up</span>
                     </a>
@@ -215,7 +215,8 @@
                                                 <td>{{ staffhaptclinic.clinic_services_name}}</td>
                                                 <td>{{ staffhaptclinic.schedule_name}}</td>
                                                 <td>
-                                                    <a href="/staffhviewclinic"><button type="button" class="btn btn-rounded btn-warning">View</button>
+                                                    <a href="/staffhviewclinic"><button type="button" class="btn btn-outline-info btn-rounded"  data-bs-trigger="hover" title="Edit">
+                                                        <i class="mdi mdi-circle-edit-outline"></i></button></a>
                                                 </td>
                                             </tr>
                                             {% endfor %}

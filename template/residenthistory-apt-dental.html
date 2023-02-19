@@ -180,55 +180,30 @@
                                 <div class="card-body">
 
                                 <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                                    
                                     <thead>
                                         <tr class="table-light">
                                             <th>Appointment ID</th>
-                                            <th>Name</th>
+                                            <th>Service</th>
                                             <th>Date</th>
-                                            <th>Time</th>
-                                            <th>Action</th>
+                                            <th>Status</th>
+                                            <th>Resident</th>
+                                            <th>Schedule</th>
                                         </tr>
                                     </thead>
-                                
-                                
                                     <tbody>
+                                        {% for residenthaptdental in residenthaptdental %}
+                                        <tr>
+                                            <td>{{ residenthaptdental.appt_id}}</td>
+                                            <td>{{ residenthaptdental.appt_type}}</td>
+                                            <td>{{ residenthaptdental.date}}</td>
+                                            <td>{{ residenthaptdental.status}}</td>
+                                            <td>{{ residenthaptdental.firstname}}</td>
+                                            <td>{{ residenthaptdental.schedule_name}}</td>
+                                            
+                                        </tr>
+                                        {% endfor %}
 
-                                        <tr>
-                                            <td><a class="btn btn-light btn-rounded">DA-0001</a></td>
-                                            <td>Tiger Nixon</td>
-                                            <td>2011/04/25</td>
-                                            <td>9:00 AM</td>
-                                            <td>
-                                                <a href="/reshistoryviewdent"><button type="button" class="btn btn-rounded btn-warning">View</button>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td><a class="btn btn-light btn-rounded">DA-0001</a></td>
-                                            <td>Tiger Nixon</td>
-                                            <td>2011/04/25</td>
-                                            <td>9:00 AM</td><td>
-                                                <a href="/reshistoryviewdent"><button type="button" class="btn btn-rounded btn-warning">View</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a class="btn btn-light btn-rounded">DA-0001</a></td>
-                                            <td>Tiger Nixon</td>
-                                            <td>2011/04/25</td>
-                                            <td>9:00 AM</td>
-                                            <td>
-                                                <a href="/reshistoryviewdent"><button type="button" class="btn btn-rounded btn-warning">View</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a class="btn btn-light btn-rounded">DA-0001</a></td>
-                                            <td>Tiger Nixon</td>
-                                            <td>2011/04/25</td>
-                                            <td>9:00 AM</td>
-                                            <td>
-                                                <a href="/reshistoryviewdent"><button type="button" class="btn btn-rounded btn-warning">View</button>
-                                            </td>
-                                        </tr>
                                     </tbody>
                                 </table>
 
