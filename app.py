@@ -14,7 +14,7 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-Bitbologin = "https://brgyit-bot.com/login/"
+Bitbologin = "https://prod.brgyit-bot.com/portal/"
 def connection():
     s = 'database-1.c8punsklsimv.ap-southeast-1.rds.amazonaws.com'
     d = 'bms' 
@@ -77,8 +77,10 @@ def index():
 	if('user_id' in session):
 		session['user_id']
 		session['user_firstname'] 
-		session['image']
 		return render_template("index.html")
+	else:
+		return redirect (urllib.parse.unquote_plus(Bitbologin))
+	
 
 @app.route("/clinic")
 def clinic():
@@ -93,16 +95,20 @@ def clinic():
 			clinic.append({"clinic_services_id": row[0], "clinic_services_name": row[1]})
 		conn.close()	
 		return render_template("clinic.html", clinic = clinic)
+	else:
+		return redirect (urllib.parse.unquote_plus(Bitbologin))
 
 @app.route("/adcb")
 def adcb():
-	return render_template("admin-add-clinicservice.html")
+	if('user_id' in session):
+		return render_template("admin-add-clinicservice.html")
+	else:
+		return redirect (urllib.parse.unquote_plus(Bitbologin))
 
 @app.route("/addclinic")
 def addclinic():
 	if('user_id' in session):
 		session['user_id']
-	
 		session['user_firstname'] 	
 		if request.method == 'POST':
 			clinic_services_name = request.form['clinic_services_name']
@@ -112,6 +118,8 @@ def addclinic():
 			conn.commit()
 			conn.close()
 			return redirect("/clinic")
+	else:
+		return redirect (urllib.parse.unquote_plus(Bitbologin))
 
 @app.route('/updateclinic/<int:clinic_services_id>', methods = ['GET', 'POST'])
 def updateclinic(clinic_services_id):
@@ -352,7 +360,7 @@ def adminclinicinv():
 	cursor = conn.cursor()
 	cursor.execute("SELECT * FROM ih_clinic_supply")
 	for row in cursor.fetchall():
-		adminclinicinv.append({"item_name": row[1], "qty": row[2]})
+		adminclinicinv.append({"item_name": row[1], "qty": row[3]})
 	conn.close()	
 	return render_template("adminclinicinv.html",adminclinicinv=adminclinicinv)
 

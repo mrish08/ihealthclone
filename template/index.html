@@ -162,7 +162,7 @@
                         <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#"
                             role="button" aria-haspopup="false" aria-expanded="false">
                             <span class="account-user-avatar">
-                                <img src="{{ session['image'] }}" alt="user-image"
+                                <img src="../../static/images/users/profile1.png" alt="user-image"
                                     class="rounded-circle">
                             </span>
                             <span>
@@ -269,7 +269,7 @@
                                             <i class="mdi mdi-account-multiple widget-icon"></i>
                                         </div>
                                         <div class="dash-count">
-                                            <h3>168</h3>
+                                            <h3>44</h3>
                                         </div>
                                     </div>
                                     <div class="dash-widget-info">
@@ -288,8 +288,8 @@
                                         <div class="float-end">
                                             <i class="uil-syringe widget-icon"></i>
                                         </div>
-                                        <div class="dash-count">
-                                            <h3>487</h3>
+                                        <div class="dash-count" id="transaction-count">
+                                            <h3>5</h3>
                                         </div>
                                     </div>
                                     <div class="dash-widget-info">
@@ -310,7 +310,7 @@
                                             <i class="uil-clipboard-alt widget-icon"></i>
                                         </div>
                                         <div class="dash-count">
-                                            <h3>485</h3>
+                                            <h3>13</h3>
                                         </div>
                                     </div>
                                     <div class="dash-widget-info">
@@ -331,7 +331,7 @@
                                             <i class="mdi mdi-hospital widget-icon"></i>
                                         </div>
                                         <div class="dash-count">
-                                            <h3>323</h3>
+                                            <h3>2</h3>
                                         </div>
                                     </div>
                                     <div class="dash-widget-info">
@@ -363,7 +363,17 @@
     </div>
 
     <!-- END wrapper -->
-
+    <script>
+        function updateTransactionCount() {
+            $.getJSON('/transaction_count', function(data) {
+                $('#transaction-count').text('Transaction count: ' + data.count);
+            });
+        }
+    
+        // Update the transaction count every 5 seconds
+        setInterval(updateTransactionCount, 5000);
+    </script>
+    
     <!-- bundle -->
     <script src="../../static/js/vendor.min.js"></script>
     <script src="../../static/js/app.min.js"></script>
