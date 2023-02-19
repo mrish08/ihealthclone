@@ -51,50 +51,52 @@
                 <ul class="side-nav">
 
                     <li class="side-nav-title side-nav-item">Menu</li>
-
+    
                     <li class="side-nav-item">
                         <a href="/indexstaff" class="side-nav-link">
                             <i class="uil-chart-pie"></i>
                             <span> Dashboard </span>
                         </a>
                     </li>
-
+    
                     <li class="side-nav-item">
                         <a href="/schedulestaff" class="side-nav-link">
                             <i class="uil-clipboard-alt"></i>
                             <span> Schedule </span>
                         </a>
                     </li>
-
-                    <li class="badge-primary-lighten side-nav-item menuitem-active">
+    
+                    <li class="side-nav-item">
                         <a href="/vaccinationstaff" class="side-nav-link">
                             <i class="uil-syringe"></i>
                             <span> Vaccination Service</span>
                         </a>
                     </li>
-
+    
                     <li class="side-nav-item">
                         <a href="/clinicstaff" class="side-nav-link">
+    
                             <i class="uil-clipboard-alt"></i>
                             <span> Clinic Service </span>
                         </a>
                     </li>
-
+    
                     <li class="side-nav-item">
                         <a href="/dentalstaff" class="side-nav-link">
                             <i class="mdi mdi-hospital"></i>
                             <span> Dental Service </span>
                         </a>
                     </li>
-
+    
                     <li class="side-nav-item">
-
-                        <a href="/medicinestaff" class="side-nav-link">
+    
+                        <a href="/medicinestaff'" class="side-nav-link">
                             <i class="uil-home-alt"></i>
-                            <span>Medicine Pick-up</span></a>
+                            <span>Medicine Pick Up</span>
+                        </a>
                     </li>
-
-                    <li class="side-nav-item">
+    
+                    <li class="side-nav-item menuitem-active">
                         <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
                             <i class="mdi mdi-history"></i>
                             <span> Appointment History </span>
@@ -105,7 +107,7 @@
                                 <li>
                                     <a href="/staffhaptvax">Vaccination Service</a>
                                 </li>
-                                <li>
+                                <li class="badge-primary-lighten  menuitem-active">
                                     <a href="/staffhaptclinic">Clinic Service</a>
                                 </li>
                                 <li>
@@ -118,6 +120,9 @@
                         </div>
                     </li>
                 </ul>
+            </div>
+        </li>
+    </ul>
 
             </div>
             <!-- Sidebar -left -->
@@ -184,9 +189,15 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
-                            <h4 class="page-title">Edit Medicine Details</h4>
+                            <h4 class="page-title">Edit Clinic Details</h4>
                         </div>
                     </div>
+                    <div class="d-print-none col-sm-12">
+                        <div class="text-end">
+                            <a href="javascript:window.print()" class="btn btn-primary"><i class="mdi mdi-printer"></i> Print Report</a>
+                        </div>
+                    </div>                                           <br>
+                    <br>
 
                     <!-- end page title -->
 
@@ -194,52 +205,81 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        
+                                        <br>
                                             <p>Please fill in the details below to successfully update a Medicine.</p><br>
 
-                                            <form action="/updateclinicstaff/{{clinicstaff.appt_id}}" method="POST">
+                                            <form action="/updateclinicstaff/{{staffhaptclinic.appt_id}}" method="POST">
+                                                <div class="">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <label for="" class="form-label">
+                                                                Appointment ID:</label>
+                                                            <input type="text" name="" value="{{ staffhaptclinic.appt_id}}"
+                                                                class="form-control" disabled>
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <label for="" class="form-label">
+                                                                Date:</label>
+                                                            <input type="text" name="" value="{{ staffhaptclinic.date}}"
+                                                                class="form-control" disabled>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div><br>
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <label for="time" class="form-label">
-                                                            Status:&nbsp;<span style="color:#ff0000">*</span></label>
-                                                        <input type="text" id="time" name="status" 
-                                                        class="form-control" value="{{clinicstaff.status}}">
+                                                        <label for="" class="form-label">
+                                                            Patient Name:</label>
+                                                        <input type="text" name="" value="{{ staffhaptclinic.resident}}"
+                                                            class="form-control" disabled>
+                                                        </span>
+                                        
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <label for="" class="form-label">
+                                                            Sex:</label>
+                                                        <input type="text" name="" value="{{ staffhaptclinic.sex}}"
+                                                            class="form-control" disabled>
                                                         </span>
                                                     </div>
+                                                    </div>
                                                     
-                                                </div> <br>
-                                                <div class="col-sm-6">
-                                                    <label for="resident_diagnosis" class="form-label">
-                                                        Diagnosis:&nbsp;<span style="color:#ff0000">*</span></label>
-                                                    <input type="text" id="resident_diagnosis" name="resident_diagnosis" 
-                                                    class="form-control" value="">
-                                                    </span>
-                                                </div>
-
+                                                </div><br>
+                                              
+                                                <div>
+                                                    <h4>Diagnosis Details</h4>
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <label for="" class="form-label">
+                                                                Diagnosis:&nbsp;<span
+                                                                    style="color:#ff0000">*</span></label>
+                                                            <input type="text" name="resident_diagnosis"
+                                                                class="form-control">
+                                                            </span>
+                                                        </div>
+                                                       </div>
+                                                </div><br>
                                                 <div class="row">
-                                            
-                                                </div> <br>
-                                                <div class="col-sm-6">
-                                                    <label for="prescription_details" class="form-label">
-                                                        Prescription:&nbsp;<span style="color:#ff0000">*</span></label>
-                                                    <input type="text" id="prescription_details" name="prescription_details" 
-                                                    class="form-control" value="">
-                                                    </span>
+                                                    <h4>Prescription</h4>
+                                                    <div class="col-sm-12">
+                                                        <label for="" class="form-label">
+                                                            Prescription Details:</label>
+                                                        <input type="text" name="prescription_details"
+                                                            class="form-control">
+                                                        </span>
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-6">
-                                                    <label for="remarks" class="form-label">
-                                                        Remarks:&nbsp;<span style="color:#ff0000">*</span></label>
-                                                    <input type="text" id="remarks" name="remarks" 
-                                                    class="form-control" value="">
-                                                    </span>
+                                                <br><br>
+                                           
                                                 </div>
                                                 <div align="right">
-                                                    <a href="/clinicstaff">
+                                                    <a href="/staffhaptclinic">
                                                         <button class="btn btn-primary" type="submit">Submit</button>
                                                     </a>
                                                 
                                             </form>
-                                            <a href="/clinicstaff">
+                                            <a href="/staffhaptclinic">
                                                 <button class="btn btn-secondary" type="submit">Cancel</button>
                                             </a>
                                         </div>

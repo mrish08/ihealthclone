@@ -388,12 +388,20 @@ def updateclinicinv(clinic_supp_id):
 		conn.close()
 	return render_template("updateclinicinv.html")
 
-@app.route("/adminvc")
-def adminvc():
+@app.route("/adminvc/<int:appt_id>", methods = ['GET'])
+def adminvc(appt_id):
 	if('user_id' in session):
 		session['user_id']
 		session['user_firstname'] 
-	return render_template("adminh-view-clinic.html")
+	adminvc = []
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT IH.APPT_ID, IH.DATE, CONCAT(U.LASTNAME, U.FIRSTNAME) AS RESIDENT, U.GENDER, IH.RESIDENT_DIAGNOSIS, IH.PRESCRIPTION_DETAILS FROM IH_APPOINTMENT IH INNER JOIN USERS_USER  U ON IH.ID = U.ID WHERE  APPT_ID= %s", (appt_id,))
+	for row in cursor.fetchall():
+		adminvc.append({"appt_id": row[0],"date": row[1],"resident": row[2],"sex": row[3],"resident_diagnosis": row[4],"prescription_details": row[5]})
+	conn.close()
+	return render_template("adminh-view-clinic.html", adminvc = adminvc)
+	
 
 @app.route("/adminvd")
 def adminvd():
@@ -682,9 +690,9 @@ def adminhaptclinic():
 		adminhaptclinic=[]
 		conn = connection()
 		cursor = conn.cursor()
-		cursor.execute("SELECT IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, CSV.CLINIC_SERVICES_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SERVICES CSV ON IH.CLINIC_SERVICES_ID = CSV.CLINIC_SERVICES_ID INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID WHERE STATUS ='approve'")		
+		cursor.execute("SELECT IH.APPT_ID,IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, CSV.CLINIC_SERVICES_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SERVICES CSV ON IH.CLINIC_SERVICES_ID = CSV.CLINIC_SERVICES_ID INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID WHERE STATUS ='approve'")		
 		for row in cursor.fetchall():
-				adminhaptclinic.append({ "appt_type": row[0],"date": row[1],"status": row[2],"firstname": row[3],"clinic_services_name": row[4],"schedule_name": row[5]})
+				adminhaptclinic.append({ "appt_id":row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"clinic_services_name": row[5],"schedule_name": row[6]})
 		conn.close()
 		return render_template("adminhistory-apt-clinic.html",adminhaptclinic=adminhaptclinic)
 
@@ -743,6 +751,7 @@ def clinicstaffdecline():
 	conn.close()	
 	return redirect("/clinicstaff")
 
+
 @app.route("/updateclinicstaff/<int:appt_id>", methods = ['GET', 'POST'])
 def updateclinicstaff(appt_id):
 	if('user_id' in session):
@@ -752,21 +761,19 @@ def updateclinicstaff(appt_id):
 	conn = connection()
 	cursor = conn.cursor()
 	if request.method == 'GET':
-		cursor.execute("SELECT * FROM ih_appointment WHERE appt_id = %s", (str(appt_id)))
+		cursor.execute("SELECT IH.APPT_ID, IH.DATE, CONCAT(U.LASTNAME, U.FIRSTNAME) AS RESIDENT, U.GENDER, IH.RESIDENT_DIAGNOSIS, IH.PRESCRIPTION_DETAILS FROM IH_APPOINTMENT IH INNER JOIN USERS_USER  U ON IH.ID = U.ID")
 		for row in cursor.fetchall():
-			ucs.append({"appt_id": row[0], "appt_type": row[1],"date": row[2],"remarks": row[3],"status": row[4],"time": row[5],"id": row[7]})
+			ucs.append({"appt_id": row[0],"date": row[1],"resident": row[2],"sex": row[3],"resident_diagnosis": row[4],"prescription_details": row[5]})
 		conn.close()
-		return render_template("updateclinicstaff.html", clinicstaff = ucs[0])
+		return render_template("updateclinicstaff.html", staffhaptclinic = ucs[0])
 	if request.method == 'POST':
-		remarks = str(request.form["remarks"])
-		status = str(request.form["status"])
 		resident_diagnosis = str(request.form["resident_diagnosis"])
 		prescription_details = str(request.form["prescription_details"])
-		cursor.execute("UPDATE ih_appointment SET (remarks,status,resident_diagnosis,prescription_details) = (%s,%s,%s,%s)  WHERE appt_id =(%s)",
-		(remarks,status,resident_diagnosis,prescription_details,appt_id))
+		cursor.execute("UPDATE ih_appointment SET (resident_diagnosis,prescription_details) = (%s,%s)  WHERE appt_id =(%s)",
+		(resident_diagnosis,prescription_details,appt_id))
 		conn.commit()
 		conn.close()
-		return redirect('/clinicstaff')
+		return redirect('/staffhaptclinic')
 	
 
 
@@ -974,9 +981,9 @@ def staffhaptclinic():
 	staffhaptclinic=[]
 	conn = connection()
 	cursor = conn.cursor()
-	cursor.execute("SELECT IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, CSV.CLINIC_SERVICES_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SERVICES CSV ON IH.CLINIC_SERVICES_ID = CSV.CLINIC_SERVICES_ID INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID WHERE STATUS ='approve'")		
+	cursor.execute("SELECT IH.APPT_ID,IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, CSV.CLINIC_SERVICES_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SERVICES CSV ON IH.CLINIC_SERVICES_ID = CSV.CLINIC_SERVICES_ID INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID WHERE STATUS ='approve'")		
 	for row in cursor.fetchall():
-			staffhaptclinic.append({ "appt_type": row[0],"date": row[1],"status": row[2],"firstname": row[3],"clinic_services_name": row[4],"schedule_name": row[5]})
+			staffhaptclinic.append({"appt_id": row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"clinic_services_name": row[5],"schedule_name": row[6]})
 	conn.close()
 	return render_template("staffhistory-apt-clinic.html", staffhaptclinic=staffhaptclinic)
 
@@ -1159,5 +1166,6 @@ def reject_status():
 	# # ...
 	return jsonify({'message': 'Status rejected'})
 if __name__== '__main__':
-	app.run (host='0.0.0.0',port=5000)
+	app.run (debug=True)
+	#app.run (host='0.0.0.0',port=5000)
 	

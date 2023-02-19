@@ -225,7 +225,7 @@
                                 <tbody>
                                     {% for adminhaptclinic in adminhaptclinic %}
                                     <tr>
-                                        <td>{{ adminhaptclinic.appt_type}}</td>
+                                        <td>{{ adminhaptclinic.appt_id}}</td>
                                         <td>{{ adminhaptclinic.appt_type}}</td>
                                         <td>{{ adminhaptclinic.date}}</td>
                                         <td>{{ adminhaptclinic.status}}</td>
@@ -233,7 +233,7 @@
                                         <td>{{ adminhaptclinic.clinic_services_name}}</td>
                                         <td>{{ adminhaptclinic.schedule_name}}</td>
                                         <td>
-                                            <a href="/adminvc"><button type="button" class="btn btn-rounded btn-warning">View</button>
+                                            <a href="/adminvc/{{adminhaptclinic.appt_id}}"><button type="button" class="btn btn-rounded btn-warning">View</button>
                                         </td>
                                     </tr>
                                     {% endfor %}
