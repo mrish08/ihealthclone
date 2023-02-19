@@ -201,6 +201,7 @@
                                                 <th>Status</th>
                                                 <th>Resident</th>
                                                 <th>Schedule</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -211,7 +212,9 @@
                                                 <td>{{ staffhaptdental.status}}</td>
                                                 <td>{{ staffhaptdental.firstname}}</td>
                                                 <td>{{ staffhaptdental.schedule_name}}</td>
-                                                
+                                                <td>
+                                                    <a href="/staffhviewdental"><button type="button" class="btn btn-rounded btn-warning">View</button>
+                                                </td>
                                         </tr>
                                         {% endfor %}
     
