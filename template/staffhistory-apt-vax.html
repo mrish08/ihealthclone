@@ -197,6 +197,7 @@
                                                 <th>Appointment ID</th>
                                                 <th>Service</th>
                                                 <th>Name</th>
+                                                <th>Vaccine</th>
                                                 <th>Date</th>
                                                 <th>Time</th>
                                                 <th>Status</th>
@@ -209,11 +210,11 @@
                                                 <td>{{ staffhaptvax.appt_id}}</td>
                                                 <td>{{ staffhaptvax.appt_type}}</td>
                                                 <td>{{ staffhaptvax.firstname}}</td>
+                                                <td>{{ staffhaptvax.Vaccine}}</td>
                                                 <td>{{ staffhaptvax.date}}</td>
                                                 <td>{{ staffhaptvax.schedule_name}}</td>
                                                 <td>{{ staffhaptvax.status}}</td>
                                                 <td>
-                                                <a href="/staffhviewvax"><button type="button" class="btn btn-rounded btn-warning">View</button>
                                             </td>
                                         </tr>
                                         {% endfor %}

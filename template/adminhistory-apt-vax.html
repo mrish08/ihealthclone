@@ -214,10 +214,11 @@
                                             <tr class="table-light">
                                                 <th>Appointment ID</th>
                                                 <th>Service</th>
-                                                <th>Date</th>
-                                                <th>Status</th>
                                                 <th>Name</th>
+                                                <th>Vaccine</th>
+                                                <th>Date</th>
                                                 <th>Time</th>
+                                                <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -229,12 +230,12 @@
                                                 <td>{{ adminhaptvax.appt_id}}</td>
                                                 <td>{{ adminhaptvax.appt_type}}</td>
                                                 <td>{{ adminhaptvax.date}}</td>
+                                                <td>{{ adminhaptvax.Vaccine}}</td>
                                                 <td>{{ adminhaptvax.status}}</td>
                                                 <td>{{ adminhaptvax.firstname}}</td>
                                                 <td>{{ adminhaptvax.schedule_name}}</td>
                                                 <td>
                                                  
-                                    <a href="/adminvv"><button type="button" class="btn btn-rounded btn-warning">View</button>
                                 </td>
                             </tr>
                             {% endfor %}

@@ -216,10 +216,11 @@
                                                 <tr class="table-light">
                                                     <th>Appointment ID</th>
                                                     <th>Service</th>
-                                                    <th>Date</th>
-                                                    <th>Status</th>
                                                     <th>Name</th>
+                                                    <th>Vaccine</th>
+                                                    <th>Date</th>
                                                     <th>Time</th>
+                                                    <th>Status</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -230,10 +231,12 @@
                                                 <tr>
                                                     <td>{{ adminaptvax.appt_id}}</td>
                                                     <td>{{ adminaptvax.appt_type}}</td>
-                                                    <td>{{ adminaptvax.date}}</td>
-                                                    <td>{{ adminaptvax.status}}</td>
                                                     <td>{{ adminaptvax.firstname}}</td>
+                                                    <td>{{ adminaptvax.Vaccine}}</td>
+                                                    <td>{{ adminaptvax.date}}</td>
                                                     <td>{{ adminaptvax.schedule_name}}</td>
+                                                    <td>{{ adminaptvax.status}}</td>
+
                                                     <td>
                                                         
                                                             <form action="/adminaptvaxapprove" method="POST"><input type="hidden" name="appt_id" value="{{ adminaptvax.appt_id }}"><button type="submit" class="btn btn-outline-success btn-rounded" data-bs-trigger="hover" title="Accept" data-bs-toggle="modal" data-bs-target="#success-alert-modal">
