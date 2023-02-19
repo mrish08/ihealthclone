@@ -271,10 +271,10 @@
                                                         <td>
                                                             <a href="edit-vaxstaff.html"><button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
                                                                 <i class="mdi mdi-circle-edit-outline"></i></button></a>
-                                                            <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
-                                                                <i class="dripicons-checkmark"></i></button>
-                                                            <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
-                                                                <i class="mdi mdi-window-close"></i></button>
+                                                                <form action="/vaccinationstaffapprove" method="POST"><input type="hidden" name="appt_id" value="{{vaccinationstaff.appt_id}}"><button type="submit" class="btn btn-outline-success btn-rounded" data-bs-trigger="hover" title="Accept" data-bs-toggle="modal" data-bs-target="#success-alert-modal">
+                                                                    <i class="dripicons-checkmark"></i></button></a>  </form>
+                                                                    <form action="/vaccinationstaffdecline" method="POST"><input type="hidden" name="appt_id" value="{{ vaccinationstaff.appt_id}}"><button type="submit"class="btn btn-outline-danger btn-rounded" data-bs-trigger="hover" title="Decline" data-bs-toggle="modal" data-bs-target="#warning-alert-modal">
+                                                                    <i class="mdi mdi-window-close"></i></button></a>  </form>
                                                     </tr>
 
                                                     {% endfor %}

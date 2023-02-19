@@ -195,56 +195,30 @@
                                 <div class="table-hover" id="scroll-horizontal-preview">
                                     <table id="scroll-horizontal-datatable" style="overflow-x: auto;" class="table table-hover w-100 nowrap">
 
-                                    <thead>
-                                        <tr class="table-light">
-                                            <th>Appointment ID</th>
-                                            <th>Name</th>
-                                            <th>Date</th>
-                                            <th>Time</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                
-                    
-                                    <tbody>
-
-                                        <tr>
-                                            <td><a class="btn btn-light btn-rounded">DA-0001</a></td>
-                                            <td>Tiger Nixon</td>
-                                            <td>2011/04/25</td>
-                                            <td>9:00 AM</td>
-                                            <td>
+                                        <thead>
+                                            <tr class="table-light">
+                                                <th>Service</th>
+                                                <th>Date</th>
+                                                <th>Status</th>
+                                                <th>Resident</th>
+                                                <th>Schedule</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for staffhaptdental in staffhaptdental %}
+                                            <tr>
+                                                <td>{{ staffhaptdental.appt_type}}</td>
+                                                <td>{{ staffhaptdental.date}}</td>
+                                                <td>{{ staffhaptdental.status}}</td>
+                                                <td>{{ staffhaptdental.firstname}}</td>
+                                                <td>{{ staffhaptdental.schedule_name}}</td>
+                                                <td>
                                                 <a href="staffhviewdental"><button type="button" class="btn btn-rounded btn-warning">View</button>
                                             </td>
                                         </tr>
-
-                                        <tr>
-                                            <td><a class="btn btn-light btn-rounded">DA-0001</a></td>
-                                            <td>Tiger Nixon</td>
-                                            <td>2011/04/25</td>
-                                            <td>9:00 AM</td>
-                                            <td>
-                                                <a href="staffhviewdental"><button type="button" class="btn btn-rounded btn-warning">View</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a class="btn btn-light btn-rounded">DA-0001</a></td>
-                                            <td>Tiger Nixon</td>
-                                            <td>2011/04/25</td>
-                                            <td>9:00 AM</td>
-                                            <td>
-                                                <a href="staffhviewdental"><button type="button" class="btn btn-rounded btn-warning">View</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a class="btn btn-light btn-rounded">DA-0001</a></td>
-                                            <td>Tiger Nixon</td>
-                                            <td>2011/04/25</td>
-                                            <td>9:00 AM</td>
-                                            <td>
-                                                <a href="staffhviewdental"><button type="button" class="btn btn-rounded btn-warning">View</button>
-                                            </td>
-                                        </tr>
+                                        {% endfor %}
+    
                                     </tbody>
                             </table>
 

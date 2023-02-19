@@ -111,7 +111,7 @@ def addclinic():
 			cursor.execute('INSERT INTO ih_clinic_services (clinic_services_name)'' VALUES (%s)', [clinic_services_name])
 			conn.commit()
 			conn.close()
-			return render_template("/clinic")
+			return redirect("/clinic")
 
 @app.route('/updateclinic/<int:clinic_services_id>', methods = ['GET', 'POST'])
 def updateclinic(clinic_services_id):
@@ -352,7 +352,7 @@ def adminclinicinv():
 	cursor = conn.cursor()
 	cursor.execute("SELECT * FROM ih_clinic_supply")
 	for row in cursor.fetchall():
-		adminclinicinv.append({"item_name": row[0], "qty": row[1]})
+		adminclinicinv.append({"item_name": row[1], "qty": row[2]})
 	conn.close()	
 	return render_template("adminclinicinv.html",adminclinicinv=adminclinicinv)
 
@@ -457,24 +457,57 @@ def adminaptvax():
 		conn.close()	
 		return render_template("admin-apt-vax.html", adminaptvax = adminaptvax)
 	
-@app.route("/adminaptvaxaccept<int:appt_id>", methods=['POST'])
-def adminaptvaxaccept(appt_id):
-	if('user_id' in session):
-		session['user_id']
-		session['user_firstname'] 
-		adminaptvax = []
+@app.route('/adminaptvaxapprove', methods=['POST'])
+def adminaptvaxapprove():
+    appt_id = request.form['appt_id']
+    conn = connection()
+    cursor = conn.cursor()
+    cursor.execute("UPDATE ih_appointment SET status = 'approve' WHERE appt_id = %s", (appt_id,))
+    conn.commit()
+    cursor.close()
+    return redirect("/adminaptvax")
+
+@app.route("/adminaptvaxdecline", methods=['POST'])
+def adminaptvaxdecline():
+		appt_id = request.form['appt_id']
 		conn = connection()
 		cursor = conn.cursor()
-		cursor.execute('UPDATE ih_appointment SET status = Accept WHERE id = %s', (appt_id,))
+		cursor.execute("UPDATE ih_appointment SET status = 'decline' WHERE appt_id = %s", (appt_id,))
 		conn.close()	
-		return redirect("admin-apt-vax.html")
-
+		return redirect("/adminaptvax")
+	
 @app.route("/adminaptdental")
 def adminaptdental():
 	if('user_id' in session):
 		session['user_id']
 		session['user_firstname'] 
-	return render_template("admin-apt-dental.html")
+	adminaptdental = []
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT IH.APPT_ID,IH.APPT_TYPE, IH.DATE, IH.STATUS, U.FIRSTNAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID WHERE APPT_TYPE = 'Dental Service'")
+	for row in cursor.fetchall():
+		adminaptdental.append({"appt_id":row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"schedule_name": row[5]})	
+	conn.close()	
+	return render_template("admin-apt-dental.html",adminaptdental=adminaptdental)
+
+@app.route('/adminaptdentalapprove', methods=['POST'])
+def adminaptdentalapprove():
+    appt_id = request.form['appt_id']
+    conn = connection()
+    cursor = conn.cursor()
+    cursor.execute("UPDATE ih_appointment SET status = 'approve' WHERE appt_id = %s", (appt_id,))
+    conn.commit()
+    cursor.close()
+    return redirect("/adminaptdental")
+
+@app.route("/adminaptdentaldecline", methods=['POST'])
+def adminaptdentaldecline():
+		appt_id = request.form['appt_id']
+		conn = connection()
+		cursor = conn.cursor()
+		cursor.execute("UPDATE ih_appointment SET status = 'decline' WHERE appt_id = %s", (appt_id,))
+		conn.close()	
+		return redirect("/adminaptdental")
 
 @app.route("/adminaptmedicine")
 def adminaptmedicine():
@@ -489,12 +522,57 @@ def adminaptmedicine():
 			adminaptmedicine.append({"med_appt_id": row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"medicine_name": row[5],"qty": row[6],"schedule_name": row[7]})
 	return render_template("admin-apt-medicine.html",adminaptmedicine=adminaptmedicine)
 
+@app.route('/adminaptmedicineapprove', methods=['POST'])
+def adminaptmedicineapprove():
+    med_appt_id = request.form['med_appt_id']
+    conn = connection()
+    cursor = conn.cursor()
+    cursor.execute("UPDATE ih_medicine_appointment SET status = 'approve' WHERE med_appt_id = %s", (med_appt_id,))
+    conn.commit()
+    cursor.close()
+    return redirect("/adminaptmedicine")
+
+@app.route("/adminaptmedicinedecline", methods=['POST'])
+def adminaptmedicinedecline():
+		med_appt_id = request.form['med_appt_id']
+		conn = connection()
+		cursor = conn.cursor()
+		cursor.execute("UPDATE ih_medicine_appointment SET status = 'decline' WHERE med_appt_id = %s", (med_appt_id,))
+		conn.close()	
+		return redirect("/adminaptmedicine")
+
 @app.route("/adminaptclinic")
 def adminaptclinic():
 	if('user_id' in session):
 		session['user_id']
 		session['user_firstname'] 
-	return render_template("admin-apt-clinic.html")
+	adminaptclinic=[]
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT IH.APPT_ID,IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, CSV.CLINIC_SERVICES_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SERVICES CSV ON IH.CLINIC_SERVICES_ID = CSV.CLINIC_SERVICES_ID INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID ")
+	for row in cursor.fetchall():
+			adminaptclinic.append({ "appt_id":row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"clinic_services_name": row[5],"schedule_name": row[6]})
+	conn.close()	
+	return render_template("admin-apt-clinic.html",adminaptclinic=adminaptclinic)
+
+@app.route('/adminaptclinicapprove', methods=['POST'])
+def adminaptclinicapprove():
+    appt_id = request.form['appt_id']
+    conn = connection()
+    cursor = conn.cursor()
+    cursor.execute("UPDATE ih_appointment SET status = 'approve' WHERE appt_id = %s", (appt_id,))
+    conn.commit()
+    cursor.close()
+    return redirect("/adminaptclinic")
+
+@app.route("/adminaptclinicdecline", methods=['POST'])
+def adminaptclinicdecline():
+	appt_id = request.form['appt_id']
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("UPDATE ih_appointment SET status = 'declined' WHERE appt_id = %s", (appt_id,))
+	conn.close()	
+	return redirect("/adminaptclinic")
 
 @app.route("/adminaptdentaledit")
 def adminaptdentaledit():
@@ -554,9 +632,9 @@ def adminhaptvax():
 	adminhaptvax=[]
 	conn = connection()
 	cursor = conn.cursor()
-	cursor.execute("SELECT IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, V.VAX_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_VACCINE V  ON IH.VAX_ID = V.VAX_ID  INNER JOIN IH_CLINIC_SCHED CSH  ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U  ON U.ID = IH.ID ")
+	cursor.execute("SELECT IH.APPT_ID,IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, V.VAX_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_VACCINE V  ON IH.VAX_ID = V.VAX_ID  INNER JOIN IH_CLINIC_SCHED CSH  ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U  ON U.ID = IH.ID WHERE STATUS ='approve'")
 	for row in cursor.fetchall():
-		adminhaptvax.append({ "appt_type": row[0],"date": row[1],"status": row[2],"firstname": row[3],"Vaccine": row[4],"schedule_name": row[5]})
+		adminhaptvax.append({ "appt_id":row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"Vaccine": row[5],"schedule_name": row[6]})
 		conn.close()	
 	return render_template("adminhistory-apt-vax.html",adminhaptvax=adminhaptvax)
 
@@ -565,6 +643,13 @@ def adminhaptdental():
 	if('user_id' in session):
 		session['user_id']
 		session['user_firstname'] 
+	adminhaptdental = []
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT IH.APPT_ID,IH.APPT_TYPE, IH.DATE, IH.STATUS, U.FIRSTNAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID WHERE APPT_TYPE = 'Dental Service' AND STATUS ='approve' ")
+	for row in cursor.fetchall():
+		adminhaptdental.append({"appt_id":row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"schedule_name": row[5]})	
+	conn.close()	
 	return render_template("adminhistory-apt-dental.html")
 
 @app.route("/adminhaptmedicine")
@@ -572,7 +657,13 @@ def adminhaptmedicine():
 	if('user_id' in session):
 		session['user_id']
 		session['user_firstname'] 
-	return render_template("adminhistory-apt-medicine.html")
+		adminhaptmedicine=[]
+		conn = connection()
+		cursor = conn.cursor()
+		cursor.execute("SELECT IHM.MED_APPT_ID,IHM.APPT_TYPE, IHM.DATE, IHM.STATUS, U.FIRSTNAME, M.MEDICINE_NAME, IHM.QTY,CSH.SCHEDULE_NAME, IHM.REMARKS FROM IH_MEDICINE_APPOINTMENT IHM INNER JOIN IH_MEDICINE M ON IHM.MEDICINE_ID = M.MEDICINE_ID INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IHM.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IHM.ID WHERE STATUS ='approve' ")
+		for row in cursor.fetchall():
+			adminhaptmedicine.append({"med_appt_id": row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"medicine_name": row[5],"qty": row[6],"schedule_name": row[7]})
+	return render_template("adminhistory-apt-medicine.html",adminhaptmedicine=adminhaptmedicine)
 
 @app.route("/adminhaptclinic")
 def adminhaptclinic():
@@ -582,7 +673,7 @@ def adminhaptclinic():
 		adminhaptclinic=[]
 		conn = connection()
 		cursor = conn.cursor()
-		cursor.execute("SELECT IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, CSV.CLINIC_SERVICES_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SERVICES CSV ON IH.CLINIC_SERVICES_ID = CSV.CLINIC_SERVICES_ID INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID ")		
+		cursor.execute("SELECT IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, CSV.CLINIC_SERVICES_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SERVICES CSV ON IH.CLINIC_SERVICES_ID = CSV.CLINIC_SERVICES_ID INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID WHERE STATUS ='approve'")		
 		for row in cursor.fetchall():
 				adminhaptclinic.append({ "appt_type": row[0],"date": row[1],"status": row[2],"firstname": row[3],"clinic_services_name": row[4],"schedule_name": row[5]})
 		conn.close()
@@ -618,10 +709,30 @@ def clinicstaff():
 	clinicstaff = []
 	conn = connection()
 	cursor = conn.cursor()
-	cursor.execute("SELECT * FROM ih_appointment")
+	cursor.execute("SELECT IH.APPT_ID,IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, CSV.CLINIC_SERVICES_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SERVICES CSV ON IH.CLINIC_SERVICES_ID = CSV.CLINIC_SERVICES_ID INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID ")
 	for row in cursor.fetchall():
-		clinicstaff.append({"appt_id": row[0], "appt_type": row[1],"date": row[2],"remarks": row[3],"status": row[4],"time": row[5],"id": row[7]})
+			clinicstaff.append({ "appt_id":row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"clinic_services_name": row[5],"schedule_name": row[6]})
+	conn.close()	
 	return render_template("clinicstaff.html", clinicstaff = clinicstaff)
+
+@app.route('/clinicstaffapprove', methods=['POST'])
+def clinicstaffapprove():
+    appt_id= request.form['appt_id']
+    conn = connection()
+    cursor = conn.cursor()
+    cursor.execute("UPDATE ih_appointment SET status = 'approve' WHERE appt_id= %s", (appt_id,))
+    conn.commit()
+    cursor.close()
+    return redirect("/clinicstaff")
+
+@app.route("/clinicstaffdecline", methods=['POST'])
+def clinicstaffdecline():
+	appt_id = request.form['appt_id']
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("UPDATE ih_appointment SET status = 'declined' WHERE appt_id= %s", (appt_id,))
+	conn.close()	
+	return redirect("/clinicstaff")
 
 @app.route("/updateclinicstaff/<int:appt_id>", methods = ['GET', 'POST'])
 def updateclinicstaff(appt_id):
@@ -648,27 +759,7 @@ def updateclinicstaff(appt_id):
 		conn.close()
 		return redirect('/clinicstaff')
 	
-@app.route("/acceptclinicstaff/<int:appt_id>", methods = ['GET', 'POST'])
-def acceptclinicstaff(appt_id):
-	if('user_id' in session):
-		session['user_id']
-		session['user_firstname'] 
-	acs = []
-	conn = connection()
-	cursor = conn.cursor()
-	if request.method == 'GET':
-		cursor.execute("SELECT * FROM ih_appointment WHERE appt_id = %s", (str(appt_id)))
-		for row in cursor.fetchall():
-			acs.append({"appt_id": row[0], "appt_type": row[1],"date": row[2],"remarks": row[3],"status": row[4],"time": row[5],"id": row[7]})
-		conn.close()
-		return render_template("clinicstaff.html", clinicstaff = acs[0])
-	if request.method == 'POST':
-		status = "Accept"
-		cursor.execute("UPDATE ih_appointment SET (status) = (%s)  WHERE appt_id =(%s)",
-		(status,appt_id))
-		conn.commit()
-		conn.close()
-		return redirect('/clinicstaff')
+
 
 @app.route("/medicinestaff")
 def medicinestaff():
@@ -682,6 +773,25 @@ def medicinestaff():
 		for row in cursor.fetchall():
 			medicinestaff.append({"med_appt_id": row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"medicine_name": row[5],"qty": row[6],"schedule_name": row[7]})
 	return render_template("medicinestaff.html",medicinestaff=medicinestaff)
+
+@app.route('/medicinestaffapprove', methods=['POST'])
+def medicinestaffapprove():
+    med_appt_id= request.form['med_appt_id']
+    conn = connection()
+    cursor = conn.cursor()
+    cursor.execute("UPDATE ih_medicine_appointment SET status = 'approve' WHERE med_appt_id=%s", (med_appt_id,))
+    conn.commit()
+    cursor.close()
+    return redirect("/medicinestaff")
+
+@app.route("/medicinestaffdecline", methods=['POST'])
+def medicinestaffdecline():
+	med_appt_id = request.form['med_appt_id']
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("UPDATE ih_medicine_appointment SET status = 'declined' WHERE med_appt_id=%s", (med_appt_id,))
+	conn.close()	
+	return redirect("/medicinestaff")
 
 @app.route('/updatemedicinestaff/<int:med_appt_id>', methods = ['GET', 'POST'])
 def updatemedicinestaff(med_appt_id):
@@ -723,12 +833,25 @@ def vaccinationstaff():
 	conn.close()	
 	return render_template("vaccinationstaff.html", vaccinationstaff = vaccinationstaff)
 
-@app.route('/updatevaccinationstaff/<int:vaccine_id>', methods = ['GET', 'POST'])
-def updatevaccinationstaff(vaccine_id):
-	if('user_id' in session):
-		session['user_id']
-		session['user_firstname'] 
-		return redirect('/vaccinationstaff')
+@app.route('/vaccinationstaffapprove', methods=['POST'])
+def vaccinationstaffapprove():
+    appt_id = request.form['appt_id']
+    conn = connection()
+    cursor = conn.cursor()
+    cursor.execute("UPDATE ih_appointment SET status = 'approve' WHERE appt_id = %s", (appt_id,))
+    conn.commit()
+    cursor.close()
+    return redirect("/vaccinationstaff")
+
+@app.route("/vaccinationstaffdecline", methods=['POST'])
+def vaccinationstaffdecline():
+	appt_id = request.form['appt_id']
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("UPDATE ih_appointment SET status = 'declined' WHERE appt_id = %s", (appt_id,))
+	conn.close()	
+	return redirect("/vaccinationstaff")
+
 
 @app.route("/dentalstaff")
 def dentalstaff():
@@ -738,11 +861,30 @@ def dentalstaff():
 	dentalstaff = []
 	conn = connection()
 	cursor = conn.cursor()
-	cursor.execute("SELECT IH.APPT_ID,IH.APPT_TYPE, IH.DATE, IH.STATUS, U.FIRSTNAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID WHERE APP_TYPE = DENTAL SERVICE")
+	cursor.execute("SELECT IH.APPT_ID,IH.APPT_TYPE, IH.DATE, IH.STATUS, U.FIRSTNAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID WHERE APPT_TYPE = 'Dental Service'")
 	for row in cursor.fetchall():
 		dentalstaff.append({"appt_id":row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"schedule_name": row[5]})	
 	conn.close()	
 	return render_template("dentalstaff.html", dentalstaff = dentalstaff)
+
+@app.route('/dentalstaffapprove', methods=['POST'])
+def vdentalstaffapprove():
+    appt_id = request.form['appt_id']
+    conn = connection()
+    cursor = conn.cursor()
+    cursor.execute("UPDATE ih_appointment SET status = 'approve' WHERE appt_id = %s", (appt_id,))
+    conn.commit()
+    cursor.close()
+    return redirect("/dentalstaff")
+
+@app.route("/dentalstaffdecline", methods=['POST'])
+def dentalstaffdecline():
+	appt_id = request.form['appt_id']
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("UPDATE ih_appointment SET status = 'declined' WHERE appt_id = %s", (appt_id,))
+	conn.close()	
+	return redirect("/dentalstaff")
 
 @app.route('/updatedentalstaff/<int:dental_id>', methods = ['GET', 'POST'])
 def updatedentalstaff(dental_id):
@@ -759,7 +901,7 @@ def staffhaptvax():
 	staffhaptvax=[]
 	conn = connection()
 	cursor = conn.cursor()
-	cursor.execute("SELECT  IH.APPT_ID,IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, V.VAX_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_VACCINE V  ON IH.VAX_ID = V.VAX_ID  INNER JOIN IH_CLINIC_SCHED CSH  ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U  ON U.ID = IH.ID ")
+	cursor.execute("SELECT  IH.APPT_ID,IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, V.VAX_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_VACCINE V  ON IH.VAX_ID = V.VAX_ID  INNER JOIN IH_CLINIC_SCHED CSH  ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U  ON U.ID = IH.ID WHERE STATUS ='approve'")
 	for row in cursor.fetchall():
 		staffhaptvax.append({ "appt_id":row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"Vaccine": row[5],"schedule_name": row[6]})	
 		conn.close()	
@@ -777,7 +919,14 @@ def staffhaptdental():
 	if('user_id' in session):
 		session['user_id']
 		session['user_firstname'] 
-	return render_template("staffhistory-apt-dental.html")
+		staffhaptdental=[]
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT IH.APPT_ID,IH.APPT_TYPE, IH.DATE, IH.STATUS, U.FIRSTNAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID WHERE APPT_TYPE = 'Dental Service' AND STATUS ='approve' ")
+	for row in cursor.fetchall():
+		staffhaptdental.append({"appt_id":row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"schedule_name": row[5]})	
+	conn.close()	
+	return render_template("staffhistory-apt-dental.html",staffhaptdental=staffhaptdental)
 
 @app.route("/staffhviewdental")
 def staffhviewdental():
@@ -794,7 +943,7 @@ def staffhaptmedicine():
 		staffhaptmedicine=[]
 		conn = connection()
 		cursor = conn.cursor()
-		cursor.execute("SELECT IHM.APPT_TYPE, IHM.DATE, IHM.STATUS, U.FIRSTNAME, M.MEDICINE_NAME, IHM.QTY,CSH.SCHEDULE_NAME, IHM.REMARKS FROM IH_MEDICINE_APPOINTMENT IHM INNER JOIN IH_MEDICINE M ON IHM.MEDICINE_ID = M.MEDICINE_ID INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IHM.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IHM.ID ")
+		cursor.execute("SELECT IHM.APPT_TYPE, IHM.DATE, IHM.STATUS, U.FIRSTNAME, M.MEDICINE_NAME, IHM.QTY,CSH.SCHEDULE_NAME, IHM.REMARKS FROM IH_MEDICINE_APPOINTMENT IHM INNER JOIN IH_MEDICINE M ON IHM.MEDICINE_ID = M.MEDICINE_ID INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IHM.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IHM.ID WHERE STATUS ='approve' ")
 		for row in cursor.fetchall():
 			staffhaptmedicine.append({ "appt_type": row[0],"date": row[1],"status": row[2],"firstname": row[3],"medicine_name": row[4],"qty": row[5],"schedule_name": row[6],"remarks": row[7]})
 		conn.close()	
@@ -816,7 +965,7 @@ def staffhaptclinic():
 	staffhaptclinic=[]
 	conn = connection()
 	cursor = conn.cursor()
-	cursor.execute("SELECT IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, CSV.CLINIC_SERVICES_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SERVICES CSV ON IH.CLINIC_SERVICES_ID = CSV.CLINIC_SERVICES_ID INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID ")		
+	cursor.execute("SELECT IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, CSV.CLINIC_SERVICES_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SERVICES CSV ON IH.CLINIC_SERVICES_ID = CSV.CLINIC_SERVICES_ID INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID WHERE STATUS ='approve'")		
 	for row in cursor.fetchall():
 			staffhaptclinic.append({ "appt_type": row[0],"date": row[1],"status": row[2],"firstname": row[3],"clinic_services_name": row[4],"schedule_name": row[5]})
 	conn.close()
@@ -836,20 +985,6 @@ def indexresident():
 		session['user_firstname'] 
 		return render_template("indexresident.html")
 
-
-@app.route("/dentalresident")
-def dentalresident():
-	if('user_id' in session):
-		session['user_id']
-		session['user_firstname'] 
-		return render_template("dentalresident.html")
-
-@app.route("/vaccinationresident")
-def vaccinationresident():
-	if('user_id' in session):
-		session['user_id']
-		session['user_firstname'] 
-	return render_template("vaccinationresident.html")
 
 @app.route("/residentas",methods=['GET', 'POST'])
 def residentas():
@@ -888,6 +1023,8 @@ def residentvax():
 			conn.commit()
 			conn.close()
 		return render_template("residentbookingvax.html")
+
+
 	
 @app.route("/residentdental", methods=['GET', 'POST'])
 def residentdental():
@@ -906,6 +1043,7 @@ def residentdental():
 			conn.commit()
 			conn.close()
 		return render_template("residentbookingdental.html")
+
 
 
 @app.route("/residentmedicine", methods=['GET', 'POST'])
@@ -937,7 +1075,7 @@ def residenthaptvax():
 	residenthaptvax=[]
 	conn = connection()
 	cursor = conn.cursor()
-	cursor.execute("SELECT IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, V.VAX_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_VACCINE V  ON IH.VAX_ID = V.VAX_ID  INNER JOIN IH_CLINIC_SCHED CSH  ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U  ON U.ID = IH.ID  WHERE FIRSTNAME= %s", (user_name,))
+	cursor.execute("SELECT IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, V.VAX_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_VACCINE V  ON IH.VAX_ID = V.VAX_ID  INNER JOIN IH_CLINIC_SCHED CSH  ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U  ON U.ID = IH.ID  WHERE STATUS='APPROVED' AND FIRSTNAME= %s", (user_name,))
 	for row in cursor.fetchall():
 		residenthaptvax.append({ "appt_type": row[0],"date": row[1],"status": row[2],"firstname": row[3],"Vaccine": row[4],"schedule_name": row[5]})
 		conn.close()	
@@ -947,19 +1085,20 @@ def residenthaptvax():
 def reshistoryviewvax():
 	return render_template("reshistory-view-vaccineh.html")
 
+
 @app.route("/residenthaptdental")
 def residenthaptdental():
 	if('user_id' in session):
 		session['user_id']
 		session['user_firstname'] 
-	user_name = session['user_firstname']
-	residenthaptdental=[]
-	conn = connection()
-	cursor = conn.cursor()
-	cursor.execute("SELECT IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, V.VAX_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_VACCINE V  ON IH.VAX_ID = V.VAX_ID  INNER JOIN IH_CLINIC_SCHED CSH  ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U  ON U.ID = IH.ID  WHERE FIRSTNAME= %s", (user_name,))
-	for row in cursor.fetchall():
-		residenthaptdental.append({ "appt_type": row[0],"date": row[1],"status": row[2],"firstname": row[3],"Vaccine": row[4],"schedule_name": row[5]})
-		conn.close()	
+		user_name = session['user_firstname']
+		residenthaptdental=[]
+		conn = connection()
+		cursor = conn.cursor()
+		cursor.execute("SELECT IH.APPT_TYPE, IH.DATE, IH.STATUS, U.FIRSTNAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID AND FIRSTNAME= %s", (user_name,))
+		for row in cursor.fetchall():
+			residenthaptdental.append({ "appt_id":row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"schedule_name": row[5]})	
+			conn.close()	
 	return render_template("residenthistory-apt-dental.html",residenthaptdental=residenthaptdental)
 
 @app.route("/reshistoryviewdent")
@@ -1011,5 +1150,7 @@ def reject_status():
 	# # ...
 	return jsonify({'message': 'Status rejected'})
 if __name__== '__main__':
-	app.run (host='0.0.0.0',port=5000)
+	app.run (debug=True)
+
+	#app.run (host='0.0.0.0',port=5000)
 	

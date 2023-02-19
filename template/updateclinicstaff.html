@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Update Medicine | iHealth</title>
+    <title>Vaccination Service | iHealth Staff</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
     <meta content="Coderthemes" name="author">
@@ -26,165 +26,151 @@
 
 </head>
 
-<body class="loading" data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
+<body class="loading"
+    data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
     <!-- Begin page -->
-    <div class="wrapper">
-        <!-- ========== Left Sidebar Start ========== -->
-        <div class="leftside-menu">
+    <header>
+
+        <div class="wrapper">
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="leftside-menu">
 
             <!-- LOGO -->
-            <a href="/index" class="logo text-center logo-light">
-                <span class="logo-lg">
-                    <img src="../../static/images/ihealth-logo-with-text.png" alt="" height="40">
-                </span>
-                <span class="logo-sm">
-                    <img src="../../static/images/bitbo.png" alt="" height="32">
-                </span>
+           <a href="/index" class="logo text-center logo-light">
+            <span class="logo-lg">
+                <img src="../../static/images/ihealth-logo-with-text.png" alt="" height="40">
+            </span>
+            <span class="logo-sm">
+                <img src="../../static/images/bitbo.png" alt="" height="32">
+            </span>
             </a>
-            <!--- Sidemenu -->
-            <ul class="side-nav">
 
-                <li class="side-nav-title side-nav-item">Menu</li>
+            <div class="h-100" id="leftside-menu-container" data-simplebar="">
+
+                <!--- Sidemenu -->
+                <ul class="side-nav">
+
+                    <li class="side-nav-title side-nav-item">Menu</li>
 
                     <li class="side-nav-item">
-                        <a href="/index" class="side-nav-link" >
+                        <a href="/indexstaff" class="side-nav-link">
                             <i class="uil-chart-pie"></i>
                             <span> Dashboard </span>
                         </a>
                     </li>
 
-                <li class="side-nav-item">
-                    <a href="/schedule" class="side-nav-link">
-                        <i class="uil-clipboard-alt"></i>
-                        <span> Schedule </span>
-                    </a>
-                </li>
-
-                <li class="side-nav-item menuitem-active">
-                    <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarEcommerce" class="side-nav-link">
-                        <i class="uil-folder-plus"></i>
-                        <span> Inventory </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarTasks">
-                        <ul class="side-nav-second-level">
-                            <li>
-                                <a href="/adminvaccineinv">Vaccine</a>
-                            </li>
-                            <li class="menuitem-active">
-                                <a class="badge-primary-lighten" href="/adminmedicineinv">Medicine</a>
-                            </li>
-                            <li>
-                                <a href="/adminclinicinv">Clinic</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
-                <li class="side-nav-item">
-                    <a href="/clinic" class="side-nav-link" >
-                        <i class="uil-clipboard-alt"></i>
-                        <span> Clinic Service </span>
-                    </a>
-                </li>
-
-                <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#sidebarEcommerce" aria-expanded="false" aria-controls="sidebarEcommerce" class="side-nav-link">
-                        <i class="mdi mdi-hospital mdi-hospital-box"></i>
-                        <span> Appointment Services </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarEcommerce">
-                        <ul class="side-nav-second-level">
-                            <li>
-                                <a href="/adminaptvax">Vaccination Service</a>
-                            </li>
-                            <li>
-                                <a href="/adminaptclinic">Clinic Service</a>
-                            </li>
-                            <li>
-                                <a href="/adminaptdental">Dental Service</a>
-                            </li>
-                            <li>
-                                <a href="/adminaptmedicine">Medicine Pickup</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
-                <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
-                        <i class="mdi mdi-history"></i>
-                        <span> Appointment History </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarEmail">
-                        <ul class="side-nav-second-level">
-                            <li>
-                                <a href="/adminhaptvax">Vaccination Service</a>
-                            </li>
-                            <li>
-                                <a href="/adminhaptclinic">Clinic Service</a>
-                            </li>
-                            <li>
-                                <a href="/adminhaptdental">Dental Service</a>
-                            </li>
-                            <li>
-                                <a href="/adminhaptmedicine">Medicine Pickup</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-            </ul><!-- Sidebar -left -->
-            
-        </div>
-    </div>
-
-<!-- ============================================================== -->
-<!-- Start Page Content here -->
-<!-- ============================================================== -->
-
-<div class="wrapper">
-
-    <div class="content-page">
-        <div class="content">
-            <!-- Topbar Start -->
-            <div class="navbar-custom">
-                <ul class="list-unstyled topbar-menu float-end mb-0">
-
-                    <li class="notification-list">
-                        <a class="nav-link" href="{{session.url}}">
-                            <i class="noti-icon"><button type="button" class="btn btn-primary">Switch to
-                                    <strong>BITBo.</strong></button></i>
+                    <li class="side-nav-item">
+                        <a href="/schedulestaff" class="side-nav-link">
+                            <i class="uil-clipboard-alt"></i>
+                            <span> Schedule </span>
                         </a>
                     </li>
 
-                    <li class="dropdown notification-list">
-                        <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <span class="account-user-avatar">
-                                <img src="../../static/images/users/profile1.png" alt="user-image"
-                                    class="rounded-circle">
-                            </span>
-                            <span>
-                                <span class="account-user-name">{{session.user_firstname}}</span>
-                                <span class="account-position">Admin</span>
-                            </span>
+                    <li class="badge-primary-lighten side-nav-item menuitem-active">
+                        <a href="/vaccinationstaff" class="side-nav-link">
+                            <i class="uil-syringe"></i>
+                            <span> Vaccination Service</span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
-                            <!-- item-->
-                            <div class=" dropdown-header noti-title">
-                                <h6 class="text-overflow m-0">Welcome !</h6>
-                            </div>
+                    </li>
 
-                            <!-- item-->
-                            <a href="https://prod.brgyit-bot.com/portal/" class="dropdown-item notify-item">
-                                <i class="mdi mdi-logout me-1"></i>
-                                <span>Logout</span>
-                            </a>
+                    <li class="side-nav-item">
+                        <a href="/clinicstaff" class="side-nav-link">
+                            <i class="uil-clipboard-alt"></i>
+                            <span> Clinic Service </span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a href="/dentalstaff" class="side-nav-link">
+                            <i class="mdi mdi-hospital"></i>
+                            <span> Dental Service </span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item">
+
+                        <a href="/medicinestaff" class="side-nav-link">
+                            <i class="uil-home-alt"></i>
+                            <span>Medicine Pick-up</span></a>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
+                            <i class="mdi mdi-history"></i>
+                            <span> Appointment History </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="sidebarEmail">
+                            <ul class="side-nav-second-level">
+                                <li>
+                                    <a href="/staffhaptvax">Vaccination Service</a>
+                                </li>
+                                <li>
+                                    <a href="/staffhaptclinic">Clinic Service</a>
+                                </li>
+                                <li>
+                                    <a href="/staffhaptdental">Dental Service</a>
+                                </li>
+                                <li>
+                                    <a href="/staffhaptmedicine">Medicine Pickup</a>
+                                </li>
+                            </ul>
                         </div>
                     </li>
-
                 </ul>
+
+            </div>
+            <!-- Sidebar -left -->
+
+            </div>
+    </header>
+
+    <div class="wrapper">
+
+        <div class="content-page">
+            <div class="content">
+                <!-- Topbar Start -->
+                <div class="navbar-custom">
+                    <ul class="list-unstyled topbar-menu float-end mb-0">
+                        
+                        <li class="notification-list">
+                            <a class="nav-link" href="{{session.url}}">
+                                <i class="noti-icon"><button type="button" class="btn btn-primary">Switch to
+                                        <strong>BITBo.</strong></button></i>
+                            </a>
+                        </li>
+
+                        <li class="dropdown notification-list">
+                            <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown"
+                                href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                <span class="account-user-avatar">
+                                    <img src="../../static/images/users/profile1.png" alt="user-image"
+                                        class="rounded-circle">
+                                </span>
+                                <span>
+                                    <span class="account-user-name">{{session.user_firstname}}</span>
+                                    <span class="account-position">Staff</span>
+                                </span>
+                            </a>
+                            <div
+                                class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
+                                <!-- item-->
+                                <div class=" dropdown-header noti-title">
+                                    <h6 class="text-overflow m-0">Welcome !</h6>
+                                </div>
+
+                                <!-- item-->
+                                <a href="https://prod.brgyit-bot.com/portal/" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-logout me-1"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+                    <button class="button-menu-mobile open-left">
+                        <i class="mdi mdi-menu"></i>
+                    </button>
                 <button class="button-menu-mobile open-left">
                     <i class="mdi mdi-menu"></i>
                 </button>
@@ -249,15 +235,15 @@
                                                 </div>
                                                 <div align="right">
                                                     <a href="/clinicstaff">
-                                                        <button class="btn btn-secondary" type="submit">Cancel</button>
-                                                    </a>
-
-                                                    <a href="/clinicstaff">
                                                         <button class="btn btn-primary" type="submit">Submit</button>
                                                     </a>
-                                                </div>
+                                                
                                             </form>
-                                    </div>
+                                            <a href="/clinicstaff">
+                                                <button class="btn btn-secondary" type="submit">Cancel</button>
+                                            </a>
+                                        </div>
+                                    </div> 
                                     <!-- end col-->
                                 </div>
                                 <!-- end row-->

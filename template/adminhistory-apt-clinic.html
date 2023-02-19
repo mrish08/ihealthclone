@@ -212,6 +212,7 @@
                             <table id="basic-datatable" class="table dt-responsive nowrap w-100">
                                 <thead>
                                     <tr class="table-light">
+                                        <th>Appointment ID</th>
                                         <th>Service</th>
                                         <th>Date</th>
                                         <th>Status</th>
@@ -224,6 +225,7 @@
                                 <tbody>
                                     {% for adminhaptclinic in adminhaptclinic %}
                                     <tr>
+                                        <td>{{ adminhaptclinic.appt_type}}</td>
                                         <td>{{ adminhaptclinic.appt_type}}</td>
                                         <td>{{ adminhaptclinic.date}}</td>
                                         <td>{{ adminhaptclinic.status}}</td>

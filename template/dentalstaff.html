@@ -208,17 +208,17 @@
                                                 <tr>
                                                     <td>{{ dentalstaff.appt_id}}</td>
                                                     <td>{{ dentalstaff.appt_type}}</td>
-                                                    <td>{{ dentalstaff.remarks}}</td>
+                                                    <td>{{ dentalstaff.firstname}}</td>
                                                     <td>{{ dentalstaff.date}}</td>
-                                                    <td>{{ dentalstaff.time}}</td>
+                                                    <td>{{ dentalstaff.schedule_name}}</td>
                                                     <td>{{ dentalstaff.status}}</td>
                                                     <td>
                                                         <a href="edit-dentalstaff.html"><button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
                                                             <i class="mdi mdi-circle-edit-outline"></i></button></a>
-                                                        <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Accept">
-                                                            <i class="dripicons-checkmark"></i></button>
-                                                        <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Decline">
-                                                            <i class="mdi mdi-window-close"></i></button>
+                                                            <form action="/dentalstaffapprove" method="POST"><input type="hidden" name="appt_id" value="{{dentalstaff.appt_id}}"><button type="submit" class="btn btn-outline-success btn-rounded" data-bs-trigger="hover" title="Accept" data-bs-toggle="modal" data-bs-target="#success-alert-modal">
+                                                                <i class="dripicons-checkmark"></i></button></a>  </form>
+                                                                <form action="/dentalstaffdecline" method="POST"><input type="hidden" name="appt_id" value="{{ dentalstaff.appt_id}}"><button type="submit"class="btn btn-outline-danger btn-rounded" data-bs-trigger="hover" title="Decline" data-bs-toggle="modal" data-bs-target="#warning-alert-modal">
+                                                                <i class="mdi mdi-window-close"></i></button></a>  </form>
                                                     </td>
                                                 </tr>
                                                 
