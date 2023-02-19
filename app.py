@@ -77,6 +77,7 @@ def index():
 	if('user_id' in session):
 		session['user_id']
 		session['user_firstname'] 
+		session['account_type'] 
 		return render_template("index.html")
 	else:
 		return redirect (urllib.parse.unquote_plus(Bitbologin))
@@ -651,14 +652,14 @@ def adminhaptdental():
 	if('user_id' in session):
 		session['user_id']
 		session['user_firstname'] 
-	adminhaptdental = []
-	conn = connection()
-	cursor = conn.cursor()
-	cursor.execute("SELECT IH.APPT_ID,IH.APPT_TYPE, IH.DATE, IH.STATUS, U.FIRSTNAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID WHERE APPT_TYPE = 'Dental Service' AND STATUS ='approve' ")
-	for row in cursor.fetchall():
-		adminhaptdental.append({"appt_id":row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"schedule_name": row[5]})	
-	conn.close()	
-	return render_template("adminhistory-apt-dental.html")
+		adminhaptdental = []
+		conn = connection()
+		cursor = conn.cursor()
+		cursor.execute("SELECT IH.APPT_ID,IH.APPT_TYPE, IH.DATE, IH.STATUS, U.FIRSTNAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID WHERE APPT_TYPE = 'Dental Service' AND STATUS ='approve' ")
+		for row in cursor.fetchall():
+			adminhaptdental.append({"appt_id":row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"schedule_name": row[5]})	
+		conn.close()	
+	return render_template("adminhistory-apt-dental.html",adminhaptdental=adminhaptdental)
 
 @app.route("/adminhaptmedicine")
 def adminhaptmedicine():
@@ -899,7 +900,7 @@ def updatedentalstaff(dental_id):
 	if('user_id' in session):
 		session['user_id']
 		session['user_firstname'] 
-		return redirect('/dentalstaff')
+		return render_template("edit-dentalstaff.html")
 
 @app.route("/staffhaptvax")
 def staffhaptvax():
@@ -1083,7 +1084,7 @@ def residenthaptvax():
 	residenthaptvax=[]
 	conn = connection()
 	cursor = conn.cursor()
-	cursor.execute("SELECT IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, V.VAX_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_VACCINE V  ON IH.VAX_ID = V.VAX_ID  INNER JOIN IH_CLINIC_SCHED CSH  ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U  ON U.ID = IH.ID  WHERE STATUS='APPROVED' AND FIRSTNAME= %s", (user_name,))
+	cursor.execute("SELECT IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, V.VAX_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_VACCINE V  ON IH.VAX_ID = V.VAX_ID  INNER JOIN IH_CLINIC_SCHED CSH  ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U  ON U.ID = IH.ID  WHERE  FIRSTNAME= %s", (user_name,))
 	for row in cursor.fetchall():
 		residenthaptvax.append({ "appt_type": row[0],"date": row[1],"status": row[2],"firstname": row[3],"Vaccine": row[4],"schedule_name": row[5]})
 		conn.close()	
@@ -1103,7 +1104,7 @@ def residenthaptdental():
 		residenthaptdental=[]
 		conn = connection()
 		cursor = conn.cursor()
-		cursor.execute("SELECT IH.APPT_TYPE, IH.DATE, IH.STATUS, U.FIRSTNAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID AND FIRSTNAME= %s", (user_name,))
+		cursor.execute("SELECT IH.APPT_ID, IH.APPT_TYPE, IH.DATE, IH.STATUS, U.FIRSTNAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID WHERE APPT_TYPE='Dental Service' AND FIRSTNAME= %s", (user_name,))
 		for row in cursor.fetchall():
 			residenthaptdental.append({ "appt_id":row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"schedule_name": row[5]})	
 			conn.close()	
