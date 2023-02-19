@@ -184,6 +184,7 @@
                             <table id="basic-datatable" class="table dt-responsive nowrap w-100">
                                 <thead>
                                     <tr class="table-light">
+                                        <th>Appointment ID</th>
                                         <th>Service</th>
                                         <th>Date</th>
                                         <th>Status</th>
@@ -196,6 +197,7 @@
                                 <tbody>
                                     {% for residenthaptclinic in residenthaptclinic %}
                                     <tr>
+                                        <td>{{ residenthaptclinic.appt_id}}</td>
                                         <td>{{ residenthaptclinic.appt_type}}</td>
                                         <td>{{ residenthaptclinic.date}}</td>
                                         <td>{{ residenthaptclinic.status}}</td>
@@ -203,7 +205,8 @@
                                         <td>{{ residenthaptclinic.clinic_services_name}}</td>
                                         <td>{{ residenthaptclinic.schedule_name}}</td>
                                         <td>
-                                            <a href="/reshistoryviewclinic"><button type="button" class="btn btn-rounded btn-warning">View</button>
+                                            
+                                            <a href="/reshistoryviewclinic/{{residenthaptclinic.appt_id}}"><button type="button" class="btn btn-rounded btn-warning">View</button>
                                         </td>
                                     </tr>
                                     {% endfor %}
