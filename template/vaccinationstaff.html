@@ -269,8 +269,7 @@
                                                         <td>{{ vaccinationstaff.schedule_name}}</td>
                                                         <td>{{ vaccinationstaff.status}}</td>
                                                         <td>
-                                                            <a href="/updatedentalstaff/{{dentalstaff.appt_id}}"><button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
-                                                                <i class="mdi mdi-circle-edit-outline"></i></button></a>
+                                                            
                                                                 <form action="/vaccinationstaffapprove" method="POST"><input type="hidden" name="appt_id" value="{{vaccinationstaff.appt_id}}"><button type="submit" class="btn btn-outline-success btn-rounded" data-bs-trigger="hover" title="Accept" data-bs-toggle="modal" data-bs-target="#success-alert-modal">
                                                                     <i class="dripicons-checkmark"></i></button></a>  </form>
                                                                     <form action="/vaccinationstaffdecline" method="POST"><input type="hidden" name="appt_id" value="{{ vaccinationstaff.appt_id}}"><button type="submit"class="btn btn-outline-danger btn-rounded" data-bs-trigger="hover" title="Decline" data-bs-toggle="modal" data-bs-target="#warning-alert-modal">
