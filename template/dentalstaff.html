@@ -213,11 +213,8 @@
                                                     <td>{{ dentalstaff.schedule_name}}</td>
                                                     <td>{{ dentalstaff.status}}</td>
                                                     <td>
-<<<<<<< HEAD
                                                         <a href="/updatedentalstaff/{{dentalstaff.appt_id}}"><button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
-=======
                                                         <a href="/updatedentalstaff"><button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Edit">
->>>>>>> 9e60acc3c6270b8a6c92a417ee89ac31fc34285a
                                                             <i class="mdi mdi-circle-edit-outline"></i></button></a>
                                                             <form action="/dentalstaffapprove" method="POST"><input type="hidden" name="appt_id" value="{{dentalstaff.appt_id}}"><button type="submit" class="btn btn-outline-success btn-rounded" data-bs-trigger="hover" title="Accept" data-bs-toggle="modal" data-bs-target="#success-alert-modal">
                                                                 <i class="dripicons-checkmark"></i></button></a>  </form>
