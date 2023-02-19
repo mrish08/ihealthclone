@@ -1132,8 +1132,15 @@ def residenthaptmedicine():
 		residenthaptmedicine.append({ "med_appt_id": row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"medicine_name": row[5],"qty": row[6],"schedule_name": row[7]})
 	return render_template("residenthistory-apt-medicine.html",residenthaptmedicine=residenthaptmedicine)
 
-@app.route("/reshistoryviewmed")
-def reshistoryviewmed():
+@app.route("/reshistoryviewmed/<int:appt_id>", methods = ['GET'])
+def reshistoryviewmed(appt_id):
+	reshistoryviewmed = []
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT IH.APPT_ID, IH.DATE, CONCAT(U.LASTNAME, U.FIRSTNAME) AS RESIDENT, U.GENDER, IH.RESIDENT_DIAGNOSIS, IH.PRESCRIPTION_DETAILS FROM IH_APPOINTMENT IH INNER JOIN USERS_USER  U ON IH.ID = U.ID WHERE  APPT_ID= %s", (appt_id,))
+	for row in cursor.fetchall():
+		reshistoryviewmed.append({"appt_id": row[0],"date": row[1],"resident": row[2],"gender": row[3],"resident_diagnosis": row[4],"prescription_details": row[5]})
+	conn.close()
 	return render_template("reshistory-view-medicineh.html")
 
 @app.route("/residenthaptclinic")
@@ -1142,15 +1149,22 @@ def residenthaptclinic():
 		residenthaptclinic=[]
 		conn = connection()
 		cursor = conn.cursor()
-		cursor.execute("SELECT IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, CSV.CLINIC_SERVICES_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SERVICES CSV ON IH.CLINIC_SERVICES_ID = CSV.CLINIC_SERVICES_ID INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID WHERE FIRSTNAME= %s", (user_name,))
+		cursor.execute("SELECT IH.APPT_ID,IH.APPT_TYPE,IH.DATE, IH.STATUS, U.FIRSTNAME, CSV.CLINIC_SERVICES_NAME, CSH.SCHEDULE_NAME FROM IH_APPOINTMENT IH INNER JOIN IH_CLINIC_SERVICES CSV ON IH.CLINIC_SERVICES_ID = CSV.CLINIC_SERVICES_ID INNER JOIN IH_CLINIC_SCHED CSH ON CSH.CLINIC_SCHED_ID = IH.CLINIC_SCHED_ID INNER JOIN USERS_USER U ON U.ID = IH.ID WHERE FIRSTNAME= %s", (user_name,))
 		for row in cursor.fetchall():
-			residenthaptclinic.append({ "appt_type": row[0],"date": row[1],"status": row[2],"firstname": row[3],"clinic_services_name": row[4],"schedule_name": row[5]})
+			residenthaptclinic.append({ "appt_id":row[0],"appt_type": row[1],"date": row[2],"status": row[3],"firstname": row[4],"clinic_services_name": row[5],"schedule_name": row[6]})
 		conn.close()	
 		return render_template("residenthistory-apt-clinic.html",residenthaptclinic=residenthaptclinic)
 
-@app.route("/reshistoryviewclinic")
-def reshistoryviewclinic():
-	return render_template("reshistory-view-clinic.html")
+@app.route("/reshistoryviewclinic/<int:appt_id>", methods = ['GET'])
+def reshistoryviewclinic(appt_id):
+	reshistoryviewclinic = []
+	conn = connection()
+	cursor = conn.cursor()
+	cursor.execute("SELECT IH.APPT_ID, IH.DATE, CONCAT(U.LASTNAME, U.FIRSTNAME) AS RESIDENT, U.GENDER, IH.RESIDENT_DIAGNOSIS, IH.PRESCRIPTION_DETAILS FROM IH_APPOINTMENT IH INNER JOIN USERS_USER  U ON IH.ID = U.ID WHERE  APPT_ID= %s", (appt_id,))
+	for row in cursor.fetchall():
+		reshistoryviewclinic.append({"appt_id": row[0],"date": row[1],"resident": row[2],"gender": row[3],"resident_diagnosis": row[4],"prescription_details": row[5]})
+	conn.close()
+	return render_template("reshistory-view-clinic.html",reshistoryviewclinic=reshistoryviewclinic)
 
 @app.route('/approve_status', methods=['POST'])
 def approve_status():

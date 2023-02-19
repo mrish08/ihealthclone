@@ -66,7 +66,7 @@
                     </li>
 
                     <li class="side-nav-item">
-                        <a href="/vaccinationstaff'" class="side-nav-link">
+                        <a href="/vaccinationstaff" class="side-nav-link">
                             <i class="uil-syringe"></i>
                             <span> Vaccination Service</span>
                         </a>
@@ -216,8 +216,8 @@
                                                 <td>{{ staffhaptmedicine.qty}}</td>
                                                 <td>{{ staffhaptmedicine.schedule_name}}</td>
                                                 <td>
-                                                    <a href="/staffhviewmedicine"><button type="button" class="btn btn-rounded btn-warning">View</button>
-                                                </td>
+                                                    <a href="/updatemedicinestaff/{{staffhaptmedicine.med_appt_id}}"><button type="button" class="btn btn-outline-info btn-rounded"  data-bs-trigger="hover" title="Edit">
+                                                        <i class="mdi mdi-circle-edit-outline"></i></button></a>   
                                             </tr>
                                             {% endfor %}
         
