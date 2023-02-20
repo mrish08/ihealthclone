@@ -13859,7 +13859,7 @@ body {
 .content-page {
     margin-left: 260px;
     overflow: hidden;
-    padding: 70px 12px 65px;
+    padding: 70px 12px 10px;
     min-height: 100vh
 }
 
@@ -14680,6 +14680,24 @@ body[data-leftbar-theme=dark][data-leftbar-compact-mode=condensed] .side-nav .si
 body[data-leftbar-theme=dark][data-leftbar-compact-mode=condensed] .side-nav .side-nav-item:hover>.collapse>ul,
 body[data-leftbar-theme=dark][data-leftbar-compact-mode=condensed] .side-nav .side-nav-item:hover>.collapsing>ul {
     background: #123088
+}
+
+.navbar-custom-index {
+    padding: 0 24px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 35px 0 rgba(154, 161, 171, .15);
+    box-shadow: 0 0 35px 0 rgba(154, 161, 171, .15);
+    min-height: 70px;
+    position: fixed;
+    left: 260px;
+    top: 0;
+    right: 0;
+    z-index: 1001
+    
+}
+
+.index {
+    left: 70px !important;
 }
 
 .navbar-custom {
@@ -17677,6 +17695,10 @@ h6 {
     -webkit-animation-delay: .4s;
     animation-delay: .4s;
     background: #0acf97
+}
+
+.edit {
+    padding: 5px 0 30px 0 !important;
 }
 
 .hero-section {

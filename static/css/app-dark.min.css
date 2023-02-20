@@ -14918,6 +14918,7 @@ body[data-leftbar-theme=dark][data-leftbar-compact-mode=condensed] .side-nav .si
 }
 
 [data-keep-enlarged=true] .navbar-custom {
+    
     padding-left: 0
 }
 
@@ -14932,6 +14933,7 @@ body[data-leftbar-theme=dark][data-leftbar-compact-mode=condensed] .side-nav .si
 @media (max-width:600px) {
     .navbar-custom .topbar-menu {
         position: initial
+        
     }
 
     .navbar-custom .dropdown {
