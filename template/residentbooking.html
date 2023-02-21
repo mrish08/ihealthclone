@@ -280,21 +280,30 @@
 
     <script>
         const form = document.querySelector('#my-form');
-        const submitBtn = document.querySelector('#submit-btn');
+        const toastrThree = document.querySelector('#toastr-three');
 
         form.addEventListener('submit', (event) => {
-            event.preventDefault();
-            // handle form submission here
-
-            // show success message
-            alert('Form submitted successfully!');
-
-            // clear form fields
+        event.preventDefault();
+        // handle form submission here
+        const formData = new FormData(form);
+        fetch('/residentas', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+            toastrThree.click();
             form.reset();
+            } else {
+            throw new Error('Network response was not ok');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
+        });
+
     </script> 
-
-
     <!-- bundle -->
     <script src="../../static/js/vendor.min.js"></script>
     <script src="../../static/js/app.min.js"></script>
