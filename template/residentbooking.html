@@ -279,17 +279,12 @@
     <!-- ============================================================== -->
 
     <script>
-        const form = document.querySelector('#my-form');
-        const toastrThree = document.querySelector('#toastr-three');
-
-        form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        // handle form submission here
-        const formData = new FormData(form);
-        fetch('/residentas', {
-            method: 'POST',
-            body: formData
+        axios.post('/residentas', data, {
+            headers: {
+            'Content-Type': 'application/json'
+            }
         })
+
         .then(response => {
             if (response.ok) {
             toastrThree.click();
@@ -298,9 +293,20 @@
             throw new Error('Network response was not ok');
             }
         })
+        
+        .catch(error => {
+            console.error('Error:', error);
         });
 
     </script> 
+
+
+  .then(response => {
+    // handle the response data
+  })
+  
+
+
     <!-- bundle -->
     <script src="../../static/js/vendor.min.js"></script>
     <script src="../../static/js/app.min.js"></script>
