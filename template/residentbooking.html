@@ -306,9 +306,9 @@
           $.post($(this).attr('action'), data, function(response) {
             $.NotificationApp.send("Request approved successfully!", "", "top-right", "rgba(0,0,0,0.2)", "success");
             $('form')[0].reset(); //clear the form after submitting
-          });
+        }, "json").ajaxComplete(function(){
+            return false;
         });
-      });
     </script>
 
     <!-- bundle -->
