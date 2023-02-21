@@ -280,13 +280,27 @@
 
     <script>
         const form = document.querySelector('#my-form');
+        const toastrThree = document.querySelector('#toastr-three');
 
         form.addEventListener('submit', (event) => {
         event.preventDefault();
         // handle form submission here
-
-        // clear form fields
-        form.reset();
+        const formData = new FormData(form);
+        fetch('/residentas', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+            toastrThree.click();
+            form.reset();
+            } else {
+            throw new Error('Network response was not ok');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
         });
 
     </script> 
