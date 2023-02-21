@@ -278,28 +278,6 @@
     <!-- ============================================================== -->
 
     <script>
-        function updateClinicServices() {
-          const clinic_services_id = document.getElementById("clinic_services_id").value;  
-          const clinicServicesSelect = document.getElementById("clinic_services_id");
-          
-          if (clinic_services_id === "check-up") {
-            // Set the options for vaccination service
-            clinicServicesSelect.innerHTML = `
-              <option value="1">COVID-19 vaccine</option>
-              <option value="2">Flu vaccine</option>
-            `;
-          } else {
-            // Set the options for clinic service
-            clinicServicesSelect.innerHTML = `
-              <option value="1">Check-up</option>
-              <option value="2">X-ray</option>
-              <option value="3">Ultrasound</option>
-              <option value="4">Hermatology</option>
-            `;
-          }
-        }
-    </script>
-    <script>
         const form = document.querySelector('#my-form');
 
         form.addEventListener('submit', (event) => {
@@ -311,6 +289,9 @@
         });
 
     </script> 
+    <script>
+        $.NotificationApp.send("Title","Your awesome message text","Position","Background color","Icon")
+    </script>
 
     <!-- bundle -->
     <script src="../../static/js/vendor.min.js"></script>
