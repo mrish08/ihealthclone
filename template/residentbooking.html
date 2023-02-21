@@ -217,7 +217,7 @@
                                             <tr>
                                                 <div>
                                                     <td class="col-sm-6">
-                                                    <form action="/residentas" method="POST">
+                                                    <form id="my-form" action="/residentas" method="POST">
                                                         <label for="appt_type" class="form-label">Appointment Type
                                                             <span style="color:#ff0000">*</span></label>
                                                         <select class="form-select" id="appt_type" name="appt_type">
@@ -299,7 +299,15 @@
           }
         }
 
-        $.NotificationApp.send("Title","Your awesome message text","Position","Background color","Icon")
+        const form = document.querySelector('#my-form');
+
+        form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        // handle form submission here
+
+        // clear form fields
+        form.reset();
+        });
 
     </script> 
 
