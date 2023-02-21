@@ -20,11 +20,6 @@
     <link href="../../static/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style">
 
 
-    <!-- Add the required styles -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <!-- Add the required styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     
 
 </head>
@@ -304,19 +299,6 @@
             `;
           }
         }
-
-        $(document).ready(function(){
-        $('form').submit(function(event){
-            event.preventDefault(); //prevent the form from submitting
-            var data = $(this).serialize(); //get the form data
-            $.post($(this).attr('action'), data, function(response){
-                $.NotificationApp.send("Request approved successfully!", "", "top-right", "rgba(0,0,0,0.2)", "success");
-                $('form')[0].reset(); //clear the form after submitting
-            }, "json").ajaxComplete(function(){
-                return false;
-            });
-        });
-    });
     </script>
 
 
