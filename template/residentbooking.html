@@ -223,40 +223,40 @@
                                                         <select class="form-select" id="appt_type" name="appt_type">
                                                             <option value="Clinic Service">Clinic Service</option>
                                                         </select>
-                                                    </td><br>
-                                                    <td class="col-sm-6">
-                                                        <label for="clinic_services_id" class="form-label">Clinic Service 
-                                                            <span style="color:#ff0000">*</span></label>
-                                                        <select class="form-select" id="clinic_services_id" name="clinic_services_id" onchange="updateClinicServices()"">
-                                                            <option value="1">Check-up</option>
-                                                            <option value="2">X-ray</option>
-                                                            <option value="3">Ultrasound</option>
-                                                            <option value="4">Hermatology</option>
-                                                        </select>
-                                                    </td><br>
-                                                    <td class="col-sm-6">
-                                                        <label for="date" class="form-label">Date<span
-                                                                style="color:#ff0000">*</span></label>
-                                                        <input class="form-control" id="date" type="date"
-                                                            name="date">
-                                                    </td><br>
-                                                    <td class="col-sm-6">
-                                                        <label for="clinic_sched_id" class="form-label">Schedule <span
-                                                                style="color:#ff0000">*</span></label>
-                                                        <select class="form-select" id="clinic_sched_id" name="clinic_sched_id">
-                                                            <option value='1'>AM</option>
-                                                            <option value='2'>PM</option>
+                                                        </td><br>
+                                                        <td class="col-sm-6">
+                                                            <label for="clinic_services_id" class="form-label">Clinic Service 
+                                                                <span style="color:#ff0000">*</span></label>
+                                                            <select class="form-select" id="clinic_services_id" name="clinic_services_id" onchange="updateClinicServices()"">
+                                                                <option value="1">Check-up</option>
+                                                                <option value="2">X-ray</option>
+                                                                <option value="3">Ultrasound</option>
+                                                                <option value="4">Hermatology</option>
+                                                            </select>
+                                                        </td><br>
+                                                        <td class="col-sm-6">
+                                                            <label for="date" class="form-label">Date<span
+                                                                    style="color:#ff0000">*</span></label>
+                                                            <input class="form-control" id="date" type="date"
+                                                                name="date">
+                                                        </td><br>
+                                                        <td class="col-sm-6">
+                                                            <label for="clinic_sched_id" class="form-label">Schedule <span
+                                                                    style="color:#ff0000">*</span></label>
+                                                            <select class="form-select" id="clinic_sched_id" name="clinic_sched_id">
+                                                                <option value='1'>AM</option>
+                                                                <option value='2'>PM</option>
 
-                                                        </select>
-                                                    </td><br>
+                                                            </select>
+                                                        </td><br>
+                                                    </form>
                                                     <div align="right">
                                                         <button class="btn btn-primary" id="toastr-three" type="submit" >Submit</button>
-                                                    </form>
+                                                    </div>
                                                 </div>
                                             </tr>
                                         </tbody>
                                     </thead>
-                                    </table>
                                 </div><!-- end col-->
                             </div>
                             <!-- end row-->
@@ -299,11 +299,20 @@
           }
         }
 
-        $.NotificationApp.send("Title","Your awesome message text","Position","Background color","Icon")
-
-    </script> 
+      $(document).ready(function() {
+        $('form').submit(function(event) {
+          event.preventDefault(); //prevent the form from submitting
+          var data = $(this).serialize(); //get the form data
+          $.post($(this).attr('action'), data, function(response) {
+            $.NotificationApp.send("Request approved successfully!", "", "top-right", "rgba(0,0,0,0.2)", "success");
+            $('form')[0].reset(); //clear the form after submitting
+          });
+        });
+      });
+    </script>
 
     <!-- bundle -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../static/js/vendor.min.js"></script>
     <script src="../../static/js/app.min.js"></script>
 
