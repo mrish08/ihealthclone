@@ -288,7 +288,10 @@
         const formData = new FormData(form);
         fetch('/residentas', {
             method: 'POST',
-            body: formData
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+        }
         })
         .then(response => {
             if (response.ok) {
@@ -297,12 +300,19 @@
             } else {
             throw new Error('Network response was not ok');
             }
+            return response.json();
+    
         })
+        .then(data => {
+            // handle the response data
+        })
+
         .catch(error => {
             console.error('Error:', error);
         });
         });
 
+        
     </script> 
     <!-- bundle -->
     <script src="../../static/js/vendor.min.js"></script>
