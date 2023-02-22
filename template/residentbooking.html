@@ -284,15 +284,28 @@
     
     <!-- JavaScript function to submit the form and display the alert -->
     <script>
+        const form = document.querySelector('#my-form');
+        const toastrThree = document.querySelector('#toastr-three');
+    
         function displayAlert(event) {
             event.preventDefault(); // prevent form from refreshing
-            "use strict";
-            $("#toastr-three").on("click", function (t) {
-                NotificationApp.send("Form submitted successfully!", "", "top-right", "rgba(0,0,0,0.2)", "success")
-            });
     
-            // Clear the form (replace this with your own code)
-            document.getElementById("my-form").reset();
+            const formData = new FormData(form);
+            fetch('/residentas', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    // show the toastr popup
+                    $("#toastr-three").click();
+                    // clear the form
+                    document.getElementById("my-form").reset();
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         }
     </script>
 
