@@ -212,48 +212,64 @@
                                     <thead>
                                         <br><p>Please fill in the details below to successfully add a Schedule.</p><br>
 
-                                    <tbody>
-                                        <tr>
-                                            <div>
-                                                <td class="col-sm-6">
-                                                <form action="/residentvax" method="POST">
-                                                    <label for="appt_type" class="form-label">Appointment Type
-                                                        <span style="color:#ff0000">*</span></label>
-                                                    <select class="form-select" id="appt_type" name="appt_type">
-                                                        <option value="Vaccination Service">Vaccination Service</option>
-                                                    </select>
-                                                </td><br>
-                                                <td class="col-sm-6">
-                                                    <label for="vax_id" class="form-label">  Vaccine
-                                                    <span style="color:#ff0000">*</span></label>
-                                                    <select class="form-select" id="vax_id" name="vax_id">
-                                                        <option value="1">Pfizer BioNTech</option>
-                                                        <option value="2">Sinovac</option>
-                                                        <option value="3">Moderna</option>
-                                                    </select>
-                                                </td><br>
-                                                <td class="col-sm-6">
-                                                    <label for="date" class="form-label">Date<span
-                                                            style="color:#ff0000">*</span></label>
-                                                    <input class="form-control" id="date" type="date"
-                                                        name="date">
-                                                </td><br>
-                                                <td class="col-sm-6">
-                                                    <label for="clinic_sched_id" class="form-label">Schedule <span
-                                                            style="color:#ff0000">*</span></label>
-                                                    <select class="form-select" id="clinic_sched_id" name="clinic_sched_id">
-                                                        <option value='3'>AM</option>
-                                                        <option value='4'>PM</option>
-                                                    </select>
-                                                </td><br>
-                                                <div align="right">
-                                                    <button class="btn btn-primary" type="submit">Submit</button>
-                                                </form>
-                                            </div>
-                                        </tr>
-                                    </tbody>
+                                        <tbody>
+                                            <tr>
+                                                <div>
+                                                    <td class="col-sm-6">
+                                                    <form action="/residentvax" method="POST" id="form">
+                                                        <label for="appt_type" class="form-label">Appointment Type
+                                                            <span style="color:#ff0000">*</span></label>
+                                                        <select class="form-select" id="appt_type" name="appt_type">
+                                                            <option value="Vaccination Service">Vaccination Service</option>
+                                                        </select>
+                                                        </td><br>
+                                                        <td class="col-sm-6">
+                                                            <label for="vax_id" class="form-label">  Vaccine
+                                                            <span style="color:#ff0000">*</span></label>
+                                                            <select class="form-select" id="vax_id" name="vax_id">
+                                                                <option value="1">Pfizer BioNTech</option>
+                                                                <option value="2">Sinovac</option>
+                                                                <option value="3">Moderna</option>
+                                                            </select>
+                                                        </td><br>
+                                                        <td class="col-sm-6">
+                                                            <label for="date" class="form-label">Date<span
+                                                                    style="color:#ff0000">*</span></label>
+                                                            <input class="form-control" id="date" type="date"
+                                                                name="date">
+                                                        </td><br>
+                                                        <td class="col-sm-6">
+                                                            <label for="clinic_sched_id" class="form-label">Schedule <span
+                                                                    style="color:#ff0000">*</span></label>
+                                                            <select class="form-select" id="clinic_sched_id" name="clinic_sched_id">
+                                                                <option value='3'>AM</option>
+                                                                <option value='4'>PM</option>
+                                                            </select>
+                                                        </td><br>
+                                                        <div align="right">
+                                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#info-alert-modal">Submit</button>
+                                                        </div>
+                                                
+                                                        <!-- Success Alert Modal -->
+                                                        <div id="info-alert-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                                                            <div class="modal-dialog modal-sm">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-body p-4">
+                                                                        <div class="text-center">
+                                                                            <i class="dripicons-information h1 text-info"></i>
+                                                                            <h4 class="mt-2">Would you like to Proceed?</h4>
+                                                                            <p class="mt-3">After you click "continue", your appointment will be submitted. To stay informed about the status of your appointment, please check the Appointment History. </p>
+                                                                            <button type="submit" class="btn btn-info my-2" data-bs-dismiss="modal">Continue</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div><!-- /.modal-content -->
+                                                            </div><!-- /.modal-dialog -->
+                                                        </div><!-- /.modal -->
+                                                    </form>
+                                                </div>
+                                            </tr>
+                                        </tbody>
                                     </thead>
-                                    </table>
                                 </div><!-- end col-->
                             </div>
                             <!-- end row-->
@@ -272,6 +288,37 @@
     <!-- End Page content -->
     <!-- ============================================================== -->
 
+    <script>
+        const form = document.querySelector('form');
+        form.addEventListener('submit', preventRefresh);
+
+        function preventRefresh(event) {
+        event.preventDefault();
+        console.log('Form submission prevented');
+        
+        // send form data to server
+        fetch('/residentvax', {
+            method: 'POST',
+            body: new FormData(form)
+        })
+        .then((response) => {
+            console.log('Form data sent to server');
+            if (response.ok) {
+            // show success message to user (replace this with your own code)
+            form.reset(); // clear the form
+            } else {
+            // show error message to user (replace this with your own code)
+            alert('An error occurred while booking the appointment.');
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+            // show error message to user (replace this with your own code)
+            alert('An error occurred while booking the appointment.');
+        });
+        }
+        console.log('Script loaded successfully');
+    </script>
 
     <!-- bundle -->
     <script src="../../static/js/vendor.min.js"></script>
