@@ -249,12 +249,12 @@
                                                             </select>
                                                         </td><br>
 
-                                                        <!-- Success Alert Modal -->
+                                                        
                                                         <div align="right">
                                                             <button type="submit" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#info-alert-modal">Submit</button>
                                                         </div>
                                                    </form>
-
+                                                   <!-- Success Alert Modal -->
                                                     <div id="info-alert-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-sm">
                                                             <div class="modal-content">
@@ -302,27 +302,29 @@
 
         function preventRefresh(event) {
         event.preventDefault();
-    
-       // send form data to server
-    fetch('/residentas', {
-        method: 'POST',
-        body: new FormData(form)
-    })
-    .then((response) => {
-        if (response.ok) {
+        console.log('Form submission prevented');
+        
+        // send form data to server
+        fetch('/residentas', {
+            method: 'POST',
+            body: new FormData(form)
+        })
+        .then((response) => {
+            console.log('Form data sent to server');
+            if (response.ok) {
             // show success message to user (replace this with your own code)
             form.reset(); // clear the form
-        } else {
+            } else {
             // show error message to user (replace this with your own code)
             alert('An error occurred while booking the appointment.');
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+            // show error message to user (replace this with your own code)
+            alert('An error occurred while booking the appointment.');
+        });
         }
-    })
-    .catch((error) => {
-        console.error(error);
-        // show error message to user (replace this with your own code)
-        alert('An error occurred while booking the appointment.');
-    });
-
 
     </script>
 
