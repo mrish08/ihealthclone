@@ -298,14 +298,30 @@
 
     <script>
         const form = document.querySelector('form');
-        form.addEventListener('submit', preventRefresh);
+        form.addEventListener('submit', (event) => {
+        event.preventDefault(); // prevent page refresh
     
-        function preventRefresh(event) {
-            event.preventDefault();
-    
-            // Clear the form (replace this with your own code)
-            document.getElementById("form").reset();
+       // send form data to server
+    fetch('/residentas', {
+        method: 'POST',
+        body: new FormData(form)
+    })
+    .then((response) => {
+        if (response.ok) {
+            // show success message to user (replace this with your own code)
+            form.reset(); // clear the form
+        } else {
+            // show error message to user (replace this with your own code)
+            alert('An error occurred while booking the appointment.');
         }
+    })
+    .catch((error) => {
+        console.error(error);
+        // show error message to user (replace this with your own code)
+        alert('An error occurred while booking the appointment.');
+    });
+
+
     </script>
 
     <!-- bundle -->
