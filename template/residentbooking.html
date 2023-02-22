@@ -285,15 +285,22 @@
     <!-- End Page content -->
     <!-- ============================================================== -->
     
+    <!-- JavaScript function to submit the form and display the alert -->
     <script>
-        function displayAlert() {
-          // Show the success alert
-          document.getElementById("success-alert").style.display = "block";
-          
-          // Hide the success alert after 5 seconds
-          setTimeout(function(){
+        function submitForm(event) {
+        // Prevent the page from refreshing
+        event.preventDefault();
+        
+        // Show the success alert
+        document.getElementById("success-alert").style.display = "block";
+        
+        // Clear the form
+        document.getElementById("my-form").reset();
+        
+        // Hide the success alert after 5 seconds
+        setTimeout(function(){
             document.getElementById("success-alert").style.display = "none";
-          }, 5000);
+        }, 5000);
         }
     </script>
 
