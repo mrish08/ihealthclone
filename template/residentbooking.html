@@ -293,16 +293,19 @@
     <!-- ============================================================== -->
     <!-- End Page content -->
     <!-- ============================================================== -->
-    <script>
-        function preventRefresh(event) {
-          event.preventDefault();
-          // add function to clear inputs after submission
-          clearFormInputs();
-        }
 
-        
-        const form = document.querySelector('form');
-        form.addEventListener('submit', preventRefresh);
+    <script>
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', preventRefresh);
+
+    function preventRefresh(event) {
+        event.preventDefault();
+    }
+    
+    // Clear the form (replace this with your own code)
+    document.getElementById("form").reset();
+
     </script>
 
     <!-- bundle -->
