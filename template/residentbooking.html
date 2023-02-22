@@ -216,7 +216,7 @@
                                         <tbody>
                                             <tr>
                                                 <div>
-                                                    <form id="toastr-three" action="/residentas" method="POST">
+                                                    <form id="my-form" action="/residentas" method="POST">
                                                         <td class="col-sm-6">
                                                             <label for="appt_type" class="form-label">Appointment Type
                                                                 <span style="color:#ff0000">*</span></label>
@@ -251,7 +251,7 @@
                                                         </td><br>
                                                     
                                                         <div align=right>
-                                                            <button class="btn btn-primary" type="submit" >Submit</button>
+                                                            <button class="btn btn-primary" type="submit" id="toastr-three" style="display:none;">Submit</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -280,32 +280,30 @@
 
     <script>
 
-    const form = document.querySelector('#my-form');
-    const toastrThree = document.querySelector('#toastr-three');
+        const form = document.querySelector('#my-form');
+        const submitBtn = document.querySelector('#submit-btn');
+        const toastrThree = document.querySelector('#toastr-three');
 
-    form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const formData = new FormData(form);
-    fetch('/residentas', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => {
-        if (response.ok) {
-        form.reset();
-        return response.json(); // add this line to parse the response body as JSON
-        } else {
-        throw new Error('Network response was not ok');
-        }
-    })
-    .then(data => {
-        toastrThree.click(); // move this line to the second then() block
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-    });
-
+        form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        // handle form submission here
+        const formData = new FormData(form);
+        fetch('/submit-form', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+            toastrThree.style.display = "block"; // show popup message
+            form.reset();
+            } else {
+            throw new Error('Network response was not ok');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+        });
 
     </script>
 
