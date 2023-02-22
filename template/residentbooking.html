@@ -250,13 +250,11 @@
                                                             </select>
                                                         </td><br>
                                                     
-                                                        <div class="alert alert-success" role="alert">
-                                                            <i class="dripicons-checkmark me-2"></i> You <strong>successfully</strong> booked an appointment!
+                                                        
                                                             <div align="right">
-                                                              <button class="btn btn-primary" type="submit">Submit</button>
+                                                              <button class="btn btn-primary" type="submit" onclick="displayAlert()">Submit</button>
                                                             </div>
-                                                        </div>
-                                                          
+                                                        
                                                     </form>
                                                 </div>
                                             </tr>
@@ -267,6 +265,11 @@
                             <!-- end row-->
 
                         </div> <!-- container -->
+
+                        <!-- Success alert template -->
+                        <div class="alert alert-success" role="alert" id="success-alert" style="display:none;">
+                            <i class="dripicons-checkmark me-2"></i><strong>Successfully</strong> booked an appointment!
+                        </div>
 
                     </div> <!-- content -->
                 </div><!-- end row of table content-->
@@ -282,7 +285,17 @@
     <!-- End Page content -->
     <!-- ============================================================== -->
     
-
+    <script>
+        function displayAlert() {
+          // Show the success alert
+          document.getElementById("success-alert").style.display = "block";
+          
+          // Hide the success alert after 5 seconds
+          setTimeout(function(){
+            document.getElementById("success-alert").style.display = "none";
+          }, 5000);
+        }
+    </script>
 
     <!-- bundle -->
     <script src="../../static/js/vendor.min.js"></script>
