@@ -215,7 +215,7 @@
                                         <tbody>
                                             <tr>
                                                 <div>
-                                                    <form action="/residentas" method="POST">
+                                                    <form action="/residentas" method="POST" onclick="clearFormInputs()" id="form">
                                                         <td class="col-sm-6">
                                                             <label for="appt_type" class="form-label">Appointment Type
                                                                 <span style="color:#ff0000">*</span></label>
@@ -293,10 +293,18 @@
     <!-- ============================================================== -->
     <!-- End Page content -->
     <!-- ============================================================== -->
-
     <script>
         function preventRefresh(event) {
           event.preventDefault();
+          // add function to clear inputs after submission
+          clearFormInputs();
+        }
+        
+        function clearFormInputs() {
+            const formInputs = document.querySelectorAll('input, select');
+            formInputs.forEach(input => {
+                input.value = ''; // clear input value
+            });
         }
         
         const form = document.querySelector('form');
