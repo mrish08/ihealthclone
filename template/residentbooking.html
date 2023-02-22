@@ -296,8 +296,10 @@
                 toastrThree.click();
                 form.reset();
                 setTimeout(() => {
-                    toastrThree.parentNode.removeChild(toastrThree);
-                }, 5000); // Remove the notification after 5 seconds
+                    const toastrThree = document.querySelector('#toastr-three');
+                    const toastrInstance = bootstrap.Toast.getInstance(toastrThree);
+                    toastrInstance.hide();
+                }, 5000);
             } else {
                 throw new Error('Network response was not ok');
             }
@@ -306,6 +308,7 @@
             console.error('Error:', error);
         });
     });
+
     </script>
 
   
