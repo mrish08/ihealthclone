@@ -284,32 +284,32 @@
     const toastrThree = document.querySelector('#toastr-three');
 
     form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        // handle form submission here
-        const formData = new FormData(form);
-        fetch('/residentas', {
-            method: 'POST',
-            body: formData
-        })
+    event.preventDefault();
+
+    // handle form submission here
+    const formData = new FormData(form);
+
+    fetch('/residentas', {
+        method: 'POST',
+        body: formData
+    })
         .then(response => {
-            if (response.ok) {
-                toastrThree.click();
-                form.reset();
-                setTimeout(() => {
-                    const toastrThree = document.querySelector('#toastr-three');
-                    const toastrInstance = bootstrap.Toast.getInstance(toastrThree);
-                    toastrInstance.hide();
-                }, 5000);
-            } else {
-                throw new Error('Network response was not ok');
-            }
+        if (response.ok) {
+            toastrThree.click();
+            form.reset();
+        } else {
+            throw new Error('Network response was not ok');
+        }
         })
         .catch(error => {
-            console.error('Error:', error);
+        console.error('Error:', error);
         });
     });
 
+
     </script>
+
+    
 
   
 
