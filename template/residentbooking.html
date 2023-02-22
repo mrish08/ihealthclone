@@ -251,7 +251,7 @@
 
                                                         <!-- Success Alert Modal -->
                                                         <div align="right">
-                                                            <button type="submit" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#info-alert-modal" onclick="preventRefresh(event)">Submit</button>
+                                                            <button type="submit" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#info-alert-modal">Submit</button>
                                                             <div id="info-alert-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
                                                                 <div class="modal-dialog modal-sm">
                                                                     <div class="modal-content">
@@ -295,17 +295,15 @@
     <!-- ============================================================== -->
 
     <script>
-
-    const form = document.querySelector('form');
-    form.addEventListener('submit', preventRefresh);
-
-    function preventRefresh(event) {
-        event.preventDefault();
-    }
+        const form = document.querySelector('form');
+        form.addEventListener('submit', preventRefresh);
     
-    // Clear the form (replace this with your own code)
-    document.getElementById("form").reset();
-
+        function preventRefresh(event) {
+            event.preventDefault();
+    
+            // Clear the form (replace this with your own code)
+            document.getElementById("form").reset();
+        }
     </script>
 
     <!-- bundle -->
