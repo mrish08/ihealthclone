@@ -250,9 +250,8 @@
                                                             </select>
                                                         </td><br>
                                                     
-                                                        
                                                             <div align="right">
-                                                              <button class="btn btn-primary" type="submit" onclick="displayAlert()">Submit</button>
+                                                              <button class="btn btn-primary" type="submit" onclick="displayAlert()" id="toastr-three" >Submit</button>
                                                             </div>
                                                         
                                                     </form>
@@ -267,9 +266,7 @@
                         </div> <!-- container -->
 
                         <!-- Success alert template -->
-                        <div class="alert alert-success" role="alert" id="success-alert" style="display:none;">
-                            <i class="dripicons-checkmark me-2"></i><strong>Successfully</strong> booked an appointment!
-                        </div>
+                        
 
                     </div> <!-- content -->
                 </div><!-- end row of table content-->
@@ -286,27 +283,26 @@
     <!-- ============================================================== -->
     
     <!-- JavaScript function to submit the form and display the alert -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        function submitForm(event) {
-        // Prevent the page from refreshing
-        event.preventDefault();
+    function displayAlert() {
+        "use strict";
+        $("#toastr-three").on("click", function (t) {
+            NotificationApp.send("Form submitted successfully!", "", "top-right", "rgba(0,0,0,0.2)", "success")
+        });
+
         
-        // Show the success alert
-        document.getElementById("success-alert").style.display = "block";
-        
-        // Clear the form
+        // Clear the form (replace this with your own code)
         document.getElementById("my-form").reset();
-        
-        // Hide the success alert after 5 seconds
-        setTimeout(function(){
-            document.getElementById("success-alert").style.display = "none";
-        }, 5000);
         }
     </script>
 
     <!-- bundle -->
     <script src="../../static/js/vendor.min.js"></script>
     <script src="../../static/js/app.min.js"></script>
+    <script src="../../static/js/pages/demo.datatable-init.js"></script>
+    <script src="../../static/js/pages/demo.toastr.js"></script>
+    <script src="../../static/js/pages/list.js"></script>
 
     <!-- third party js -->
     <script src="../../static/js/vendor/updateOptions.js"></script>
@@ -328,13 +324,7 @@
     <script src="../../static/js/vendor/list.min.js"></script>
     <!-- third party js ends -->
 
-    <!-- demo app -->
-    <script src="../../static/js/pages/demo.datatable-init.js"></script>
-    <script src="../../static/js/pages/demo.toastr.js"></script>
-    <script src="../../static/js/pages/demo.datatable-init.js"></script>
-    <script src="../../static/js/pages/demo.toastr.js"></script>
-    <script src="../../static/js/pages/list.js"></script>
-    <!-- end demo js-->
+
 </body>
 
 </html>
