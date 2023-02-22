@@ -1019,7 +1019,7 @@ def residentas():
 			[appt_type,date,clinic_services_id,id,clinic_sched_id])
 			conn.commit()
 			conn.close()
-			
+		return render_template("residentbooking.html")
 
 @app.route("/residentvax", methods=['GET', 'POST'])
 def residentvax():

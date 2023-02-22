@@ -298,8 +298,10 @@
 
     <script>
         const form = document.querySelector('form');
-        form.addEventListener('submit', (event) => {
-        event.preventDefault(); // prevent page refresh
+        form.addEventListener('submit', preventRefresh);
+
+        function preventRefresh(event) {
+        event.preventDefault();
     
        // send form data to server
     fetch('/residentas', {
