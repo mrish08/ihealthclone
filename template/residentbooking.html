@@ -279,31 +279,33 @@
     <!-- ============================================================== -->
 
     <script>
-        axios.post('/residentas', data, {
-            headers: {
-            'Content-Type': 'application/json'
-            }
-        })
 
+    const form = document.querySelector('#my-form');
+    const submitBtn = document.querySelector('#submit-btn');
+    const toastrThree = document.querySelector('#toastr-three');
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        // handle form submission here
+        const formData = new FormData(form);
+        fetch('/residentas', {
+        method: 'POST',
+        body: formData
+        })
         .then(response => {
-            if (response.ok) {
+        if (response.ok) {
             toastrThree.click();
             form.reset();
-            } else {
+        } else {
             throw new Error('Network response was not ok');
-            }
+        }
         })
-        
         .catch(error => {
-            console.error('Error:', error);
+        console.error('Error:', error);
         });
+    });
+    </script>
 
-    </script> 
-
-
-  .then(response => {
-    // handle the response data
-  })
   
 
 
