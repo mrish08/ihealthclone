@@ -19,8 +19,7 @@
     <link href="../../static/css/app-i.min.css" rel="stylesheet" type="text/css" id="light-style">
     <link href="../../static/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style">
 
-    <!-- For updateOptions -->
-    
+
 
 </head>
 
@@ -216,7 +215,7 @@
                                         <tbody>
                                             <tr>
                                                 <div>
-                                                    <form action="/residentas" method="POST">
+                                                    <form action="/residentas" method="POST" id="form">
                                                         <td class="col-sm-6">
                                                             <label for="appt_type" class="form-label">Appointment Type
                                                                 <span style="color:#ff0000">*</span></label>
@@ -249,11 +248,25 @@
 
                                                             </select>
                                                         </td><br>
-                                                    
+
+                                                        <!-- Success Alert Modal -->
                                                         <div align="right">
-                                                            <button class="btn btn-primary" type="submit" onclick="displayAlert(event)" id="toastr-three" >Submit</button>
+                                                            <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#success-alert-modal">Submit</button>
+                                                            <div id="success-alert-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                <div class="modal-dialog modal-sm">
+                                                                    <div class="modal-content modal-filled bg-success">
+                                                                        <div class="modal-body p-4">
+                                                                            <div class="text-center">
+                                                                                <i class="dripicons-checkmark h1"></i>
+                                                                                <h4 class="mt-2">Well Done!</h4>
+                                                                                <p class="mt-3">You have booked an online appointment! Kindly check your Apointment History for the status of your request</p>
+                                                                                <button type="button" class="btn btn-light my-2" data-bs-dismiss="modal">Continue</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div><!-- /.modal-content -->
+                                                                </div><!-- /.modal-dialog -->
+                                                            </div><!-- /.modal -->
                                                         </div>
-                                                    
                                                     </form>
                                                 </div>
                                             </tr>
@@ -281,32 +294,10 @@
     <!-- ============================================================== -->
     <!-- End Page content -->
     <!-- ============================================================== -->
-    
-    <!-- JavaScript function to submit the form and display the alert -->
+
     <script>
-        const form = document.querySelector('#my-form');
-        const toastrThree = document.querySelector('#toastr-three');
-    
-        function displayAlert(event) {
-            event.preventDefault(); // prevent form from refreshing
-    
-            const formData = new FormData(form);
-            fetch('/residentas', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                if (response.ok) {
-                    // show the toastr popup
-                    $("#toastr-three").click();
-                    // clear the form
-                    document.getElementById("my-form").reset();
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        }
+    const form = document.querySelector('form');
+    form.addEventListener('submit', preventRefresh);
     </script>
 
     <!-- bundle -->
