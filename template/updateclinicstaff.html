@@ -192,109 +192,105 @@
                             <h4 class="page-title">Edit Clinic Details</h4>
                         </div>
                     </div>
-                    <div class="d-print-none col-sm-12">
-                        <div class="text-end">
-                            <a href="javascript:window.print()" class="btn btn-primary"><i class="mdi mdi-printer"></i> Print Report</a>
-                        </div>
-                    </div>                                           <br>
-                    <br>
-
-                    <!-- end page title -->
-
-                        <div class="row justify-content-center">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <br>
-                                            <p>Please fill in the details below to successfully update a Medicine.</p><br>
-
-                                            <form action="/updateclinicstaff/{{staffhaptclinic.appt_id}}" method="POST">
-                                                <div class="">
-                                                    <div class="row">
-                                                        <div class="col-sm-6">
-                                                            <label for="" class="form-label">
-                                                                Appointment ID:</label>
-                                                            <input type="text" name="" value="{{ staffhaptclinic.appt_id}}"
-                                                                class="form-control" disabled>
-                                                            </span>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <label for="" class="form-label">
-                                                                Date:</label>
-                                                            <input type="text" name="" value="{{ staffhaptclinic.date}}"
-                                                                class="form-control" disabled>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div><br>
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <label for="" class="form-label">
-                                                            Patient Name:</label>
-                                                        <input type="text" name="" value="{{ staffhaptclinic.resident}}"
-                                                            class="form-control" disabled>
-                                                        </span>
-                                        
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <label for="" class="form-label">
-                                                            Sex:</label>
-                                                        <input type="text" name="" value="{{ staffhaptclinic.sex}}"
-                                                            class="form-control" disabled>
-                                                        </span>
-                                                    </div>
-                                                    </div>
-                                                    
-                                                </div><br>
-                                              
-                                                <div>
-                                                    <h4>Diagnosis Details</h4>
-                                                    <div class="row">
-                                                        <div class="col-sm-6">
-                                                            <label for="" class="form-label">
-                                                                Diagnosis:&nbsp;<span
-                                                                    style="color:#ff0000">*</span></label>
-                                                            <input type="text" name="resident_diagnosis"
-                                                                class="form-control">
-                                                            </span>
-                                                        </div>
-                                                       </div>
-                                                </div><br>
-                                                <div class="row">
-                                                    <h4>Prescription</h4>
-                                                    <div class="col-sm-12">
-                                                        <label for="" class="form-label">
-                                                            Prescription Details:</label>
-                                                        <input type="text" name="prescription_details"
-                                                            class="form-control">
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <br><br>
-                                           
-                                                </div>
-                                                <div align="right">
-                                                    <a href="/staffhaptclinic">
-                                                        <button class="btn btn-primary" type="submit">Submit</button>
-                                                    </a>
-                                                
-                                            </form>
-                                            <a href="/staffhaptclinic">
-                                                <button class="btn btn-secondary" type="submit">Cancel</button>
-                                            </a>
-                                        </div>
-                                    </div> 
-                                    <!-- end col-->
-                                </div>
-                                <!-- end row-->
-
-                            </div>
-                            <!-- container -->
-
-                        </div>
-                        <!-- content -->
+                </div>
+                <!-- end page title -->
+                <div class="d-print-none col-sm-12">
+                    <div class="text-end">
+                        <a href="javascript:window.print()" class="btn btn-primary"><i class="mdi mdi-printer"></i> Print Report</a>
                     </div>
-                    <!-- end row of table content-->
+                </div> <br>
+
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <br>
+                                    <p>Please fill in the details below to successfully update a Medicine.</p><br>
+                                    <form action="/updateclinicstaff/{{staffhaptclinic.appt_id}}" method="POST">
+                                        
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <label for="" class="form-label">
+                                                        Appointment ID:</label>
+                                                    <input type="text" name="" value="{{ staffhaptclinic.appt_id}}"
+                                                        class="form-control" disabled>
+                                                    </span>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <label for="" class="form-label">
+                                                        Date:</label>
+                                                    <input type="text" name="" value="{{ staffhaptclinic.date}}"
+                                                        class="form-control" disabled>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div><br>
+
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <label for="" class="form-label">
+                                                        Patient Name:</label>
+                                                    <input type="text" name="" value="{{ staffhaptclinic.resident}}"
+                                                        class="form-control" disabled>
+                                                    </span>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <label for="" class="form-label">
+                                                        Sex:</label>
+                                                    <input type="text" name="" value="{{ staffhaptclinic.sex}}"
+                                                        class="form-control" disabled>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div><br>
+                                        
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <h4>Diagnosis Details</h4>
+                                                            <label for="example-textarea" class="form-label">
+                                                                Diagnosis:&nbsp;
+                                                                <span style="color:#ff0000">*</span>
+                                                            </label>
+                                                            <textarea type="text" name="resident_diagnosis" class="form-control" id="example-textarea" rows="5"></textarea>
+
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <h4>Prescription</h4>
+                                                        <label for="example-textarea" class="form-label">
+                                                            Prescription Details:&nbsp;
+                                                            <span style="color:#ff0000">*</span>
+                                                        </label>
+                                                        <textarea type="text" name="prescription_details" class="form-control" id="example-textarea" rows="5"></textarea>
+                                                </div>
+                                            </div>
+                                        </div><br><br>
+
+                                        <div align="right">
+                                        <a href="/staffhaptclinic">
+                                            <button class="btn btn-secondary" type="submit">Cancel</button>
+                                        </a>
+
+                                        <a href="/staffhaptclinic">
+                                            <button class="btn btn-primary" type="submit">Submit</button>
+                                        </a>
+                                    </form>
+                                </div>
+                            </div> 
+                            <!-- end col-->
+                        </div>
+                        <!-- end row-->
+
+                    </div>
+                    <!-- container -->
+
+                </div>
+                <!-- content -->
+            </div>
+            <!-- end row of table content-->
     
     <!-- ============================================================== -->
     <!-- End Page content -->
