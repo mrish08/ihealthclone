@@ -119,15 +119,9 @@
                 </li>
             </ul>
         </div>
-    </li>
-</ul>
-        <!-- Sidebar -left -->
-
-    </div>
-    <!-- Left Sidebar End -->
     </header>
 
- <div class="wrapper">
+    <div class="wrapper">
 
         <div class="content-page">
             <div class="content">
@@ -208,7 +202,7 @@
                                                     <th>Resident</th>
                                                     <th>Service Name</th>
                                                     <th>Schedule</th>
-                                                    <th>Action</th>
+                                                    <th id="Action">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -231,50 +225,25 @@
             
                                             </tbody>
                                         </table>
-
+                                    </div>
+                                </div>
                             </div>
-
                             <!-- end row of table content-->
-
                         </div>
                         <!-- container -->
                     </div>
                     <!-- content -->
 
                 </div>
-
+            </div>
+        </div>
             
         <!-- ============================================================== -->
         <!-- End Page content -->
         <!-- ============================================================== -->
 
-        </div>
-        <!-- END wrapper -->
-
-        <script type="text/javascript">
-            function printTable() {
-            // Get the table element
-            var table = document.getElementById("basic-datatable");
-            
-            // Create a new div to hold the table
-            var div = document.createElement("div");
-            div.appendChild(table.cloneNode(true));
-            
-            // Add some styles to the div to make it printable
-            div.style.margin = "0 auto";
-            div.style.width = "90%";
-            
-            // Hide the print button
-            document.getElementById("print-btn").style.display = "none";
-            
-            // Print the div contents
-            document.body.innerHTML = div.outerHTML;
-            window.print();
-            
-            // Reload the page to restore the original content
-            location.reload();
-            }
-        </script>
+    </div>
+    <!-- END wrapper -->
 
  
        <!-- bundle -->
