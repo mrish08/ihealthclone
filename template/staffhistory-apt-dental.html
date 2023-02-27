@@ -119,15 +119,11 @@
                 </li>
             </ul>
         </div>
-    </li>
-</ul>
-        <!-- Sidebar -left -->
-
-    </div>
-    <!-- Left Sidebar End -->
     </header>
+    <!-- Sidebar -left -->
 
- <div class="wrapper">
+
+    <div class="wrapper">
 
         <div class="content-page">
             <div class="content">
@@ -187,55 +183,48 @@
                     </div>
                     <!-- end page title -->
                     
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="tab-content">
-                                <div class="table-hover" id="scroll-horizontal-preview">
-                                    <table id="scroll-horizontal-datatable" style="overflow-x: auto;" class="table table-hover w-100 nowrap">
-
-                                        <thead>
-                                            <tr class="table-light">
-                                                <th>Service</th>
-                                                <th>Date</th>
-                                                <th>Status</th>
-                                                <th>Resident</th>
-                                                <th>Schedule</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {% for staffhaptdental in staffhaptdental %}
-                                            <tr>
-                                                <td>{{ staffhaptdental.appt_type}}</td>
-                                                <td>{{ staffhaptdental.date}}</td>
-                                                <td>{{ staffhaptdental.status}}</td>
-                                                <td>{{ staffhaptdental.firstname}}</td>
-                                                <td>{{ staffhaptdental.schedule_name}}</td>
-                                                <td>
-                                                </td>
-                                        </tr>
-                                        {% endfor %}
-    
-                                    </tbody>
-                            </table>
-
-
-
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="table-hover" id="scroll-horizontal-preview">
+                                        <table id="scroll-horizontal-datatable" style="overflow-x: auto;" class="table table-hover w-100 nowrap">
+                                            <thead>
+                                                <tr class="table-light">
+                                                    <th>Service</th>
+                                                    <th>Date</th>
+                                                    <th>Status</th>
+                                                    <th>Resident</th>
+                                                    <th>Schedule</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for staffhaptdental in staffhaptdental %}
+                                                <tr>
+                                                    <td>{{ staffhaptdental.appt_type}}</td>
+                                                    <td>{{ staffhaptdental.date}}</td>
+                                                    <td>{{ staffhaptdental.status}}</td>
+                                                    <td>{{ staffhaptdental.firstname}}</td>
+                                                    <td>{{ staffhaptdental.schedule_name}}</td>
+                                                    
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- content -->
                         </div>
-
-                        <!-- end row of table content-->
-
                     </div>
-                    <!-- container -->
                 </div>
-                <!-- content -->
-
             </div>
+        </div>
 
         
-    <!-- ============================================================== -->
-    <!-- End Page content -->
-    <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
 
     </div>
     <!-- END wrapper -->

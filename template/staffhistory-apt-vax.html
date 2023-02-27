@@ -118,15 +118,10 @@
                 </li>
             </ul>
         </div>
-    </li>
-</ul>
-        <!-- Sidebar -left -->
-
-    </div>
-    <!-- Left Sidebar End -->
     </header>
+    <!-- Sidebar -left -->
 
- <div class="wrapper">
+    <div class="wrapper">
 
         <div class="content-page">
             <div class="content">
@@ -173,71 +168,67 @@
                 </div>
                 <!-- end Topbar -->
 
-                
+
                 <!-- Start Content-->
                 <div class="container-fluid">
 
-                <!-- start page title -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="page-title-box">
-                            <h4 class="page-title">Vaccination Appointments History</h4>
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <h4 class="page-title">Vaccination Appointments History</h4>
+                            </div>
                         </div>
                     </div>
                     <!-- end page title -->
-                    
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="tab-content">
-                                <div class="table-hover" id="scroll-horizontal-preview">
-                                    <table id="scroll-horizontal-datatable" style="overflow-x: auto;" class="table table-hover w-100 nowrap">
-                                        <thead>
-                                            <tr class="table-light">
-                                                <th>Appointment ID</th>
-                                                <th>Service</th>
-                                                <th>Name</th>
-                                                <th>Vaccine</th>
-                                                <th>Date</th>
-                                                <th>Time</th>
-                                                <th>Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {% for staffhaptvax in staffhaptvax %}
-                                            <tr>
-                                                <td>{{ staffhaptvax.appt_id}}</td>
-                                                <td>{{ staffhaptvax.appt_type}}</td>
-                                                <td>{{ staffhaptvax.firstname}}</td>
-                                                <td>{{ staffhaptvax.Vaccine}}</td>
-                                                <td>{{ staffhaptvax.date}}</td>
-                                                <td>{{ staffhaptvax.schedule_name}}</td>
-                                                <td>{{ staffhaptvax.status}}</td>
-                                                <td>
-                                            </td>
-                                        </tr>
-                                        {% endfor %}
 
-                                    </tbody>
-                            </table>
-
-
-
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="table-hover" id="scroll-horizontal-preview">
+                                        <table id="scroll-horizontal-datatable" style="overflow-x: auto;" class="table table-hover w-100 nowrap">
+                                            <thead>
+                                                <tr class="table-light">
+                                                    <th>Appointment ID</th>
+                                                    <th>Service</th>
+                                                    <th>Name</th>
+                                                    <th>Vaccine</th>
+                                                    <th>Date</th>
+                                                    <th>Time</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for staffhaptvax in staffhaptvax %}
+                                                <tr>
+                                                    <td>{{ staffhaptvax.appt_id}}</td>
+                                                    <td>{{ staffhaptvax.appt_type}}</td>
+                                                    <td>{{ staffhaptvax.firstname}}</td>
+                                                    <td>{{ staffhaptvax.Vaccine}}</td>
+                                                    <td>{{ staffhaptvax.date}}</td>
+                                                    <td>{{ staffhaptvax.schedule_name}}</td>
+                                                    <td>{{ staffhaptvax.status}}</td>
+                                                    
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- container -->
+                            </div>
+                            <!-- content -->
                         </div>
-
-                        <!-- end row of table content-->
-
                     </div>
-                    <!-- container -->
                 </div>
-                <!-- content -->
-
             </div>
+        </div>
 
         
-    <!-- ============================================================== -->
-    <!-- End Page content -->
-    <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
 
     </div>
     <!-- END wrapper -->

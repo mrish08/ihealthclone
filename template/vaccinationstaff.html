@@ -171,61 +171,6 @@
                     <button class="button-menu-mobile open-left">
                         <i class="mdi mdi-menu"></i>
                     </button>
-                    <div class="app-search dropdown d-none d-lg-block">
-
-                        <div class="dropdown-menu dropdown-menu-animated dropdown-lg" id="search-dropdown">
-                            <!-- item-->
-                            <div class="dropdown-header noti-title">
-                                <h5 class="text-overflow mb-1">Found <span class="text-danger">17</span> results</h5>
-                            </div>
-
-                            <!-- item-->
-                            <div class="dropdown-header noti-title">
-                                <h6 class="text-overflow mb-2 text-uppercase">Users</h6>
-                            </div>
-
-                            <div class="notification-list">
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="d-flex">
-                                        <img class="d-flex me-2 rounded-circle"
-                                            src="../../static/images/users/profile1.png" alt="Generic placeholder image"
-                                            height="32">
-                                        <div class="w-100">
-                                            <h5 class="m-0 font-14">Juan Dela Cruz</h5>
-                                            <span class="font-12 mb-0">Brgy. Official</span>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="d-flex">
-                                        <img class="d-flex me-2 rounded-circle"
-                                            src="../../static/images/users/profile2.png" alt="Generic placeholder image"
-                                            height="32">
-                                        <div class="w-100">
-                                            <h5 class="m-0 font-14">Maria Clara</h5>
-                                            <span class="font-12 mb-0">Helpdesk</span>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="d-flex">
-                                        <img class="d-flex me-2 rounded-circle"
-                                            src="../../static/images/users/profile3.png" alt="Generic placeholder image"
-                                            height="32">
-                                        <div class="w-100">
-                                            <h5 class="m-0 font-14">Sisa Usisa</h5>
-                                            <span class="font-12 mb-0">Staff</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!-- end Topbar -->
 
@@ -273,7 +218,7 @@
                                                         <td>
                                                             
                                                         <form action="/vaccinationstaffapprove" method="POST"><input type="hidden" name="appt_id" value="{{vaccinationstaff.appt_id}}">
-                                                            <button type="button" class="btn btn-outline-success btn-rounded" data-bs-trigger="hover" title="Accept" data-bs-toggle="modal" data-bs-target="#success-alert-modal">
+                                                            <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-trigger="hover" title="Accept" data-bs-toggle="modal" data-bs-target="#success-alert-modal">
                                                             <i class="dripicons-checkmark"></i></button>
 
                                                             <!-- Success Alert Modal -->
@@ -295,10 +240,10 @@
                                                         </form>
 
                                                         <form action="/vaccinationstaffdecline" method="POST"><input type="hidden" name="appt_id" value="{{ vaccinationstaff.appt_id}}">
-                                                            <button type="button" class="btn btn-outline-danger btn-rounded" data-bs-trigger="hover" title="Decline" data-bs-toggle="modal" data-bs-target="#danger-alert-modal">
+                                                            <button type="button" class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-trigger="hover" title="Decline"  data-bs-toggle="modal" data-bs-target="#danger-alert-modal">
                                                             <i class="mdi mdi-window-close"></i></button>
 
-                                                             <!-- Danger Alert Modal -->
+                                                            <!-- Danger Alert Modal -->
                                                             <div id="danger-alert-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
                                                                 <div class="modal-dialog modal-sm">
                                                                     <div class="modal-content modal-filled bg-danger">

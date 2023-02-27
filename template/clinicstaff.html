@@ -211,11 +211,47 @@
                                                     <td>{{ clinicstaff.schedule_name}}</td>
 
                                                     <td>
-                                                       
-                                                            <form action="/clinicstaffapprove" method="POST"><input type="hidden" name="appt_id" value="{{clinicstaff.appt_id}}"><button type="submit" class="btn btn-outline-success btn-rounded" data-bs-trigger="hover" title="Accept" data-bs-toggle="modal" data-bs-target="#success-alert-modal">
-                                                                <i class="dripicons-checkmark"></i></button></a>  </form>
-                                                                <form action="/clinicstaffdecline" method="POST"><input type="hidden" name="appt_id" value="{{ clinicstaff.appt_id}}"><button type="submit"class="btn btn-outline-danger btn-rounded" data-bs-trigger="hover" title="Decline" data-bs-toggle="modal" data-bs-target="#warning-alert-modal">
-                                                                <i class="mdi mdi-window-close"></i></button></a>  </form>
+                                                        <form action="/clinicstaffapprove" method="POST"><input type="hidden" name="appt_id" value="{{clinicstaff.appt_id}}">
+                                                            <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-trigger="hover" title="Accept" data-bs-toggle="modal" data-bs-target="#success-alert-modal">
+                                                            <i class="dripicons-checkmark"></i></button>
+
+                                                            <!-- Success Alert Modal -->
+                                                            <div id="success-alert-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                <div class="modal-dialog modal-sm">
+                                                                    <div class="modal-content modal-filled bg-success">
+                                                                        <div class="modal-body p-4">
+                                                                            <div class="text-center">
+                                                                                <i class="dripicons-checkmark h1"></i>
+                                                                                <h4 class="mt-2">Accept this Appointment?</h4>
+                                                                                <p class="mt-3">After you click "continue", <br>the current appointment <br>will be accepted.</p>
+                                                                                <button type="submit" class="btn btn-light my-2" data-bs-dismiss="modal">Continue</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div><!-- /.modal-content -->
+                                                                </div><!-- /.modal-dialog -->
+                                                            </div><!-- /.modal -->
+                                                        </form>
+                                                            
+                                                        <form action="/clinicstaffdecline" method="POST"><input type="hidden" name="appt_id" value="{{ clinicstaff.appt_id}}">
+                                                            <button type="button"class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-trigger="hover" title="Decline" data-bs-toggle="modal" data-bs-target="#danger-alert-modal">
+                                                            <i class="mdi mdi-window-close"></i></button>  
+
+                                                            <!-- Danger Alert Modal -->
+                                                            <div id="danger-alert-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                <div class="modal-dialog modal-sm">
+                                                                    <div class="modal-content modal-filled bg-danger">
+                                                                        <div class="modal-body p-4">
+                                                                            <div class="text-center">
+                                                                                <i class="dripicons-wrong h1"></i>
+                                                                                <h4 class="mt-2">Decline this Appointment?</h4>
+                                                                                <p class="mt-3">After you click "continue", <br>the current appointment <br>will be declined.</p>
+                                                                                <button type="submit" class="btn btn-light my-2" data-bs-dismiss="modal">Continue</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div><!-- /.modal-content -->
+                                                                </div><!-- /.modal-dialog -->
+                                                            </div><!-- /.modal -->
+                                                        </form>
                                                     </td>
                                                 </tr>
                                                 {% endfor %}
