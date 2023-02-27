@@ -5,9 +5,9 @@
 	}), i("#toastr-two").on("click", function (t) {
 		i.NotificationApp.send("Heads up!", "Check below fields please.", "top-center", "rgba(0,0,0,0.2)", "warning")
 	}), i("#toastr-three").on("click", function (t) {
-		i.NotificationApp.send("Form submitted successfully!", "", "top-right", "rgba(0,0,0,0.2)", "success")
+		i.NotificationApp.send("Appointment request has been approved", "", "top-right", "rgba(0,0,0,0.2)", "success")
 	}), i("#toastr-four").on("click", function (t) {
-		i.NotificationApp.send("Request declined!", "", "top-right", "rgba(0,0,0,0.2)", "error")
+		i.NotificationApp.send("Appointment request has been declined!", "", "top-right", "rgba(0,0,0,0.2)", "error")
 	}), i("#toastr-five").on("click", function (t) {
 		i.NotificationApp.send("Resident updated successfully!", "", "top-right", "rgba(0,0,0,0.2)", "success")
 	}), i("#toastr-five2").on("click", function (t) {

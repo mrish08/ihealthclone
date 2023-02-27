@@ -272,10 +272,13 @@
                                                         <td>{{ vaccinationstaff.status}}</td>
                                                         <td>
                                                             
-                                                                <form action="/vaccinationstaffapprove" method="POST"><input type="hidden" name="appt_id" value="{{vaccinationstaff.appt_id}}"><button type="submit" class="btn btn-outline-success btn-rounded" data-bs-trigger="hover" title="Accept" data-bs-toggle="modal" data-bs-target="#success-alert-modal">
-                                                                    <i class="dripicons-checkmark"></i></button></a>  </form>
-                                                                    <form action="/vaccinationstaffdecline" method="POST"><input type="hidden" name="appt_id" value="{{ vaccinationstaff.appt_id}}"><button type="submit"class="btn btn-outline-danger btn-rounded" data-bs-trigger="hover" title="Decline" data-bs-toggle="modal" data-bs-target="#warning-alert-modal">
-                                                                    <i class="mdi mdi-window-close"></i></button></a>  </form>
+                                                        <form action="/vaccinationstaffapprove" method="POST"><input type="hidden" name="appt_id" value="{{vaccinationstaff.appt_id}}"><button id="toastr-three" type="submit" class="btn btn-outline-success btn-rounded" data-bs-trigger="hover" title="Accept" data-bs-toggle="modal" data-bs-target="#success-alert-modal">
+                                                            <i class="dripicons-checkmark"></i></button></a>  
+                                                        </form>
+                                                        <form action="/vaccinationstaffdecline" method="POST"><input type="hidden" name="appt_id" value="{{ vaccinationstaff.appt_id}}"><button id="toastr-four" type="submit"class="btn btn-outline-danger btn-rounded" data-bs-trigger="hover" title="Decline" data-bs-toggle="modal" data-bs-target="#warning-alert-modal">
+                                                            <i class="mdi mdi-window-close"></i></button></a>  
+                                                        </form>
+                                                        
                                                     </tr>
 
                                                     {% endfor %}
