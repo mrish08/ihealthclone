@@ -232,33 +232,44 @@
                                         </div>
                                     </div>
 
+                                    {% for adminvm in adminvm %}
+
                                     <div class="row">
                                         <div class="col-lg-8">
-                                            <p><strong>Appointment ID:</strong></p>
+                                            <label for="" class="form-label">
+                                                Medicine Appointment ID:</label>
+                                            <input type="text" name="med_appt_id" value="{{ adminvm.med_appt_id}}"
+                                                class="form-control" disabled>
                                         </div>
                                         <div class="col-lg-3">
-                                            <p><strong>Date:</strong></p>
+                                            <label for="" class="form-label">
+                                                Date:</label>
+                                                <input type="text" name="date" value="{{ adminvm.date}}"
+                                                class="form-control" disabled>
+                                        
                                         </div>
                                     </div>
-
+    
                                     <div class="page-separator">
                                         <div class="page-separator__text">
                                             <h4>MEDICINE REQUEST DETAILS</h4>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-lg-6">
-                                            <p><strong>Check-up Appointment ID:</strong></p>
+                                        <div class="col-lg-3">
+                                            <label for="" class="form-label">
+                                                Medicine Name:</label>
+                                            <input type="text" name="medicine_name" value="{{ adminvm.medicine_name}}"
+                                                class="form-control" disabled>
                                         </div>
                                         <div class="col-lg-3">
-                                            <p><strong>Medicine Name:</strong></p>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <p><strong>QTY:</strong></p>
+                                            <label for="" class="form-label">
+                                                QTY:</label>
+                                            <input type="text" name="qty" value="{{ adminvm.qty}}"
+                                                class="form-control" disabled>
                                         </div>
                                     </div>
-                                    <br>
-
+                                    {% endfor %}
                                     <div class="modal-footer"><a href="/adminhaptmedicine">
                                             <button type="button" class="btn btn-light">Back </button>
                                     </div>

@@ -234,117 +234,78 @@
                                         <h4>CONSULTATION DETAILS</h4>
                                     </div>
                                 </div>
+                                {% for adminvv in adminvv %}
 
-                                <form action="/addvaccination" method="POST">
+                                <div class="">
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <label for="" class="form-label">
-                                                Appointment ID:&nbsp;<span
-                                                    style="color:#ff0000">*</span></label>
-                                            <input type="text" name=""
+                                                Appointment ID:</label>
+                                            <input type="text" name="" value="{{ adminvv.appt_id}}"
                                                 class="form-control" disabled>
                                             </span>
                                         </div>
                                         <div class="col-sm-6">
                                             <label for="" class="form-label">
-                                                Date: &nbsp;<span
-                                                    style="color:#ff0000">*</span></label>
-                                            <input type="text" name=""
+                                                Date:</label>
+                                            <input type="text" name="" value="{{ adminvv.date}}"
                                                 class="form-control" disabled>
                                             </span>
                                         </div>
-                                    </div><br>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <label for="brand_manufacturer"
-                                                class="form-label">
-                                                Patient Name:&nbsp;<span
-                                                    style="color:#ff0000">*</span></label>
-                                            <input type="text" name="brand_manufacturer"
-                                                class="form-control" disabled>
-                                            </span>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <label for="lot_no" class="form-label">
-                                                Sex:&nbsp;<span
-                                                    style="color:#ff0000">*</span></label>
-                                            <input type="text" name="lot_name"
-                                                class="form-control" disabled>
-                                            </span>
-                                        </div>
-                                        
-                                        
-                                    </div><br>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <label for="vax_dosage" class="form-label">
-                                                Date of Birth:&nbsp;<span
-                                                    style="color:#ff0000">*</span></label>
-                                            <input type="text" name="vax_dosage"
-                                                class="form-control" disabled>
-                                            </span>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label for="tech_platform"
-                                                class="form-label">
-                                                Category:&nbsp;<span
-                                                    style="color:#ff0000">*</span></label>
-                                            <input type="text" name="tech_platform"
-                                                class="form-control" disabled>
-                                            </span>
-                                        </div>
-                                    </div><br>
-
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label for="" class="form-label">
+                                            Patient Name:</label>
+                                        <input type="text" name="" value="{{ adminvv.resident}}"
+                                            class="form-control" disabled>
+                                        </span>
+                        
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label for="" class="form-label">
+                                            Sex:</label>
+                                        <input type="text" name="" value="{{ adminvv.gender}}"
+                                            class="form-control" disabled>
+                                        </span>
+                                    </div>
+                                    </div>
+                                    
+                                </div><br>
                                 
+                                <br>
+                                <div class="page-separator">
+                                    <div class="page-separator__text">
+                                        <h4>VACCINATION DETAILS</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label for="" class="form-label">
+                                            Dose No:</label>
+                                        <input type="text" name="" value="{{ adminvv.vax_dosage}}"
+                                            class="form-control" disabled>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label for="" class="form-label">
+                                             Vaccine Name:</label>
+                                        <input type="text" name="" value="{{ adminvv.vax_name}}"
+                                            class="form-control" disabled>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label for="" class="form-label">
+                                            Lot No.:</label>
+                                       <input type="text" name="" value="{{ adminvv.vax_lot_no}}"
+                                           class="form-control" disabled>
+                                    </div>
+                                    {% endfor %}
 
-                                    <!--Form to fillup-->
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <label for="" class="form-label">
-                                                Dose No:&nbsp;<span
-                                                    style="color:#ff0000">*</span></label>
-                                            <input type="text" name=""
-                                                class="form-control"disabled>
-                                            </span>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <label for="" class="form-label">
-                                                Vaccine Name:&nbsp;<span
-                                                    style="color:#ff0000">*</span></label>
-                                            <input type="text" name=""
-                                                class="form-control"disabled>
-                                            </span>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <label for="" class="form-label">
-                                                Lot No:&nbsp;<span
-                                                    style="color:#ff0000">*</span></label>
-                                            <input type="text" name=""
-                                                class="form-control"disabled>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <label for="" class="">
-                                                Vaccine Name:&nbsp;<span
-                                                    style="color:#ff0000">*</span></label>
-                                            <input type="text" name=""
-                                                class="form-control"disabled>
-                                            </span>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label for="" class="">
-                                                Vaccinator:&nbsp;<span
-                                                    style="color:#ff0000">*</span></label>
-                                            <input type="text" name=""
-                                                class="form-control"disabled>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <!--End of Form to fillup-->
+                                </div>
                                     <br><br>
-                                </form>
+                                
                                 <div class="modal-footer"><a href="/adminhaptvax">
                                         <button type="button" class="btn btn-light">Back
                                         </button>

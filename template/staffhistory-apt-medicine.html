@@ -117,6 +117,18 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="side-nav-item  ">
+                        <a href="/cancelledbookingsS" class="side-nav-link">
+                            <i class="uil-chart-pie"></i>
+                            <span> Cancelled Bookings </span>
+                        </a>
+                    </li>
+                    <li class="side-nav-item">
+                        <a href="/noshowbookingsS" class="side-nav-link">
+                            <i class="uil-chart-pie"></i>
+                            <span> Non-appearance </span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </li>
@@ -195,6 +207,7 @@
                                     <table id="basic-datatable" class="table dt-responsive nowrap w-100">
                                         <thead>
                                             <tr class="table-light">
+                                                <th>Appointment ID</th>
                                                 <th>Service</th>
                                                 <th>Date</th>
                                                 <th>Status</th>
@@ -208,6 +221,7 @@
                                         <tbody>
                                             {% for staffhaptmedicine in staffhaptmedicine %}
                                             <tr>
+                                                <td>{{ staffhaptmedicine.med_appt_id}}</td>
                                                 <td>{{ staffhaptmedicine.appt_type}}</td>
                                                 <td>{{ staffhaptmedicine.date}}</td>
                                                 <td>{{ staffhaptmedicine.status}}</td>

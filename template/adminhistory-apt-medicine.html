@@ -217,10 +217,11 @@
                                     <th>Medicine Name</th>
                                     <th>Quantity</th>
                                     <th>Schedule</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for adminhaptmedicine     in adminhaptmedicine %}
+                                {% for adminhaptmedicine in adminhaptmedicine %}
                                 <tr>
                                     <td>{{ adminhaptmedicine.med_appt_id}}</td>
                                     <td>{{ adminhaptmedicine.appt_type}}</td>
@@ -232,7 +233,9 @@
                                     <td>{{ adminhaptmedicine.schedule_name}}</td>
                                     <td>
                                     
-                                    </td>
+                                            <a href="/adminvm/{{adminhaptmedicine.med_appt_id}}"><button type="button" class="btn btn-rounded btn-warning">View</button>
+                                        </td>
+                                 
                                 </tr>
                                 {% endfor %}
 

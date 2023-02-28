@@ -73,13 +73,19 @@
                                 </ul>
                             </div>
                         </li>
+                        <li class="side-nav-item">
+                            <a href="/managebookings" class="side-nav-link">
+                                <i class="uil-chart-pie"></i>
+                                <span> My Appointments </span>
+                            </a>
+                        </li>
         
 
                         <li class="side-nav-item menuitem-active">
                             <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false"
                                 aria-controls="sidebarEmail" class="side-nav-link">
                                 <i class="mdi mdi-history"></i>
-                                <span> Appointment History </span>
+                                <span> Approved Appointments</span>
                                 <span class="menu-arrow"></span>
                             </a>
                             <div class="collapse" id="sidebarEmail">
@@ -98,6 +104,18 @@
                                     </li>
                                 </ul>
                             </div>
+                        </li>
+                        <li class="side-nav-item  ">
+                            <a href="/cancelledbookings" class="side-nav-link">
+                                <i class="uil-chart-pie"></i>
+                                <span> Cancelled Bookings </span>
+                            </a>
+                        </li>
+                        <li class="side-nav-item">
+                            <a href="/noshowbookings" class="side-nav-link">
+                                <i class="uil-chart-pie"></i>
+                                <span> Non-appearance </span>
+                            </a>
                         </li>
                     </ul>
                     <div class="clearfix"></div>
@@ -209,6 +227,12 @@
                             <div class="card-body">
                                 <p>Please fill in the details below to successfully request your Medicine.</p>
                                 <form action="/residentmedicine" method="POST" id="form">
+                                    <div class="col-sm-12">
+                                        <label for="appt_id" class="form-label">Appointment ID
+                                            <span style="color:#ff0000">*</span></label>
+                                            <input class="form-control" id="appt_id" type="text" name="appt_id">
+                                       
+                                    </div> <br>
                                     <div class="col-sm-12">
                                         <label for="appt_type" class="form-label">Appointment Type
                                             <span style="color:#ff0000">*</span></label>

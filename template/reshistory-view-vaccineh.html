@@ -78,13 +78,19 @@
                                 </ul>
                             </div>
                         </li>
+                        <li class="side-nav-item">
+                            <a href="/managebookings" class="side-nav-link">
+                                <i class="uil-chart-pie"></i>
+                                <span> My Appointments </span>
+                            </a>
+                        </li>
         
 
                         <li class="side-nav-item menuitem-active">
                             <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false"
                                 aria-controls="sidebarEmail" class="side-nav-link">
                                 <i class="mdi mdi-history"></i>
-                                <span> Appointment History </span>
+                                <span>Approved Appointments </span>
                                 <span class="menu-arrow"></span>
                             </a>
                             <div class="collapse" id="sidebarEmail">
@@ -103,6 +109,18 @@
                                     </li>
                                 </ul>
                             </div>
+                        </li>
+                        <li class="side-nav-item  ">
+                            <a href="/cancelledbookings" class="side-nav-link">
+                                <i class="uil-chart-pie"></i>
+                                <span> Cancelled Bookings </span>
+                            </a>
+                        </li>
+                        <li class="side-nav-item">
+                            <a href="/noshowbookings" class="side-nav-link">
+                                <i class="uil-chart-pie"></i>
+                                <span> Non-appearance </span>
+                            </a>
                         </li>
                     </ul>
                     <div class="clearfix"></div>
@@ -192,40 +210,46 @@
                                         <h4>CONSULTATION DETAILS</h4>
                                     </div>
                                 </div>
+                                {% for reshistoryviewvax in reshistoryviewvax %}
 
+                                <div class="">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label for="" class="form-label">
+                                                Appointment ID:</label>
+                                            <input type="text" name="" value="{{ reshistoryviewvax.appt_id}}"
+                                                class="form-control" disabled>
+                                            </span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label for="" class="form-label">
+                                                Date:</label>
+                                            <input type="text" name="" value="{{ reshistoryviewvax.date}}"
+                                                class="form-control" disabled>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div><br>
                                 <div class="row">
-                                    <div class="col-lg-8">
-                                        <p><strong>Appointment ID:</strong></p>
+                                    <div class="col-sm-6">
+                                        <label for="" class="form-label">
+                                            Patient Name:</label>
+                                        <input type="text" name="" value="{{ reshistoryviewvax.resident}}"
+                                            class="form-control" disabled>
+                                        </span>
+                        
                                     </div>
-                                    <div class="col-lg-3">
-                                        <p><strong>Date:</strong></p>
+                                    <div class="col-sm-3">
+                                        <label for="" class="form-label">
+                                            Sex:</label>
+                                        <input type="text" name="" value="{{ reshistoryviewvax.gender}}"
+                                            class="form-control" disabled>
+                                        </span>
                                     </div>
-                                </div>
-                                <div class="page-separator">
-                                    <div class="page-separator__text">
-                                        <h4>PATIENT INFORMATION</h4>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <p><strong>Patient:</strong></p>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <p><strong>Age:</strong></p>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <p><strong>Sex:</strong></p>
-                                    </div>
-                                </div>
-                                <p><strong>Address: </strong>123 abc st. quezon city</p>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <p><strong>Date of Birth:</strong></p>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <p><strong>Category:</strong></p>
-                                    </div>
-                                </div>
+                                    
+                                </div><br>
+                                
                                 <br>
                                 <div class="page-separator">
                                     <div class="page-separator__text">
@@ -234,24 +258,33 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <p><strong>Dose No: </strong></p>
+                                        <label for="" class="form-label">
+                                            Dose No:</label>
+                                        <input type="text" name="" value="{{ reshistoryviewvax.vax_dosage}}"
+                                            class="form-control" disabled>
                                     </div>
                                     <div class="col-lg-6">
-                                        <p><strong>Vaccine Name:</strong></p>
+                                        <label for="" class="form-label">
+                                             Vaccine Name:</label>
+                                        <input type="text" name="" value="{{ reshistoryviewvax.vax_name}}"
+                                            class="form-control" disabled>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <p><strong>Lot No: </strong></p>
+                                        <label for="" class="form-label">
+                                            Lot No.:</label>
+                                       <input type="text" name="" value="{{ reshistoryviewvax.vax_lot_no}}"
+                                           class="form-control" disabled>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <p><strong>Vaccinator Name:</strong></p>
-                                    </div>
-                                </div> <br>
+                               
+                                </div>
+                                {% endfor %}
+                                <br>
+                                <br>
 
-                                <div class="modal-footer">
-                                    <button href="residenthaptvax" type="button" class="btn btn-light">Back
-                                    </button>
+                                <div class="modal-footer" href="/residenthaptvax">
+                                    <button  type="button" class="btn btn-light">Back </button>
                                 </div>
                             </div>
                         </div>

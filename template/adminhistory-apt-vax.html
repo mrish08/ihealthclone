@@ -219,6 +219,8 @@
                                                 <th>Date</th>
                                                 <th>Time</th>
                                                 <th>Status</th>
+                                                <th>Action</th>
+
                                             </tr>
                                         </thead>
                                     
@@ -234,7 +236,8 @@
                                                 <td>{{ adminhaptvax.firstname}}</td>
                                                 <td>{{ adminhaptvax.schedule_name}}</td>
                                                 <td>
-                                                 
+                                                    <a href="/adminvv/{{adminhaptvax.appt_id}}"><button type="button" class="btn btn-rounded btn-warning">View</button>
+
                                 </td>
                             </tr>
                             {% endfor %}

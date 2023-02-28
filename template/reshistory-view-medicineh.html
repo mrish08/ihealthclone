@@ -78,12 +78,18 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="side-nav-item">
+                        <a href="/managebookings" class="side-nav-link">
+                            <i class="uil-chart-pie"></i>
+                            <span> My Appointments </span>
+                        </a>
+                    </li>
     
     
                     <li class="side-nav-item menuitem-active">
                         <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
                             <i class="mdi mdi-history"></i>
-                            <span> Appointment History </span>
+                            <span> Approved Appointments </span>
                             <span class="menu-arrow"></span>
                         </a>
                         <div class="collapse" id="sidebarEmail">
@@ -102,6 +108,18 @@
                                 </li>
                             </ul>
                         </div>
+                    </li>
+                    <li class="side-nav-item  ">
+                        <a href="/cancelledbookings" class="side-nav-link">
+                            <i class="uil-chart-pie"></i>
+                            <span> Cancelled Bookings </span>
+                        </a>
+                    </li>
+                    <li class="side-nav-item">
+                        <a href="/noshowbookings" class="side-nav-link">
+                            <i class="uil-chart-pie"></i>
+                            <span> Non-appearance </span>
+                        </a>
                     </li>
                 </ul>
                 <div class="clearfix"></div>
@@ -191,13 +209,21 @@
                                         <h4>CONSULTATION DETAILS</h4>
                                     </div>
                                 </div>
+                                {% for reshistoryviewmed in reshistoryviewmed %}
 
                                 <div class="row">
                                     <div class="col-lg-8">
-                                        <p><strong>Appointment ID:</strong></p>
+                                        <label for="" class="form-label">
+                                            Medicine Appointment ID:</label>
+                                        <input type="text" name="" value="{{ reshistoryviewmed.med_appt_id}}"
+                                            class="form-control" disabled>
                                     </div>
                                     <div class="col-lg-3">
-                                        <p><strong>Date:</strong></p>
+                                        <label for="" class="form-label">
+                                            Date:</label>
+                                            <input type="text" name="" value="{{ reshistoryviewmed.date}}"
+                                            class="form-control" disabled>
+                                    
                                     </div>
                                 </div>
 
@@ -207,20 +233,25 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-6">
-                                        <p><strong>Check-up Appointment ID:</strong></p>
+                                    <div class="col-lg-3">
+                                        <label for="" class="form-label">
+                                            Medicine Name:</label>
+                                        <input type="text" name="" value="{{ reshistoryviewmed.medicine_name}}"
+                                            class="form-control" disabled>
                                     </div>
                                     <div class="col-lg-3">
-                                        <p><strong>Medicine Name:</strong></p>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <p><strong>QTY:</strong></p>
+                                        <label for="" class="form-label">
+                                            QTY:</label>
+                                        <input type="text" name="" value="{{ reshistoryviewmed.qty}}"
+                                            class="form-control" disabled>
                                     </div>
                                 </div>
+                                {% endfor %}
+
                                 <br>
                                 <div class="modal-footer">
                                     <a href="residenthaptmedicine">
-                                        <button class="btn btn-secondary" type="submit">Cancel</button>
+                                        <button class="btn btn-secondary" type="submit">Back</button>
                                     </a>
                                 </div>
                                 

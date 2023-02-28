@@ -78,7 +78,7 @@
                     </a>
                 </li>
 
-                <li class="badge-primary-lighten side-nav-item menuitem-active">
+                <li class="side-nav-item">
 
                     <a href="/medicinestaff" class="side-nav-link">
                         <i class="uil-home-alt"></i>
@@ -103,11 +103,23 @@
                             <li>
                                 <a href="/staffhaptdental">Dental Service</a>
                             </li>
-                            <li>
+                            <li class="badge-primary-lighten menuitem-active">
                                 <a href="/staffhaptmedicine">Medicine Pickup</a>
                             </li>
                         </ul>
                     </div>
+                </li>
+                <li class="side-nav-item  ">
+                    <a href="/cancelledbookingsS" class="side-nav-link">
+                        <i class="uil-chart-pie"></i>
+                        <span> Cancelled Bookings </span>
+                    </a>
+                </li>
+                <li class="side-nav-item">
+                    <a href="/noshowbookingsS" class="side-nav-link">
+                        <i class="uil-chart-pie"></i>
+                        <span> Non-appearance </span>
+                    </a>
                 </li>
             </ul>
 
@@ -197,9 +209,8 @@
                                                         <div class="mb-3">
                                                             <label for="appt_type" class="form-label">Appointment Type
                                                                 <span style="color:#ff0000">*</span></label>
-                                                            <select class="form-select" name="appt_type" id="appt_type">
-                                                                <option value="Medicine Request Service">Medicine Request Service</option>
-                                                            </select>
+                                                                <input type="text" name="" placeholder="{{ medicinestaff.med_appt_id}}"
+                                                                class="form-control" disabled>
                                                         </div>
     
                                                         <div class="mb-3">
@@ -207,20 +218,20 @@
                                                                 style="color:#ff0000">*</span></label>
                                                         <input class="form-control" id="date" type="date" name="date">
                                                         </div>
-                                                        <div class="col-sm-6">
+                                                    
+                                                        <!--<div class="col-sm-6">
                                                             <label for="clinic_sched_id" class="form-label">Time <span
                                                                 style="color:#ff0000">*</span></label>
                                                         <select class="form-select" name="clinic_sched_id"id="clinic_sched_id">
                                                             <option value="4">A.M</option>
                                                             <option value="7">P.M</option>
                                                         </select>
-                                                        </div>
+                                                        </div>-->
                                                         <br>
                                                 </div> <!-- end col -->
     
                                                 <div class="col-lg-6">
             
-                                                       
     
                                                         <div class="mb-3">
                                                             <label for="medicine_id" class="form-label">

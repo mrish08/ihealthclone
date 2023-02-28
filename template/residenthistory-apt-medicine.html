@@ -80,11 +80,16 @@
                         </div>
                     </li>
     
-    
+                    <li class="side-nav-item">
+                        <a href="/managebookings" class="side-nav-link">
+                            <i class="uil-chart-pie"></i>
+                            <span> My Appointments </span>
+                        </a>
+                    </li>
                     <li class="side-nav-item menuitem-active">
                         <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
                             <i class="mdi mdi-history"></i>
-                            <span> Appointment History </span>
+                            <span>Approved Appointments </span>
                             <span class="menu-arrow"></span>
                         </a>
                         <div class="collapse" id="sidebarEmail">
@@ -103,6 +108,18 @@
                                 </li>
                             </ul>
                         </div>
+                    </li>
+                    <li class="side-nav-item  ">
+                        <a href="/cancelledbookings" class="side-nav-link">
+                            <i class="uil-chart-pie"></i>
+                            <span> Cancelled Bookings </span>
+                        </a>
+                    </li>
+                    <li class="side-nav-item">
+                        <a href="/noshowbookings" class="side-nav-link">
+                            <i class="uil-chart-pie"></i>
+                            <span> Non-appearance </span>
+                        </a>
                     </li>
                 </ul>
                 <div class="clearfix"></div>
@@ -191,6 +208,7 @@
                                     <th>Medicine Name</th>
                                     <th>Quantity</th>
                                     <th>Schedule</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -205,6 +223,8 @@
                                     <td>{{ residenthaptmedicine.qty}}</td>
                                     <td>{{ residenthaptmedicine.schedule_name}}</td>
                                     <td>
+                                        <a href="/reshistoryviewmed/{{residenthaptmedicine.med_appt_id}}"><button type="button" class="btn btn-rounded btn-warning">View</button>
+
                                     </td>
                                 </tr>
                                 {% endfor %}

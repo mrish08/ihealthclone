@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Clinic Appointment History | iHealth Resident</title>
+    <title>Non-appearance Appointments | iHealth Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="" name="description">
     <meta content="Coderthemes" name="author">
@@ -78,15 +78,15 @@
                                 </ul>
                             </div>
                         </li>
+        
                         <li class="side-nav-item">
                             <a href="/managebookings" class="side-nav-link">
                                 <i class="uil-chart-pie"></i>
                                 <span> My Appointments </span>
                             </a>
                         </li>
-        
 
-                        <li class="side-nav-item menuitem-active">
+                        <li class="side-nav-item">
                             <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false"
                                 aria-controls="sidebarEmail" class="side-nav-link">
                                 <i class="mdi mdi-history"></i>
@@ -98,7 +98,7 @@
                                     <li>
                                         <a href="/residenthaptvax">Vaccination Service</a>
                                     </li>
-                                    <li class="badge-primary-lighten menuitem-active">
+                                    <li >
                                         <a href="/residenthaptclinic">Clinic Service</a>
                                     </li>
                                     <li>
@@ -109,18 +109,18 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li>
-                        <li class="side-nav-item  ">
-                            <a href="/cancelledbookings" class="side-nav-link">
-                                <i class="uil-chart-pie"></i>
-                                <span> Cancelled Bookings </span>
-                            </a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="/noshowbookings" class="side-nav-link">
-                                <i class="uil-chart-pie"></i>
-                                <span> Non-appearance </span>
-                            </a>
+                            <li class="side-nav-item ">
+                                <a href="/cancelledbookings" class="side-nav-link">
+                                    <i class="uil-chart-pie"></i>
+                                    <span> Cancelled Bookings </span>
+                                </a>
+                            </li>
+                            <li class="side-nav-item menuitem-active">
+                                <a href="/noshowbookings" class="side-nav-link">
+                                    <i class="uil-chart-pie"></i>
+                                    <span> Non-appearance </span>
+                                </a>
+                            </li>
                         </li>
                     </ul>
                     <div class="clearfix"></div>
@@ -158,7 +158,7 @@
                                 </span>
                                 <span>
                                     <span class="account-user-name">{{session.user_firstname}}</span>
-                                    <span class="account-position">Resident</span>
+                                    <span class="account-position">Admin</span>
                                 </span>
                             </a>
                             <div
@@ -191,120 +191,64 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
-                            <h4 class="page-title">Clinic Appointment History</h4>
+                            <h4 class="page-title">Non-appearance Appointments</h4>
                         </div>
                     </div>
-                    <!-- end page title -->
 
+                <!-- end page title -->
 
-                    <!-- Start records-->
-                    <div class="col-sm-12">
-                        <div class="card card-body">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
                             <div class="tab-content">
-                                <div class="d-flex justify-content-center mt-0 mb-0 navbar-light"><span>
-                                        <h3>REPORT DETAILS</h3>
-                                    </span></div> <br>
+                                    <div class="table-hover" id="scroll-horizontal-preview">
+                                        <table id="scroll-horizontal-datatable" style="overflow-x: auto;" class="table table-hover w-100 nowrap">
+                                            <thead>
+                                                <tr class="table-light">
+                                                    <th>Appointment ID</th>
+                                                    <th>Service</th>
+                                                    <th>Name</th>
+                                                    <th>Date</th>
+                                                    <th>Time</th>
+                                                    <th>Status</th>
 
-                                <div class="page-separator">
-                                    <div class="page-separator__text">
-                                        <h4>CONSULTATION DETAILS</h4>
-                                    </div>
-                                </div>
-                                {% for reshistoryviewclinic in reshistoryviewclinic %}
-                                <div class="">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <label for="" class="form-label">
-                                                Appointment ID:</label>
-                                            <input type="text" name="" value="{{ reshistoryviewclinic.appt_id}}"
-                                                class="form-control" disabled>
-                                            </span>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label for="" class="form-label">
-                                                Date:</label>
-                                            <input type="text" name="" value="{{ reshistoryviewclinic.date}}"
-                                                class="form-control" disabled>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div><br>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <label for="" class="form-label">
-                                            Patient Name:</label>
-                                        <input type="text" name="" value="{{ reshistoryviewclinic.resident}}"
-                                            class="form-control" disabled>
-                                        </span>
-                        
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <label for="" class="form-label">
-                                            Sex:</label>
-                                        <input type="text" name="" value="{{ reshistoryviewclinic.gender}}"
-                                            class="form-control" disabled>
-                                        </span>
-                                    </div>
-                                    </div>
-                                    
-                                </div><br>
-                                <div>
-                                    <h4>Diagnosis Details</h4>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <label for="" class="form-label">
-                                                Diagnosis:&nbsp;<span
-                                                    style="color:#ff0000">*</span></label>
-                                            <input type="text" name="resident_diagnosis" value="{{ reshistoryviewclinic.resident_diagnosis}}"
-                                                class="form-control"disabled>
-                                            </span>
-                                        </div>
-                                       </div>
-                                </div><br>
-                                <div class="row">
-                                    <h4>Prescription</h4>
-                                    <div class="col-sm-12">
-                                        <label for="" class="form-label">
-                                            Prescription Details:</label>
-                                        <input type="text" name="prescription_details" value="{{ reshistoryviewclinic.prescription_details}}"
-                                            class="form-control"disabled>
-                                        </span>
-                                    </div>
-                                </div>
-                                {% endfor %}
-                            
-                                <div class="modal-footer">
-                                    
-                                    <a href="/residentmedicine">
-                                        <button class="btn btn-primary" type="submit">Request
-                                            Medicine</button>
-                                    </a>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for noshowbookings in noshowbookings %}
+                                                <tr>
+                                                    <td>{{ noshowbookings.appt_id}}</td>
+                                                    <td>{{ noshowbookings.appt_type}}</td>
+                                                    <td>{{ noshowbookings.firstname}}</td>
+                                                    <td>{{ noshowbookings.date}}</td>
+                                                    <td>{{ noshowbookings.schedule_name}}</td>
+                                                    <td>{{ noshowbookings.status}}</td>
+                                                    
+                                                </tr>
+                                                
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>   
+                                    </div>                        
+                                </div> <!-- end preview-->
+                            </div> <!-- end tab-content-->
 
-                                    <a href="/residenthaptclinic">
-                                        <button type="button" class="btn btn-light">Back
-                                        </button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        </div> <!-- end card body-->
+                    </div> <!-- end card -->
+                </div><!-- end col-->
             </div>
-            <!--End records-->
+            <!-- end row-->
+            <!-- end of the first table-->
 
-        </div>
-
-
-        <!-- ============================================================== -->
-        <!-- End Page content -->
-        <!-- ============================================================== -->
-
+    <!-- ============================================================== -->
+    <!-- End Page content -->
+    <!-- ============================================================== -->
 
 
         <!-- bundle -->
         <script src="../../static/js/vendor.min.js"></script>
         <script src="../../static/js/app.min.js"></script>
-
+    
         <!-- third party js -->
         <script src="../../static/js/vendor/jquery.dataTables.min.js"></script>
         <script src="../../static/js/vendor/dataTables.bootstrap5.js"></script>
@@ -312,9 +256,10 @@
         <script src="../../static/js/vendor/responsive.bootstrap5.min.js"></script>
         <script src="../../static/js/vendor/dataTables.buttons.min.js"></script>
         <script src="../../static/js/vendor/buttons.bootstrap5.min.js"></script>
-        <script src="../../static/js/vendor/buttons.php5.min.js"></script>
         <script src="../../static/js/vendor/buttons.flash.min.js"></script>
+        <script src="../../static/js/vendor/buttons.php5.min.js"></script>
         <script src="../../static/js/vendor/buttons.html5.min.js"></script>
+        <script src="../../static/js/vendor/buttons.flash.min.js"></script>
         <script src="../../static/js/vendor/buttons.print.min.js"></script>
         <script src="../../static/js/vendor/dataTables.keyTable.min.js"></script>
         <script src="../../static/js/vendor/dataTables.select.min.js"></script>
@@ -324,19 +269,13 @@
         <script src="../../static/js/vendor/dropzone.min.js"></script>
         <script src="../../static/js/vendor/list.min.js"></script>
         <!-- third party js ends -->
-
+    
         <!-- demo app -->
         <script src="../../static/js/pages/demo.datatable-init.js"></script>
         <script src="../../static/js/pages/demo.toastr.js"></script>
-        <script src="../../static/js/pages/demo.datatable-init.js"></script>
-        <script src="../../static/js/pages/demo.toastr.js"></script>
         <script src="../../static/js/pages/list.js"></script>
-
-
-
-        <!-- Datatable Init js -->
-        <script src="assets/js/pages/demo.datatable-init.js"></script>
-
+        <!-- end demo js-->
+    
 </body>
 
 </html>

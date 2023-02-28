@@ -116,6 +116,18 @@
                         </ul>
                     </div>
                 </li>
+                <li class="side-nav-item  ">
+                    <a href="/cancelledbookingsS" class="side-nav-link">
+                        <i class="uil-chart-pie"></i>
+                        <span> Cancelled Bookings </span>
+                    </a>
+                </li>
+                <li class="side-nav-item">
+                    <a href="/noshowbookingsS" class="side-nav-link">
+                        <i class="uil-chart-pie"></i>
+                        <span> Non-appearance </span>
+                    </a>
+                </li>
             </ul>
         </div>
     </header>
@@ -197,6 +209,8 @@
                                                     <th>Date</th>
                                                     <th>Time</th>
                                                     <th>Status</th>
+                                                    <th>Action</th>
+
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -209,7 +223,9 @@
                                                     <td>{{ staffhaptvax.date}}</td>
                                                     <td>{{ staffhaptvax.schedule_name}}</td>
                                                     <td>{{ staffhaptvax.status}}</td>
-                                                    
+                                                    <td>
+                                                        <a href="/updatevaccinestaff/{{staffhaptvax.appt_id}}"><button type="button" class="btn btn-outline-info btn-rounded"  data-bs-trigger="hover" title="Edit">
+                                                            <i class="mdi mdi-circle-edit-outline"></i></button></a>   </td>
                                                 </tr>
                                                 {% endfor %}
                                             </tbody>

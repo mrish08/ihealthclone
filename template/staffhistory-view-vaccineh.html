@@ -118,6 +118,18 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="side-nav-item  ">
+                        <a href="/cancelledbookingsS" class="side-nav-link">
+                            <i class="uil-chart-pie"></i>
+                            <span> Cancelled Bookings </span>
+                        </a>
+                    </li>
+                    <li class="side-nav-item">
+                        <a href="/noshowbookingsS" class="side-nav-link">
+                            <i class="uil-chart-pie"></i>
+                            <span> Non-appearance </span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             </li>
@@ -203,13 +215,19 @@
                                             <h4>CONSULTATION DETAILS</h4>
                                         </div>
                                     </div>
-
+                                    <form action="/updatevaccinestaff/{{staffhaptvax.appt_id}}" method="POST">
                                     <div class="row">
                                         <div class="col-lg-8">
-                                            <p><strong>Appointment ID:</strong></p>
+                                            <label for="appt_type" class="form-label">Appointment Type
+                                                <span style="color:#ff0000">*</span></label>
+                                                <input type="text" name="" placeholder="{{staffhaptvax.appt_id}}"
+                                                class="form-control" disabled>
                                         </div>
                                         <div class="col-lg-3">
-                                            <p><strong>Date:</strong></p>
+                                            <label for="date" class="form-label">Date<span
+                                            style="color:#ff0000">*</span></label>
+                                            <input class="form-control" id="date" type="text" name="date" placeholder="{{staffhaptvax.date}}"
+                                            class="form-control" disabled>
                                         </div>
                                     </div>
 
@@ -220,25 +238,19 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <p><strong>Patient:</strong></p>
+                                            <label for="resident" class="form-label">Patient<span
+                                                style="color:#ff0000">*</span></label>
+                                                <input class="form-control" id="resident" type="text" name="resident" placeholder="{{staffhaptvax.resident}}"
+                                                class="form-control" disabled>
                                         </div>
                                         <div class="col-lg-3">
-                                            <p><strong>Age:</strong></p>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <p><strong>Sex:</strong></p>
+                                            <label for="gender" class="form-label">Sex<span
+                                                style="color:#ff0000">*</span></label>
+                                                <input class="form-control" id="gender" type="text" name="gender"placeholder="{{staffhaptvax.gender}}"
+                                                class="form-control" disabled>
                                         </div>
                                     </div>
-                                    <p><strong>Address: </strong>123 abc st. quezon city</p>
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <p><strong>Date of Birth:</strong></p>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <p><strong>Category:</strong></p>
-                                        </div>
-                                    </div>
-                                    <br>
+
                                     <br><br>
                                     <div class="page-separator">
                                         <div class="page-separator__text">
@@ -247,22 +259,30 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-6">
+                                            <label for="vax_dosage" class="form-label">Dose No:<span
+                                                style="color:#ff0000">*</span></label>
+                                                <input class="form-control" id="vax_dosage" type="text" name="vax_dosage">
                                             <p><strong>Dose No: </strong></p>
                                         </div>
                                         <div class="col-lg-6">
-                                            <p><strong>Vaccine Name:</strong></p>
+                                            <label for="vax_name" class="form-label">Vaccine Name:<span
+                                                style="color:#ff0000">*</span></label>
+                                                <input class="form-control" id="vax_name" type="text" name="vax_name">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <p><strong>Lot No: </strong></p>
+                                            <label for="vax_lot_no" class="form-label">Lot No:<span
+                                                style="color:#ff0000">*</span></label>
+                                                <input class="form-control" id="vax_lot_no" type="text" name="vax_lot_no">
                                         </div>
-                                        <div class="col-lg-6">
-                                            <p><strong>Vaccinator Name:</strong></p>
-                                        </div>
+                                        
                                     </div> <br>
-
+</form> <a href="/staffhaptclinic">
+    <button class="btn btn-primary" type="submit">Submit</button>
+</a>
                                     <div class="modal-footer"><a href="/staffhaptvax">
+                                        
                                             <button type="button" class="btn btn-light">Back
                                             </button>
                                     </div>

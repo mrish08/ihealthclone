@@ -112,6 +112,18 @@
                                 </ul>
                             </div>
                         </li>
+                        <li class="side-nav-item  ">
+                            <a href="/cancelledbookingsS" class="side-nav-link">
+                                <i class="uil-chart-pie"></i>
+                                <span> Cancelled Bookings </span>
+                            </a>
+                        </li>
+                        <li class="side-nav-item">
+                            <a href="/noshowbookingsS" class="side-nav-link">
+                                <i class="uil-chart-pie"></i>
+                                <span> Non-appearance </span>
+                            </a>
+                        </li>
                     </ul>
 
             </div>
@@ -212,10 +224,10 @@
 
                                                     <td>
                                                         <form action="/clinicstaffapprove" method="POST"><input type="hidden" name="appt_id" value="{{clinicstaff.appt_id}}">
-                                                            <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-trigger="hover" title="Accept" data-bs-toggle="modal" data-bs-target="#success-alert-modal">
+                                                            <button type="submit" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-trigger="hover" title="Accept" data-bs-toggle="modal" data-bs-target="#success-alert-modal">
                                                             <i class="dripicons-checkmark"></i></button>
 
-                                                            <!-- Success Alert Modal -->
+                                                            <!-- Success Alert Modal 
                                                             <div id="success-alert-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
                                                                 <div class="modal-dialog modal-sm">
                                                                     <div class="modal-content modal-filled bg-success">
@@ -227,16 +239,17 @@
                                                                                 <button type="submit" class="btn btn-light my-2" data-bs-dismiss="modal">Continue</button>
                                                                             </div>
                                                                         </div>
-                                                                    </div><!-- /.modal-content -->
-                                                                </div><!-- /.modal-dialog -->
-                                                            </div><!-- /.modal -->
+                                                                    </div>/.modal-content 
+                                                                </div>.modal-dialog
+                                                            </div> /.modal 
+                                                        -->
                                                         </form>
                                                             
-                                                        <form action="/clinicstaffdecline" method="POST"><input type="hidden" name="appt_id" value="{{ clinicstaff.appt_id}}">
+                                                        <form action="/clinicstaffdecline" method="POST"><input type="hidden" name="appt_id" value="{{clinicstaff.appt_id}}">
                                                             <button type="button"class="btn btn-outline-danger btn-rounded" tabindex="0" data-bs-trigger="hover" title="Decline" data-bs-toggle="modal" data-bs-target="#danger-alert-modal">
                                                             <i class="mdi mdi-window-close"></i></button>  
 
-                                                            <!-- Danger Alert Modal -->
+                                                            <!-- Danger Alert Modal
                                                             <div id="danger-alert-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
                                                                 <div class="modal-dialog modal-sm">
                                                                     <div class="modal-content modal-filled bg-danger">
@@ -248,9 +261,9 @@
                                                                                 <button type="submit" class="btn btn-light my-2" data-bs-dismiss="modal">Continue</button>
                                                                             </div>
                                                                         </div>
-                                                                    </div><!-- /.modal-content -->
-                                                                </div><!-- /.modal-dialog -->
-                                                            </div><!-- /.modal -->
+                                                                    </div /.modal-content 
+                                                                </div /.modal-dialog 
+                                                            </div /.modal -->
                                                         </form>
                                                     </td>
                                                 </tr>
