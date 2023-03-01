@@ -209,8 +209,8 @@
                                                         <div class="mb-3">
                                                             <label for="appt_type" class="form-label">Appointment Type
                                                                 <span style="color:#ff0000">*</span></label>
-                                                                <input type="text" name="" placeholder="{{ medicinestaff.med_appt_id}}"
-                                                                class="form-control" disabled>
+                                                                <input type="text" name="appt_type" value="{{ medicinestaff.appt_type}}"
+                                                                class="form-control" >
                                                         </div>
     
                                                         <div class="mb-3">
@@ -255,12 +255,13 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <a href="/medicinestaff">
-                                                    <button class="btn btn-secondary" type="submit">Cancel</button>
-                                                </a>
-
-                                                <a href="/medicinestaff">
                                                     <button class="btn btn-primary" type="submit">Save
                                                         Changes</button>
+                                                </a>
+                                            </form>
+                                               
+                                                <a href="/medicinestaff">
+                                                    <button class="btn btn-secondary" type="submit">Cancel</button>
                                                 </a>
                                             <!-- end row-->                      
                                         </div> <!-- end preview-->
@@ -274,7 +275,7 @@
                                                 
                                             </tr>
                                         </tbody>
-                                    </form>
+                                   
                                     </div>
                                 </div>
                             </div>

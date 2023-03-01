@@ -219,16 +219,13 @@
                                                         <td>{{ medicinestaff.qty}}</td>
                                                         <td>{{ medicinestaff.schedule_name}}</td>
                                                         <td>
-                                                            <a href="/updatemedicinestaff/{{medicinestaff.med_appt_id}}">
-                                                                <button type="button" class="btn btn-outline-info btn-rounded" tabindex="0" data-bs-trigger="hover" title="Edit" >
-                                                                <i class="mdi mdi-circle-edit-outline"></i></button>
-                                                            </a>
+                                                           
                                                                 
                                                             <form action="/medicinestaffapprove" method="POST"><input type="hidden" name="med_appt_id" value="{{medicinestaff.med_appt_id}}">
-                                                                <button type="button" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-trigger="hover" title="Accept" data-bs-toggle="modal" data-bs-target="#success-alert-modal">
+                                                                <button type="submit" class="btn btn-outline-success btn-rounded" tabindex="0" data-bs-trigger="hover" title="Accept" data-bs-toggle="modal" data-bs-target="#success-alert-modal">
                                                                 <i class="dripicons-checkmark"></i></button>
 
-                                                                <!-- Success Alert Modal -->
+                                                                <!-- Success Alert Modal 
                                                                 <div id="success-alert-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
                                                                     <div class="modal-dialog modal-sm">
                                                                         <div class="modal-content modal-filled bg-success">
@@ -240,16 +237,16 @@
                                                                                     <button type="submit" class="btn btn-light my-2" data-bs-dismiss="modal">Continue</button>
                                                                                 </div>
                                                                             </div>
-                                                                        </div><!-- /.modal-content -->
-                                                                    </div><!-- /.modal-dialog -->
-                                                                </div><!-- /.modal -->
+                                                                        </div /.modal-content 
+                                                                    </div /.modal-dialog 
+                                                                </div><!-/.modal -->
                                                             </form>
                                                                 
                                                             <form action="/medicinestaffdecline" method="POST"><input type="hidden" name="med_appt_id " value="{{ medicinestaff.med_appt_id}}">
-                                                                <button type="button" class="btn btn-outline-danger btn-rounded"tabindex="0" data-bs-trigger="hover" title="Decline" data-bs-toggle="modal" data-bs-target="#danger-alert-modal">
+                                                                <button type="submit" class="btn btn-outline-danger btn-rounded"tabindex="0" data-bs-trigger="hover" title="Decline" data-bs-toggle="modal" data-bs-target="#danger-alert-modal">
                                                                 <i class="mdi mdi-window-close"></i></button>
 
-                                                                <!-- Danger Alert Modal -->
+                                                                <!-- Danger Alert Modal 
                                                                 <div id="danger-alert-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
                                                                     <div class="modal-dialog modal-sm">
                                                                         <div class="modal-content modal-filled bg-danger">
@@ -261,9 +258,9 @@
                                                                                     <button type="submit" class="btn btn-light my-2" data-bs-dismiss="modal">Continue</button>
                                                                                 </div>
                                                                             </div>
-                                                                        </div><!-- /.modal-content -->
-                                                                    </div><!-- /.modal-dialog -->
-                                                                </div><!-- /.modal -->
+                                                                        </div /.modal-content 
+                                                                    </divmodal-dialog 
+                                                                </div><!/.modal -->
                                                             </form>
                                                         </td>
                                                     </tr>

@@ -98,7 +98,7 @@
                                     <li>
                                         <a href="/residenthaptvax">Vaccination Service</a>
                                     </li>
-                                    <li >
+                                    <li>
                                         <a href="/residenthaptclinic">Clinic Service</a>
                                     </li>
                                     <li>
@@ -225,8 +225,8 @@
                                                     <td>{{ managebookings.schedule_name}}</td>
                                                     <td>{{ managebookings.status}}</td>
                                                     <td>                                                  
-                                                        <form action="/managebookingscancel" method="POST"><input type="hidden" name="appt_id" value="{{ managebookings.appt_id}}">
-                                                            <button type="submit" class="btn btn-outline-danger btn-rounded" value="Cancelled" tabindex="0" data-bs-trigger="hover" title="Cancelled"  data-bs-toggle="modal" data-bs-target="#danger-alert-modal">
+                                                        <form action="/managebookingscancel" method="POST"><input type="hidden" name="appt_id" value="{{managebookings.appt_id}}">
+                                                            <button type="submit" class="btn btn-outline-danger btn-rounded"  tabindex="0" data-bs-trigger="hover" title="Cancelled"  data-bs-toggle="modal" data-bs-target="#danger-alert-modal">
                                                             <i class="mdi mdi-window-close"></i></button>
 
                                                             <!-- Danger Alert Modal 

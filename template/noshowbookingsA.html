@@ -96,27 +96,27 @@
                             <div class="collapse" id="sidebarEmail">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="/residenthaptvax">Vaccination Service</a>
-                                    </li>
-                                    <li >
-                                        <a href="/residenthaptclinic">Clinic Service</a>
+                                        <a href="/adminhaptvax">Vaccination Service</a>
                                     </li>
                                     <li>
-                                        <a href="/residenthaptdental">Dental Service</a>
+                                        <a href="/adminhaptclinic">Clinic Service</a>
                                     </li>
                                     <li>
-                                        <a href="/residenthaptmedicine">Medicine Pickup</a>
+                                        <a href="/adminhaptdental">Dental Service</a>
+                                    </li>
+                                    <li>
+                                        <a href="/adminhaptmedicine">Medicine Pickup</a>
                                     </li>
                                 </ul>
                             </div>
                             <li class="side-nav-item ">
-                                <a href="/cancelledbookings" class="side-nav-link">
+                                <a href="/cancelledbookingsA" class="side-nav-link">
                                     <i class="uil-chart-pie"></i>
                                     <span> Cancelled Bookings </span>
                                 </a>
                             </li>
                             <li class="side-nav-item menuitem-active">
-                                <a href="/noshowbookings" class="side-nav-link">
+                                <a href="/noshowbookingsA" class="side-nav-link">
                                     <i class="uil-chart-pie"></i>
                                     <span> Non-appearance </span>
                                 </a>
@@ -215,14 +215,14 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {% for noshowbookings in noshowbookings %}
+                                                {% for noshowbookingsA in noshowbookingsA %}
                                                 <tr>
-                                                    <td>{{ noshowbookings.appt_id}}</td>
-                                                    <td>{{ noshowbookings.appt_type}}</td>
-                                                    <td>{{ noshowbookings.firstname}}</td>
-                                                    <td>{{ noshowbookings.date}}</td>
-                                                    <td>{{ noshowbookings.schedule_name}}</td>
-                                                    <td>{{ noshowbookings.status}}</td>
+                                                    <td>{{ noshowbookingsA.appt_id}}</td>
+                                                    <td>{{ noshowbookingsA.appt_type}}</td>
+                                                    <td>{{ noshowbookingsA.firstname}}</td>
+                                                    <td>{{ noshowbookingsA.date}}</td>
+                                                    <td>{{ noshowbookingsA.schedule_name}}</td>
+                                                    <td>{{ noshowbookingsA.status}}</td>
                                                     
                                                 </tr>
                                                 

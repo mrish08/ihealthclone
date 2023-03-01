@@ -135,6 +135,18 @@
                         </ul>
                     </div>
                 </li>
+                <li class="side-nav-item  ">
+                    <a href="/cancelledbookingsA" class="side-nav-link">
+                        <i class="uil-chart-pie"></i>
+                        <span> Cancelled Bookings </span>
+                    </a>
+                </li>
+                <li class="side-nav-item">
+                    <a href="/noshowbookingsA" class="side-nav-link">
+                        <i class="uil-chart-pie"></i>
+                        <span> Non-appearance </span>
+                    </a>
+                </li>
             </ul><!-- Sidebar -left -->
 
         </div>
@@ -268,12 +280,18 @@
                                         <div class="float-end">
                                             <i class="mdi mdi-account-multiple widget-icon"></i>
                                         </div>
+                                        
+
                                         <div class="dash-count">
-                                            <h3>44</h3>
+                                            
+                                            <h3></h3>
+                                            {% endfor %}
                                         </div>
+                                        
+
                                     </div>
                                     <div class="dash-widget-info">
-                                        <h5 class="text-muted">Total Transactions</h5>
+                                        <h5 class="text-muted">Total Dental </h5>
                                         <div class="progress progress-sm">
                                             <div class="progress-bar bg-primary w-50"></div>
                                         </div>
@@ -331,7 +349,7 @@
                                             <i class="mdi mdi-hospital widget-icon"></i>
                                         </div>
                                         <div class="dash-count">
-                                            <h3>2</h3>
+                                            <h3>{{  }}</h3>
                                         </div>
                                     </div>
                                     <div class="dash-widget-info">

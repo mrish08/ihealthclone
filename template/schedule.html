@@ -221,7 +221,8 @@
 
                                 <table id="basic-datatable" class="table table-hover dt-responsive nowrap w-100">
                                     <thead>
-                                        <tr class="table-light">>
+                                        <tr class="table-light">
+                                            <th>Schedule ID</th>
                                             <th>Schedule Name</th>
                                             <th>Time</th>
                                             <th>Maximum Attendees</th>
@@ -236,6 +237,7 @@
                                         {% for schedule in schedule %}
 
                                         <tr>
+                                            <td>{{ schedule.clinic_sched_id }}</td>
                                             <td>{{ schedule.schedule_name }}</td>
                                             <td>{{ schedule.from_to_schedule }}</td>
                                             <td>{{ schedule.maximum_attendees }}</td>

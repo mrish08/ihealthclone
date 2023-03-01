@@ -224,6 +224,7 @@
                                     <table id="basic-datatable" class="table table-hover dt-responsive nowrap w-100">
                                         <thead>
                                             <tr class="table-light">
+                                                <th>Item ID</th>
                                                 <th>Item Name</th>
                                                 <th>Stock</th>
                                                 <th>Action</th>
@@ -235,6 +236,7 @@
                                             {% for adminclinicinv in adminclinicinv %}
 
                                             <tr>
+                                                <td>{{ adminclinicinv.clinic_supp_id}}</td>
                                                 <td>{{ adminclinicinv.item_name}}</td>
                                                 <td>{{ adminclinicinv.qty}}</td>
                                                 <td class="table-action">

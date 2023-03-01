@@ -137,6 +137,18 @@
                         </ul>
                     </div>
                 </li>
+                <li class="side-nav-item  ">
+                    <a href="/cancelledbookingsA" class="side-nav-link">
+                        <i class="uil-chart-pie"></i>
+                        <span> Cancelled Bookings </span>
+                    </a>
+                </li>
+                <li class="side-nav-item">
+                    <a href="/noshowbookingsA" class="side-nav-link">
+                        <i class="uil-chart-pie"></i>
+                        <span> Non-appearance </span>
+                    </a>
+                </li>
             </ul><!-- Sidebar -left -->
             
         </div>
@@ -214,17 +226,17 @@
                                             <p>Please fill in the details below to successfully add a new Clinic Service.</p>
 
                                             <div class="col-12">
-                                                <form action="/addclinics" method = "POST">
+                                                <form action="/addclinic" method = "POST">
                                                     <label for="clinic_services_name" class="form-label">Service
                                                     Name:&nbsp;<span style="color:#ff0000">*</span></label>
                                                     <input type="text"  name="clinic_services_name" class="form-control">
                                                 <br>
                                                 <div align="right">
                                                     <a href="/clinic">
-                                                        <button class="btn btn-secondary" type="button">Cancel</button>
+                                                        <button class="btn btn-secondary" type="submit">Submit</button>
                                                     </a>
                                                     <a href="/clinic">
-                                                        <button class="btn btn-primary" type="submit">Submit</button>
+                                                        <button class="btn btn-primary" type="button">Cancel</button>
                                                     </a>
                                                 </div>
                                             </form>
