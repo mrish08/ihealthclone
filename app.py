@@ -390,7 +390,7 @@ def updateclinicinv(clinic_supp_id):
 	conn = connection()
 	cursor = conn.cursor()
 	if request.method == 'GET':
-		cursor.execute("SELECT * FROM ih_clinic_supply WHERE clinic_supp_id = %s", (str(clinic_supp_id)))
+		cursor.execute("SELECT * FROM ih_clinic_supply WHERE clinic_supp_id = %s", (str(clinic_supp_id),))
 		for row in cursor.fetchall():
 			ucv.append({"clinic_supp_id": row[0],"item_name": row[1], "qty": row[3]})
 		conn.close()
