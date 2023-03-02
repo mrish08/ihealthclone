@@ -22377,9 +22377,15 @@ input[type="text"] {
 
 /* Adjust input fields */
 input[type="text"] {
-display: inline-block;
-width: 50%;
-margin-left: 10px;
+    display: inline-block;
+    width: 50%;
+    margin-left: 10px;
+}
+
+.row > div {
+    display: inline-block;
+    width: 45%;
+    margin-left: 10px;
 }
 
 label {
