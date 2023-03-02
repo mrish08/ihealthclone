@@ -22349,3 +22349,60 @@ div.table-responsive>div.dataTables_wrapper>div.row>div[class^=col-]:first-child
     margin-left: 85%;
 }
 /*# sourceMappingURL=app.min.css.map */
+
+.printHide {
+   display: none;
+}
+
+/* Define styles for print view */
+@media print {
+/* Hide elements that should not be printed */
+body * {
+    visibility: hidden;
+}
+
+.printHide, .printHide *  {
+    display: block!important;
+}
+
+/* Hide form input box */
+input[type="text"] {
+    display: none;
+}
+
+.card,
+.card * {
+    visibility: visible;
+}
+
+.card {
+    padding-top: 120px;
+}
+
+/* Position the logo and header */
+.tempLogo {
+    padding-top: 10px;
+    position: absolute;
+    top: 0;
+    left:0;
+}
+.textHeader {
+    padding-left: 115px;
+    padding-top: 33px;
+    position: absolute;
+    top: 0;
+    left: 50;
+    font-size: 20px;
+    color: #00203f;
+}
+
+#spacing {
+    padding-left: 115px;
+    padding-top: 58px;
+    position: absolute;
+    top: 0;
+    left: 50;
+    font-size: 17px;
+    color: #00203f;
+}
+}

@@ -223,19 +223,26 @@
 
                         <div class="d-print-none col-sm-12">
                             <div class="text-end">
-                                <a href="javascript:window.print()" class="btn btn-primary"><i class="mdi mdi-printer"></i> Print Report</a>
+                                <button class="btn btn-primary mdi mdi-printer" id="print-button"> Print Report</button>
                             </div>
                         </div>   
                         <!-- end buttons -->
                     </div> <br>
-
                     <!-- end page title -->
 
-                    
 
                     <!-- Start records-->
                     <div class="col-sm-12">
-                        <div class="card card-body">
+                        <div class="card card-body print-only">
+
+                            <!--PRINT TEMPLATE-->
+                            <div class="printHide" >
+                                <div class="print-only">
+                                    <p class="textHeader">iHealth - Barangay Commonwealth</p>
+                                    <p id="spacing"><i>Quezon City, Philippines</i></p>
+                                    <img class="tempLogo" src="../static/images/bitbo.png" style="height: 110px;" alt="Logo">
+                                </div>
+                            </div>
                             <div class="tab-content">
                                 <div class="d-flex justify-content-center mt-0 mb-0 navbar-light"><span>
                                         <h3>REPORT DETAILS</h3>
@@ -301,7 +308,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <label for="" class="form-label">
-                                             Vaccine Name:</label>
+                                            Vaccine Name:</label>
                                         <input type="text" name="" value="{{ adminvv.vax_name}}"
                                             class="form-control" disabled>
                                     </div>
@@ -310,15 +317,15 @@
                                     <div class="col-lg-6">
                                         <label for="" class="form-label">
                                             Lot No.:</label>
-                                       <input type="text" name="" value="{{ adminvv.vax_lot_no}}"
-                                           class="form-control" disabled>
+                                    <input type="text" name="" value="{{ adminvv.vax_lot_no}}"
+                                        class="form-control" disabled>
                                     </div>
                                     {% endfor %}
 
                                 </div>
                                     <br><br>
                                 
-                                <div class="modal-footer"><a href="/adminhaptvax">
+                                <div class="modal-footer no-print"><a href="/adminhaptvax">
                                         <button type="button" class="btn btn-light">Back
                                         </button>
                                 </div>
@@ -327,13 +334,48 @@
                     </div>
                 </div>
                 <!--End records-->
+
             </div>
 
 
             <!-- ============================================================== -->
             <!-- End Page content -->
             <!-- ============================================================== -->
+            <!--Logo Printing-->
+           
 
+            <script>
+                function printPage() {
+                    // Hide elements that should not be printed
+                    const elementsToHide = document.querySelectorAll('.no-print');
+                    for (let i = 0; i < elementsToHide.length; i++) {
+                        elementsToHide[i].style.display = 'none';
+                    }
+
+                    // Add print-only class to elements to be printed
+                    const elementsToPrint = document.querySelectorAll('.print-only');
+                    for (let i = 0; i < elementsToPrint.length; i++) {
+                        elementsToPrint[i].classList.add('print-area');
+                    }
+
+                    // Trigger print dialog with CSS media query
+                    window.print();
+
+                    // Show hidden elements again
+                    for (let i = 0; i < elementsToHide.length; i++) {
+                        elementsToHide[i].style.display = '';
+                    }
+
+                    // Remove print-only class
+                    for (let i = 0; i < elementsToPrint.length; i++) {
+                        elementsToPrint[i].classList.remove('print-area');
+                    }
+                    }
+
+                    // Add print button click event listener
+                    const printButton = document.getElementById('print-button');
+                    printButton.addEventListener('click', printPage);
+            </script>
 
             <!-- bundle -->
             <script src="../../static/js/vendor.min.js"></script>
