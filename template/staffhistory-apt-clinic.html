@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Clinic Service | iHealth Staff History</title>
+    <title>Clinic Appointment | iHealth Staff History</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="" name="description">
     <meta content="Coderthemes" name="author">
@@ -193,10 +193,10 @@
                         </div>
                         <div class="d-print-none col-sm-12">
                             <div class="text-end">
-                                <button id="print-btn" class="btn btn-primary mdi mdi-printer" onclick="printTable()"> Print Report</button>
+                                <a href="javascript:window.print()" class="btn btn-primary"><i class="mdi mdi-printer"></i> Print Report</a>
                             </div>
-                        </div><br><br>
-                    </div>
+                        </div>  
+                    </div> <br>
                     <!-- end page title -->
                     
                     <div class="col-12">
@@ -205,37 +205,40 @@
                                 <div class="tab-content">
                                     <div class="table-hover" id="scroll-horizontal-preview">
                                         <table id="basic-datatable" class="table dt-responsive nowrap w-100">
-                                            <thead>
-                                                <tr class="table-light">
-                                                    <th>ID</th>
-                                                    <th>Service</th>
-                                                    <th>Date</th>
-                                                    <th>Status</th>
-                                                    <th>Resident</th>
-                                                    <th>Service Name</th>
-                                                    <th>Schedule</th>
-                                                    <th id="Action">Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {% for staffhaptclinic in staffhaptclinic %}
-                                                <tr>
-                                                    <td>{{ staffhaptclinic.appt_id}}</td>
-                                                    <td>{{ staffhaptclinic.appt_type}}</td>
-                                                    <td>{{ staffhaptclinic.date}}</td>
-                                                    <td>{{ staffhaptclinic.status}}</td>
-                                                    <td>{{ staffhaptclinic.firstname}}</td>
-                                                    <td>{{ staffhaptclinic.clinic_services_name}}</td>
-                                                    <td>{{ staffhaptclinic.schedule_name}}</td>
-                                                    <td>
-
-                                                        <a href="/updateclinicstaff/{{staffhaptclinic.appt_id}}"><button type="button" class="btn btn-outline-info btn-rounded"  data-bs-trigger="hover" title="Edit">
-                                                            <i class="mdi mdi-circle-edit-outline"></i></button></a>                  
-                                                    </td>
-                                                </tr>
-                                                {% endfor %}
-            
-                                            </tbody>
+                                            <div class="card print-only">
+                                                <thead>
+                                                    <tr class="table-light">
+                                                        <th>ID</th>
+                                                        <th>Service</th>
+                                                        <th>Date</th>
+                                                        <th>Status</th>
+                                                        <th>Resident</th>
+                                                        <th>Service Name</th>
+                                                        <th>Schedule</th>
+                                                        <th id="Action">Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for staffhaptclinic in staffhaptclinic %}
+                                                    <tr>
+                                                        <td>{{ staffhaptclinic.appt_id}}</td>
+                                                        <td>{{ staffhaptclinic.appt_type}}</td>
+                                                        <td>{{ staffhaptclinic.date}}</td>
+                                                        <td>{{ staffhaptclinic.status}}</td>
+                                                        <td>{{ staffhaptclinic.firstname}}</td>
+                                                        <td>{{ staffhaptclinic.clinic_services_name}}</td>
+                                                        <td>{{ staffhaptclinic.schedule_name}}</td>
+                                                        <td class="no-print">
+                                                            <a href="/updateclinicstaff/{{staffhaptclinic.appt_id}}">
+                                                                <button type="button" class="btn btn-outline-info btn-rounded"  data-bs-trigger="hover" title="Edit">
+                                                                <i class="mdi mdi-circle-edit-outline"></i>
+                                                                </button>
+                                                            </a>                  
+                                                        </td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </div>
                                         </table>
                                     </div>
                                 </div>
@@ -249,50 +252,81 @@
                 </div>
             </div>
         </div>
-            
-        <!-- ============================================================== -->
-        <!-- End Page content -->
-        <!-- ============================================================== -->
-
     </div>
     <!-- END wrapper -->
 
+    <!-- ============================================================== -->
+    <!-- End Page content -->
+    <!-- ============================================================== -->
+
+    <script>
+        function printPage() {
+            // Hide elements that should not be printed
+            const elementsToHide = document.querySelectorAll('.no-print');
+            for (let i = 0; i < elementsToHide.length; i++) {
+                elementsToHide[i].style.display = 'none';
+            }
+
+            // Add print-only class to elements to be printed
+            const elementsToPrint = document.querySelectorAll('.print-only');
+            for (let i = 0; i < elementsToPrint.length; i++) {
+                elementsToPrint[i].classList.add('print-area');
+            }
+
+            // Trigger print dialog with CSS media query
+            window.print();
+
+            // Show hidden elements again
+            for (let i = 0; i < elementsToHide.length; i++) {
+                elementsToHide[i].style.display = '';
+            }
+
+            // Remove print-only class
+            for (let i = 0; i < elementsToPrint.length; i++) {
+                elementsToPrint[i].classList.remove('print-area');
+            }
+            }
+
+            // Add print button click event listener
+            const printButton = document.getElementById('print-button');
+            printButton.addEventListener('click', printPage);
+    </script>
  
-       <!-- bundle -->
-       <script src="../../static/js/vendor.min.js"></script>
-       <script src="../../static/js/app.min.js"></script>
-   
-       <!-- third party js -->
-       <script src="../../static/js/vendor/jquery.dataTables.min.js"></script>
-       <script src="../../static/js/vendor/dataTables.bootstrap5.js"></script>
-       <script src="../../static/js/vendor/dataTables.responsive.min.js"></script>
-       <script src="../../static/js/vendor/responsive.bootstrap5.min.js"></script>
-       <script src="../../static/js/vendor/dataTables.buttons.min.js"></script>
-       <script src="../../static/js/vendor/buttons.bootstrap5.min.js"></script>
-       <script src="../../static/js/vendor/buttons.php5.min.js"></script>
-       <script src="../../static/js/vendor/buttons.flash.min.js"></script>
-       <script src="../../static/js/vendor/buttons.html5.min.js"></script>
-       <script src="../../static/js/vendor/buttons.print.min.js"></script>
-       <script src="../../static/js/vendor/dataTables.keyTable.min.js"></script>
-       <script src="../../static/js/vendor/dataTables.select.min.js"></script>
-       <script src="../../static/js/vendor/apexcharts.min.js"></script>
-       <script src="../../static/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
-       <script src="../../static/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
-       <script src="../../static/js/vendor/dropzone.min.js"></script>
-       <script src="../../static/js/vendor/list.min.js"></script>
-       <!-- third party js ends -->
-   
-       <!-- demo app -->
-       <script src="../../static/js/pages/demo.datatable-init.js"></script>
-       <script src="../../static/js/pages/demo.toastr.js"></script>
-       <script src="../../static/js/pages/demo.datatable-init.js"></script>
-       <script src="../../static/js/pages/demo.toastr.js"></script>
-       <script src="../../static/js/pages/list.js"></script>
+    <!-- bundle -->
+    <script src="../../static/js/vendor.min.js"></script>
+    <script src="../../static/js/app.min.js"></script>
+
+    <!-- third party js -->
+    <script src="../../static/js/vendor/jquery.dataTables.min.js"></script>
+    <script src="../../static/js/vendor/dataTables.bootstrap5.js"></script>
+    <script src="../../static/js/vendor/dataTables.responsive.min.js"></script>
+    <script src="../../static/js/vendor/responsive.bootstrap5.min.js"></script>
+    <script src="../../static/js/vendor/dataTables.buttons.min.js"></script>
+    <script src="../../static/js/vendor/buttons.bootstrap5.min.js"></script>
+    <script src="../../static/js/vendor/buttons.php5.min.js"></script>
+    <script src="../../static/js/vendor/buttons.flash.min.js"></script>
+    <script src="../../static/js/vendor/buttons.html5.min.js"></script>
+    <script src="../../static/js/vendor/buttons.print.min.js"></script>
+    <script src="../../static/js/vendor/dataTables.keyTable.min.js"></script>
+    <script src="../../static/js/vendor/dataTables.select.min.js"></script>
+    <script src="../../static/js/vendor/apexcharts.min.js"></script>
+    <script src="../../static/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="../../static/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="../../static/js/vendor/dropzone.min.js"></script>
+    <script src="../../static/js/vendor/list.min.js"></script>
+    <!-- third party js ends -->
+
+    <!-- demo app -->
+    <script src="../../static/js/pages/demo.datatable-init.js"></script>
+    <script src="../../static/js/pages/demo.toastr.js"></script>
+    <script src="../../static/js/pages/demo.datatable-init.js"></script>
+    <script src="../../static/js/pages/demo.toastr.js"></script>
+    <script src="../../static/js/pages/list.js"></script>
 
 
 
-        <!-- Datatable Init js -->
-        <script src="assets/js/pages/demo.datatable-init.js"></script>
+    <!-- Datatable Init js -->
+    <script src="assets/js/pages/demo.datatable-init.js"></script>
 
 </body>
 
