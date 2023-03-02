@@ -22403,7 +22403,8 @@ label {
 }
 
 .card {
-    padding-top: 120px;
+    padding-top: 150px;
+    padding-left: 50px;
 }
 
 /* Position of logo and header */
@@ -22412,6 +22413,7 @@ label {
     position: absolute;
     top: 0;
     left:0;
+    padding-left: 50px;
 }
 .textHeader {
     padding-left: 115px;

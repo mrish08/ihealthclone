@@ -230,16 +230,26 @@
                             </div>
                         </div>  
                     </div> <br>
-
                     <!-- end page title -->
+                    
 
                     <!-- Start records-->
                     <div class="col-sm-12">
-                        <div class="card card-body">
+                        <div class="card card-body print-only">
+                             <!--PRINT TEMPLATE-->
+                             <div class="printHide" >
+                                <div class="print-only">
+                                    <p class="textHeader">iHealth - Barangay Commonwealth</p>
+                                    <p id="spacing"><i>Quezon City, Philippines</i></p>
+                                    <img class="tempLogo" src="../static/images/bitbo.png" style="height: 110px;" alt="Logo">
+                                </div>
+                            </div>
+
                             <div class="tab-content">
                                 <div class="d-flex justify-content-center mt-0 mb-0 navbar-light"><span>
                                         <h3>REPORT DETAILS</h3>
-                                    </span></div> <br>
+                                    </span>
+                                </div> <br>
 
                                 <div class="page-separator">
                                     <div class="page-separator__text">
@@ -247,77 +257,75 @@
                                     </div>
                                 </div>
                                 {% for adminvc in adminvc %}
-                                    <div class="">
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <label for="" class="form-label">
-                                                    Appointment ID:</label>
-                                                <input type="text" name="" value="{{ adminvc.appt_id}}"
-                                                    class="form-control" disabled>
-                                                </span>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <label for="" class="form-label">
-                                                    Date:</label>
-                                                <input type="text" name="" value="{{ adminvc.date}}"
-                                                    class="form-control" disabled>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div><br>
+                                <div class="row another">
+                                    <div class="col-sm-6">
+                                        <label for="" class="form-label">
+                                            Appointment ID:</label>
+                                        <input type="text" name="" value="{{ adminvc.appt_id}}"
+                                            class="form-control" disabled>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="" class="form-label">
+                                            Date:</label>
+                                        <input type="text" name="" value="{{ adminvc.date}}"
+                                            class="form-control" disabled>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row another">
+                                    <div class="col-sm-6">
+                                        <label for="" class="form-label">
+                                            Patient Name:</label>
+                                        <input type="text" name="" value="{{ adminvc.resident}}"
+                                            class="form-control" disabled>
+                                        </span>
+                        
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label for="" class="form-label">
+                                            Sex:</label>
+                                        <input type="text" name="" value="{{ adminvc.sex}}"
+                                            class="form-control" disabled>
+                                        </span>
+                                    </div>
+                                    </div>
+                                    
+                                </div><br>
+                                
+                                <div>
+                                    <h4>Diagnosis Details</h4>
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <label for="" class="form-label">
-                                                Patient Name:</label>
-                                            <input type="text" name="" value="{{ adminvc.resident}}"
-                                                class="form-control" disabled>
-                                            </span>
-                            
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <label for="" class="form-label">
-                                                Sex:</label>
-                                            <input type="text" name="" value="{{ adminvc.sex}}"
-                                                class="form-control" disabled>
-                                            </span>
-                                        </div>
-                                        </div>
-                                        
-                                    </div><br>
-                                  
-                                    <div>
-                                        <h4>Diagnosis Details</h4>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <label for="" class="form-label">
-                                                    Diagnosis:&nbsp;<span
-                                                        style="color:#ff0000">*</span></label>
-                                                <input type="text" name="resident_diagnosis" value="{{ adminvc.resident_diagnosis}}"
-                                                    class="form-control"disabled>
-                                                </span>
-                                            </div>
-                                           </div>
-                                    </div><br>
-                                    <div class="row">
-                                        <h4>Prescription</h4>
-                                        <div class="col-sm-12">
-                                            <label for="" class="form-label">
-                                                Prescription Details:</label>
-                                            <input type="text" name="prescription_details" value="{{ adminvc.prescription_details}}"
+                                                Diagnosis:&nbsp;<span
+                                                    style="color:#ff0000">*</span></label>
+                                            <input type="text" name="resident_diagnosis" value="{{ adminvc.resident_diagnosis}}"
                                                 class="form-control"disabled>
                                             </span>
                                         </div>
+                                        </div>
+                                </div><br><br>
+                                <div class="row">
+                                    <h4>Prescription</h4>
+                                    <div class="col-sm-12">
+                                        <label for="" class="form-label">
+                                            Prescription Details:</label>
+                                        <input type="text" name="prescription_details" value="{{ adminvc.prescription_details}}"
+                                            class="form-control"disabled>
+                                        </span>
                                     </div>
-                                    {% endfor %}
-
-                                <div class="modal-footer"><a href="/adminhaptclinic">
-                                        <button type="button" class="btn btn-light">Back
-                                        </button>
                                 </div>
-
+                                {% endfor %}
+                            
                             </div>
                         </div>
                     </div>
+
+                    <div class="modal-footer no-print"><a href="/adminhaptclinic">
+                            <button type="button" class="btn btn-light">Back </button>
+                    </div>
+
                 </div>
                 <!--End records-->
             </div>
@@ -327,44 +335,76 @@
             <!-- End Page content -->
             <!-- ============================================================== -->
 
+            <script>
+                function printPage() {
+                    // Hide elements that should not be printed
+                    const elementsToHide = document.querySelectorAll('.no-print');
+                    for (let i = 0; i < elementsToHide.length; i++) {
+                        elementsToHide[i].style.display = 'none';
+                    }
+
+                    // Add print-only class to elements to be printed
+                    const elementsToPrint = document.querySelectorAll('.print-only');
+                    for (let i = 0; i < elementsToPrint.length; i++) {
+                        elementsToPrint[i].classList.add('print-area');
+                    }
+
+                    // Trigger print dialog with CSS media query
+                    window.print();
+
+                    // Show hidden elements again
+                    for (let i = 0; i < elementsToHide.length; i++) {
+                        elementsToHide[i].style.display = '';
+                    }
+
+                    // Remove print-only class
+                    for (let i = 0; i < elementsToPrint.length; i++) {
+                        elementsToPrint[i].classList.remove('print-area');
+                    }
+                    }
+
+                    // Add print button click event listener
+                    const printButton = document.getElementById('print-button');
+                    printButton.addEventListener('click', printPage);
+            </script>
 
 
 
-                    <!-- bundle -->
-                    <script src="../../static/js/vendor.min.js"></script>
-                    <script src="../../static/js/app.min.js"></script>
+            <!-- bundle -->
+            <script src="../../static/js/vendor.min.js"></script>
+            <script src="../../static/js/app.min.js"></script>
 
-                    <!-- third party js -->
-                    <script src="../../static/js/vendor/jquery.dataTables.min.js"></script>
-                    <script src="../../static/js/vendor/dataTables.bootstrap5.js"></script>
-                    <script src="../../static/js/vendor/dataTables.responsive.min.js"></script>
-                    <script src="../../static/js/vendor/responsive.bootstrap5.min.js"></script>
-                    <script src="../../static/js/vendor/dataTables.buttons.min.js"></script>
-                    <script src="../../static/js/vendor/buttons.bootstrap5.min.js"></script>
-                    <script src="../../static/js/vendor/buttons.flash.min.js"></script>
-                    <script src="../../static/js/vendor/buttons.php5.min.js"></script>
-                    <script src="../../static/js/vendor/buttons.html5.min.js"></script>
-                    <script src="../../static/js/vendor/buttons.flash.min.js"></script>
-                    <script src="../../static/js/vendor/buttons.print.min.js"></script>
-                    <script src="../../static/js/vendor/dataTables.keyTable.min.js"></script>
-                    <script src="../../static/js/vendor/dataTables.select.min.js"></script>
-                    <script src="../../static/js/vendor/apexcharts.min.js"></script>
-                    <script src="../../static/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
-                    <script src="../../static/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
-                    <script src="../../static/js/vendor/dropzone.min.js"></script>
-                    <script src="../../static/js/vendor/list.min.js"></script>
-                    <!-- third party js ends -->
+            <!-- third party js -->
+            <script src="../../static/js/vendor/jquery.dataTables.min.js"></script>
+            <script src="../../static/js/vendor/dataTables.bootstrap5.js"></script>
+            <script src="../../static/js/vendor/dataTables.responsive.min.js"></script>
+            <script src="../../static/js/vendor/responsive.bootstrap5.min.js"></script>
+            <script src="../../static/js/vendor/dataTables.buttons.min.js"></script>
+            <script src="../../static/js/vendor/buttons.bootstrap5.min.js"></script>
+            <script src="../../static/js/vendor/buttons.flash.min.js"></script>
+            <script src="../../static/js/vendor/buttons.php5.min.js"></script>
+            <script src="../../static/js/vendor/buttons.html5.min.js"></script>
+            <script src="../../static/js/vendor/buttons.flash.min.js"></script>
+            <script src="../../static/js/vendor/buttons.print.min.js"></script>
+            <script src="../../static/js/vendor/dataTables.keyTable.min.js"></script>
+            <script src="../../static/js/vendor/dataTables.select.min.js"></script>
+            <script src="../../static/js/vendor/apexcharts.min.js"></script>
+            <script src="../../static/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
+            <script src="../../static/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
+            <script src="../../static/js/vendor/dropzone.min.js"></script>
+            <script src="../../static/js/vendor/list.min.js"></script>
+            <!-- third party js ends -->
 
-                    <!-- demo app -->
-                    <script src="../../static/js/pages/demo.datatable-init.js"></script>
-                    <script src="../../static/js/pages/demo.toastr.js"></script>
-                    <script src="../../static/js/pages/demo.datatable-init.js"></script>
-                    <script src="../../static/js/pages/demo.toastr.js"></script>
-                    <script src="../../static/js/pages/list.js"></script>
-                    <!-- end demo js-->
+            <!-- demo app -->
+            <script src="../../static/js/pages/demo.datatable-init.js"></script>
+            <script src="../../static/js/pages/demo.toastr.js"></script>
+            <script src="../../static/js/pages/demo.datatable-init.js"></script>
+            <script src="../../static/js/pages/demo.toastr.js"></script>
+            <script src="../../static/js/pages/list.js"></script>
+            <!-- end demo js-->
 
-                    <!-- Datatable Init js -->
-                    <script src="assets/js/pages/demo.datatable-init.js"></script>
+            <!-- Datatable Init js -->
+            <script src="assets/js/pages/demo.datatable-init.js"></script>
 
 </body>
 

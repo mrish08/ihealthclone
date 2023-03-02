@@ -224,7 +224,16 @@
 
                     <!-- Start records-->
                     <div class="col-sm-12">
-                        <div class="card card-body">
+                        <div class="card card-body print-only">
+                            <!--PRINT TEMPLATE-->
+                            <div class="printHide" >
+                                <div class="print-only">
+                                    <p class="textHeader">iHealth - Barangay Commonwealth</p>
+                                    <p id="spacing"><i>Quezon City, Philippines</i></p>
+                                    <img class="tempLogo" src="../static/images/bitbo.png" style="height: 110px;" alt="Logo">
+                                </div>
+                            </div>
+
                             <div class="tab-content">
                                 <div class="d-flex justify-content-center mt-0 mb-0 navbar-light"><span>
                                         <h3>REPORT DETAILS</h3>
@@ -236,7 +245,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
+                                <div class="row another">
                                     <div class="col-lg-8">
                                         <p><strong>Appointment ID:</strong></p>
                                     </div>
@@ -253,7 +262,7 @@
                                         <h4>PRESCRIPTION DETAILS</h4>
                                     </div>
                                 </div>
-                                 <div class="row">
+                                 <div class="row another">
                                     <div class="col-lg-6">
                                         <p><strong>Patient:</strong></p>
                                     </div>
@@ -266,7 +275,7 @@
                                 </div>
                                 <br>
                                 <br><br>
-                                <p><strong>ibuprofen (Motrin® or Advil®)</strong></p>
+                                <p><strong>Ibuprofen (Motrin® or Advil®)</strong></p>
                                 <p>Take 400–600 mg every 6–8 hours. Ibuprofen will help with
                                     pain relief and as an anti-inflammatory.
                                 </p>
@@ -276,13 +285,15 @@
                                 <p><strong>Dr.</strong></p>
                                 <p><strong>Lic No.: </strong>1234</p>
                                 <p><strong>PTR No.: </strong>1234567</p>
-                                <div class="modal-footer"><a href="/staffhaptdental">
-                                        <button type="button" class="btn btn-light">Back
-                                        </button>
-                                </div>
 
                             </div>
                         </div>
+
+                        <div class="modal-footer no-print"><a href="/adminhaptdental">
+                                <button type="button" class="btn btn-light ">Back
+                                </button>
+                        </div>
+                        
                     </div>
                 </div>
                 <!--End records-->
@@ -292,6 +303,39 @@
             <!-- ============================================================== -->
             <!-- End Page content -->
             <!-- ============================================================== -->
+
+            <script>
+                function printPage() {
+                    // Hide elements that should not be printed
+                    const elementsToHide = document.querySelectorAll('.no-print');
+                    for (let i = 0; i < elementsToHide.length; i++) {
+                        elementsToHide[i].style.display = 'none';
+                    }
+
+                    // Add print-only class to elements to be printed
+                    const elementsToPrint = document.querySelectorAll('.print-only');
+                    for (let i = 0; i < elementsToPrint.length; i++) {
+                        elementsToPrint[i].classList.add('print-area');
+                    }
+
+                    // Trigger print dialog with CSS media query
+                    window.print();
+
+                    // Show hidden elements again
+                    for (let i = 0; i < elementsToHide.length; i++) {
+                        elementsToHide[i].style.display = '';
+                    }
+
+                    // Remove print-only class
+                    for (let i = 0; i < elementsToPrint.length; i++) {
+                        elementsToPrint[i].classList.remove('print-area');
+                    }
+                    }
+
+                    // Add print button click event listener
+                    const printButton = document.getElementById('print-button');
+                    printButton.addEventListener('click', printPage);
+            </script>
 
 
     <!-- bundle -->
