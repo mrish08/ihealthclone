@@ -22383,7 +22383,7 @@ input[type="text"] {
 input[type="text"] {
     display: inline-block;
     width: auto;
-    margin-left: 10px;
+    margin-left: auto;
 }
 
 .row > div {
