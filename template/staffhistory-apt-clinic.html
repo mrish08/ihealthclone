@@ -10,9 +10,10 @@
    <!-- App favicon -->
    <link rel="shortcut icon" href="../../static/images/brgyms-icon-white.png">
 
-   <!-- third party css -->
+   <!-- third party -->
    <link href="../../static/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css">
-   <!-- third party css end -->
+   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
+   <!-- third party end -->
 
    <!-- App css -->
    <link href="../../static/css/icons.min.css" rel="stylesheet" type="text/css">
@@ -23,6 +24,7 @@
     <link href="../../static/css/vendor/select.bootstrap5.css" rel="stylesheet" type="text/css" />
     <link href="../../static/css/vendor/dataTables.bootstrap5.css" rel="stylesheet" type="text/css" />
     <link href="../../static/css/vendor/responsive.bootstrap5.css" rel="stylesheet" type="text/css" />
+    
 
 </head>
 
@@ -193,7 +195,7 @@
                         </div>
                         <div class="d-print-none col-sm-12">
                             <div class="text-end">
-                                <a href="javascript:window.print()" class="btn btn-primary"><i class="mdi mdi-printer"></i> Print Report</a>
+                                <button class="btn btn-primary mdi mdi-printer" id="save-button" type="button">Download</button>
                             </div>
                         </div>  
                     </div> <br>
@@ -260,36 +262,46 @@
     <!-- ============================================================== -->
 
     <script>
-        function printPage() {
-            // Hide elements that should not be printed
-            const elementsToHide = document.querySelectorAll('.no-print');
-            for (let i = 0; i < elementsToHide.length; i++) {
-                elementsToHide[i].style.display = 'none';
-            }
+        function saveTableToCSV() {
+        // Get the table element by its ID
+        const table = document.getElementById("basic-datatable");
+        console.log("table", table);
 
-            // Add print-only class to elements to be printed
-            const elementsToPrint = document.querySelectorAll('.print-only');
-            for (let i = 0; i < elementsToPrint.length; i++) {
-                elementsToPrint[i].classList.add('print-area');
-            }
+        // Extract the data from the table using Papa Parse
+        const data = Papa.parse(table.innerHTML.trim(), {
+            header: true,
+            dynamicTyping: true,
+            skipEmptyLines: true,
+        }).data;
+        console.log("data", data);
 
-            // Trigger print dialog with CSS media query
-            window.print();
+        // Convert the array of objects to a CSV string using Papa Parse
+        const csv = Papa.unparse(data);
+        console.log("csv", csv);
 
-            // Show hidden elements again
-            for (let i = 0; i < elementsToHide.length; i++) {
-                elementsToHide[i].style.display = '';
-            }
+        // Create a new Blob object with the CSV string
+        const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
 
-            // Remove print-only class
-            for (let i = 0; i < elementsToPrint.length; i++) {
-                elementsToPrint[i].classList.remove('print-area');
-            }
-            }
+        // Create a new URL object and set its href to the Blob object
+        const url = URL.createObjectURL(blob);
 
-            // Add print button click event listener
-            const printButton = document.getElementById('print-button');
-            printButton.addEventListener('click', printPage);
+        // Create a new anchor element and set its href to the URL object
+        const a = document.createElement("a");
+        a.href = url;
+
+        // Set the anchor element's download attribute and text content
+        a.download = "table.csv";
+        a.textContent = "Download CSV";
+
+        // Click the anchor element to trigger the download
+        a.click();
+
+        // Remove the URL object from memory
+        URL.revokeObjectURL(url);
+        }
+
+        // Attach the saveTableToCSV function to the click event of the save button
+        document.getElementById("save-button").addEventListener("click", saveTableToCSV);
     </script>
  
     <!-- bundle -->
