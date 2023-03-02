@@ -22382,7 +22382,7 @@ input[type="text"] {
 /* Adjust input fields */
 input[type="text"] {
     display: inline-block;
-    width: 50%;
+    width: auto;
     margin-left: 10px;
 }
 
