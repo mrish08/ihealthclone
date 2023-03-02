@@ -22366,6 +22366,10 @@ body * {
     display: block!important;
 }
 
+.page-separator {
+    padding-bottom: 20px;
+}
+
 /* Hide form input box */
 input[type="text"] {
     background-color: transparent;
