@@ -310,35 +310,7 @@
     <!-- ============================================================== -->
 
     <script>
-        const form = document.querySelector('form');
-        form.addEventListener('submit', preventRefresh);
 
-        function preventRefresh(event) {
-        event.preventDefault();
-        console.log('Form submission prevented');
-        
-        // send form data to server
-        fetch('/residentvax', {
-            method: 'POST',
-            body: new FormData(form)
-        })
-        .then((response) => {
-            console.log('Form data sent to server');
-            if (response.ok) {
-            // show success message to user (replace this with your own code)
-            form.reset(); // clear the form
-            } else {
-            // show error message to user (replace this with your own code)
-            alert('An error occurred while booking the appointment.');
-            }
-        })
-        .catch((error) => {
-            console.error(error);
-            // show error message to user (replace this with your own code)
-            alert('An error occurred while booking the appointment.');
-        });
-        }
-        console.log('Script loaded successfully');
     </script>
 
     <!-- bundle -->

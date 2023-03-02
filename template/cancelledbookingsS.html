@@ -33,104 +33,105 @@
         <div class="wrapper">
             <!-- ========== Left Sidebar Start ========== -->
             <div class="leftside-menu">
-
-                <!-- LOGO -->
-                <a href="/index" class="logo text-center logo-light">
-                    <span class="logo-lg">
-                        <img src="../../static/images/ihealth-logo-with-text.png" alt="" height="40">
-                    </span>
-                    <span class="logo-sm">
-                        <img src="../../static/images/bitbo.png" alt="" height="32">
-                    </span>
+    
+               <!-- LOGO -->
+               <a href="/indexstaff" class="logo text-center logo-light">
+                <span class="logo-lg">
+                    <img src="../../static/images/ihealth-logo-with-text.png" alt="" height="40">
+                </span>
+                <span class="logo-sm">
+                    <img src="../../static/images/bitbo.png" alt="" height="32">
+                </span>
                 </a>
-
+                
                 <div class="h-100" id="leftside-menu-container" data-simplebar="">
-
-                    <!-- SIDEBAR MENU -->
-                    <ul class="side-nav">
-
-                        <li class="side-nav-title side-nav-item">Menu</li>
-
-                        <li class="side-nav-item">
-                            <a href="/indexresident" class="side-nav-link">
-                                <i class="uil-chart-pie"></i>
-                                <span> Dashboard </span>
-                            </a>
-                        </li>
-
-                        <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarEcommerce" class="side-nav-link">
-                                <i class="uil-clipboard-alt"></i>
-                                <span> Appointment Service </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <div class="collapse" id="sidebarTasks">
-                                <ul class="side-nav-second-level">
-                                    <li>
-                                        <a href="/residentas">Request Clinic Appointment</a>
-                                    </li>
-                                    <li>
-                                        <a  href="/residentvax">Request Vaccination Appointment</a>
-                                    </li>
-                                    <li>
-                                        <a  href="/residentdental">Request Dental Appointment</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-        
-                        <li class="side-nav-item">
-                            <a href="/managebookings" class="side-nav-link">
-                                <i class="uil-chart-pie"></i>
-                                <span> My Appointments </span>
-                            </a>
-                        </li>
-
-                        <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false"
-                                aria-controls="sidebarEmail" class="side-nav-link">
-                                <i class="mdi mdi-history"></i>
-                                <span> Approved Appointments </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <div class="collapse" id="sidebarEmail">
-                                <ul class="side-nav-second-level">
-                                    <li>
-                                        <a href="/staffhaptvax">Vaccination Service</a>
-                                    </li>
-                                    <li>
-                                        <a href="/staffhaptclinic">Clinic Service</a>
-                                    </li>
-                                    <li>
-                                        <a href="/staffhaptdental">Dental Service</a>
-                                    </li>
-                                    <li>
-                                        <a href="/staffhaptmedicine">Medicine Pickup</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <li class="side-nav-item menuitem-active ">
-                                <a href="/cancelledbookingsS" class="side-nav-link">
-                                    <i class="uil-chart-pie"></i>
-                                    <span> Cancelled Bookings </span>
-                                </a>
-                            </li>
-                            <li class="side-nav-item">
-                                <a href="/noshowbookingsS" class="side-nav-link">
-                                    <i class="uil-chart-pie"></i>
-                                    <span> Non-appearance </span>
-                                </a>
-                            </li>
-                        </li>
-                    </ul>
-                    <div class="clearfix"></div>
-
-                </div>
+    
+                <!--- Sidemenu -->
+                <ul class="side-nav">
+    
+                    <li class="side-nav-title side-nav-item">Menu</li>
+    
+                    <li class="side-nav-item">
+                        <a href="/indexstaff" class="side-nav-link">
+                            <i class="uil-chart-pie"></i>
+                            <span> Dashboard </span>
+                        </a>
+                    </li>
+    
+                    <li class="side-nav-item">
+                        <a href="/schedulestaff" class="side-nav-link">
+                            <i class="uil-clipboard-alt"></i>
+                            <span> Schedule </span>
+                        </a>
+                    </li>
+    
+                    <li class="side-nav-item">
+                        <a href="/vaccinationstaff" class="side-nav-link">
+                            <i class="uil-syringe"></i>
+                            <span> Vaccination Service</span>
+                        </a>
+                    </li>
+    
+                    <li class="side-nav-item">
+                        <a href="/clinicstaff" class="side-nav-link">
+                            <i class="uil-clipboard-alt"></i>
+                            <span> Clinic Service </span>
+                        </a>
+                    </li>
+    
+                    <li class="side-nav-item">
+                        <a href="/dentalstaff" class="side-nav-link">
+                            <i class="mdi mdi-hospital"></i>
+                            <span> Dental Service </span>
+                        </a>
+                    </li>
+    
+                    <li class="side-nav-item">
+    
+                        <a href="/medicinestaff" class="side-nav-link">
+                            <i class="uil-home-alt"></i>
+                            <span>Medicine Pick-up</span></a>
+                    </li>
+    
+                    <li class="side-nav-item">
+                        <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
+                            <i class="mdi mdi-history"></i>
+                            <span> Approved Appointments </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="sidebarEmail">
+                            <ul class="side-nav-second-level">
+                                <li>
+                                    <a href="/staffhaptvax">Vaccination Service</a>
+                                </li>
+                                <li>
+                                    <a href="/staffhaptclinic">Clinic Service</a>
+                                </li>
+                                <li>
+                                    <a href="/staffhaptdental">Dental Service</a>
+                                </li>
+                                <li>
+                                    <a href="/staffhaptmedicine">Medicine Pickup</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="badge-primary-lighten side-nav-item menuitem-active">
+                        <a href="/cancelledbookingsS" class="side-nav-link">
+                            <i class="uil-chart-pie"></i>
+                            <span> Cancelled Bookings </span>
+                        </a>
+                    </li>
+                    <li class="side-nav-item">
+                        <a href="/noshowbookingsS" class="side-nav-link">
+                            <i class="uil-chart-pie"></i>
+                            <span> Non-appearance </span>
+                        </a>
+                    </li>
+                </ul>
                 <!-- Sidebar -left -->
-
+    
             </div>
-            <!-- Left Sidebar End -->
-
         </div>
         <!-- END wrapper -->
     </header>
