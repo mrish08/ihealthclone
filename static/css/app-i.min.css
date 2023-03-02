@@ -22386,10 +22386,10 @@ input[type="text"] {
     margin-left: 10px;
 }
 
-.row > div {
+.another > div {
     display: inline-block;
     width: 45%;
-    margin-left: 10px;
+    margin-left: 0px;
 }
 
 
@@ -22406,7 +22406,7 @@ label {
     padding-top: 120px;
 }
 
-/* Position the logo and header */
+/* Position of logo and header */
 .tempLogo {
     padding-top: 10px;
     position: absolute;

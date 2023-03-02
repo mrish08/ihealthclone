@@ -249,15 +249,14 @@
                                         <h3>REPORT DETAILS</h3>
                                     </span></div> <br>
 
-                                <div class="page-separator">
-                                    <div class="page-separator__text">
-                                        <h4>CONSULTATION DETAILS</h4>
+                                    <div class="page-separator">
+                                        <div class="page-separator__text">
+                                            <h4>CONSULTATION DETAILS</h4>
+                                        </div>
                                     </div>
-                                </div>
-                                {% for adminvv in adminvv %}
+                                    {% for adminvv in adminvv %}
 
-                                <div class="">
-                                    <div class="row">
+                                    <div class="row another">
                                         <div class="col-sm-6">
                                             <label for="" class="form-label">
                                                 Appointment ID:</label>
@@ -273,36 +272,35 @@
                                             </span>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <label for="" class="form-label">
-                                            Patient Name:</label>
-                                        <input type="text" name="" value="{{ adminvv.resident}}"
-                                            class="form-control" disabled>
-                                        </span>
-                        
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <label for="" class="form-label">
-                                            Sex:</label>
-                                        <input type="text" name="" value="{{ adminvv.gender}}"
-                                            class="form-control" disabled>
-                                        </span>
-                                    </div>
-                                    </div>
-                                    
-                                </div><br>
                                 
-                                <br>
-                                <div class="page-separator">
+                                    <div class="row another">
+                                        <div class="col-sm-6">
+                                            <label for="" class="form-label">
+                                                Patient Name:</label>
+                                            <input type="text" name="" value="{{ adminvv.resident}}"
+                                                class="form-control" disabled>
+                                            </span>
+                            
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label for="" class="form-label">
+                                                Sex:</label>
+                                            <input type="text" name="" value="{{ adminvv.gender}}"
+                                                class="form-control" disabled>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div><br><br>
+                                
+                                <div class="page-separator ">
                                     <div class="page-separator__text">
                                         <h4>VACCINATION DETAILS</h4>
                                     </div>
                                 </div>
+                                
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <label for="" class="form-label">
+                                        <label class="form-label">
                                             Dose No:</label>
                                         <input type="text" name="" value="{{ adminvv.vax_dosage}}"
                                             class="form-control" disabled>
@@ -321,7 +319,6 @@
                                     <input type="text" name="" value="{{ adminvv.vax_lot_no}}"
                                         class="form-control" disabled>
                                     </div>
-                                    
                                 </div>
                                 {% endfor %}<br><br>
                                 
