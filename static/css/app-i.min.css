@@ -22367,7 +22367,11 @@ body * {
 
 /* Hide form input box */
 input[type="text"] {
-    display: none;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
 }
 
 .card,
